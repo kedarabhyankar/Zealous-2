@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nWt-i4-6xC">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="sOR-jt-Jdk">
+            <objects>
+                <viewController id="nWt-i4-6xC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rg0-hl-1zq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zVE-U7-6fU">
+                                <rect key="frame" x="0.0" y="97" width="414" height="548"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tib-IT-Rev">
+                                <rect key="frame" x="0.0" y="645" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title=" " largeTitleDisplayMode="never" id="qBA-RX-Cbh">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="CEu-xW-Jq3">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="nWt-i4-6xC" kind="show" id="Czg-Zf-Kh7"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="SGo-9p-w2a">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="3l2-Gh-j9q" kind="show" id="S0O-p5-L6P"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Post" image="text.bubble.fill" catalog="system" width="18" id="M0x-GY-bx0">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="Wxc-Pe-3qG" kind="show" id="ddR-Zw-0Y7"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="09v-5u-OYJ">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="vLZ-Du-JT0" kind="show" id="cCZ-Pi-z6S"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="be6-l4-NgF">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="RHP-Zo-zpF">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="2Qk-fP-bXD">
+                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            <connections>
+                                                <segue destination="XiK-F5-wIg" kind="show" id="Kls-HJ-rn9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timeline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bl-id-4vM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Y3T-Dn-Eba"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Emp-HU-mvT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wkn-2C-mgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-376.80000000000001" y="5.9113300492610836"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PXB-4a-5AX">
+            <objects>
+                <viewController id="3l2-Gh-j9q" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M9M-EX-578">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile - Userline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1d-PX-15d">
+                                <rect key="frame" x="0.0" y="71" width="375" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bgE-Ld-DGd">
+                                <rect key="frame" x="0.0" y="645" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title=" " largeTitleDisplayMode="never" id="Ili-k1-c8Y">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="KeX-fY-wNJ">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="nWt-i4-6xC" kind="show" id="Aio-lI-0jK"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="FVs-zO-cst">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="3l2-Gh-j9q" kind="show" id="hIt-Ar-SW3"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Post" image="text.bubble.fill" catalog="system" width="18" id="udh-uz-oJw">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="Wxc-Pe-3qG" kind="show" id="BXW-UR-YeU"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="i2j-A2-umr">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="vLZ-Du-JT0" kind="show" id="opr-P9-nuY"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="H9k-f7-EPz">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="n4n-4e-ElJ">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="4dq-kg-92K">
+                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            <connections>
+                                                <segue destination="XiK-F5-wIg" kind="show" id="nep-eO-11a"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Bub-El-n2N"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AW6-bH-8ZB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y88-xF-vqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="919.20000000000005" y="-84.236453201970448"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="W6P-bL-otO">
+            <objects>
+                <viewController id="Wxc-Pe-3qG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xZb-xn-TZc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acY-he-r1d">
+                                <rect key="frame" x="0.0" y="645" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title=" " largeTitleDisplayMode="never" id="AYS-d6-yV6">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="0qD-qg-JxE">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="nWt-i4-6xC" kind="show" id="7ds-jp-rBO"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="3GA-Mh-Use">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="3l2-Gh-j9q" kind="show" id="Ra8-MD-QMB"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Post" image="text.bubble.fill" catalog="system" width="18" id="LGX-al-lKM">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="Wxc-Pe-3qG" kind="show" id="UPS-OQ-BSK"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="JLM-Sr-Z96">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="vLZ-Du-JT0" kind="show" id="Gje-qW-YlP"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="ap3-ht-oXW">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="HEA-8t-g7M">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="EpW-hJ-gYx">
+                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            <connections>
+                                                <segue destination="XiK-F5-wIg" kind="show" id="4mf-lm-Txm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create Post" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zh-tc-ZYO">
+                                <rect key="frame" x="0.0" y="62" width="375" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="l9v-kb-S95"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="L3p-k4-dMv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQS-Nm-H0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1908" y="322.90640394088672"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bD9-lM-huC">
+            <objects>
+                <viewController id="XiK-F5-wIg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E2h-cA-cbM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjT-C3-eca">
+                                <rect key="frame" x="0.0" y="68" width="375" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UX6-rh-DYh">
+                                <rect key="frame" x="0.0" y="645" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title=" " largeTitleDisplayMode="never" id="hSn-CG-cBL">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="Vxu-nd-trd">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="nWt-i4-6xC" kind="show" id="Nem-m9-BVP"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="pNo-Nr-85c">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="3l2-Gh-j9q" kind="show" id="1CQ-R3-WSg"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Post" image="text.bubble.fill" catalog="system" width="18" id="jR5-wV-lcF">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="Wxc-Pe-3qG" kind="show" id="U9O-2L-s7N"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="Ra4-4x-FAX">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="vLZ-Du-JT0" kind="showDetail" id="lNC-Qi-szG"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="rCi-zS-hTY">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="aHA-U8-MUl">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="sv2-RQ-uN2">
+                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            <connections>
+                                                <segue destination="XiK-F5-wIg" kind="show" id="Jef-Lm-cqC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6aK-K8-EAz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fbg-dl-axH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4mS-oL-gLG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="819.45812807881782"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wvQ-GC-Vhh">
+            <objects>
+                <viewController id="vLZ-Du-JT0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fXM-Xs-StA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8k8-rY-889">
+                                <rect key="frame" x="0.0" y="645" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title=" " largeTitleDisplayMode="never" id="Sal-UQ-sWa">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="mhg-3o-33C">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="nWt-i4-6xC" kind="show" id="2Sz-ZM-pkq"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="UBD-j9-u1f">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="3l2-Gh-j9q" kind="show" id="snH-cl-Ao3"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Post" image="text.bubble.fill" catalog="system" width="18" id="QJ5-wY-X4f">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="Wxc-Pe-3qG" kind="show" id="xH7-Xk-ibe"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="JPk-OR-VB8">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="vLZ-Du-JT0" kind="show" id="Sau-fR-Ufs"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="Egj-FM-ZD6">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="UeM-da-SAx">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="XrS-K7-ZyX">
+                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            <connections>
+                                                <segue destination="XiK-F5-wIg" kind="show" id="7qu-oe-Pzh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERZ-fw-zh1">
+                                <rect key="frame" x="0.0" y="68" width="375" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Lnx-Yt-2pP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AUR-KZ-z63"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1VV-bi-Fkc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-375.19999999999999" y="832.75862068965523"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cCZ-Pi-z6S"/>
+        <segue reference="Kls-HJ-rn9"/>
+        <segue reference="ddR-Zw-0Y7"/>
+        <segue reference="S0O-p5-L6P"/>
+        <segue reference="Aio-lI-0jK"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+        <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="text.bubble.fill" catalog="system" width="128" height="110"/>
+    </resources>
+</document>
