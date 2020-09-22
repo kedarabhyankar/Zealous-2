@@ -10,6 +10,8 @@
 		0642BBB6EE98DE0CD8823F27 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A224908E7700D5A35B6A530E /* Pods_Zealous_ZealousUITests.framework */; };
 		1185D838858EF6D84109E184 /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034F4145BB8183FFA71829A /* Pods_Zealous.framework */; };
 		5793A99EE6BD42948120B46D /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07E1E7D94F6EF939B0F4797 /* Pods_ZealousTests.framework */; };
+		A6A6D9102519969B00F787A9 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */; };
+		A6A6D912251996A500F787A9 /* ProfileSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */; };
 		C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BD25197F07006BAD5F /* Timeline.storyboard */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
@@ -45,6 +47,8 @@
 		105752D8D231ACAEC3124F34 /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B756860758CC4E48045C570 /* Pods-Zealous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.debug.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.debug.xcconfig"; sourceTree = "<group>"; };
 		A224908E7700D5A35B6A530E /* Pods_Zealous_ZealousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous_ZealousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileSettingsViewController.swift; path = ../../Zealous/Zealous/Controllers/ProfileSettingsViewController.swift; sourceTree = "<group>"; };
+		A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileSettings.storyboard; path = ../../Zealous/Zealous/Storyboards/ProfileSettings.storyboard; sourceTree = "<group>"; };
 		C66B88BD25197F07006BAD5F /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				C66B88C025197F1C006BAD5F /* Login.storyboard */,
 				C66B88BF25197F1C006BAD5F /* SignUp.storyboard */,
 				C66B88BD25197F07006BAD5F /* Timeline.storyboard */,
+				A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */,
+				A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */,
 				E44D2FFD25196525000FB63B /* AppDelegate.swift */,
 				E44D2FFF25196525000FB63B /* SceneDelegate.swift */,
 				E44D300125196525000FB63B /* ViewController.swift */,
@@ -285,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6A6D912251996A500F787A9 /* ProfileSettings.storyboard in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
@@ -421,6 +428,7 @@
 				E44D300225196525000FB63B /* ViewController.swift in Sources */,
 				E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */,
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
+				A6A6D9102519969B00F787A9 /* ProfileSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
