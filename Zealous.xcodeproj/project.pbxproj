@@ -11,6 +11,9 @@
 		5E0B7080296A00CA2D5AF80A /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED626B0B9BB8ACBC497BCA2 /* Pods_Zealous.framework */; };
 		9328E47FB0251E7D86F6E557 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F551DF2E3BEC8A9E2201606 /* Pods_Zealous_ZealousUITests.framework */; };
 		BCE3252325196843004F8EAC /* Data Structures in Resources */ = {isa = PBXBuildFile; fileRef = BCE3252225196842004F8EAC /* Data Structures */; };
+		C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BD25197F07006BAD5F /* Timeline.storyboard */; };
+		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
+		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
 		E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFD25196525000FB63B /* AppDelegate.swift */; };
 		E44D300025196525000FB63B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFF25196525000FB63B /* SceneDelegate.swift */; };
 		E44D300225196525000FB63B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D300125196525000FB63B /* ViewController.swift */; };
@@ -49,6 +52,9 @@
 		949828EE4ED1BEF297B258EB /* Pods-Zealous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.release.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.release.xcconfig"; sourceTree = "<group>"; };
 		B3F1B047221078FE0A878AD2 /* Pods-Zealous-ZealousUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.release.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BCE3252225196842004F8EAC /* Data Structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Data Structures"; path = "../../Zealous/Zealous/Data Structures"; sourceTree = "<group>"; };
+		C66B88BD25197F07006BAD5F /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E44D2FFA25196525000FB63B /* Zealous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zealous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D2FFD25196525000FB63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44D2FFF25196525000FB63B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +120,14 @@
 				3D930E2659CFEF894B4BFE96 /* Pods_ZealousTests.framework */,
 			);
 			name = Frameworks;
+				7B756860758CC4E48045C570 /* Pods-Zealous.debug.xcconfig */,
+				EB034D1EA1E7FBA22B6A2936 /* Pods-Zealous.release.xcconfig */,
+				EEE6B8EB4644F262331969BF /* Pods-Zealous-ZealousUITests.debug.xcconfig */,
+				E02F90FE36C469C6C5D92712 /* Pods-Zealous-ZealousUITests.release.xcconfig */,
+				D6AEBCF082BAB28F890EE7FE /* Pods-ZealousTests.debug.xcconfig */,
+				105752D8D231ACAEC3124F34 /* Pods-ZealousTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		E44D2FF125196525000FB63B = {
@@ -141,6 +155,9 @@
 		E44D2FFC25196525000FB63B /* Zealous */ = {
 			isa = PBXGroup;
 			children = (
+				C66B88C025197F1C006BAD5F /* Login.storyboard */,
+				C66B88BF25197F1C006BAD5F /* SignUp.storyboard */,
+				C66B88BD25197F07006BAD5F /* Timeline.storyboard */,
 				E44D2FFD25196525000FB63B /* AppDelegate.swift */,
 				E44D2FFF25196525000FB63B /* SceneDelegate.swift */,
 				E44D300125196525000FB63B /* ViewController.swift */,
@@ -283,6 +300,9 @@
 				BCE3252325196843004F8EAC /* Data Structures in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
+				C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */,
+				C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */,
+				C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SYN82GCMAT;
 				INFOPLIST_FILE = Zealous/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,6 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SYN82GCMAT;
 				INFOPLIST_FILE = Zealous/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -632,7 +654,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SYN82GCMAT;
 				INFOPLIST_FILE = ZealousTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,7 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SYN82GCMAT;
 				INFOPLIST_FILE = ZealousTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -677,6 +699,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SYN82GCMAT;
 				INFOPLIST_FILE = ZealousUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,6 +721,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SYN82GCMAT;
 				INFOPLIST_FILE = ZealousUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
