@@ -135,22 +135,24 @@
                                                     <segue destination="Wxc-Pe-3qG" kind="show" id="ddR-Zw-0Y7"/>
                                                 </connections>
                                             </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Settings" image="gear" catalog="system" width="18" id="2Qk-fP-bXD">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="lto-Qe-ibg" kind="show" id="qDT-d4-Mmh"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="be6-l4-NgF">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
                                             <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="09v-5u-OYJ">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
                                                     <segue destination="vLZ-Du-JT0" kind="show" id="cCZ-Pi-z6S"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="be6-l4-NgF">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                        </leftBarButtonItems>
-                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="2Qk-fP-bXD">
-                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            <connections>
-                                                <segue destination="lto-Qe-ibg" kind="show" id="qDT-d4-Mmh"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -210,22 +212,24 @@
                                                     <segue destination="Wxc-Pe-3qG" kind="show" id="BXW-UR-YeU"/>
                                                 </connections>
                                             </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Settings" image="gear" catalog="system" width="18" id="4dq-kg-92K">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="lto-Qe-ibg" kind="show" id="fpS-R1-Y9p"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="H9k-f7-EPz">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
                                             <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="i2j-A2-umr">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
                                                     <segue destination="vLZ-Du-JT0" kind="show" id="opr-P9-nuY"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="H9k-f7-EPz">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                        </leftBarButtonItems>
-                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="4dq-kg-92K">
-                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            <connections>
-                                                <segue destination="lto-Qe-ibg" kind="show" id="fpS-R1-Y9p"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -440,22 +444,24 @@
                                                     <segue destination="Wxc-Pe-3qG" kind="show" id="UPS-OQ-BSK"/>
                                                 </connections>
                                             </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Settings" image="gear" catalog="system" width="18" id="EpW-hJ-gYx">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="lto-Qe-ibg" kind="show" id="A9Y-HM-Xft"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="ap3-ht-oXW">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
                                             <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="JLM-Sr-Z96">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
                                                     <segue destination="vLZ-Du-JT0" kind="show" id="Gje-qW-YlP"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="ap3-ht-oXW">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                        </leftBarButtonItems>
-                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="EpW-hJ-gYx">
-                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            <connections>
-                                                <segue destination="lto-Qe-ibg" kind="show" id="A9Y-HM-Xft"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -528,22 +534,24 @@
                                                     <segue destination="Wxc-Pe-3qG" kind="show" id="xH7-Xk-ibe"/>
                                                 </connections>
                                             </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Settings" image="gear" catalog="system" width="18" id="XrS-K7-ZyX">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="lto-Qe-ibg" kind="show" id="wP8-QU-okW"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="Egj-FM-ZD6">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
                                             <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="JPk-OR-VB8">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
                                                     <segue destination="vLZ-Du-JT0" kind="show" id="Sau-fR-Ufs"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="Egj-FM-ZD6">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                        </leftBarButtonItems>
-                                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="XrS-K7-ZyX">
-                                            <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            <connections>
-                                                <segue destination="lto-Qe-ibg" kind="show" id="wP8-QU-okW"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -640,22 +648,24 @@
                                                         <segue destination="Wxc-Pe-3qG" kind="show" id="iFo-CG-PxT"/>
                                                     </connections>
                                                 </barButtonItem>
+                                            </leftBarButtonItems>
+                                            <rightBarButtonItems>
+                                                <barButtonItem title="Settings" image="gear" catalog="system" width="18" id="0P9-fG-qkP">
+                                                    <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                    <connections>
+                                                        <segue destination="lto-Qe-ibg" kind="show" id="tqe-qN-AGj"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="3Ex-Ad-97s">
+                                                    <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                </barButtonItem>
                                                 <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="3AN-I2-s94">
                                                     <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                     <connections>
                                                         <segue destination="vLZ-Du-JT0" kind="show" id="sso-aw-Ohf"/>
                                                     </connections>
                                                 </barButtonItem>
-                                                <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="3Ex-Ad-97s">
-                                                    <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                                </barButtonItem>
-                                            </leftBarButtonItems>
-                                            <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" width="18" id="0P9-fG-qkP">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                                <connections>
-                                                    <segue destination="lto-Qe-ibg" kind="show" id="tqe-qN-AGj"/>
-                                                </connections>
-                                            </barButtonItem>
+                                            </rightBarButtonItems>
                                         </navigationItem>
                                     </items>
                                 </navigationBar>
@@ -834,10 +844,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fpS-R1-Y9p"/>
-        <segue reference="sso-aw-Ohf"/>
-        <segue reference="iFo-CG-PxT"/>
-        <segue reference="rvi-f2-eOp"/>
+        <segue reference="qDT-d4-Mmh"/>
+        <segue reference="cCZ-Pi-z6S"/>
+        <segue reference="ddR-Zw-0Y7"/>
+        <segue reference="S0O-p5-L6P"/>
         <segue reference="45N-F2-ohR"/>
     </inferredMetricsTieBreakers>
     <resources>
