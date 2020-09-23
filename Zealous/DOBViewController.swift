@@ -12,7 +12,7 @@ class DOBViewController: UIViewController {
     var intermediaryUserOne: Profile!
     @IBOutlet weak var dobPicker: UIDatePicker!
     var minimumDateOfBirth: Date?
-    var dateComponents: DateComponents
+    var dateComponents: DateComponents!
     var userDOB: Date?
     
     override func viewDidLoad() {
@@ -28,7 +28,9 @@ class DOBViewController: UIViewController {
     @IBAction func onSubmit(_ sender: Any) {
         userDOB = dobPicker.date
         let intermediaryUserTwo = Profile(firstName: intermediaryUserOne.firstName, lastName: intermediaryUserOne.lastName, username: intermediaryUserOne.username, email: intermediaryUserOne.email, dob: userDOB ?? Date.distantPast, bio: "")
-        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoUpload") as! PhotoUploadViewController
+        vc.intermediaryProfileTwo = intermediaryUserTwo
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func onBack(_ sender: Any) {

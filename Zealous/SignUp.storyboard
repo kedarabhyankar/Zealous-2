@@ -221,10 +221,10 @@
             </objects>
             <point key="canvasLocation" x="1366.6666666666667" y="115.84821428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--photoUpload-->
         <scene sceneID="JZG-2L-Bsl">
             <objects>
-                <viewController id="AwN-Gr-des" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="photoUpload" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AwN-Gr-des" userLabel="photoUpload" customClass="PhotoUploadViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3um-Vp-3oW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,6 +262,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="onSubmit:" destination="AwN-Gr-des" eventType="touchUpInside" id="u0f-IZ-f2B"/>
                                     <segue destination="a5A-nP-Jyy" kind="show" id="1LJ-EL-ScC"/>
                                 </connections>
                             </button>
@@ -277,6 +278,9 @@
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onUploadImage:" destination="AwN-Gr-des" eventType="touchUpInside" id="weE-Xr-jOp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIb-aa-GXj">
                                 <rect key="frame" x="78" y="576" width="258" height="42"/>
@@ -303,15 +307,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="dvd-L2-1lx"/>
+                    <connections>
+                        <outlet property="imagePreview" destination="hOY-PW-cz7" id="3Zt-L9-eFD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEW-7K-KY6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2463.768115942029" y="115.84821428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--bioAndProfile-->
         <scene sceneID="4FK-Ba-ua2">
             <objects>
-                <viewController id="a5A-nP-Jyy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bioAndProfile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a5A-nP-Jyy" userLabel="bioAndProfile" customClass="BioAndProfileViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5II-O2-KXd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,8 +409,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HJY-ml-HFn"/>
-        <segue reference="2wc-Xb-e2r"/>
+        <segue reference="okY-Cb-Wcf"/>
+        <segue reference="NIb-fc-prV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
