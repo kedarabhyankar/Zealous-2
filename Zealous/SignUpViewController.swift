@@ -72,6 +72,18 @@ class SignUpViewController: UINavigationController {
         let tooShortPassBanner = Banner(title: "Your password is too weak!", subtitle: "Your password must be greater than or equal to 6 characters at a minimum!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         tooShortPassBanner.dismissesOnTap = true
         
+        let noDigitPassBanner = Banner(title: "Password error!", subtitle: "Your password must contain at least one digit!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        noDigitPassBanner.dismissesOnTap = true
+        
+        let noUpperPassBanner = Banner(title: "Password error!", subtitle: "Your password must contain at least one uppercase character!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        noUpperPassBanner.dismissesOnTap = true
+        
+        let noLowerPassBanner = Banner(title: "Password error!", subtitle: "Your password must contain at least one lowercase character!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        noLowerPassBanner.dismissesOnTap = true
+        
+        let noSpecialPassBanner = Banner(title: "Password error!", subtitle: "Your password must contain at least one special character!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        noSpecialPassBanner.dismissesOnTap = true
+        
         let usedEmailBanner = Banner(title: "The email you entered was already linked to another account.", subtitle: "Perhaps you meant to Sign In?", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         usedEmailBanner.dismissesOnTap = true
         
@@ -110,6 +122,27 @@ class SignUpViewController: UINavigationController {
             return
         }
         
+        let verifyPassTuple = verifyPasswordStrength(password: password)
+        if(!verifyPassTuple.0){
+            
+            if(verifyPassTuple.1 == "length"){
+                showAndFocus(banner: tooShortPassBanner, field: passwordField)
+                return;
+            } else if(verifyPassTuple.1 == "digit"){
+                showAndFocus(banner: noDigitPassBanner, field: passwordField)
+                return;
+            } else if(verifyPassTuple.1 == "upper"){
+                showAndFocus(banner: noUpperPassBanner, field: passwordField)
+                return;
+            } else if(verifyPassTuple.1 == "lower"){
+                showAndFocus(banner: noLowerPassBanner, field: passwordField)
+                return;
+            } else if(verifyPassTuple.1 == "special"){
+                showAndFocus(banner: noSpecialPassBanner, field: passwordField)
+                return;
+            }
+        }
+        
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if(error != nil){
                 //some error happened, let's show the appropriate banner
@@ -118,10 +151,10 @@ class SignUpViewController: UINavigationController {
                 switch(errCode){
                     case .emailAlreadyInUse:
                         usedEmailBanner.show(duration: self.bannerDisplayTime)
+                        self.emailField.becomeFirstResponder()
                     case .invalidEmail:
                         invalidEmailBanner.show(duration: self.bannerDisplayTime)
-                    case .weakPassword:
-                        tooShortPassBanner.show(duration: self.bannerDisplayTime)
+                        self.emailField.becomeFirstResponder()
                     default:
                         unknownErrorBanner.show(duration: self.bannerDisplayTime)
                 }
@@ -133,26 +166,53 @@ class SignUpViewController: UINavigationController {
     }
     
     
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
+    func showAndFocus(banner : Banner, field: UITextField){
+        banner.show(duration: bannerDisplayTime)
+        field.becomeFirstResponder()
+    }
     
-    
-    
-    
-}
+    func verifyPasswordStrength(password: String) -> (Bool, String) {
+        if(password.count < 8){
+            return (false, "length")
+        }
+        //this regex tests for 8 characters at minimum, contains
+        //a digit, uppercase, and lowercase characters
+        //(?=.*[a-z])(?=.*[A-Z])(?=.*[$|#|@|!|%])(?=.*[a-zA-Z]).{8,}$
+        
+        let digitRegex = ".*\\d*."
+        let upperRegex = ".*[A-Z]*."
+        let lowerRegex = ".*[a-z]*."
+        let specialRegex = ".*[$|#|@|!|%]*."
+        
+        let digitRegexMatcher = NSPredicate(format: "SELF MATCHES %@", digitRegex)
+        let upperRegexMatcher = NSPredicate(format: "SELF MATCHES %@", upperRegex)
+        let lowerRegexMatcher = NSPredicate(format: "SELF MATCHES %@", lowerRegex)
+        let specialRegexMatcher = NSPredicate(format: "SELF MATCHES %@", specialRegex)
 
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
-
-func showAndFocus(banner : Banner, field: UITextField){
-    banner.show(duration: bannerDisplayTime)
-    field.becomeFirstResponder()
-}
-
+        if(!digitRegexMatcher.evaluate(with: password)){
+            return (false, "digit")
+        }
+        if(!upperRegexMatcher.evaluate(with: password)){
+            return (false, "upper")
+        }
+        if(!lowerRegexMatcher.evaluate(with: password)){
+            return (false, "lower")
+        }
+        if(!specialRegexMatcher.evaluate(with: password)){
+            return (false, "special")
+        }
+        
+        return (true, "")
+    }
+    
 }
