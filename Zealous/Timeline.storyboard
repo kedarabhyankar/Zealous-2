@@ -844,11 +844,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qDT-d4-Mmh"/>
-        <segue reference="cCZ-Pi-z6S"/>
-        <segue reference="ddR-Zw-0Y7"/>
-        <segue reference="S0O-p5-L6P"/>
-        <segue reference="45N-F2-ohR"/>
+        <segue reference="wP8-QU-okW"/>
+        <segue reference="sso-aw-Ohf"/>
+        <segue reference="xH7-Xk-ibe"/>
+        <segue reference="snH-cl-Ao3"/>
+        <segue reference="2Sz-ZM-pkq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
