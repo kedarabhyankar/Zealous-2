@@ -41,7 +41,7 @@ class SignUpViewController: UINavigationController {
         let passConf = passConfField.text ??
             ""
         
-        
+        //define banners
         let emptyFirstNameBanner = Banner(title: "You can't have an empty first name!", subtitle: "Make sure you input a first name!", image: nil, backgroundColor: UIColor.red, didTapBlock:nil)
         emptyFirstNameBanner.dismissesOnTap = true
         
@@ -97,6 +97,7 @@ class SignUpViewController: UINavigationController {
         successBanner.dismissesOnTap = true
         
         
+        //show and focus appropriate banners for empty strings
         if(firstName == ""){
             showAndFocus(banner: emptyFirstNameBanner, field: firstNameField)
             return
@@ -122,6 +123,8 @@ class SignUpViewController: UINavigationController {
             return
         }
         
+        //check password strength
+        
         let verifyPassTuple = verifyPasswordStrength(password: password)
         if(!verifyPassTuple.0){
             
@@ -143,6 +146,26 @@ class SignUpViewController: UINavigationController {
             }
         }
         
+        var usernameTaken : Bool = false;
+        //verify username doesn't already exist in database
+        db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    if(document.get("username") as! String == username){
+                        usernameTaken = true;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if(usernameTaken){
+            showAndFocus(banner: usedUsernameBanner, field: usernameField)
+            return;
+        }
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if(error != nil){
                 //some error happened, let's show the appropriate banner
@@ -161,6 +184,7 @@ class SignUpViewController: UINavigationController {
             } else {
                 print("Successfully made a new user!")
                 successBanner.show(duration: self.bannerDisplayTime)
+                let storyboard = self.storyboard?.instantiateViewController(withIdentifier: "")
             }
         }
     }
