@@ -612,6 +612,9 @@
                                                     <state key="normal" title="Delete">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="DeleteUser:" destination="seR-Kq-IS2" eventType="touchUpInside" id="dqA-Jv-9cl"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
