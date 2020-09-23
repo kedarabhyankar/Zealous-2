@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import BRYXBanner
+import FirebaseAuth
 
 
 class SignUpViewController: UINavigationController {
@@ -36,9 +37,9 @@ class SignUpViewController: UINavigationController {
         let email = emailField.text ?? ""
         let username = usernameField.text ?? ""
         let password = passwordField.text ??
-        ""
+            ""
         let passConf = passConfField.text ??
-        ""
+            ""
         
         
         let emptyFirstNameBanner = Banner(title: "You can't have an empty first name!", subtitle: "Make sure you input a first name!", image: nil, backgroundColor: UIColor.red, didTapBlock:nil)
@@ -52,7 +53,7 @@ class SignUpViewController: UINavigationController {
         
         let emptyUsernameBanner = Banner(title: "You can't have an empty username!", subtitle: "Make sure you input a username!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         emptyUsernameBanner.dismissesOnTap = true
-
+        
         let emptyPasswordBanner = Banner(title: "You can't have an empty password!", subtitle: "Make sure you input a password!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         emptyPasswordBanner.dismissesOnTap = true
         
@@ -61,7 +62,7 @@ class SignUpViewController: UINavigationController {
         
         let invalidFirstNameBanner = Banner(title: "You have invalid characters in your first name!", subtitle: "Make sure your first name is composed of only letters and dashes!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         invalidFirstNameBanner.dismissesOnTap = true
-
+        
         let invalidLastNameBanner = Banner(title: "You have invalid characters in your last name!", subtitle: "Make sure your last name is composed of only letters and dashes!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         invalidLastNameBanner.dismissesOnTap = true
         
@@ -71,9 +72,17 @@ class SignUpViewController: UINavigationController {
         let tooShortPassBanner = Banner(title: "Your password is too weak!", subtitle: "Your password must be greater than or equal to 6 characters at a minimum!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         tooShortPassBanner.dismissesOnTap = true
         
+        let usedEmailBanner = Banner(title: "The email you entered was already linked to another account.", subtitle: "Perhaps you meant to Sign In?", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        usedEmailBanner.dismissesOnTap = true
         
+        let invalidEmailBanner = Banner(title: "The email you entered was invalid.", subtitle: "Something seems to be wrong with the email address you entered...", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        invalidEmailBanner.dismissesOnTap = true
         
+        let unknownErrorBanner = Banner(title: "Something went wrong!", subtitle: "An unknown error occurred.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unknownErrorBanner.dismissesOnTap = true
         
+        let successBanner = Banner(title: "Successfully signed up!", subtitle: "Just a minute...", image: nil, backgroundColor: UIColor.green, didTapBlock: nil)
+        successBanner.dismissesOnTap = true
         
         
         if(firstName == ""){
@@ -100,29 +109,50 @@ class SignUpViewController: UINavigationController {
             showAndFocus(banner: emptyConfPassBanner, field: passConfField)
             return
         }
-            
         
-        
-        
-        
-        
-        
-        
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            if(error != nil){
+                //some error happened, let's show the appropriate banner
+                let e = error!
+                let errCode = AuthErrorCode(rawValue: e._code)
+                switch(errCode){
+                    case .emailAlreadyInUse:
+                        usedEmailBanner.show(duration: self.bannerDisplayTime)
+                    case .invalidEmail:
+                        invalidEmailBanner.show(duration: self.bannerDisplayTime)
+                    case .weakPassword:
+                        tooShortPassBanner.show(duration: self.bannerDisplayTime)
+                    default:
+                        unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                }
+            } else {
+                print("Successfully made a new user!")
+                successBanner.show(duration: self.bannerDisplayTime)
+            }
+        }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
-    func showAndFocus(banner : Banner, field: UITextField){
-        banner.show(duration: bannerDisplayTime)
-        field.becomeFirstResponder()
-    }
     
+    
+    
+    
+    
+}
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+func showAndFocus(banner : Banner, field: UITextField){
+    banner.show(duration: bannerDisplayTime)
+    field.becomeFirstResponder()
+}
+
 }
