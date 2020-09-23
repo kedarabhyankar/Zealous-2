@@ -60,6 +60,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="onSignUpNext:" destination="p6b-ZD-R6J" eventType="touchUpInside" id="KjE-DY-Mhj"/>
                                     <segue destination="ef3-Cb-PCy" kind="show" id="2wc-Xb-e2r"/>
                                 </connections>
                             </button>
