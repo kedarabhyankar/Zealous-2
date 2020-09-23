@@ -93,7 +93,7 @@ class SignUpViewController: UINavigationController {
         let unknownErrorBanner = Banner(title: "Something went wrong!", subtitle: "An unknown error occurred.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         unknownErrorBanner.dismissesOnTap = true
         
-        let successBanner = Banner(title: "Successfully signed up!", subtitle: "Just a minute...", image: nil, backgroundColor: UIColor.green, didTapBlock: nil)
+        let successBanner = Banner(title: "Great!", subtitle: "We need just a few more details about you...", image: nil, backgroundColor: UIColor.green, didTapBlock: nil)
         successBanner.dismissesOnTap = true
         
         
@@ -182,9 +182,10 @@ class SignUpViewController: UINavigationController {
                         unknownErrorBanner.show(duration: self.bannerDisplayTime)
                 }
             } else {
-                print("Successfully made a new user!")
                 successBanner.show(duration: self.bannerDisplayTime)
-                let storyboard = self.storyboard?.instantiateViewController(withIdentifier: "")
+                print("segue-ing...")
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "dobView") as! DOBViewController
+                self.present(vc, animated: true, completion: nil)
             }
         }
     }

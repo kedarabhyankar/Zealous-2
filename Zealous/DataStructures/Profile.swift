@@ -10,22 +10,22 @@ import UIKit
 struct Profile {
     var username: String
     var email: String
-    var password: String
     var bio: String
     var picture: UIImage?
+    var dateOfBirth: Date
     
-    init(username: String, email: String, password: String, bio: String) {
+    init(username: String, email: String, dob: Date, bio: String) {
         self.username = username
         self.email = email
-        self.password = password
         self.bio = bio
         self.picture = nil
+        self.dateOfBirth = dob;
     }
-    init(username: String, email: String, password: String, bio: String, picture: UIImage) {
+    init(username: String, email: String, bio: String, dob: Date, picture: UIImage) {
         self.username = username
         self.email = email
-        self.password = password
         self.bio = bio
         self.picture = picture
+        self.dateOfBirth = dob
     }
 }
