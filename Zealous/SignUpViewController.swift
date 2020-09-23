@@ -13,6 +13,7 @@ import BRYXBanner
 class SignUpViewController: UINavigationController {
     
     let bannerDisplayTime = 3.0
+    var db : Firestore!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -23,6 +24,9 @@ class SignUpViewController: UINavigationController {
         super.viewDidLoad()
         passwordField.isSecureTextEntry = true
         passConfField.isSecureTextEntry = true;
+        let firestoreSettings = FirestoreSettings()
+        Firestore.firestore().settings = firestoreSettings
+        db = Firestore.firestore()
         // Do any additional setup after loading the view.
     }
     
@@ -55,25 +59,54 @@ class SignUpViewController: UINavigationController {
         let emptyConfPassBanner = Banner(title: "You can't have an empty confirmation of password!", subtitle: "Make sure you input a password!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         emptyConfPassBanner.dismissesOnTap = true
         
+        let invalidFirstNameBanner = Banner(title: "You have invalid characters in your first name!", subtitle: "Make sure your first name is composed of only letters and dashes!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        invalidFirstNameBanner.dismissesOnTap = true
+
+        let invalidLastNameBanner = Banner(title: "You have invalid characters in your last name!", subtitle: "Make sure your last name is composed of only letters and dashes!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        invalidLastNameBanner.dismissesOnTap = true
+        
+        let usedUsernameBanner = Banner(title: "You have entered a username that is already being used.", subtitle: "Perhaps you meant to Sign In?", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        usedUsernameBanner.dismissesOnTap = true
+        
+        let tooShortPassBanner = Banner(title: "Your password is too weak!", subtitle: "Your password must be greater than or equal to 6 characters at a minimum!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
+        tooShortPassBanner.dismissesOnTap = true
+        
+        
+        
+        
+        
         
         if(firstName == ""){
             showAndFocus(banner: emptyFirstNameBanner, field: firstNameField)
+            return
         }
         if(lastName == ""){
             showAndFocus(banner: emptyLastNameBanner, field: lastNameField)
+            return
         }
         if(email == ""){
             showAndFocus(banner: emptyEmailBanner, field: emailField)
+            return
         }
         if(username == ""){
             showAndFocus(banner: emptyUsernameBanner, field: usernameField)
+            return
         }
         if(password == ""){
             showAndFocus(banner: emptyPasswordBanner, field: passwordField)
+            return
         }
         if(passConf == ""){
             showAndFocus(banner: emptyConfPassBanner, field: passConfField)
+            return
         }
+            
+        
+        
+        
+        
+        
+        
         
     }
     
