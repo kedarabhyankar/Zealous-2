@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="LGV-q4-ij9" customClass="DynamicFeedTableViewCell" customModule="Hype_Post_App" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="LGV-q4-ij9" customClass="DynamicFeedTableViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="497"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LGV-q4-ij9" id="pFK-Kv-NA3">
@@ -69,7 +69,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="CBV-ox-6BG">
-                                                    <rect key="frame" x="14.999999999999972" y="446" width="339.33333333333331" height="34.666666666666664"/>
+                                                    <rect key="frame" x="14.999999999999972" y="446" width="282.33333333333331" height="34.666666666666664"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOH-8k-aTE" userLabel="#Up">
                                                             <rect key="frame" x="0.0" y="0.0" width="107.33333333333333" height="34.666666666666664"/>
@@ -79,14 +79,14 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vak-5D-Y0m">
-                                                            <rect key="frame" x="120.33333333333334" y="0.0" width="97.333333333333343" height="34.666666666666664"/>
+                                                            <rect key="frame" x="120.33333333333333" y="0.0" width="40.333333333333329" height="34.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                            <state key="normal" title=" #Down" image="arrow.down.circle.fill" catalog="system">
+                                                            <state key="normal" title=" " image="arrow.down.circle.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="medium"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onX-BN-AMb">
-                                                            <rect key="frame" x="230.66666666666666" y="0.0" width="108.66666666666666" height="34.666666666666664"/>
+                                                            <rect key="frame" x="173.66666666666666" y="0.0" width="108.66666666666666" height="34.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <state key="normal" title=" #Comm" image="bubble.middle.bottom.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="medium"/>
@@ -142,9 +142,6 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="be6-l4-NgF">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="RHP-Zo-zpF">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -220,9 +217,6 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="H9k-f7-EPz">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="n4n-4e-ElJ">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -307,7 +301,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="s39-F5-z9Z" customClass="DynamicFeedTableViewCell" customModule="Hype_Post_App" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="s39-F5-z9Z" customClass="DynamicFeedTableViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="337" width="375" height="497"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s39-F5-z9Z" id="uxg-p8-lLb">
@@ -355,7 +349,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="n0V-Tf-zcK">
-                                                    <rect key="frame" x="14.999999999999972" y="446" width="339.33333333333331" height="34.666666666666664"/>
+                                                    <rect key="frame" x="14.999999999999972" y="446" width="277.33333333333331" height="34.666666666666664"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stx-Ve-TQB" userLabel="#Up">
                                                             <rect key="frame" x="0.0" y="0.0" width="107.33333333333333" height="34.666666666666664"/>
@@ -365,14 +359,14 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfc-QP-ggZ">
-                                                            <rect key="frame" x="120.33333333333334" y="0.0" width="97.333333333333343" height="34.666666666666664"/>
+                                                            <rect key="frame" x="120.33333333333333" y="0.0" width="35.333333333333329" height="34.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                            <state key="normal" title=" #Down" image="arrow.down.circle.fill" catalog="system">
+                                                            <state key="normal" image="arrow.down.circle.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="medium"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVb-H4-CsZ">
-                                                            <rect key="frame" x="230.66666666666666" y="0.0" width="108.66666666666666" height="34.666666666666664"/>
+                                                            <rect key="frame" x="168.66666666666666" y="0.0" width="108.66666666666666" height="34.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <state key="normal" title=" #Comm" image="bubble.middle.bottom.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="medium"/>
@@ -453,9 +447,6 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="ap3-ht-oXW">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="HEA-8t-g7M">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -544,9 +535,6 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="Egj-FM-ZD6">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="UeM-da-SAx">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -659,9 +647,6 @@
                                                     </connections>
                                                 </barButtonItem>
                                                 <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="3Ex-Ad-97s">
-                                                    <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                                </barButtonItem>
-                                                <barButtonItem title="Saved Posts" image="bookmark.fill" catalog="system" width="18" id="6Xg-Xp-MK6">
                                                     <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 </barButtonItem>
                                             </leftBarButtonItems>
@@ -850,15 +835,14 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fpS-R1-Y9p"/>
-        <segue reference="opr-P9-nuY"/>
-        <segue reference="BXW-UR-YeU"/>
-        <segue reference="Ra8-MD-QMB"/>
-        <segue reference="Aio-lI-0jK"/>
+        <segue reference="sso-aw-Ohf"/>
+        <segue reference="iFo-CG-PxT"/>
+        <segue reference="rvi-f2-eOp"/>
+        <segue reference="45N-F2-ohR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="arrow.up.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
         <image name="bubble.middle.bottom.fill" catalog="system" width="128" height="110"/>
         <image name="gear" catalog="system" width="128" height="119"/>
