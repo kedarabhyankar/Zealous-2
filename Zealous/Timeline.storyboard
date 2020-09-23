@@ -646,6 +646,9 @@
                                                 </barButtonItem>
                                                 <barButtonItem title="Post" image="text.bubble.fill" catalog="system" width="18" id="8N4-fP-NnR">
                                                     <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                    <connections>
+                                                        <segue destination="Wxc-Pe-3qG" kind="show" id="iFo-CG-PxT"/>
+                                                    </connections>
                                                 </barButtonItem>
                                                 <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="3AN-I2-s94">
                                                     <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
