@@ -864,11 +864,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wP8-QU-okW"/>
-        <segue reference="sso-aw-Ohf"/>
-        <segue reference="xH7-Xk-ibe"/>
+        <segue reference="fpS-R1-Y9p"/>
+        <segue reference="opr-P9-nuY"/>
+        <segue reference="BXW-UR-YeU"/>
         <segue reference="rvi-f2-eOp"/>
-        <segue reference="45N-F2-ohR"/>
+        <segue reference="Aio-lI-0jK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
