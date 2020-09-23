@@ -19,6 +19,10 @@ class User {
     var followedUsers: [String] // stores creatorId's
     var followedTopics: [String] // stores topicId's
     var followers: [String] // stores creatorId's
+    var FirstName: String?
+    var LastName: String?
+    var PhoneNumber: String?
+    
     var numFollowers: Int {
         return followedUsers.count
     }
@@ -247,7 +251,7 @@ class User {
     
     func signIn(){
         Auth.auth().signIn(withEmail: "", password: "") { [weak self] authResult, error in
-          guard let strongSelf = self else { return }
+            guard self != nil else { return }
           // ...
         }
     }

@@ -12,16 +12,15 @@ struct Profile {
     var email: String
     var password: String
     var bio: String
-    var picture: UIImage?
+    var picture: UIImageView
     
     init(username: String, email: String, password: String, bio: String) {
         self.username = username
         self.email = email
         self.password = password
         self.bio = bio
-        self.picture = nil
-    }
-    init(username: String, email: String, password: String, bio: String, picture: UIImage) {
+        self.picture = UIImageView(image: UIImage(named: "default-profile-picture"))    }
+    init(username: String, email: String, password: String, bio: String, picture: UIImageView) {
         self.username = username
         self.email = email
         self.password = password
