@@ -185,6 +185,7 @@ class SignUpViewController: UINavigationController {
                 successBanner.show(duration: self.bannerDisplayTime)
                 print("segue-ing...")
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "dobView") as! DOBViewController
+                vc.intermediaryUserOne = Profile(firstName: firstName, lastName: lastName, username: username, email: email)
                 self.present(vc, animated: true, completion: nil)
             }
         }
