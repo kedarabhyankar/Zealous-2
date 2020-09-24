@@ -239,19 +239,6 @@ class User {
         }
     }
     
-    func register() {
-        Auth.auth().createUser(withEmail: self.profile.email, password: self.profile.password) { authResult, error in
-            
-        }
-    }
-    
-    func signIn(){
-        Auth.auth().signIn(withEmail: "", password: "") { [weak self] authResult, error in
-          guard let strongSelf = self else { return }
-          // ...
-        }
-    }
-    
     init(profile: Profile) {
         self.id = UUID().uuidString
         self.profile = profile
