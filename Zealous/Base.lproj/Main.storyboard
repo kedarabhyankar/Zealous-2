@@ -33,7 +33,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K2q-3p-qTD"/>
+                                    <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RuZ-UV-lSr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkz-Mq-gj3">
@@ -51,7 +51,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3zn-7q-drp"/>
+                                    <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0SV-Jp-IiT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBn-Mi-eX7">
@@ -82,10 +82,23 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Vkz-Mq-gj3" secondAttribute="bottom" constant="258" id="zmt-cT-v4d"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="Qvu-3b-jzZ" kind="presentation" identifier="toSignUpSegue" modalPresentationStyle="fullScreen" id="Bxk-1L-dCD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="116.51785714285714"/>
+        </scene>
+        <!--infoScreen-->
+        <scene sceneID="63p-Db-2FD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="infoScreen" id="Qvu-3b-jzZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TpG-yY-zin"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTh-9v-wUH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="808" y="103"/>
         </scene>
     </scenes>
     <resources>

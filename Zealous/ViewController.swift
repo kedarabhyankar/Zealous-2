@@ -13,17 +13,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func onSignIn(_ sender: Any) {
-        //do sign in segue-ing
-        
-    }
-    @IBAction func onSignUp(_ sender: Any) {
-        let storyboard = UIStoryboard.init(name: "SignUp", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "signUp")
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        print("sign in!")
     }
     
+    @IBAction func onSignUp(_ sender: Any) {
+        print("signed up!")
+        performSegue(withIdentifier: "toSignUpSegue", sender: self)
+    }
 }
 
