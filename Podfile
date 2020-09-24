@@ -10,7 +10,6 @@ target 'Zealous' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'BRYXBanner'
   target 'ZealousTests' do
     inherit! :search_paths
     # Pods for testing
