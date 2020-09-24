@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="nWt-i4-6xC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rg0-hl-1zq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xYS-m7-Hua">
@@ -174,7 +174,7 @@
             <objects>
                 <viewController id="3l2-Gh-j9q" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M9M-EX-578">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1d-PX-15d">
@@ -405,7 +405,7 @@
             <objects>
                 <viewController id="Wxc-Pe-3qG" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xZb-xn-TZc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acY-he-r1d">
@@ -483,7 +483,7 @@
             <objects>
                 <viewController id="vLZ-Du-JT0" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fXM-Xs-StA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8k8-rY-889">
@@ -569,12 +569,12 @@
             </objects>
             <point key="canvasLocation" x="-375.19999999999999" y="832.75862068965523"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Profile Settings View Controller-->
         <scene sceneID="dB5-Em-vi9">
             <objects>
-                <tableViewController id="lto-Qe-ibg" sceneMemberID="viewController">
+                <tableViewController id="lto-Qe-ibg" customClass="ProfileSettingsViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GgB-4g-34h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="VVY-vW-LaJ">
@@ -786,7 +786,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="opr-P9-nuY"/>
         <segue reference="8t0-Au-ofh"/>
-        <segue reference="S0O-p5-L6P"/>
+        <segue reference="36v-Li-ZZf"/>
         <segue reference="Aio-lI-0jK"/>
     </inferredMetricsTieBreakers>
     <resources>
