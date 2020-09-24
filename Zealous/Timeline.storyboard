@@ -531,7 +531,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="86" id="w0q-uv-ciD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Post Title" rowHeight="86" id="w0q-uv-ciD">
                                         <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w0q-uv-ciD" id="M6x-Gq-ivR">
@@ -599,7 +599,7 @@
                                     <rect key="frame" x="0.0" y="8" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <items>
-                                        <barButtonItem width="6" systemItem="done" id="AWe-Di-uqV">
+                                        <barButtonItem title="Done" width="6" id="AWe-Di-uqV">
                                             <inset key="landscapeImageInsets" minX="200" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <connections>
                                                 <segue destination="3l2-Gh-j9q" kind="show" id="36v-Li-ZZf"/>
