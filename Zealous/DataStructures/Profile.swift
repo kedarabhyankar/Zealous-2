@@ -8,45 +8,24 @@ import Foundation
 import UIKit
 
 struct Profile {
-    var firstName: String
-    var lastName: String
     var username: String
     var email: String
+    var password: String
     var bio: String
-    var interests: String
     var picture: UIImage?
-    var dateOfBirth: Date
     
-    init(firstName: String, lastName: String, username: String, email: String){
-        self.firstName = firstName
-        self.lastName = lastName
+    init(username: String, email: String, password: String, bio: String) {
         self.username = username
         self.email = email
-        self.bio = ""
-        self.interests = ""
-        self.picture = nil
-        self.dateOfBirth = Date.distantPast
-    }
-    
-    init(firstName: String, lastName: String, username: String, email: String, dob: Date, bio: String, interests: String) {
-        self.firstName = firstName
-        self.lastName = lastName
-        self.username = username
-        self.email = email
+        self.password = password
         self.bio = bio
-        self.interests = interests
         self.picture = nil
-        self.dateOfBirth = dob;
     }
-    init(firstName: String, lastName: String, username: String, email: String, bio: String, interests: String, dob: Date, picture: UIImage) {
-        self.firstName = firstName
-        self.lastName = lastName
+    init(username: String, email: String, password: String, bio: String, picture: UIImage) {
         self.username = username
         self.email = email
+        self.password = password
         self.bio = bio
-        self.interests = interests
         self.picture = picture
-        self.dateOfBirth = dob
     }
-    
 }
