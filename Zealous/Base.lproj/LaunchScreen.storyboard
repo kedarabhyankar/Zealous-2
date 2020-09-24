@@ -26,22 +26,26 @@
                                     <constraint firstAttribute="height" constant="200" id="cqM-1L-929"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ZEALOUS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Js-Go-88T">
-                                <rect key="frame" x="81" y="426" width="208" height="41"/>
-                                <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="34"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBw-0L-t78">
+                                <rect key="frame" x="-22" y="402" width="414" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Zealous">
+                                        <attributes>
+                                            <font key="NSFont" size="100" name="SignPainter-HouseScript"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="egC-rk-K4E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="3xe-6m-vrK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="egC-rk-K4E" secondAttribute="trailing" constant="90" id="GFk-4p-NeK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Js-Go-88T" secondAttribute="trailing" constant="112" id="IW7-tn-SuW"/>
-                            <constraint firstItem="5Js-Go-88T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="112" id="ZPC-Py-tKe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Js-Go-88T" secondAttribute="trailing" constant="110" id="add-SD-aJi"/>
-                            <constraint firstItem="5Js-Go-88T" firstAttribute="top" secondItem="egC-rk-K4E" secondAttribute="bottom" constant="35" id="cud-Wm-Ug3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Js-Go-88T" secondAttribute="trailing" constant="55" id="lfC-93-oH7"/>
                         </constraints>
                     </view>
                 </viewController>
