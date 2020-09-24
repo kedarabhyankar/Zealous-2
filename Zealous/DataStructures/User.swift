@@ -244,9 +244,9 @@ class User {
     }
     
     func register() {
-        Auth.auth().createUser(withEmail: self.profile.email, password: self.profile.password) { authResult, error in
+       // Auth.auth().createUser(withEmail: self.profile.email, password: self.profile.password) { authResult, error in
             
-        }
+       //}
     }
     
     func signIn(){

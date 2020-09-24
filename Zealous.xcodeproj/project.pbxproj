@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A2739832B11E8464E60C15F /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846019B77FC5300A667ECD2 /* Pods_Zealous.framework */; };
 		5CE640EEDAC34AC6B45256AF /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8EE6C8D2F77FE72BCA5CEC /* Pods_ZealousTests.framework */; };
+		A637445B251C1CDC001E8BA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A637445A251C1CDC001E8BA5 /* GoogleService-Info.plist */; };
 		A6A6D9102519969B00F787A9 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */; };
 		A6A6D912251996A500F787A9 /* ProfileSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */; };
 		BC44BB71251A99A900C12823 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB70251A99A900C12823 /* Post.swift */; };
@@ -50,6 +51,7 @@
 		2846019B77FC5300A667ECD2 /* Pods_Zealous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6ED10E59F7D38108444630 /* Pods-ZealousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.debug.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75CBB85089FAE13EFB69CC80 /* Pods-Zealous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.release.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.release.xcconfig"; sourceTree = "<group>"; };
+		A637445A251C1CDC001E8BA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileSettingsViewController.swift; path = ../../Zealous/Zealous/Controllers/ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileSettings.storyboard; path = ../../Zealous/Zealous/Storyboards/ProfileSettings.storyboard; sourceTree = "<group>"; };
 		A86B0FA9B9DAF31C8E3D1FBA /* Pods_Zealous_ZealousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous_ZealousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */,
 				A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */,
 				E44D2FFD25196525000FB63B /* AppDelegate.swift */,
+				A637445A251C1CDC001E8BA5 /* GoogleService-Info.plist */,
 				E44D2FFF25196525000FB63B /* SceneDelegate.swift */,
 				E44D300125196525000FB63B /* ViewController.swift */,
 				E44D300325196525000FB63B /* Main.storyboard */,
@@ -312,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A6D912251996A500F787A9 /* ProfileSettings.storyboard in Resources */,
+				A637445B251C1CDC001E8BA5 /* GoogleService-Info.plist in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,

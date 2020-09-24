@@ -386,10 +386,10 @@
             </objects>
             <point key="canvasLocation" x="-375.19999999999999" y="832.75862068965523"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Profile Settings View Controller-->
         <scene sceneID="dB5-Em-vi9">
             <objects>
-                <tableViewController id="lto-Qe-ibg" sceneMemberID="viewController">
+                <tableViewController id="lto-Qe-ibg" customClass="ProfileSettingsViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GgB-4g-34h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
