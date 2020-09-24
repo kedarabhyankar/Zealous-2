@@ -384,6 +384,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="onSubmit:" destination="a5A-nP-Jyy" eventType="touchUpInside" id="iQj-NO-jbD"/>
                                     <segue destination="rYo-jx-FTF" kind="show" id="BnG-kB-HZq"/>
                                 </connections>
                             </button>
@@ -392,6 +393,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="stg-Dl-E3z"/>
+                    <connections>
+                        <outlet property="bioField" destination="WOI-9z-rCy" id="WjY-aA-XzM"/>
+                        <outlet property="profileField" destination="PNg-gO-Zcz" id="mOA-iU-gTn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYr-pl-lyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

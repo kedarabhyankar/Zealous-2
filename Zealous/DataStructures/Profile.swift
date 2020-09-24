@@ -13,6 +13,7 @@ struct Profile {
     var username: String
     var email: String
     var bio: String
+    var interests: String
     var picture: UIImage?
     var dateOfBirth: Date
     
@@ -22,26 +23,30 @@ struct Profile {
         self.username = username
         self.email = email
         self.bio = ""
+        self.interests = ""
         self.picture = nil
         self.dateOfBirth = Date.distantPast
     }
     
-    init(firstName: String, lastName: String, username: String, email: String, dob: Date, bio: String) {
+    init(firstName: String, lastName: String, username: String, email: String, dob: Date, bio: String, interests: String) {
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
         self.email = email
         self.bio = bio
+        self.interests = interests
         self.picture = nil
         self.dateOfBirth = dob;
     }
-    init(firstName: String, lastName: String, username: String, email: String, bio: String, dob: Date, picture: UIImage) {
+    init(firstName: String, lastName: String, username: String, email: String, bio: String, interests: String, dob: Date, picture: UIImage) {
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
         self.email = email
         self.bio = bio
+        self.interests = interests
         self.picture = picture
         self.dateOfBirth = dob
     }
+    
 }

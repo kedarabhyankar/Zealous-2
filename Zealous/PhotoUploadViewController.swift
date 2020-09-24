@@ -11,6 +11,7 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
 
     @IBOutlet weak var imagePreview: UIImageView!
     var image: UIImage?
+    var imageExt: String?
     var intermediaryProfileTwo: Profile!
     
     override func viewDidLoad() {
@@ -40,14 +41,17 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
         }
         
         self.image = image
+        self.imageExt = self.image?.value(forKey: "filename") as? String
         
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onSubmit(_ sender: Any) {
-        let intermediaryProfileThree = Profile(firstName: self.intermediaryProfileTwo.firstName, lastName: self.intermediaryProfileTwo.lastName, username: self.intermediaryProfileTwo.username, email: self.intermediaryProfileTwo.email, bio: "", dob: self.intermediaryProfileTwo.dateOfBirth, picture: self.image!)
+        let intermediaryProfileThree = Profile(firstName: self.intermediaryProfileTwo.firstName, lastName: self.intermediaryProfileTwo.lastName, username: self.intermediaryProfileTwo.username, email: self.intermediaryProfileTwo.email, bio: "", interests: "", dob: self.intermediaryProfileTwo.dateOfBirth, picture: self.image!)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "bioAndProfile") as! BioAndProfileViewController
         vc.finalProfile = intermediaryProfileThree
+        vc.imageFormat = imageExt?.split(separator: ".").map { String($0) }
+        
         self.present(vc, animated: true, completion: nil)
     }
     /*

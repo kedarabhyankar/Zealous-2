@@ -27,7 +27,7 @@ class DOBViewController: UIViewController {
     
     @IBAction func onSubmit(_ sender: Any) {
         userDOB = dobPicker.date
-        let intermediaryUserTwo = Profile(firstName: intermediaryUserOne.firstName, lastName: intermediaryUserOne.lastName, username: intermediaryUserOne.username, email: intermediaryUserOne.email, dob: userDOB ?? Date.distantPast, bio: "")
+        let intermediaryUserTwo = Profile(firstName: intermediaryUserOne.firstName, lastName: intermediaryUserOne.lastName, username: intermediaryUserOne.username, email: intermediaryUserOne.email, dob: userDOB ?? Date.distantPast, bio: "", interests: "")
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoUpload") as! PhotoUploadViewController
         vc.intermediaryProfileTwo = intermediaryUserTwo
         self.present(vc, animated: true, completion: nil)
