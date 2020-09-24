@@ -21,6 +21,7 @@
 		E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0D251C010400486E9B /* DOBViewController.swift */; };
 		E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0F251C0CA800486E9B /* BioAndProfileViewController.swift */; };
 		E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C11251C0D1A00486E9B /* PhotoUploadViewController.swift */; };
+		E4415AC9251CE629009A5EFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */; };
 		E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFD25196525000FB63B /* AppDelegate.swift */; };
 		E44D300025196525000FB63B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFF25196525000FB63B /* SceneDelegate.swift */; };
 		E44D300225196525000FB63B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D300125196525000FB63B /* ViewController.swift */; };
@@ -67,6 +68,7 @@
 		E4039C0D251C010400486E9B /* DOBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBViewController.swift; sourceTree = "<group>"; };
 		E4039C0F251C0CA800486E9B /* BioAndProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAndProfileViewController.swift; sourceTree = "<group>"; };
 		E4039C11251C0D1A00486E9B /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadViewController.swift; sourceTree = "<group>"; };
+		E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E44D2FFA25196525000FB63B /* Zealous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zealous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D2FFD25196525000FB63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44D2FFF25196525000FB63B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		E44D2FFC25196525000FB63B /* Zealous */ = {
 			isa = PBXGroup;
 			children = (
+				E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */,
 				BC44BB6F251A999300C12823 /* DataStructures */,
 				C66B88C025197F1C006BAD5F /* Login.storyboard */,
 				C66B88BF25197F1C006BAD5F /* SignUp.storyboard */,
@@ -323,6 +326,7 @@
 				C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */,
 				C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */,
 				C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */,
+				E4415AC9251CE629009A5EFA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

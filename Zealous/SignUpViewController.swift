@@ -23,8 +23,6 @@ class SignUpViewController: UINavigationController {
     @IBOutlet weak var passConfField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordField.isSecureTextEntry = true
-        passConfField.isSecureTextEntry = true;
         let firestoreSettings = FirestoreSettings()
         Firestore.firestore().settings = firestoreSettings
         db = Firestore.firestore()
