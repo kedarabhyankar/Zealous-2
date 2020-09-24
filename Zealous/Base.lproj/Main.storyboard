@@ -33,7 +33,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="tNh-vy-asO" kind="show" id="JhQ-2v-QL8"/>
+                                    <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K2q-3p-qTD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkz-Mq-gj3">
@@ -51,7 +51,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="lF4-Pm-b11" kind="show" id="Ikm-Kc-nMV"/>
+                                    <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3zn-7q-drp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBn-Mi-eX7">
@@ -86,26 +86,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="116.51785714285714"/>
-        </scene>
-        <!--Login-->
-        <scene sceneID="gc0-lr-A0R">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="tNh-vy-asO" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="M9e-3S-cYU"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Et2-Pb-K1x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="734" y="56"/>
-        </scene>
-        <!--SignUp-->
-        <scene sceneID="Hr4-fz-2vJ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SignUp" id="lF4-Pm-b11" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="bfy-vN-1pm"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cNY-cy-alA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="780" y="182"/>
         </scene>
     </scenes>
     <resources>
