@@ -19,6 +19,7 @@
 		C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BD25197F07006BAD5F /* Timeline.storyboard */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
+		D8BDD3CB8058909FFE05CCBD /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DBF1018423D82A3924063A /* Pods_Zealous_ZealousUITests.framework */; };
 		E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFD25196525000FB63B /* AppDelegate.swift */; };
 		E44D300025196525000FB63B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFF25196525000FB63B /* SceneDelegate.swift */; };
 		E44D300225196525000FB63B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D300125196525000FB63B /* ViewController.swift */; };
@@ -111,6 +112,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68CA8EC079C1DB42F6D0CE62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA06F5B77B14050D146BD550 /* Pods_Zealous.framework */,
+				45DBF1018423D82A3924063A /* Pods_Zealous_ZealousUITests.framework */,
+				96424AF308A1239A8CE0BEEC /* Pods_ZealousTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC44BB6F251A999300C12823 /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
