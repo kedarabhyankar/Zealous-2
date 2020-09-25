@@ -11,7 +11,7 @@ import BRYXBanner
 import FirebaseAuth
 
 
-class SignUpViewController: UINavigationController {
+class SignUpViewController: UIViewController {
     
     let bannerDisplayTime = 3.0
     var db : Firestore!
