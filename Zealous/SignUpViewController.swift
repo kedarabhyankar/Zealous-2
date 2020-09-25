@@ -21,43 +21,37 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passConfField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         let firestoreSettings = FirestoreSettings()
         Firestore.firestore().settings = firestoreSettings
         db = Firestore.firestore()
+        self.nextButton.isEnabled = false
+        [firstNameField, lastNameField, usernameField, emailField, passwordField, passConfField].forEach({ $0?.addTarget(self, action: #selector(checkFields), for: .editingChanged)})
+        
         // Do any additional setup after loading the view.
     }
     
+    @objc func checkFields(_ textField: UITextField){
+        if(firstNameField.text == "" || lastNameField.text == "" || emailField.text == "" || usernameField.text == "" || passwordField.text == "" ||
+            passConfField.text == ""){
+            self.nextButton.isEnabled = false
+        } else {
+            self.nextButton.isEnabled = true
+        }
+    }
+    
     @IBAction func onSignUpNext(_ sender: Any) {
-        let firstName = firstNameField.text ?? ""
-        let lastName = lastNameField.text ?? ""
-        let email = emailField.text ?? ""
-        let username = usernameField.text ?? ""
-        let password = passwordField.text ??
-            ""
-        let passConf = passConfField.text ??
-            ""
+        let firstName = firstNameField.text
+        let lastName = lastNameField.text
+        let email = emailField.text
+        let username = usernameField.text
+        let password = passwordField.text
+        let passConf = passConfField.text
+        
         
         //define banners
-        let emptyFirstNameBanner = Banner(title: "You can't have an empty first name!", subtitle: "Make sure you input a first name!", image: nil, backgroundColor: UIColor.red, didTapBlock:nil)
-        emptyFirstNameBanner.dismissesOnTap = true
-        
-        let emptyLastNameBanner = Banner(title: "You can't have an empty last name!", subtitle: "Make sure you input a last name!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        emptyLastNameBanner.dismissesOnTap = true
-        
-        let emptyEmailBanner = Banner(title: "You can't have an empty email!", subtitle: "Make sure you input an email!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        emptyEmailBanner.dismissesOnTap = true
-        
-        let emptyUsernameBanner = Banner(title: "You can't have an empty username!", subtitle: "Make sure you input a username!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        emptyUsernameBanner.dismissesOnTap = true
-        
-        let emptyPasswordBanner = Banner(title: "You can't have an empty password!", subtitle: "Make sure you input a password!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        emptyPasswordBanner.dismissesOnTap = true
-        
-        let emptyConfPassBanner = Banner(title: "You can't have an empty confirmation of password!", subtitle: "Make sure you input a password!", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        emptyConfPassBanner.dismissesOnTap = true
-        
         let invalidFirstNameBanner = Banner(title: "You have invalid characters in your first name!", subtitle: "Make sure your first name is composed of only letters and dashes!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         invalidFirstNameBanner.dismissesOnTap = true
         
@@ -93,53 +87,32 @@ class SignUpViewController: UIViewController {
         
         let successBanner = Banner(title: "Great!", subtitle: "We need just a few more details about you...", image: nil, backgroundColor: UIColor.green, didTapBlock: nil)
         successBanner.dismissesOnTap = true
-        
-        
-        //show and focus appropriate banners for empty strings
-        if(firstName == ""){
-            showAndFocus(banner: emptyFirstNameBanner, field: firstNameField)
-            return
-        }
-        if(lastName == ""){
-            showAndFocus(banner: emptyLastNameBanner, field: lastNameField)
-            return
-        }
-        if(email == ""){
-            showAndFocus(banner: emptyEmailBanner, field: emailField)
-            return
-        }
-        if(username == ""){
-            showAndFocus(banner: emptyUsernameBanner, field: usernameField)
-            return
-        }
-        if(password == ""){
-            showAndFocus(banner: emptyPasswordBanner, field: passwordField)
-            return
-        }
-        if(passConf == ""){
-            showAndFocus(banner: emptyConfPassBanner, field: passConfField)
-            return
-        }
-        
+        //end define banners
+                
         //check password strength
         
-        let verifyPassTuple = verifyPasswordStrength(password: password)
+        let verifyPassTuple = verifyPasswordStrength(password: password!)
         if(!verifyPassTuple.0){
             
             if(verifyPassTuple.1 == "length"){
                 showAndFocus(banner: tooShortPassBanner, field: passwordField)
+                self.nextButton.isSelected = false
                 return;
             } else if(verifyPassTuple.1 == "digit"){
                 showAndFocus(banner: noDigitPassBanner, field: passwordField)
+                self.nextButton.isSelected = false
                 return;
             } else if(verifyPassTuple.1 == "upper"){
                 showAndFocus(banner: noUpperPassBanner, field: passwordField)
+                self.nextButton.isSelected = false
                 return;
             } else if(verifyPassTuple.1 == "lower"){
                 showAndFocus(banner: noLowerPassBanner, field: passwordField)
+                self.nextButton.isSelected = false
                 return;
             } else if(verifyPassTuple.1 == "special"){
                 showAndFocus(banner: noSpecialPassBanner, field: passwordField)
+                self.nextButton.isSelected = false
                 return;
             }
         }
@@ -149,10 +122,13 @@ class SignUpViewController: UIViewController {
         db.collection("users").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
+                unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                self.nextButton.isSelected = false
+                return
             } else {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    if(document.get("username") as! String == username){
+                    if(document.get("username") as? String == username){
                         usernameTaken = true;
                         break;
                     }
@@ -162,9 +138,10 @@ class SignUpViewController: UIViewController {
         
         if(usernameTaken){
             showAndFocus(banner: usedUsernameBanner, field: usernameField)
+            self.nextButton.isSelected = false
             return;
         }
-        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+        Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
             if(error != nil){
                 //some error happened, let's show the appropriate banner
                 let e = error!
@@ -173,17 +150,23 @@ class SignUpViewController: UIViewController {
                     case .emailAlreadyInUse:
                         usedEmailBanner.show(duration: self.bannerDisplayTime)
                         self.emailField.becomeFirstResponder()
+                        self.nextButton.isSelected = false
+                        return
                     case .invalidEmail:
                         invalidEmailBanner.show(duration: self.bannerDisplayTime)
                         self.emailField.becomeFirstResponder()
+                        self.nextButton.isSelected = false
+                        return
                     default:
                         unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                        self.nextButton.isSelected = false
+                        return
                 }
             } else {
                 successBanner.show(duration: self.bannerDisplayTime)
                 print("segue-ing...")
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "dobView") as! DOBViewController
-                vc.intermediaryUserOne = Profile(firstName: firstName, lastName: lastName, username: username, email: email)
+                vc.intermediaryUserOne = Profile(firstName: firstName!, lastName: lastName!, username: username!, email: email!)
                 self.present(vc, animated: true, completion: nil)
             }
         }

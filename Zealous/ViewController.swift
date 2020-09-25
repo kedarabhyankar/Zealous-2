@@ -19,10 +19,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        print("signed up!")
-        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "infoScreen") as! SignUpViewController
-        self.show(vc, sender: self)
+        performSegue(withIdentifier: "toSignUp", sender: self)
     }
 }
 

@@ -143,6 +143,7 @@
                         <outlet property="emailField" destination="gDC-ti-gpr" id="gXh-Hs-WSc"/>
                         <outlet property="firstNameField" destination="JbG-am-Vhz" id="avN-gy-78a"/>
                         <outlet property="lastNameField" destination="hkt-qX-9P2" id="O6G-MD-3Q4"/>
+                        <outlet property="nextButton" destination="djW-en-JR1" id="T5C-w6-1EF"/>
                         <outlet property="passConfField" destination="yL5-9F-6xf" id="6kw-Xi-JIR"/>
                         <outlet property="passwordField" destination="f4X-CS-ZFC" id="KJ1-Dq-MGK"/>
                         <outlet property="usernameField" destination="MJu-pt-hLS" id="y2W-vx-uAl"/>
