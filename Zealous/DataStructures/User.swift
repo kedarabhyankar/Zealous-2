@@ -14,11 +14,11 @@ import FirebaseAuth
 class User {
     var profile: Profile
     var id: String
-    var createdPosts: [String]
-    var likedPosts: [String] // stores postId's
-    var followedUsers: [String] // stores creatorId's
-    var followedTopics: [String] // stores topicId's
-    var followers: [String] // stores creatorId's
+    var createdPosts: [Post]
+    var likedPosts: [Post] // stores postId's
+    var followedUsers: [User] // stores creatorId's
+    var followedTopics: [Topic] // stores topicId's
+    var followers: [User] // stores creatorId's
     var numFollowers: Int {
         return followedUsers.count
     }
