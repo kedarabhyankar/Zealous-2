@@ -29,8 +29,20 @@ class SignUpViewController: UIViewController {
         db = Firestore.firestore()
         self.nextButton.isEnabled = false
         [firstNameField, lastNameField, usernameField, emailField, passwordField, passConfField].forEach({ $0?.addTarget(self, action: #selector(checkFields), for: .editingChanged)})
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        firstNameField.autocorrectionType = .yes
+        lastNameField.autocorrectionType = .yes
+        emailField.autocorrectionType = .yes
+        passwordField.autocorrectionType = .no
+        passConfField.autocorrectionType = .no
+        emailField.keyboardType = .emailAddress
         
-        // Do any additional setup after loading the view.
+        view.addGestureRecognizer(tap)
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc func checkFields(_ textField: UITextField){
@@ -43,12 +55,20 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onSignUpNext(_ sender: Any) {
-        let firstName = firstNameField.text
-        let lastName = lastNameField.text
-        let email = emailField.text
-        let username = usernameField.text
-        let password = passwordField.text
-        let passConf = passConfField.text
+        let firstName = firstNameField.text?.trimmingCharacters(in: .whitespaces)
+        let lastName = lastNameField.text?.trimmingCharacters(in: .whitespaces)
+        let email = emailField.text?.trimmingCharacters(in: .whitespaces)
+        let username = usernameField.text?.trimmingCharacters(in: .whitespaces)
+        let password = passwordField.text?.trimmingCharacters(in: .whitespaces)
+        let passConf = passConfField.text?.trimmingCharacters(in: .whitespaces)
+        
+        var goodFirstName = true
+        var goodLastName = true
+        var goodEmail = true
+        var goodUsername = true
+        var goodPass = true
+        var matchPass = true
+        
         
         
         //define banners
@@ -57,6 +77,9 @@ class SignUpViewController: UIViewController {
         
         let invalidLastNameBanner = Banner(title: "You have invalid characters in your last name!", subtitle: "Make sure your last name is composed of only letters and dashes!", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         invalidLastNameBanner.dismissesOnTap = true
+        
+        let noMatchPassBanner = Banner(title: "Your passwords must match!", subtitle: "Your passwords don't seem to match. Try again.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        noMatchPassBanner.dismissesOnTap = true
         
         let usedUsernameBanner = Banner(title: "You have entered a username that is already being used.", subtitle: "Perhaps you meant to Sign In?", image: nil, backgroundColor: UIColor.yellow, didTapBlock: nil)
         usedUsernameBanner.dismissesOnTap = true
@@ -88,7 +111,29 @@ class SignUpViewController: UIViewController {
         let successBanner = Banner(title: "Great!", subtitle: "We need just a few more details about you...", image: nil, backgroundColor: UIColor.green, didTapBlock: nil)
         successBanner.dismissesOnTap = true
         //end define banners
-                
+        
+        
+        //begin check first and last name
+        if(!verifyName(name: firstName!)){
+            goodFirstName = false
+            showAndFocus(banner: invalidFirstNameBanner, field: firstNameField)
+            self.nextButton.isSelected = false
+            return
+        }
+        
+        if(!verifyName(name: lastName!)){
+            goodLastName = false
+            showAndFocus(banner: invalidLastNameBanner, field: lastNameField)
+            self.nextButton.isSelected = false
+            return
+        }
+        
+        //begin email check
+        if(!email!.contains("@")){
+            goodEmail = false
+            self.nextButton.isSelected = false
+            return
+        }
         //check password strength
         
         let verifyPassTuple = verifyPasswordStrength(password: password!)
@@ -97,24 +142,36 @@ class SignUpViewController: UIViewController {
             if(verifyPassTuple.1 == "length"){
                 showAndFocus(banner: tooShortPassBanner, field: passwordField)
                 self.nextButton.isSelected = false
-                return;
+                goodPass = false
+                return
             } else if(verifyPassTuple.1 == "digit"){
                 showAndFocus(banner: noDigitPassBanner, field: passwordField)
                 self.nextButton.isSelected = false
-                return;
+                goodPass = false
+                return
             } else if(verifyPassTuple.1 == "upper"){
                 showAndFocus(banner: noUpperPassBanner, field: passwordField)
                 self.nextButton.isSelected = false
-                return;
+                goodPass = false
+                return
             } else if(verifyPassTuple.1 == "lower"){
                 showAndFocus(banner: noLowerPassBanner, field: passwordField)
                 self.nextButton.isSelected = false
-                return;
+                goodPass = false
+                return
             } else if(verifyPassTuple.1 == "special"){
                 showAndFocus(banner: noSpecialPassBanner, field: passwordField)
                 self.nextButton.isSelected = false
-                return;
+                goodPass = false
+                return
             }
+        }
+        
+        if(password != passConf){
+            showAndFocus(banner: noMatchPassBanner, field: passConfField)
+            self.nextButton.isSelected = false
+            matchPass = false
+            return
         }
         
         var usernameTaken : Bool = false;
@@ -124,10 +181,10 @@ class SignUpViewController: UIViewController {
                 print("Error getting documents: \(err)")
                 unknownErrorBanner.show(duration: self.bannerDisplayTime)
                 self.nextButton.isSelected = false
+                goodUsername = false
                 return
             } else {
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
                     if(document.get("username") as? String == username){
                         usernameTaken = true;
                         break;
@@ -139,49 +196,51 @@ class SignUpViewController: UIViewController {
         if(usernameTaken){
             showAndFocus(banner: usedUsernameBanner, field: usernameField)
             self.nextButton.isSelected = false
-            return;
+            goodUsername = false
+            return
         }
-        Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
-            if(error != nil){
-                //some error happened, let's show the appropriate banner
-                let e = error!
-                let errCode = AuthErrorCode(rawValue: e._code)
-                switch(errCode){
-                    case .emailAlreadyInUse:
-                        usedEmailBanner.show(duration: self.bannerDisplayTime)
-                        self.emailField.becomeFirstResponder()
-                        self.nextButton.isSelected = false
-                        return
-                    case .invalidEmail:
-                        invalidEmailBanner.show(duration: self.bannerDisplayTime)
-                        self.emailField.becomeFirstResponder()
-                        self.nextButton.isSelected = false
-                        return
-                    default:
-                        unknownErrorBanner.show(duration: self.bannerDisplayTime)
-                        self.nextButton.isSelected = false
-                        return
+        
+        print("good first name? -> " + String(goodFirstName))
+        print("good last name? -> " + String(goodLastName))
+        print("good username? -> " + String(goodUsername))
+        print("good email? -> " + String(goodEmail))
+        print("good pass? -> " + String(goodPass))
+        print("match pass? -> " + String(matchPass))
+        
+        if(goodFirstName && goodLastName && goodUsername && goodEmail && goodPass && matchPass){
+            Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
+                if(error != nil){
+                    //some error happened, let's show the appropriate banner
+                    let e = error!
+                    let errCode = AuthErrorCode(rawValue: e._code)
+                    switch(errCode){
+                        case .emailAlreadyInUse:
+                            usedEmailBanner.show(duration: self.bannerDisplayTime)
+                            self.emailField.becomeFirstResponder()
+                            self.nextButton.isSelected = false
+                            break
+                        case .invalidEmail:
+                            invalidEmailBanner.show(duration: self.bannerDisplayTime)
+                            self.emailField.becomeFirstResponder()
+                            self.nextButton.isSelected = false
+                            break
+                        default:
+                            unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                            self.nextButton.isSelected = false
+                            break
+                    }
+                    return
+                } else {
+                    //no errors, so segue through
+                    print("segue-ing...")
+                    successBanner.show(duration: self.bannerDisplayTime)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [unowned self] in
+                        self.performSegue(withIdentifier: "toDOB", sender: nil)
+                    }
                 }
-            } else {
-                successBanner.show(duration: self.bannerDisplayTime)
-                print("segue-ing...")
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "dobView") as! DOBViewController
-                vc.intermediaryUserOne = Profile(firstName: firstName!, lastName: lastName!, username: username!, email: email!)
-                self.present(vc, animated: true, completion: nil)
             }
         }
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     func showAndFocus(banner : Banner, field: UITextField){
         banner.show(duration: bannerDisplayTime)
@@ -205,7 +264,7 @@ class SignUpViewController: UIViewController {
         let upperRegexMatcher = NSPredicate(format: "SELF MATCHES %@", upperRegex)
         let lowerRegexMatcher = NSPredicate(format: "SELF MATCHES %@", lowerRegex)
         let specialRegexMatcher = NSPredicate(format: "SELF MATCHES %@", specialRegex)
-
+        
         if(!digitRegexMatcher.evaluate(with: password)){
             return (false, "digit")
         }
@@ -220,6 +279,20 @@ class SignUpViewController: UIViewController {
         }
         
         return (true, "")
+    }
+    
+    func verifyName(name: String) -> Bool {
+        if(name.count == 0){
+            return false
+        }
+        
+        for char in name {
+            if(!char.isLetter && char != "-"){
+                return false
+            }
+        }
+        
+        return true
     }
     
 }

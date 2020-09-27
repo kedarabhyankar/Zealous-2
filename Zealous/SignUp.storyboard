@@ -46,7 +46,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="onSignUpNext:" destination="p6b-ZD-R6J" eventType="touchUpInside" id="KjE-DY-Mhj"/>
-                                    <segue destination="ef3-Cb-PCy" kind="show" id="2wc-Xb-e2r"/>
+                                    <segue destination="ef3-Cb-PCy" kind="presentation" identifier="toDOB" modalPresentationStyle="fullScreen" id="2wc-Xb-e2r"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbG-am-Vhz">
@@ -168,11 +168,11 @@
             <objects>
                 <viewController storyboardIdentifier="dobView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ef3-Cb-PCy" userLabel="dobView" customClass="DOBViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jdw-jz-h1M">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-qi-eR5">
-                                <rect key="frame" x="88" y="48" width="199" height="75"/>
+                                <rect key="frame" x="88" y="92" width="199" height="75"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Zealous">
                                         <attributes>
@@ -184,16 +184,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xh3-t9-rbl">
-                                <rect key="frame" x="78" y="131" width="219" height="30"/>
+                                <rect key="frame" x="78" y="175" width="219" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="klO-lZ-bL3">
-                                <rect key="frame" x="0.0" y="193" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="237" width="375" height="216"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNu-km-tp1">
-                                <rect key="frame" x="76" y="465" width="223" height="53"/>
+                                <rect key="frame" x="76" y="509" width="223" height="53"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="VVE-mk-t00"/>
@@ -212,7 +212,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhI-PM-BpX">
-                                <rect key="frame" x="76" y="550" width="223" height="53"/>
+                                <rect key="frame" x="76" y="594" width="223" height="53"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="LAi-EA-UGA"/>
@@ -230,7 +230,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dML-GY-agw">
-                                <rect key="frame" x="137" y="169" width="101" height="20.666666666666657"/>
+                                <rect key="frame" x="137" y="213" width="101" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

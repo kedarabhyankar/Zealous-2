@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class DOBViewController: UIViewController {
     
@@ -18,11 +19,13 @@ class DOBViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let cal = Calendar.current
+        dateComponents = DateComponents()
         dateComponents.year = 2007
         dateComponents.month = 1
         dateComponents.day = 1
         minimumDateOfBirth = cal.date(from: dateComponents)
         dobPicker.minimumDate = minimumDateOfBirth
+        dobPicker.preferredDatePickerStyle = .wheels
     }
     
     @IBAction func onSubmit(_ sender: Any) {
@@ -34,6 +37,13 @@ class DOBViewController: UIViewController {
     }
     
     @IBAction func onBack(_ sender: Any) {
+//        let user = Auth.auth().currentUser
+//        user.delete().then(function() {
+//          // User deleted.
+//        }).catch(function(error) {
+//          // An error happened.
+//        });
+//        
     }
     /*
      // MARK: - Navigation
