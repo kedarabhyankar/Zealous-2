@@ -11,7 +11,6 @@
 		85BD2EF2799EC4F8F9522262 /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF0FF21DF29C18B7EE6453B /* Pods_Zealous.framework */; };
 		A637445B251C1CDC001E8BA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A637445A251C1CDC001E8BA5 /* GoogleService-Info.plist */; };
 		A6A6D9102519969B00F787A9 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */; };
-		A6A6D912251996A500F787A9 /* ProfileSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */; };
 		BC44BB71251A99A900C12823 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB70251A99A900C12823 /* Post.swift */; };
 		BC44BB73251A99D300C12823 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB72251A99D300C12823 /* Profile.swift */; };
 		BC44BB75251A99EF00C12823 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB74251A99EF00C12823 /* Topic.swift */; };
@@ -19,7 +18,6 @@
 		C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BD25197F07006BAD5F /* Timeline.storyboard */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
-		D8BDD3CB8058909FFE05CCBD /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DBF1018423D82A3924063A /* Pods_Zealous_ZealousUITests.framework */; };
 		E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFD25196525000FB63B /* AppDelegate.swift */; };
 		E44D300025196525000FB63B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFF25196525000FB63B /* SceneDelegate.swift */; };
 		E44D300225196525000FB63B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D300125196525000FB63B /* ViewController.swift */; };
@@ -55,7 +53,6 @@
 		6A136B165EBA8DC3643F31FC /* Pods-Zealous-ZealousUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.release.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A637445A251C1CDC001E8BA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileSettingsViewController.swift; path = ../../Zealous/Zealous/Controllers/ProfileSettingsViewController.swift; sourceTree = "<group>"; };
-		A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileSettings.storyboard; path = ../../Zealous/Zealous/Storyboards/ProfileSettings.storyboard; sourceTree = "<group>"; };
 		BC44BB70251A99A900C12823 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BC44BB72251A99D300C12823 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BC44BB74251A99EF00C12823 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
@@ -112,16 +109,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		68CA8EC079C1DB42F6D0CE62 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FA06F5B77B14050D146BD550 /* Pods_Zealous.framework */,
-				45DBF1018423D82A3924063A /* Pods_Zealous_ZealousUITests.framework */,
-				96424AF308A1239A8CE0BEEC /* Pods_ZealousTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BC44BB6F251A999300C12823 /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,7 +163,6 @@
 				C66B88BF25197F1C006BAD5F /* SignUp.storyboard */,
 				C66B88BD25197F07006BAD5F /* Timeline.storyboard */,
 				A6A6D90F2519969B00F787A9 /* ProfileSettingsViewController.swift */,
-				A6A6D911251996A400F787A9 /* ProfileSettings.storyboard */,
 				E44D2FFD25196525000FB63B /* AppDelegate.swift */,
 				A637445A251C1CDC001E8BA5 /* GoogleService-Info.plist */,
 				E44D2FFF25196525000FB63B /* SceneDelegate.swift */,
@@ -325,7 +311,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A6D912251996A500F787A9 /* ProfileSettings.storyboard in Resources */,
 				A637445B251C1CDC001E8BA5 /* GoogleService-Info.plist in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
