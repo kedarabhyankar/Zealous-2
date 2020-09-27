@@ -10,8 +10,8 @@ struct Topic {
     var id: String
     var title: String
     var description: String
-    var posts: [String]
-    var followers: [String]
+    var posts: [Post]
+    var followers: [User]
     var numFollowers: Int
     
     func addPost (postId: String) {
