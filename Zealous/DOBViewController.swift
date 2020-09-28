@@ -24,7 +24,7 @@ class DOBViewController: UIViewController {
         dateComponents.month = 1
         dateComponents.day = 1
         minimumDateOfBirth = cal.date(from: dateComponents)
-        dobPicker.minimumDate = minimumDateOfBirth
+        dobPicker.maximumDate = minimumDateOfBirth
         dobPicker.preferredDatePickerStyle = .wheels
     }
     

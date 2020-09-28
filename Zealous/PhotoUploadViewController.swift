@@ -16,7 +16,6 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     
@@ -26,6 +25,7 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
         vc.delegate = self
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerController.SourceType.photoLibrary
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         imagePreview.image = self.image
     }
@@ -39,10 +39,9 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
         } else {
             return;
         }
-        
         self.image = image
-        self.imageExt = self.image?.value(forKey: "filename") as? String
-        
+        self.imagePreview.image = image
+        self.imageExt = ".png"
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -50,6 +49,7 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
         let intermediaryProfileThree = Profile(firstName: self.intermediaryProfileTwo.firstName, lastName: self.intermediaryProfileTwo.lastName, username: self.intermediaryProfileTwo.username, email: self.intermediaryProfileTwo.email, bio: "", interests: [""], dob: self.intermediaryProfileTwo.dateOfBirth, picture: self.image!)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "bioAndProfile") as! BioAndProfileViewController
         vc.finalProfile = intermediaryProfileThree
+        vc.modalPresentationStyle = .fullScreen
         vc.imageFormat = imageExt?.split(separator: ".").map { String($0) }
         
         self.present(vc, animated: true, completion: nil)

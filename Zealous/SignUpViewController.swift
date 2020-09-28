@@ -22,6 +22,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passConfField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    
+    var firstName: String = ""
+    var lastName: String = ""
+    var email: String = ""
+    var username: String = ""
+    var password: String = ""
+    var passConf: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let firestoreSettings = FirestoreSettings()
@@ -55,12 +63,12 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onSignUpNext(_ sender: Any) {
-        let firstName = firstNameField.text?.trimmingCharacters(in: .whitespaces)
-        let lastName = lastNameField.text?.trimmingCharacters(in: .whitespaces)
-        let email = emailField.text?.trimmingCharacters(in: .whitespaces)
-        let username = usernameField.text?.trimmingCharacters(in: .whitespaces)
-        let password = passwordField.text?.trimmingCharacters(in: .whitespaces)
-        let passConf = passConfField.text?.trimmingCharacters(in: .whitespaces)
+        firstName = (firstNameField.text?.trimmingCharacters(in: .whitespaces))!
+        lastName = (lastNameField.text?.trimmingCharacters(in: .whitespaces))!
+        email = (emailField.text?.trimmingCharacters(in: .whitespaces))!
+        username = (usernameField.text?.trimmingCharacters(in: .whitespaces))!
+        password = (passwordField.text?.trimmingCharacters(in: .whitespaces))!
+        passConf = (passConfField.text?.trimmingCharacters(in: .whitespaces))!
         
         var goodFirstName = true
         var goodLastName = true
@@ -114,14 +122,14 @@ class SignUpViewController: UIViewController {
         
         
         //begin check first and last name
-        if(!verifyName(name: firstName!)){
+        if(!verifyName(name: firstName)){
             goodFirstName = false
             showAndFocus(banner: invalidFirstNameBanner, field: firstNameField)
             self.nextButton.isSelected = false
             return
         }
         
-        if(!verifyName(name: lastName!)){
+        if(!verifyName(name: lastName)){
             goodLastName = false
             showAndFocus(banner: invalidLastNameBanner, field: lastNameField)
             self.nextButton.isSelected = false
@@ -129,14 +137,14 @@ class SignUpViewController: UIViewController {
         }
         
         //begin email check
-        if(!EmailValidator.validate(email: email!, allowTopLevelDomains: true, allowInternational: true)){
+        if(!EmailValidator.validate(email: email, allowTopLevelDomains: true, allowInternational: true)){
             goodEmail = false
             self.nextButton.isSelected = false
             return
         }
         //check password strength
         
-        let verifyPassTuple = verifyPasswordStrength(password: password!)
+        let verifyPassTuple = verifyPasswordStrength(password: password)
         if(!verifyPassTuple.0){
             
             if(verifyPassTuple.1 == "length"){
@@ -185,7 +193,7 @@ class SignUpViewController: UIViewController {
                 return
             } else {
                 for document in querySnapshot!.documents {
-                    if(document.get("username") as? String == username){
+                    if(document.get("username") as? String == self.username){
                         usernameTaken = true;
                         break;
                     }
@@ -201,7 +209,7 @@ class SignUpViewController: UIViewController {
         }
         
         if(goodFirstName && goodLastName && goodUsername && goodEmail && goodPass && matchPass){
-            Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
+            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
                 if(error != nil){
                     //some error happened, let's show the appropriate banner
                     let e = error!
@@ -227,9 +235,7 @@ class SignUpViewController: UIViewController {
                     //no errors, so segue through
                     print("segue-ing...")
                     successBanner.show(duration: self.bannerDisplayTime)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + self.bannerDisplayTime) { [unowned self] in
-                        self.performSegue(withIdentifier: "toEmailVerify", sender: nil)
-                    }
+                    self.performSegue(withIdentifier: "toEmailVerify", sender: self)
                 }
             }
         }
@@ -238,6 +244,7 @@ class SignUpViewController: UIViewController {
     func showAndFocus(banner : Banner, field: UITextField){
         banner.show(duration: bannerDisplayTime)
         field.becomeFirstResponder()
+        
     }
     
     func verifyPasswordStrength(password: String) -> (Bool, String) {
@@ -286,6 +293,14 @@ class SignUpViewController: UIViewController {
         }
         
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toEmailVerify"){
+            if let destVC = segue.destination as? VerifyEmailViewController {
+                destVC.intermediaryUser = Profile(firstName: firstName, lastName: lastName, username: username, email: email)
+            }
+        }
     }
     
 }
