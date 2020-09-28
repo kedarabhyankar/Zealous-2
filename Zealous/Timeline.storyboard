@@ -169,6 +169,26 @@
             </objects>
             <point key="canvasLocation" x="-376.80000000000001" y="5.9113300492610836"/>
         </scene>
+        <!--Following-->
+        <scene sceneID="zzl-8y-itc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Following" id="ESB-UO-xjX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Ks8-Qk-2AJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTk-xp-UKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="576" y="-589"/>
+        </scene>
+        <!--Followers-->
+        <scene sceneID="Ewz-RW-j5x">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Followers" id="whc-VP-Fwv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Wok-KF-qke"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mmx-jt-ghV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1518" y="-604"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="PXB-4a-5AX">
             <objects>
@@ -232,6 +252,9 @@
                                             <state key="normal" title="Followers">
                                                 <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="whc-VP-Fwv" kind="show" id="sad-mp-2lX"/>
+                                            </connections>
                                         </button>
                                         <imageView verifyAmbiguity="off" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cID-ml-iAF" userLabel="Profile Picture">
                                             <rect key="frame" x="137" y="8" width="100" height="100"/>
@@ -280,6 +303,9 @@
                                             <state key="normal" title="Following">
                                                 <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="ESB-UO-xjX" kind="show" id="f98-fb-VHo"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio that the user created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R4-pH-Nd9" userLabel="Bio">
                                             <rect key="frame" x="16" y="184" width="343" height="28"/>
