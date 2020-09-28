@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h" customClass="PeopleTableViewCell" customModule="InstagramClone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h" customClass="PeopleTableViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfl-LO-J1h" id="E0k-ea-tzn">
@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="4124.6376811594209" y="160.71428571428569"/>
         </scene>
-        <!--Timeline-->
+        <!--Profile-->
         <scene sceneID="JL1-YT-TRZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Timeline" id="FiV-RM-0bZ" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Profile" id="FiV-RM-0bZ" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="V1U-fS-wws"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfN-xW-SCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
