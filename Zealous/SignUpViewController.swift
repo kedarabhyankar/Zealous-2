@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 import BRYXBanner
 import FirebaseAuth
-
+import EmailValidator
 
 class SignUpViewController: UIViewController {
     
@@ -129,7 +129,7 @@ class SignUpViewController: UIViewController {
         }
         
         //begin email check
-        if(!email!.contains("@")){
+        if(!EmailValidator.validate(email: email!, allowTopLevelDomains: true, allowInternational: true)){
             goodEmail = false
             self.nextButton.isSelected = false
             return
@@ -200,13 +200,6 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        print("good first name? -> " + String(goodFirstName))
-        print("good last name? -> " + String(goodLastName))
-        print("good username? -> " + String(goodUsername))
-        print("good email? -> " + String(goodEmail))
-        print("good pass? -> " + String(goodPass))
-        print("match pass? -> " + String(matchPass))
-        
         if(goodFirstName && goodLastName && goodUsername && goodEmail && goodPass && matchPass){
             Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
                 if(error != nil){
@@ -234,8 +227,8 @@ class SignUpViewController: UIViewController {
                     //no errors, so segue through
                     print("segue-ing...")
                     successBanner.show(duration: self.bannerDisplayTime)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [unowned self] in
-                        self.performSegue(withIdentifier: "toDOB", sender: nil)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + self.bannerDisplayTime) { [unowned self] in
+                        self.performSegue(withIdentifier: "toEmailVerify", sender: nil)
                     }
                 }
             }
