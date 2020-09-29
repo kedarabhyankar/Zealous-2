@@ -78,7 +78,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="eh5-In-B00">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="zHP-he-f0f">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="zHP-he-f0f">
                                             <connections>
                                                 <segue destination="FiV-RM-0bZ" kind="show" id="fcq-B0-9QY"/>
                                             </connections>
