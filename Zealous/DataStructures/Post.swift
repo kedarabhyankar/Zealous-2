@@ -17,7 +17,7 @@ struct Post {
     var comments: [String]
     var likes: Int
     
-    init(topic: String, title: String, caption: String) {
+    private init(topic: String, title: String, caption: String) { // for creating post
         self.postId = UUID().uuidString
         self.title = title
         self.caption = caption
@@ -35,5 +35,15 @@ struct Post {
     init(topic: String, title: String, caption: String, creatorId: String, img: UIImage) {
         self.init(topic: topic, title: title, caption: caption, creatorId: creatorId)
         self.img = img
+    }
+    init(id: String, topic: String, title: String, caption: String, creatorId: String, comments: [String], likes: Int) {
+        self.postId = id
+        self.topic = topic
+        self.title = title
+        self.caption = caption
+        self.comments = comments
+        self.creatorId = creatorId
+        self.img = UIImage()
+        self.likes = likes
     }
 }

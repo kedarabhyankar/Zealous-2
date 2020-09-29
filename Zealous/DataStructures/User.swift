@@ -13,8 +13,9 @@ import FirebaseAuth
 
 class User {
     var profile: Profile
-    var id: String
-    var createdPosts: [String]
+    var createdPosts: [Post] {
+        return getCreatedPosts(email: profile.email)
+    }
     var likedPosts: [String] // stores postId's
     var followedUsers: [String] // stores creatorId's
     var followedTopics: [String] // stores topicId's
@@ -22,16 +23,144 @@ class User {
     var numFollowers: Int {
         return followedUsers.count
     }
-    var numFollowing: Int {
-        return followers.count
+    
+    init(username: String, bio: String, creatorId: String, email: String, createdPosts: [String], likedPosts: [String], followedUsers: [String], followedTopics: [String], followers: [String]) {
+        self.profile = Profile(username: username, email: email, bio: bio)
+        self.likedPosts = likedPosts
+        self.followedUsers = followedUsers
+        self.followedTopics = followedTopics
+        self.followers = followers
+    }
+    
+    func getFollowedTopics(topics: [String]) -> [Topic] {
+        return []
+    }
+    
+    func getFollowedUsers(userIds: [String]) -> [User] {
+        return []
+    }
+    
+    func getFollowers(userIds: [String]) -> [User] {
+        return []
+    }
+    
+    func getCreatedPosts(email: String) -> [Post] {
+        let db = Firestore.firestore()
+        db.collection("posts").whereField("creatorId", isEqualTo: email)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                }
+        }
+        return []
+    }
+    
+    func getLikedPosts(postIds: [String]) -> [Post] {
+        var likedPosts: [Post] = []
+        let db = Firestore.firestore()
+        for id in postIds {
+            // get the post and convert to Post object
+            let ref = db.collection("posts").document(id)
+            ref.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    // populate user object with data and return
+                    let postdata = document.data()!
+                    let topic = postdata["topic"] as! String
+                    let creatorId = postdata["creatorId"] as! String
+                    let title = postdata["title"] as! String
+                    let caption = postdata["caption"] as! String
+                    let comments = postdata["comments"] as! [String]
+                    let likes = postdata["likes"] as! Int
+                    
+                    likedPosts.append(Post(id: id, topic: topic, title: title, caption: caption, creatorId: creatorId, comments: comments, likes: likes))
+                    
+                    print("Document data: \(dataDescription)")
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
+        return likedPosts
+    }
+    
+    func createUser(profile: Profile) {
+        let db = Firestore.firestore()
+        // store the user with document id = email
+        db.collection("users")
+            .document(profile.email)
+            .setData([
+                "username": profile.username,
+                "bio": profile.bio,
+                "email":profile.email,
+                "profilePic":"",
+                "numFollowers":0,
+                "numFollowing":0,
+                "likedPosts":[],
+                "followedUsers":[],
+                "followedTopics":[],
+                "createdPosts":[]
+                ]
+            ){ err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+        }
+    }
+    
+    func currentUser() -> User? {
+        var currUser: User? = nil
+        guard let auth = Auth.auth().currentUser else {
+            // error
+            return nil
+        }
+        guard let email = auth.email else {
+            // error
+            return nil
+        }
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                // populate user object with data and return
+                let userdata = document.data()!
+                let username = userdata["username"] as! String
+                let bio = userdata["bio"] as! String
+                let id = userdata["creatorId"] as! String
+                let createdPosts = userdata["createdPosts"] as! [String]
+                let likedPosts = userdata["likedPosts"] as! [String]
+                let followedUsers = userdata["followedUsers"] as! [String]
+                let followedTopics = userdata["followedTopics"] as! [String]
+                let followers = userdata["followers"] as! [String]
+                currUser = User(username: username,
+                                bio: bio,
+                                creatorId: id,
+                                email: id,
+                                createdPosts: createdPosts,
+                                likedPosts: likedPosts,
+                                followedUsers: followedUsers,
+                                followedTopics: followedTopics,
+                                followers: followers)
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+        return currUser
     }
     
     func follow (user: User) {
-        
         // increase follower count of the user
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document(user.id)
-        let currentUser = db.collection("users").document(self.id)
+        let userRef = db.collection("users").document(user.profile.email)
+        let currentUser = db.collection("users").document(self.profile.email)
         
         db.runTransaction({ (transaction, errorPointer) -> Any? in
             let sfDocument: DocumentSnapshot
@@ -61,8 +190,8 @@ class User {
             }
             
             //update followedUsers
-            followedUsers.append(user.id)
-            followers.append(self.id)
+            followedUsers.append(user.profile.email)
+            followers.append(self.profile.email)
             // update follower and following count
             transaction.updateData(["numFollowers": followers.count], forDocument: userRef)
             transaction.updateData(["followers": followers], forDocument: userRef)
@@ -88,7 +217,7 @@ class User {
                 .setData(
                     ["caption":post.caption,
                      "comments":post.comments,
-                     "creatorID":self.id,
+                     "creatorID":self.profile.email,
                      "img":"",
                      "postId":post.postId,
                      "title":post.title,
@@ -132,7 +261,7 @@ class User {
                              "img": url.absoluteString,
                              "likes": 0,
                              "comments":post.comments,
-                             "creatorID":self.id,
+                             "creatorID":self.profile.email,
                              "title":post.title,
                              "topic":post.topic]
                     )
@@ -140,7 +269,7 @@ class User {
             }
             
             // add the post to the user's createdPosts
-            let currentUser = db.collection("users").document(self.id)
+            let currentUser = db.collection("users").document(Auth.auth().currentUser!.email!)
             
             db.runTransaction({ (transaction, errorPointer) -> Any? in
                 let currentUserDocument: DocumentSnapshot
@@ -219,7 +348,7 @@ class User {
                 }
                 
                 db.collection("users")
-                    .document(self.id)
+                    .document(self.profile.email)
                     .setData(
                         ["profilePic": url.absoluteString]
                 )
@@ -229,7 +358,7 @@ class User {
     
     func updateBio (bio: String) {
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document(self.id)
+        let userRef = db.collection("users").document(self.profile.email)
         userRef.updateData(["bio": bio]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
@@ -240,49 +369,12 @@ class User {
     }
     
     func register() {
-        Auth.auth().createUser(withEmail: self.profile.email, password: self.profile.password) { authResult, error in
-            
-        }
+        
     }
     
     func signIn(){
-        Auth.auth().signIn(withEmail: "", password: "") { [weak self] authResult, error in
-          guard let strongSelf = self else { return }
-          // ...
-        }
+        
     }
     
-    init(profile: Profile) {
-        self.id = UUID().uuidString
-        self.profile = profile
-        self.likedPosts = []
-        self.createdPosts = []
-        self.followedUsers = []
-        self.followedTopics = []
-        self.followers = []
-        
-        let db = Firestore.firestore()
-        db.collection("users")
-            .document(id)
-            .setData([
-                "username": profile.username,
-                "bio": profile.bio,
-                "creatorId": self.id,
-                "email":profile.email,
-                "profilePic":"",
-                "numFollowers":0,
-                "numFollowing":0,
-                "likedPosts":[],
-                "followedUsers":[],
-                "followedTopics":[],
-                "createdPosts":[]
-                ]
-            ){ err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
-                }
-        }
-    }
+    
 }
