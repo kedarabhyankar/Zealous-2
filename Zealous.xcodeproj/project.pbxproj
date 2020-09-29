@@ -18,7 +18,12 @@
 		C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BD25197F07006BAD5F /* Timeline.storyboard */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
-		CF16ACE9AB0CD60B4FF4F09C /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 561F1A9D364A086EA527E3FA /* Pods_Zealous.framework */; };
+		C66B88D025228B05006BAD5F /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88CF25228B05006BAD5F /* Followers.storyboard */; };
+		C66B88D225228B1E006BAD5F /* Following.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88D125228B1E006BAD5F /* Following.storyboard */; };
+		C66B88D525229E5B006BAD5F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88D425229E5B006BAD5F /* Search.storyboard */; };
+		C66B88D725229EB9006BAD5F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88D625229EB9006BAD5F /* Profile.storyboard */; };
+		C66B88D92522A0B4006BAD5F /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88D82522A0B4006BAD5F /* CreatePost.storyboard */; };
+		D8BDD3CB8058909FFE05CCBD /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DBF1018423D82A3924063A /* Pods_Zealous_ZealousUITests.framework */; };
 		E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFD25196525000FB63B /* AppDelegate.swift */; };
 		E44D300025196525000FB63B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFF25196525000FB63B /* SceneDelegate.swift */; };
 		E44D300225196525000FB63B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D300125196525000FB63B /* ViewController.swift */; };
@@ -66,6 +71,11 @@
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CF6A8A32E25D4D5B604553C9 /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
+		C66B88CF25228B05006BAD5F /* Followers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
+		C66B88D125228B1E006BAD5F /* Following.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Following.storyboard; sourceTree = "<group>"; };
+		C66B88D425229E5B006BAD5F /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		C66B88D625229EB9006BAD5F /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		C66B88D82522A0B4006BAD5F /* CreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
 		E44D2FFA25196525000FB63B /* Zealous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zealous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D2FFD25196525000FB63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44D2FFF25196525000FB63B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +194,11 @@
 				E44D300825196527000FB63B /* LaunchScreen.storyboard */,
 				E44D300B25196527000FB63B /* Info.plist */,
 				E48C9D0F2521444500A924F2 /* LoginViewController.swift */,
+				C66B88CF25228B05006BAD5F /* Followers.storyboard */,
+				C66B88D125228B1E006BAD5F /* Following.storyboard */,
+				C66B88D425229E5B006BAD5F /* Search.storyboard */,
+				C66B88D625229EB9006BAD5F /* Profile.storyboard */,
+				C66B88D82522A0B4006BAD5F /* CreatePost.storyboard */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -317,7 +332,12 @@
 				A637445B251C1CDC001E8BA5 /* GoogleService-Info.plist in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
+				C66B88D725229EB9006BAD5F /* Profile.storyboard in Resources */,
+				C66B88D92522A0B4006BAD5F /* CreatePost.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
+				C66B88D025228B05006BAD5F /* Followers.storyboard in Resources */,
+				C66B88D525229E5B006BAD5F /* Search.storyboard in Resources */,
+				C66B88D225228B1E006BAD5F /* Following.storyboard in Resources */,
 				C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */,
 				C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */,
 				C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */,
