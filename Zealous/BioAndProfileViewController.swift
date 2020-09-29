@@ -8,16 +8,23 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
+import BRYXBanner
+import CodableFirebase
 
 class BioAndProfileViewController: UIViewController {
     
     var finalProfile: Profile!
     var db : Firestore!
     var storage: Storage!
-    var imageFormat: [String]!
     var dateFormat: DateFormatter!
     @IBOutlet weak var bioField: UITextField!
     @IBOutlet weak var profileField: UITextField!
+    var defaultImage: UIImage!
+    let unknownErrorBanner = Banner(title: "Something went wrong!", subtitle: "An unknown error occurred.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+    let successBanner = Banner(title: "Successfully uploaded your profile photo!", subtitle: "Your profile photo was successfully uploaded!", image: nil, backgroundColor: UIColor.green, didTapBlock: nil)
+    let bannerDisplayTime = 3.0
+    let df = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,90 +34,79 @@ class BioAndProfileViewController: UIViewController {
         storage = Storage.storage()
         dateFormat = DateFormatter()
         self.dateFormat.dateStyle = .short
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        defaultImage = UIImage(systemName: "person.crop.circle") //sf symbols default image
         // Do any additional setup after loading the view.
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func onSubmit(_ sender: Any) {
         let biog = bioField.text ?? "This user does not have a bio."
-        let prof = profileField.text ?? "This user does not have a profile."
+        let profile = profileField.text ?? "This user does not have a profile."
+        var photoURL: String = ""
+        uploadImage((self.finalProfile.picture ?? self.defaultImage), completion: { (state, result) in
+            if(!state){
+                self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                return
+            } else {
+                photoURL = result
+            }
+        })
         
-        let storageRef = storage.reference()
-        let uuid = UUID().uuidString
-        var imagePath = uuid
-        imagePath.append(".")
-        imagePath.append(imageFormat[1])
-        var imageDirPath = "images/"
-        imageDirPath.append(uuid)
-        imageDirPath.append(".")
-        imageDirPath.append(imageFormat[1])
-        let pictureRef = storageRef.child(imagePath)
+        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: df.string(from: self.finalProfile.dateOfBirth), photoURL: photoURL)
         
-        let data = Data()
-        _ = pictureRef.putData(data, metadata: nil) {
-            (metadata, error) in
+        let dataToWrite = try! FirestoreEncoder().encode(writeableUser)
+        db.collection("users").document(self.finalProfile.email).setData(dataToWrite) { error in
             
-            pictureRef.downloadURL{
-                (url, error) in
-                guard let downloadURL = url else {
-                    var ref : DocumentReference? = nil
-                    ref = self.db.collection("users").addDocument(data: [
-                                                                    "firstName":self.finalProfile.firstName,
-                                                                    "lastName":self.finalProfile.lastName,
-                                                                    "username":self.finalProfile.username,
-                                                                    "email":self.finalProfile.email,
-                                                                    "bio":biog,
-                                                                    "interests":prof,
-                                                                    "dob": self.dateFormat.string(from: self.finalProfile.dateOfBirth),
-                                                                    "pictureURL": url?.absoluteString ?? "BAD PROFILE IMAGE URL"]){
-                        err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document added with ID: \(ref!.documentID)")
-                        }
-                    }
-                    return;
-                }
-                
-                var ref : DocumentReference? = nil
-                ref = self.db.collection("users").addDocument(data: [
-                                                                "firstName":self.finalProfile.firstName,
-                                                                "lastName":self.finalProfile.lastName,
-                                                                "username":self.finalProfile.username,
-                                                                "email":self.finalProfile.email,
-                                                                "bio":biog,
-                                                                "interests":prof,
-                                                                "dob": self.dateFormat.string(from: self.finalProfile.dateOfBirth),
-                                                                "pictureURL": downloadURL ]){
-                    err in
-                    if let err = err {
-                        print("Error adding document: \(err)")
-                    } else {
-                        print("Document added with ID: \(ref!.documentID)")
-                    }
-                }
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                return
+            } else {
+                print("successfully wrote document to firestore with document id \(self.finalProfile.email)")
+                self.performSegue(withIdentifier: "toTimeline", sender: self)
             }
         }
+        
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func uploadImage(_ image: UIImage,
+                     completion: @escaping (_ hasFinished: Bool, _ url: String) -> Void) {
+        let data: Data = image.jpegData(compressionQuality: 1.0)!
+        
+        // ref should be like this
+        let ref = Storage.storage().reference(withPath: "media/" + (Auth.auth().currentUser?.email)! + "/" + "profile.jpeg")
+        ref.putData(data, metadata: nil,
+                    completion: { (meta , error) in
+                        if error == nil {
+                            // return url
+                            ref.downloadURL(completion: { (url, error) in
+                                if(error != nil){
+                                    print("some error happened described here \(error!.localizedDescription)")
+                                    completion(false, "")
+                                } else {
+                                    completion(true, url!.absoluteString)
+                                }
+                            })
+                        }
+                    })
+    }
 }
 
-struct FinishedProfile {
+
+struct WriteableUser: Codable {
     let firstName: String
     let lastName: String
     let username: String
     let email: String
     let bio: String
-    let interests: String
+    let interests: [String]
     let dob: String
-    let pictureURL: String
+    let photoURL: String
 }

@@ -586,7 +586,7 @@
                     <connections>
                         <outlet property="bioField" destination="WOI-9z-rCy" id="WjY-aA-XzM"/>
                         <outlet property="profileField" destination="PNg-gO-Zcz" id="mOA-iU-gTn"/>
-                        <segue destination="rYo-jx-FTF" kind="presentation" modalPresentationStyle="fullScreen" id="sCD-a0-Afe"/>
+                        <segue destination="rYo-jx-FTF" kind="presentation" identifier="toTimeline" modalPresentationStyle="fullScreen" id="sCD-a0-Afe"/>
                         <segue destination="AwN-Gr-des" kind="presentation" modalPresentationStyle="fullScreen" id="SnW-VY-jdE"/>
                     </connections>
                 </viewController>
@@ -606,7 +606,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dAP-n8-6wE"/>
+        <segue reference="SnW-VY-jdE"/>
         <segue reference="wRU-ws-Z2g"/>
         <segue reference="ZDc-yY-dpD"/>
     </inferredMetricsTieBreakers>

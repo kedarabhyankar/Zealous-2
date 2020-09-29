@@ -49,9 +49,7 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
         let intermediaryProfileThree = Profile(firstName: self.intermediaryProfileTwo.firstName, lastName: self.intermediaryProfileTwo.lastName, username: self.intermediaryProfileTwo.username, email: self.intermediaryProfileTwo.email, bio: "", interests: [""], dob: self.intermediaryProfileTwo.dateOfBirth, picture: self.image!)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "bioAndProfile") as! BioAndProfileViewController
         vc.finalProfile = intermediaryProfileThree
-        vc.modalPresentationStyle = .fullScreen
-        vc.imageFormat = imageExt?.split(separator: ".").map { String($0) }
-        
+        vc.modalPresentationStyle = .fullScreen        
         self.present(vc, animated: true, completion: nil)
     }
     /*

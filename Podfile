@@ -12,6 +12,7 @@ target 'Zealous' do
   pod 'Firebase/Storage'
   pod 'BRYXBanner'
   pod 'EmailValidator'
+  pod 'CodableFirebase'
   target 'ZealousTests' do
     inherit! :search_paths
     # Pods for testing
