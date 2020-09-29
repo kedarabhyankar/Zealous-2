@@ -265,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="1507" y="-216"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Profile Settings View Controller-->
         <scene sceneID="vyz-4o-RJj">
             <objects>
-                <tableViewController id="1Nb-ni-hrF" sceneMemberID="viewController">
+                <tableViewController id="1Nb-ni-hrF" customClass="ProfileSettingsViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bpd-mK-mQ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,6 +353,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="SubmitUserSettings:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="l3Q-Hf-dKw"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -427,6 +430,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="SubmitPassword:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="BnK-2o-Plf"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -453,6 +459,9 @@
                                                     <state key="normal" title="Logout">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="LogoutUser:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="Zzk-ed-Cfj"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -479,6 +488,9 @@
                                                     <state key="normal" title="Delete">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="DeleteUser:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="bti-cY-S4J"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -494,6 +506,16 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vh8-16-A6W"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ChangeBio" destination="d89-Gk-1lI" id="UQX-xg-nHh"/>
+                        <outlet property="ChangeEmail" destination="yRx-N1-ng6" id="vqx-01-Qgj"/>
+                        <outlet property="ChangeFName" destination="UJG-dC-vPB" id="aDa-Wr-e2B"/>
+                        <outlet property="ChangeLName" destination="WUE-QM-74v" id="bSy-4r-klk"/>
+                        <outlet property="ChangeUsername" destination="4fE-wh-TW3" id="Vs7-rm-fIb"/>
+                        <outlet property="ConfirmPassword" destination="jyj-98-78e" id="Er1-zW-fr1"/>
+                        <outlet property="CurrPassword" destination="W4X-bg-oag" id="NOH-4g-Ldo"/>
+                        <outlet property="NewPassword" destination="dEU-qQ-hM5" id="eHw-ly-CSt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vep-mN-Ow4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
