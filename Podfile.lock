@@ -218,6 +218,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - BRYXBanner (0.8.4)
   - Firebase/Analytics (6.33.0):
     - Firebase/Core
   - Firebase/Auth (6.33.0):
@@ -338,6 +339,7 @@ PODS:
   - PromisesObjC (1.2.10)
 
 DEPENDENCIES:
+  - BRYXBanner
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
@@ -347,6 +349,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - BRYXBanner
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -368,6 +371,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  BRYXBanner: 4fbd266f96ce000e4c6cc9a0558c446bd88d9801
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
   FirebaseAnalytics: 5dd088bd2e67bb9d13dbf792d1164ceaf3052193
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
@@ -386,6 +390,6 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
 
-PODFILE CHECKSUM: 443a0ae0de63dcebc29c83045bd2e72a45125fa4
+PODFILE CHECKSUM: 99dfd2a156cf9f7baedff9eb265ba8288e923734
 
 COCOAPODS: 1.9.3

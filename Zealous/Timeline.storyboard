@@ -657,6 +657,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="SubmitUserSettings:" destination="lto-Qe-ibg" eventType="touchUpInside" id="WGx-jZ-c71"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -697,6 +700,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="SubmitPassword:" destination="lto-Qe-ibg" eventType="touchUpInside" id="pvy-Ov-jWN"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -724,6 +730,7 @@
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="LogoutUser:" destination="lto-Qe-ibg" eventType="touchUpInside" id="XZV-hS-pqX"/>
                                                         <segue destination="jGP-I6-qUz" kind="show" id="Gg2-lN-vfp"/>
                                                     </connections>
                                                 </button>
@@ -752,6 +759,9 @@
                                                     <state key="normal" title="Delete">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="DeleteUser:" destination="lto-Qe-ibg" eventType="touchUpInside" id="fjI-Cb-q8E"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -767,6 +777,16 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="XEn-1Q-5e2"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ChangeEmail" destination="6Sa-yj-Pgl" id="J4y-j2-waT"/>
+                        <outlet property="ChangeFName" destination="1ZI-5g-Kia" id="wZB-vV-Qcw"/>
+                        <outlet property="ChangeLName" destination="Fyg-Xc-lW4" id="mH5-gi-Q1r"/>
+                        <outlet property="ChangePhoneNum" destination="dLB-Xt-9HG" id="AnT-M0-8kP"/>
+                        <outlet property="ChangeUsername" destination="HKs-uM-zaX" id="uHP-sO-PHL"/>
+                        <outlet property="ConfirmPassword" destination="4Qg-gu-mcX" id="hsC-Y7-PZx"/>
+                        <outlet property="CurrPassword" destination="Roq-sB-QXJ" id="sO2-je-drl"/>
+                        <outlet property="NewPassword" destination="syG-OY-1IA" id="Xat-vm-XVL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZQ-FY-L8f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
