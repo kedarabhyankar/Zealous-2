@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="LGV-q4-ij9" customClass="DynamicFeedTableViewCell" customModule="Zealous" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="LGV-q4-ij9" customClass="FeedViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="497"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LGV-q4-ij9" id="pFK-Kv-NA3">
@@ -93,16 +93,16 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="pulseOpacity">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="comments" destination="onX-BN-AMb" id="Trf-N0-bs9"/>
+                                            <outlet property="downVote" destination="vak-5D-Y0m" id="oGw-5T-Rad"/>
                                             <outlet property="postBody" destination="o6j-1D-eXH" id="gnO-pZ-2eB"/>
-                                            <outlet property="postImage" destination="Wc5-X1-mh0" id="Vdm-hK-qDE"/>
+                                            <outlet property="postCaption" destination="3mR-6I-Qlb" id="IbF-vU-JuP"/>
+                                            <outlet property="postImage" destination="Wc5-X1-mh0" id="Th3-QJ-UBF"/>
                                             <outlet property="postTitle" destination="3mR-6I-Qlb" id="etE-1A-VB1"/>
                                             <outlet property="profileImage" destination="HqN-cD-CPl" id="Qgo-Hn-JAL"/>
+                                            <outlet property="profilePicture" destination="HqN-cD-CPl" id="yIg-1E-TdT"/>
+                                            <outlet property="upVote" destination="bOH-8k-aTE" id="Aeq-mc-Vo5"/>
                                             <outlet property="username" destination="Acr-A6-0fd" id="vqw-BR-kBb"/>
                                         </connections>
                                     </tableViewCell>
