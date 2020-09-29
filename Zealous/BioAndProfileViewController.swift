@@ -50,6 +50,8 @@ class BioAndProfileViewController: UIViewController {
         let profile = profileField.text ?? "This user does not have a profile."
         var photoURL: String = ""
         uploadImage((self.finalProfile.picture ?? self.defaultImage), completion: { (state, result) in
+            print("state \(state)")
+            print("result \(result)")
             if(!state){
                 self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
                 return
@@ -58,7 +60,12 @@ class BioAndProfileViewController: UIViewController {
             }
         })
         
-        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: df.string(from: self.finalProfile.dateOfBirth), photoURL: photoURL)
+        print("photoURL is \(photoURL)")
+        
+        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: self.finalProfile.dateOfBirth, pictureURL: photoURL)
+        
+        print("raw dob \(self.finalProfile.dateOfBirth)")
+        print("stringified dob  \(df.string(from: self.finalProfile.dateOfBirth))")
         
         let dataToWrite = try! FirestoreEncoder().encode(writeableUser)
         db.collection("users").document(self.finalProfile.email).setData(dataToWrite) { error in
@@ -107,6 +114,6 @@ struct WriteableUser: Codable {
     let email: String
     let bio: String
     let interests: [String]
-    let dob: String
-    let photoURL: String
+    let dob: Date
+    let pictureURL: String
 }
