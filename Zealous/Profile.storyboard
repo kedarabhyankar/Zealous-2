@@ -104,7 +104,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="N92-z6-Cb3" customClass="DynamicFeedTableViewCell" customModule="Zealous" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="497" id="N92-z6-Cb3" customClass="UserPostCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="337" width="375" height="497"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N92-z6-Cb3" id="pwv-oX-O9f">
@@ -175,18 +175,24 @@
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="medium"/>
                                                     </state>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdJ-WB-8aF">
+                                                    <rect key="frame" x="260" y="16" width="79" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Delete Post"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="pulseOpacity">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="comments" destination="5iq-Fv-Kkx" id="X8l-Fp-DLm"/>
+                                            <outlet property="deletePost" destination="pdJ-WB-8aF" id="tzD-vg-WnA"/>
+                                            <outlet property="downVote" destination="BPr-ac-UQ8" id="frb-9U-BVN"/>
                                             <outlet property="postBody" destination="O1R-WB-vgh" id="6dN-c3-ZiQ"/>
-                                            <outlet property="postImage" destination="SOJ-GB-nJV" id="zeT-Jc-zvh"/>
+                                            <outlet property="postCaption" destination="ger-Id-0mr" id="oRl-Gq-5ws"/>
+                                            <outlet property="postImage" destination="SOJ-GB-nJV" id="jN7-V9-coT"/>
                                             <outlet property="postTitle" destination="ger-Id-0mr" id="jBL-rZ-YHL"/>
                                             <outlet property="profileImage" destination="Xb7-XC-vCO" id="Cc5-xp-Rvi"/>
+                                            <outlet property="profilePicture" destination="Xb7-XC-vCO" id="O9J-aE-BKn"/>
+                                            <outlet property="upVote" destination="tAr-xl-50g" id="zHE-ni-nuI"/>
                                             <outlet property="username" destination="Z9z-1l-dkB" id="Qz6-DA-Fjj"/>
                                         </connections>
                                     </tableViewCell>
