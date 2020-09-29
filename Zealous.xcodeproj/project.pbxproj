@@ -22,8 +22,9 @@
 		C66B88D525229E5B006BAD5F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88D425229E5B006BAD5F /* Search.storyboard */; };
 		C66B88D725229EB9006BAD5F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88D625229EB9006BAD5F /* Profile.storyboard */; };
 		C66B88D92522A0B4006BAD5F /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88D82522A0B4006BAD5F /* CreatePost.storyboard */; };
-		CF65B3C9F9E7884908091B8D /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DBCFF4A7A91C6FCD46D77A /* Pods_Zealous.framework */; };
-		D52F2743083F353AC60C93FF /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0875EE345B999933C70BC70 /* Pods_ZealousTests.framework */; };
+		C66B88DB2522B0B6006BAD5F /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88DA2522B0B5006BAD5F /* UserPostCell.swift */; };
+		C66B88DD2522B214006BAD5F /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88DC2522B214006BAD5F /* FeedViewCell.swift */; };
+		D8BDD3CB8058909FFE05CCBD /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DBF1018423D82A3924063A /* Pods_Zealous_ZealousUITests.framework */; };
 		E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFD25196525000FB63B /* AppDelegate.swift */; };
 		E44D300025196525000FB63B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFF25196525000FB63B /* SceneDelegate.swift */; };
 		E44D300225196525000FB63B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D300125196525000FB63B /* ViewController.swift */; };
@@ -76,6 +77,8 @@
 		D79DE0187F937EEEFDA51388 /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 		E0875EE345B999933C70BC70 /* Pods_ZealousTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZealousTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2DBCFF4A7A91C6FCD46D77A /* Pods_Zealous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C66B88DA2522B0B5006BAD5F /* UserPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostCell.swift; sourceTree = "<group>"; };
+		C66B88DC2522B214006BAD5F /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		E44D2FFA25196525000FB63B /* Zealous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zealous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D2FFD25196525000FB63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44D2FFF25196525000FB63B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				C66B88D425229E5B006BAD5F /* Search.storyboard */,
 				C66B88D625229EB9006BAD5F /* Profile.storyboard */,
 				C66B88D82522A0B4006BAD5F /* CreatePost.storyboard */,
+				C66B88DA2522B0B5006BAD5F /* UserPostCell.swift */,
+				C66B88DC2522B214006BAD5F /* FeedViewCell.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -470,9 +475,11 @@
 			files = (
 				E44D300225196525000FB63B /* ViewController.swift in Sources */,
 				BC44BB75251A99EF00C12823 /* Topic.swift in Sources */,
+				C66B88DB2522B0B6006BAD5F /* UserPostCell.swift in Sources */,
 				BC44BB73251A99D300C12823 /* Profile.swift in Sources */,
 				E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */,
 				E48C9D102521444500A924F2 /* LoginViewController.swift in Sources */,
+				C66B88DD2522B214006BAD5F /* FeedViewCell.swift in Sources */,
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
 				A6A6D9102519969B00F787A9 /* ProfileSettingsViewController.swift in Sources */,
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
