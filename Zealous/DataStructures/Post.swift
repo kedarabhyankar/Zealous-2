@@ -7,13 +7,13 @@
 import Foundation
 import UIKit
 
-struct Post {
+struct Post: Codable {
     var postId: String
     var topic: String
     var creatorId: String
     var title: String
     var caption: String
-    var img: UIImage?
+    var imgURL: String
     var comments: [String]
     var likes: Int
     
@@ -23,7 +23,7 @@ struct Post {
         self.caption = caption
         self.comments = []
         self.topic = topic
-        self.img = nil
+        self.imgURL = ""
         self.creatorId = ""
         self.likes = 0
     }
@@ -32,9 +32,9 @@ struct Post {
         self.init(topic: topic, title: title, caption: caption)
         self.creatorId = creatorId
     }
-    init(topic: String, title: String, caption: String, creatorId: String, img: UIImage) {
+    init(topic: String, title: String, caption: String, creatorId: String, img: String) {
         self.init(topic: topic, title: title, caption: caption, creatorId: creatorId)
-        self.img = img
+        self.imgURL = img
     }
     init(id: String, topic: String, title: String, caption: String, creatorId: String, comments: [String], likes: Int) {
         self.postId = id
@@ -43,7 +43,7 @@ struct Post {
         self.caption = caption
         self.comments = comments
         self.creatorId = creatorId
-        self.img = UIImage()
+        self.imgURL = ""
         self.likes = likes
     }
 }

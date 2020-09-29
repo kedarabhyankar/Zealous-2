@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Following List View Controller-->
         <scene sceneID="N4Z-yT-gPx">
             <objects>
-                <viewController id="euP-m1-cqo" sceneMemberID="viewController">
+                <viewController id="euP-m1-cqo" customClass="FollowingListViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0bN-LM-1v9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h" customClass="PeopleTableViewCell" customModule="Zealous" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h" customClass="FollowingCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfl-LO-J1h" id="E0k-ea-tzn">
@@ -66,9 +66,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="followButton" destination="EuV-7x-Vyn" id="tN2-tt-Pvp"/>
-                                            <outlet property="nameLabel" destination="DTr-lN-MQh" id="jwo-i1-7d7"/>
-                                            <outlet property="profileImage" destination="vRd-Jx-tyt" id="m79-26-Eg5"/>
+                                            <outlet property="follow" destination="EuV-7x-Vyn" id="Uon-W0-cuA"/>
+                                            <outlet property="profilePic" destination="vRd-Jx-tyt" id="2La-xx-LdT"/>
+                                            <outlet property="username" destination="DTr-lN-MQh" id="Rzw-tK-VFt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -90,6 +90,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1ZD-lE-sAu"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="s1r-yu-6Lh" id="zRS-ol-8Zo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndk-0y-MVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

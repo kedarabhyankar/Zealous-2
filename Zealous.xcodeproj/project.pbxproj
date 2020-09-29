@@ -13,6 +13,10 @@
 		BC44BB73251A99D300C12823 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB72251A99D300C12823 /* Profile.swift */; };
 		BC44BB75251A99EF00C12823 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB74251A99EF00C12823 /* Topic.swift */; };
 		BC44BB77251A9A0800C12823 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB76251A9A0800C12823 /* User.swift */; };
+		BC44BB7D2523924F00C12823 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB7C2523924F00C12823 /* UserMethods.swift */; };
+		BC44BB802523C3EA00C12823 /* FollowingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB7F2523C3EA00C12823 /* FollowingListViewController.swift */; };
+		BC44BB822523C66200C12823 /* FollowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB812523C66200C12823 /* FollowingCell.swift */; };
+		BC44BB842523CDAE00C12823 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC44BB832523CDAE00C12823 /* GoogleService-Info.plist */; };
 		C66B88BE25197F07006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BD25197F07006BAD5F /* Timeline.storyboard */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
@@ -61,6 +65,10 @@
 		BC44BB72251A99D300C12823 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BC44BB74251A99EF00C12823 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		BC44BB76251A9A0800C12823 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BC44BB7C2523924F00C12823 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
+		BC44BB7F2523C3EA00C12823 /* FollowingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListViewController.swift; sourceTree = "<group>"; };
+		BC44BB812523C66200C12823 /* FollowingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingCell.swift; sourceTree = "<group>"; };
+		BC44BB832523CDAE00C12823 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C52D06B33A260CA9BC1350B1 /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 		C66B88BD25197F07006BAD5F /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -136,8 +144,18 @@
 				BC44BB72251A99D300C12823 /* Profile.swift */,
 				BC44BB74251A99EF00C12823 /* Topic.swift */,
 				BC44BB76251A9A0800C12823 /* User.swift */,
+				BC44BB7C2523924F00C12823 /* UserMethods.swift */,
 			);
 			path = DataStructures;
+			sourceTree = "<group>";
+		};
+		BC44BB7E2523C36600C12823 /* ProfileControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC44BB7F2523C3EA00C12823 /* FollowingListViewController.swift */,
+				BC44BB812523C66200C12823 /* FollowingCell.swift */,
+			);
+			path = ProfileControllers;
 			sourceTree = "<group>";
 		};
 		C745B63097776C5FAB3076EA /* Pods */ = {
@@ -178,6 +196,8 @@
 		E44D2FFC25196525000FB63B /* Zealous */ = {
 			isa = PBXGroup;
 			children = (
+				BC44BB832523CDAE00C12823 /* GoogleService-Info.plist */,
+				BC44BB7E2523C36600C12823 /* ProfileControllers */,
 				BC44BB6F251A999300C12823 /* DataStructures */,
 				C66B88C025197F1C006BAD5F /* Login.storyboard */,
 				C66B88BF25197F1C006BAD5F /* SignUp.storyboard */,
@@ -331,6 +351,7 @@
 				C66B88D725229EB9006BAD5F /* Profile.storyboard in Resources */,
 				C66B88D92522A0B4006BAD5F /* CreatePost.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
+				BC44BB842523CDAE00C12823 /* GoogleService-Info.plist in Resources */,
 				C66B88D025228B05006BAD5F /* Followers.storyboard in Resources */,
 				C66B88D525229E5B006BAD5F /* Search.storyboard in Resources */,
 				C66B88D225228B1E006BAD5F /* Following.storyboard in Resources */,
@@ -467,11 +488,14 @@
 				E44D300225196525000FB63B /* ViewController.swift in Sources */,
 				BC44BB75251A99EF00C12823 /* Topic.swift in Sources */,
 				C66B88DB2522B0B6006BAD5F /* UserPostCell.swift in Sources */,
+				BC44BB822523C66200C12823 /* FollowingCell.swift in Sources */,
 				BC44BB73251A99D300C12823 /* Profile.swift in Sources */,
 				E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */,
 				C66B88DD2522B214006BAD5F /* FeedViewCell.swift in Sources */,
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
+				BC44BB7D2523924F00C12823 /* UserMethods.swift in Sources */,
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
+				BC44BB802523C3EA00C12823 /* FollowingListViewController.swift in Sources */,
 				BC44BB77251A9A0800C12823 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@ target 'Zealous' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'FirebaseFirestoreSwift'
   target 'ZealousTests' do
     inherit! :search_paths
     # Pods for testing
