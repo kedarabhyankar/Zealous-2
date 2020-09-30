@@ -13,7 +13,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func onSignIn(_ sender: Any) {
+        performSegue(withIdentifier: "toSignIn", sender: self)
+    }
+    
+    @IBAction func onSignUp(_ sender: Any) {
+        performSegue(withIdentifier: "toSignUp", sender: self)
+    }
 }
 

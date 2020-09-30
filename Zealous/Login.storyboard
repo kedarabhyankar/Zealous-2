@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--loginView-->
         <scene sceneID="1QS-7Z-Uzf">
             <objects>
-                <viewController id="Gbw-aN-mT6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gbw-aN-mT6" userLabel="loginView" customClass="LoginViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Daf-bF-y4K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="gOs-KC-ufh" kind="show" id="WQy-E1-nKd"/>
+                                    <action selector="onLogin:" destination="Gbw-aN-mT6" eventType="touchUpInside" id="3i3-Bc-K0l"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNo-cR-dJw">
@@ -57,7 +57,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Vhp-1p-tRa" kind="show" id="80f-ky-CN0"/>
+                                    <action selector="onBack:" destination="Gbw-aN-mT6" eventType="touchUpInside" id="b5E-wg-M11"/>
+                                    <segue destination="Vhp-1p-tRa" kind="presentation" identifier="toHome" modalPresentationStyle="fullScreen" id="80f-ky-CN0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Har-dO-Du8">
@@ -78,6 +79,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="EMG-qP-YCB"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordField" destination="dEp-Us-0xd" id="twQ-6U-3Yf"/>
+                        <outlet property="usernameOrEmailField" destination="aNo-cR-dJw" id="7bT-SW-uZI"/>
+                        <segue destination="gOs-KC-ufh" kind="presentation" identifier="toTimeline" modalPresentationStyle="fullScreen" id="juj-1b-8Zo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ5-e1-rKW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,7 +107,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bV6-yE-uiH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952" y="291"/>
+            <point key="canvasLocation" x="687" y="304"/>
         </scene>
     </scenes>
     <resources>
