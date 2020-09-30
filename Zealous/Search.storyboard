@@ -64,13 +64,13 @@
                                             <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="Oif-U5-2hN">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="f4F-eg-hPd" kind="show" id="iYf-O1-zF0"/>
+                                                    <segue destination="f4F-eg-hPd" kind="presentation" modalPresentationStyle="fullScreen" id="iYf-O1-zF0"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="eMp-Ku-cSh">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="jNz-4O-xf5" kind="show" id="l3I-Qx-w6l"/>
+                                                    <segue destination="jNz-4O-xf5" kind="presentation" modalPresentationStyle="fullScreen" id="l3I-Qx-w6l"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -81,7 +81,7 @@
                                             <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="Vdx-ch-eEf">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="t5P-SC-aN4" kind="show" id="58g-mD-80S"/>
+                                                    <segue destination="t5P-SC-aN4" kind="presentation" modalPresentationStyle="fullScreen" id="58g-mD-80S"/>
                                                 </connections>
                                             </barButtonItem>
                                         </rightBarButtonItems>

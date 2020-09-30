@@ -80,7 +80,7 @@
                                     <navigationItem id="eh5-In-B00">
                                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="zHP-he-f0f">
                                             <connections>
-                                                <segue destination="FiV-RM-0bZ" kind="show" id="fcq-B0-9QY"/>
+                                                <segue destination="FiV-RM-0bZ" kind="presentation" modalPresentationStyle="fullScreen" id="fcq-B0-9QY"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

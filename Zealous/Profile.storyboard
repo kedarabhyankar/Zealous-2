@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="xyG-1Z-uVu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="92c-QM-jz7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2E5-eP-G43">
@@ -39,7 +39,7 @@
                                                 <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </state>
                                             <connections>
-                                                <segue destination="cFK-Z1-GPT" kind="show" id="qZM-fe-DjO"/>
+                                                <segue destination="cFK-Z1-GPT" kind="presentation" modalPresentationStyle="fullScreen" id="qZM-fe-DjO"/>
                                             </connections>
                                         </button>
                                         <imageView verifyAmbiguity="off" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="86c-qk-vqW" userLabel="Profile Picture">
@@ -78,7 +78,7 @@
                                                 <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </state>
                                             <connections>
-                                                <segue destination="6oJ-I4-y4q" kind="show" id="mYA-3e-g7M"/>
+                                                <segue destination="6oJ-I4-y4q" kind="presentation" modalPresentationStyle="fullScreen" id="mYA-3e-g7M"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio that the user created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbk-Xm-W53" userLabel="Bio">
@@ -97,7 +97,7 @@
                                                 <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             </state>
                                             <connections>
-                                                <segue destination="1Nb-ni-hrF" kind="show" id="D8M-Pr-x9u"/>
+                                                <segue destination="1Nb-ni-hrF" kind="presentation" modalPresentationStyle="fullScreen" id="D8M-Pr-x9u"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -205,7 +205,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Xhs-8d-Uox" kind="show" id="XKB-MA-Dtd"/>
+                                    <segue destination="Xhs-8d-Uox" kind="presentation" modalPresentationStyle="fullScreen" id="XKB-MA-Dtd"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jei-jn-waH">
@@ -217,13 +217,13 @@
                                             <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="nUT-bq-niu">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="7sN-RE-ro4" kind="show" id="gtc-V5-lYv"/>
+                                                    <segue destination="7sN-RE-ro4" kind="presentation" modalPresentationStyle="fullScreen" id="gtc-V5-lYv"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="ME8-f1-vog">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="KMK-dV-t0p" kind="show" id="ULn-AJ-IUG"/>
+                                                    <segue destination="KMK-dV-t0p" kind="presentation" modalPresentationStyle="fullScreen" id="ULn-AJ-IUG"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -234,7 +234,7 @@
                                             <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="N1i-FO-5Gv">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="X6E-xd-giK" kind="show" id="efp-7k-jxU"/>
+                                                    <segue destination="X6E-xd-giK" kind="presentation" modalPresentationStyle="fullScreen" id="efp-7k-jxU"/>
                                                 </connections>
                                             </barButtonItem>
                                         </rightBarButtonItems>
@@ -276,7 +276,7 @@
             <objects>
                 <tableViewController id="1Nb-ni-hrF" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bpd-mK-mQ1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="VdV-NO-Ati">
