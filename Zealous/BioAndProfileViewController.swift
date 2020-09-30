@@ -38,6 +38,7 @@ class BioAndProfileViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         defaultImage = UIImage(systemName: "person.crop.circle") //sf symbols default image
         // Do any additional setup after loading the view.
+        df.locale = Locale(identifier: "en_US")
     }
     
     //Calls this function when the tap is recognized.
@@ -62,7 +63,7 @@ class BioAndProfileViewController: UIViewController {
         
         print("photoURL is \(photoURL)")
         
-        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: self.finalProfile.dateOfBirth, pictureURL: photoURL, createdPosts:[], likedPosts:[], followedUsers:[], followers:[])
+        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: df.string(from: self.finalProfile.dateOfBirth), pictureURL: photoURL, createdPosts:[], likedPosts:[], followedUsers:[], followers:[])
         
         print("raw dob \(self.finalProfile.dateOfBirth)")
         print("stringified dob  \(df.string(from: self.finalProfile.dateOfBirth))")
@@ -114,7 +115,7 @@ struct WriteableUser: Codable {
     let email: String
     let bio: String
     let interests: [String] //followed Topics
-    let dob: Date
+    let dob: String
     let pictureURL: String
     var createdPosts: [String]
     var likedPosts: [String] // stores postId's

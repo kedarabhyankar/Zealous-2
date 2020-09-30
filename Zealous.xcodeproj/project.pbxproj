@@ -14,6 +14,7 @@
 		BC44BB73251A99D300C12823 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB72251A99D300C12823 /* Profile.swift */; };
 		BC44BB75251A99EF00C12823 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB74251A99EF00C12823 /* Topic.swift */; };
 		BC44BB77251A9A0800C12823 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB76251A9A0800C12823 /* User.swift */; };
+		BC44BB8625253B9000C12823 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB8525253B9000C12823 /* FollowingViewController.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
 		C66B88DF25242A97006BAD5F /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88DE25242A97006BAD5F /* CreatePost.storyboard */; };
@@ -70,6 +71,7 @@
 		BC44BB72251A99D300C12823 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BC44BB74251A99EF00C12823 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		BC44BB76251A9A0800C12823 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BC44BB8525253B9000C12823 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C66B88DE25242A97006BAD5F /* CreatePost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreatePost.storyboard; path = "../../../Documents/Zealous-2/Zealous/CreatePost.storyboard"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				C66B88E125242AC7006BAD5F /* FeedViewCell.swift */,
 				C66B88E225242AC8006BAD5F /* Followers.storyboard */,
 				C66B88E025242AC7006BAD5F /* Following.storyboard */,
+				BC44BB8525253B9000C12823 /* FollowingViewController.swift */,
 				C66B88DE25242A97006BAD5F /* CreatePost.storyboard */,
 				E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */,
 				C66B88C025197F1C006BAD5F /* Login.storyboard */,
@@ -494,6 +497,7 @@
 				E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */,
 				BC44BB73251A99D300C12823 /* Profile.swift in Sources */,
 				E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */,
+				BC44BB8625253B9000C12823 /* FollowingViewController.swift in Sources */,
 				E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */,
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
