@@ -11,6 +11,7 @@
 //
 
 
+
 import UIKit
 
 import SwiftUI
@@ -26,6 +27,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 import FirebaseAuth
+
 
 
 class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate {
@@ -48,11 +50,15 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
     @IBOutlet weak var ConfirmPassword: UITextField!
 
+    
+
     var db: Firestore!
 
     var storage: Storage!
 
     var userID = Auth.auth().currentUser!.uid
+
+    var userEmail = Auth.auth().currentUser?.email
 
     //var userID = UUID().uuidString
 
@@ -78,6 +84,8 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
         userID = Auth.auth().currentUser!.uid
 
+        userEmail = Auth.auth().currentUser?.email
+
     }
 
     
@@ -92,7 +100,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
         if (fname != "") {
 
-        db.collection("users").document("iF32TJTlPALTtg1o7MiE").updateData(["firstName":fname ])
+        db.collection("users").document(userEmail!).updateData(["firstName":fname ])
 
         ChangeFName.text = ""
 
@@ -102,7 +110,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
         if (lname != "") {
 
-        db.collection("users").document("iF32TJTlPALTtg1o7MiE").updateData(["lastName": lname])
+        db.collection("users").document(userEmail!).updateData(["lastName": lname])
 
         ChangeLName.text = ""
 
@@ -112,7 +120,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
         if (changeBio != "") {
 
-        db.collection("users").document("iF32TJTlPALTtg1o7MiE").updateData(["bio": changeBio])
+        db.collection("users").document(userEmail!).updateData(["bio": changeBio])
 
         ChangeBio.text = ""
 
@@ -122,7 +130,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
         if (email != "") {
 
-            db.collection("users").document("iF32TJTlPALTtg1o7MiE").updateData(["email": email])
+            db.collection("users").document(userEmail!).updateData(["email": email])
 
             Auth.auth().currentUser?.updateEmail(to: email) { (error) in
 
@@ -146,7 +154,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
         if (username != "") {
 
-            db.collection("users").document(userID).updateData(["profile.username": username])
+            db.collection("users").document(userEmail!).updateData(["profile.username": username])
 
             ChangeUsername.text = ""
 
@@ -296,71 +304,10 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
         
 
-      /*  if (newPass == confirmPass && newPass != "" && confirmPass != "" && reauth == true) {
-
-            let regex = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[A-Z]).{8,}$")
-
-            if (regex.evaluate(with: newPass) == false) {
-
-                let alertController = UIAlertController(title: "Error", message: "Please Enter Valid Password", preferredStyle: .alert)
-
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-
-                alertController.addAction(defaultAction)
-
-                present(alertController, animated: true, completion: nil)
-
-                NewPassword.text = ""
-
-                ConfirmPassword.text = ""
-
-                //return
-
-            }
-
-            Auth.auth().currentUser?.updatePassword(to: newPass) { (error) in
-
-                    if let error = error {
-
-                        print("Can't update password, error:  \(error)")
-
-                    } else {
-
-                        self.NewPassword.text = ""
-
-                        self.ConfirmPassword.text = ""
-
-                        print("Updated password sucess")
-
-                        return
-
-                    }
-
-            }
-
-        
-
-        } else if ( newPass != confirmPass) {
-
-            let alertController = UIAlertController(title: "Error", message: "Make Sure Passwords Match", preferredStyle: .alert)
-
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-
-            alertController.addAction(defaultAction)
-
-            present(alertController, animated: true, completion: nil)
-
-            NewPassword.text = ""
-
-            ConfirmPassword.text = ""
-
-            //return
-
-        } */
-
         
 
     }
+
 
 
     
@@ -371,9 +318,15 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
                try Auth.auth().signOut()
 
-               self.performSegue(withIdentifier: "toMain", sender: self)
+               //let storyboard = UIStoryboard(name:"Main", bundle:nil )
 
-               }
+               //let vc = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
+
+               //present(vc, animated: true, completion: nil)
+
+                self.performSegue(withIdentifier: "toMain", sender: self)
+
+         }
 
                catch let error as NSError
 
@@ -405,6 +358,8 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
             let user = Auth.auth().currentUser
 
+            print("current user email: " + (user?.email)!)
+
             self.db.collection("users").document((user?.email)!).delete()
 
             user?.delete { error in
@@ -415,13 +370,20 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
 
                 } else {
 
-                     self.performSegue(withIdentifier: "toMain", sender: self)
+                    //let storyboard = UIStoryboard(name:"Main", bundle: nil)
+
+                    //let vc = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
+
+                    self.performSegue(withIdentifier: "toMain", sender: self)
+
+                    //self.present(vc, animated: true, completion: nil)
 
                 }
 
             }
 
         }))
+
 
 
          deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -433,30 +395,19 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
            }))
 
 
+
          present(deleteAlert, animated: true, completion: nil)
 
-    }
-
-    
-
-    
-
-
-    
-
-    
-
-
-/* struct ProfileSettingsViewController_Previews: PreviewProvider {
-
-    static var previews: some View {
-
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        
 
     }
 
-}*/
+    
+
+    
 
     
 
 }
+
+
