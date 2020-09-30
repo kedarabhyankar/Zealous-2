@@ -467,6 +467,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="LogoutUser:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="Zzk-ed-Cfj"/>
+                                                        <segue destination="RTc-qO-xEX" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="U4K-gi-0K4"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -496,6 +497,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="DeleteUser:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="bti-cY-S4J"/>
+                                                        <segue destination="RTc-qO-xEX" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="3P6-MY-hAi"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -526,6 +528,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vep-mN-Ow4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2040.5797101449277" y="-115.84821428571428"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="MVg-5b-lYF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="RTc-qO-xEX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugs-li-p55" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2599" y="-152"/>
         </scene>
         <!--CreatePost-->
         <scene sceneID="7jZ-cN-VOn">
@@ -568,6 +578,9 @@
             <point key="canvasLocation" x="242" y="270"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="U4K-gi-0K4"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="arrow.up.circle.fill" catalog="system" width="128" height="121"/>
