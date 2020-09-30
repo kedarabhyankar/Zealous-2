@@ -62,7 +62,7 @@ class BioAndProfileViewController: UIViewController {
         
         print("photoURL is \(photoURL)")
         
-        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: self.finalProfile.dateOfBirth, pictureURL: photoURL)
+        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: self.finalProfile.dateOfBirth, pictureURL: photoURL, createdPosts:[], likedPosts:[], followedUsers:[], followers:[])
         
         print("raw dob \(self.finalProfile.dateOfBirth)")
         print("stringified dob  \(df.string(from: self.finalProfile.dateOfBirth))")
@@ -113,7 +113,11 @@ struct WriteableUser: Codable {
     let username: String
     let email: String
     let bio: String
-    let interests: [String]
+    let interests: [String] //followed Topics
     let dob: Date
     let pictureURL: String
+    var createdPosts: [String]
+    var likedPosts: [String] // stores postId's
+    var followedUsers: [String] // stores creatorId's
+    var followers: [String] // stores creatorId's
 }
