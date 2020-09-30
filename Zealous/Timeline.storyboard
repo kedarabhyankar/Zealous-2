@@ -117,13 +117,13 @@
                                             <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="CEu-xW-Jq3">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="CbH-KE-SYd" kind="show" id="PH9-8j-0Zw"/>
+                                                    <segue destination="CbH-KE-SYd" kind="presentation" modalPresentationStyle="fullScreen" id="PH9-8j-0Zw"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="SGo-9p-w2a">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="ReN-Bi-5U9" kind="show" id="Apg-8c-7sz"/>
+                                                    <segue destination="ReN-Bi-5U9" kind="presentation" modalPresentationStyle="fullScreen" id="Apg-8c-7sz"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -134,7 +134,7 @@
                                             <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="09v-5u-OYJ">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="H5q-65-2Q7" kind="show" id="adh-bP-7Y2"/>
+                                                    <segue destination="H5q-65-2Q7" kind="presentation" modalPresentationStyle="fullScreen" id="adh-bP-7Y2"/>
                                                 </connections>
                                             </barButtonItem>
                                         </rightBarButtonItems>
@@ -155,7 +155,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8sQ-gE-S9o" kind="show" id="6Rl-UN-ifw"/>
+                                    <segue destination="8sQ-gE-S9o" kind="presentation" modalPresentationStyle="fullScreen" id="6Rl-UN-ifw"/>
                                 </connections>
                             </button>
                         </subviews>

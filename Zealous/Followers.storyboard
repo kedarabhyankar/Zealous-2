@@ -67,7 +67,7 @@
                                     <navigationItem id="LQF-eT-nMA">
                                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="RS2-rl-nqT">
                                             <connections>
-                                                <segue destination="00V-et-NXz" kind="show" id="ho9-sj-3rw"/>
+                                                <segue destination="00V-et-NXz" kind="presentation" modalPresentationStyle="fullScreen" id="ho9-sj-3rw"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
