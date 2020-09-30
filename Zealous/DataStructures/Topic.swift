@@ -6,17 +6,16 @@
 //
 import Foundation
 
-struct Topic {
+struct Topic: Codable {
     var id: String
     var title: String
     var description: String
-    var posts: [Post]
-    var followers: [User]
+    var posts: [String]
+    var followers: [String]
     var numFollowers: Int
     
     func addPost (postId: String) {
         // update topic in firebase
-        
     }
 
     func removePost (postId: String) {
