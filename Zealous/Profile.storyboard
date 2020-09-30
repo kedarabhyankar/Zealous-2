@@ -271,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="1507" y="-216"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Profile Settings View Controller-->
         <scene sceneID="vyz-4o-RJj">
             <objects>
-                <tableViewController id="1Nb-ni-hrF" sceneMemberID="viewController">
+                <tableViewController id="1Nb-ni-hrF" customClass="ProfileSettingsViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bpd-mK-mQ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,6 +359,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="SubmitUserSettings:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="hbR-0r-aI8"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -433,6 +436,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="SubmitPassword:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="01d-Fe-TtP"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -459,6 +465,9 @@
                                                     <state key="normal" title="Logout">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="LogoutUser:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="pJj-6n-wSb"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -485,6 +494,9 @@
                                                     <state key="normal" title="Delete">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="DeleteUser:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="hUb-6p-aZi"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -500,10 +512,31 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vh8-16-A6W"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ChangeBio" destination="d89-Gk-1lI" id="Xmc-Lt-he6"/>
+                        <outlet property="ChangeEmail" destination="yRx-N1-ng6" id="jk1-IS-tmb"/>
+                        <outlet property="ChangeFName" destination="UJG-dC-vPB" id="xmh-Qk-kTv"/>
+                        <outlet property="ChangeLName" destination="WUE-QM-74v" id="EzC-ga-9qt"/>
+                        <outlet property="ChangeUsername" destination="4fE-wh-TW3" id="HMB-ED-Wfe"/>
+                        <outlet property="ConfirmPassword" destination="jyj-98-78e" id="vLe-fd-2g2"/>
+                        <outlet property="CurrPassword" destination="W4X-bg-oag" id="gsc-gu-LHu"/>
+                        <outlet property="NewPassword" destination="dEU-qQ-hM5" id="8PP-WQ-pjG"/>
+                        <segue destination="Zrn-fx-gJr" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="5Wd-Gl-D1j"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vep-mN-Ow4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2040.5797101449277" y="-115.84821428571428"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="6Fq-Vv-vQ6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="Zrn-fx-gJr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2LK-Tj-Ire"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y4M-tX-NgZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2643" y="-163"/>
         </scene>
         <!--CreatePost-->
         <scene sceneID="7jZ-cN-VOn">
