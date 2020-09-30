@@ -324,3 +324,5 @@ extension WriteableUser {
 //        }
 //    }
 }
+
+extension Timestamp: TimestampType {}
