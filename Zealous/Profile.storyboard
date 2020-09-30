@@ -304,7 +304,7 @@
                                         <barButtonItem width="6" systemItem="done" id="pVE-dc-whr">
                                             <inset key="landscapeImageInsets" minX="200" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <connections>
-                                                <segue destination="xyG-1Z-uVu" kind="show" id="GMd-at-t21"/>
+                                                <segue destination="xyG-1Z-uVu" kind="presentation" modalPresentationStyle="fullScreen" id="GMd-at-t21"/>
                                             </connections>
                                         </barButtonItem>
                                     </items>
