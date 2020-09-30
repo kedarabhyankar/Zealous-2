@@ -14,15 +14,11 @@ import FirebaseAuth
 class User {
     var profile: Profile
     var id: String
-    var createdPosts: [String]
-    var likedPosts: [String] // stores postId's
-    var followedUsers: [String] // stores creatorId's
-    var followedTopics: [String] // stores topicId's
-    var followers: [String] // stores creatorId's
-    var FirstName: String?
-    var LastName: String?
-    var PhoneNumber: String?
-    
+    var createdPosts: [Post]
+    var likedPosts: [Post] // stores postId's
+    var followedUsers: [User] // stores creatorId's
+    var followedTopics: [Topic] // stores topicId's
+    var followers: [User] // stores creatorId's
     var numFollowers: Int {
         return followedUsers.count
     }
@@ -31,7 +27,6 @@ class User {
     }
     
     func follow (user: User) {
-        
         // increase follower count of the user
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(user.id)
@@ -240,19 +235,6 @@ class User {
             } else {
                 print("Document successfully updated")
             }
-        }
-    }
-    
-    func register() {
-       // Auth.auth().createUser(withEmail: self.profile.email, password: self.profile.password) { authResult, error in
-            
-       //}
-    }
-    
-    func signIn(){
-        Auth.auth().signIn(withEmail: "", password: "") { [weak self] authResult, error in
-            guard self != nil else { return }
-          // ...
         }
     }
     
