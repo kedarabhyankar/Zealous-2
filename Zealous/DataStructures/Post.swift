@@ -32,6 +32,7 @@ struct Post {
         self.init(topic: topic, title: title, caption: caption)
         self.creatorId = creatorId
     }
+    
     init(topic: String, title: String, caption: String, creatorId: String, img: UIImage) {
         self.init(topic: topic, title: title, caption: caption, creatorId: creatorId)
         self.img = img
