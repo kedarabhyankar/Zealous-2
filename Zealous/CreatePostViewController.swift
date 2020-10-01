@@ -68,12 +68,14 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         
         //need to check if a topic exists in the database, if it does not, need to create a new topic
         db.collection("topics").whereField("topicName", isEqualTo: postTopic).getDocuments() { (QuerySnapshot, err) in
+             let postID = UUID().uuidString
             if QuerySnapshot?.isEmpty == true {
                 //topic does not exist, so create a new topic
                 print("Topic does not exist")
                 self.db.collection("topics").addDocument(data: ["topicName": postTopic,  "numFollowers": followerArray.count  ])
                 //create post with the new topic
-                self.db.collection("posts").addDocument(data: ["topic": postTopic, "creatorId" : self.userID, "title" : postTitle, "caption" : postCaption, "img" : postImage ?? "", "likes" : numLikes, "timeStamp" : FieldValue.serverTimestamp()])
+                self.db.collection("posts").document(postID).setData(["topic": postTopic, "postId" : postID, "creatorId" : Auth.auth().currentUser?.email! ?? self.userID, "title" : postTitle, "caption" : postCaption, "img" : postImage ?? "", "likes" : numLikes, "timeStamp" : FieldValue.serverTimestamp()])
+               // self.db.collection("posts").addDocument(data: ["topic": postTopic, "creatorId" : Auth.auth().currentUser?.email! ?? self.userID, "title" : postTitle, "caption" : postCaption, "img" : postImage ?? "", "likes" : numLikes, "timeStamp" : FieldValue.serverTimestamp()])
                 self.PostTitle.text = ""
                 self.PostTopic.text = ""
                 self.PostCaption.text = ""
@@ -82,7 +84,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             else {
                 //topic does exist, so add post to that topic's post array and add it to the database
                 print("Topic does exist")
-                 self.db.collection("posts").addDocument(data: ["topic": postTopic, "creatorId" : self.userID, "title" : postTitle, "caption" : postCaption, "img" : postImage ?? "", "likes" : numLikes, "timeStamp" : FieldValue.serverTimestamp()])
+                self.db.collection("posts").document(postID).setData(["topic": postTopic,"postId" : postID ,"creatorId" : Auth.auth().currentUser?.email! ?? self.userID, "title" : postTitle, "caption" : postCaption, "img" : postImage ?? "", "likes" : numLikes, "timeStamp" : FieldValue.serverTimestamp()])
                 self.PostTitle.text = ""
                 self.PostTopic.text = ""
                 self.PostCaption.text = ""
