@@ -32,7 +32,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcY-Qv-6eu">
-                                            <rect key="frame" x="220" y="225" width="140" height="30"/>
+                                            <rect key="frame" x="263" y="225" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" name="AccentColor"/>
                                             <state key="normal" title="Followers">
@@ -71,7 +71,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="903-gA-9h4">
-                                            <rect key="frame" x="17" y="225" width="140" height="30"/>
+                                            <rect key="frame" x="17" y="225" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" name="AccentColor"/>
                                             <state key="normal" title="Following">
@@ -98,6 +98,17 @@
                                             </state>
                                             <connections>
                                                 <segue destination="1Nb-ni-hrF" kind="presentation" modalPresentationStyle="fullScreen" id="D8M-Pr-x9u"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qiq-ra-PvG">
+                                            <rect key="frame" x="137" y="225" width="100" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" name="AccentColor"/>
+                                            <state key="normal" title="Topics">
+                                                <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="fDi-d5-vIA" kind="presentation" modalPresentationStyle="fullScreen" id="JiO-5z-cf6"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -260,6 +271,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSw-x8-Eaz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="397" y="-231"/>
+        </scene>
+        <!--Topics-->
+        <scene sceneID="Vhn-5N-gpR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Topics" id="fDi-d5-vIA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1nQ-f5-pF7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ztq-5J-ggy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1489" y="-294"/>
         </scene>
         <!--Followers-->
         <scene sceneID="8c8-Cp-nYC">
