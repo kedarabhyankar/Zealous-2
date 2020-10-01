@@ -119,6 +119,9 @@ extension WriteableUser {
         // append user to followedUsers then write data to firestore
         if(self.email == email) {
             print("trying to follow self")
+        
+        if self.followedUsers.contains(email) {
+            print("you already follow this user")
             return
         }
         self.followedUsers.append(email)
@@ -158,7 +161,66 @@ extension WriteableUser {
                 print("Document does not exist")
             }
         }
-
+    }
+    
+    mutating func unfollow (email: String) {
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        
+        // append user to followedUsers then write data to firestore
+        
+        if !self.followedUsers.contains(email) {
+            print("you are not following this user")
+            return
+        }
+        // delete user from following array
+        for i in 0..<self.followedUsers.count {
+            if self.followedUsers[i] == email {
+                self.followedUsers.remove(at: i)
+                break
+            }
+        }
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // update the followers array, then write the user
+        // to the db
+        let thisEmail = self.email
+        
+        userRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                print("Model: \(model)")
+                for i in 0..<model.followers.count {
+                    if model.followers[i] == thisEmail {
+                        model.followers.remove(at: i)
+                        break
+                    }
+                }
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("users").document(email).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
     
     func createPost (post: Post) {
