@@ -14,8 +14,9 @@ struct Topic: Codable {
     var followers: [String]
     var numFollowers: Int
     
-    func addPost (postId: String) {
+    mutating func addPost (post: Post) {
         // update topic in firebase
+        self.posts.append(post.postId)
     }
 
     func removePost (postId: String) {

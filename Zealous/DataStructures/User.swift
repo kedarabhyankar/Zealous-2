@@ -44,8 +44,13 @@ import CodableFirebase
 //}
 
 extension WriteableUser {
+    
     func getFollowedTopics(topics: [String]) -> [Topic] {
         return []
+    }
+    
+    mutating func addCreatedPost(post: Post) {
+        self.createdPosts.append(post.postId)
     }
     
     func getFollowedUsers(userIds: [String]) -> [User] {

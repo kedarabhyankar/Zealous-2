@@ -109,14 +109,14 @@ class BioAndProfileViewController: UIViewController {
 
 
 struct WriteableUser: Codable {
-    let firstName: String
-    let lastName: String
-    let username: String
-    let email: String
-    let bio: String
-    let interests: [String] //followed Topics
+    var firstName: String
+    var lastName: String
+    var username: String
+    var email: String
+    var bio: String
+    var interests: [String] //followed Topics
     let dob: String
-    let pictureURL: String
+    var pictureURL: String
     var createdPosts: [String]
     var likedPosts: [String] // stores postId's
     var followedUsers: [String] // stores creatorId's
