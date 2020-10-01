@@ -79,7 +79,7 @@
                                     <navigationItem id="XAJ-jA-CtD">
                                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="sWS-Tz-Sdw">
                                             <connections>
-                                                <segue destination="txm-Ra-DzG" kind="show" id="fmw-UU-iQc"/>
+                                                <segue destination="txm-Ra-DzG" kind="presentation" modalPresentationStyle="fullScreen" id="fmw-UU-iQc"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
