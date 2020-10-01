@@ -17,6 +17,7 @@
 		A6904D6925255E6000E49593 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6225255E5F00E49593 /* Timeline.storyboard */; };
 		A6904D6A25255E6000E49593 /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6325255E6000E49593 /* Followers.storyboard */; };
 		A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6425255E6000E49593 /* UserPostCell.swift */; };
+		A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6C2525638A00E49593 /* CreatePostViewController.swift */; };
 		A9D3E87F64E4C2F487FF9A6B /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910FCEAEE5093DA11B206809 /* Pods_Zealous.framework */; };
 		BC44BB71251A99A900C12823 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB70251A99A900C12823 /* Post.swift */; };
 		BC44BB73251A99D300C12823 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB72251A99D300C12823 /* Profile.swift */; };
@@ -75,6 +76,7 @@
 		A6904D6225255E5F00E49593 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		A6904D6325255E6000E49593 /* Followers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
 		A6904D6425255E6000E49593 /* UserPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostCell.swift; sourceTree = "<group>"; };
+		A6904D6C2525638A00E49593 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		BC26D37FBF28C2E3E7C7FD25 /* Pods_ZealousTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZealousTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC44BB70251A99A900C12823 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BC44BB72251A99D300C12823 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				BC44BB6F251A999300C12823 /* DataStructures */,
 				A6904D5C25255E5000E49593 /* CreatePost.storyboard */,
 				A6904D6025255E5F00E49593 /* FeedViewCell.swift */,
+				A6904D6C2525638A00E49593 /* CreatePostViewController.swift */,
 				A6904D6325255E6000E49593 /* Followers.storyboard */,
 				A6904D5F25255E5F00E49593 /* Following.storyboard */,
 				A6904D5E25255E5F00E49593 /* Profile.storyboard */,
@@ -508,6 +511,7 @@
 				E40D117C252229E300D74DE6 /* VerifyEmailViewController.swift in Sources */,
 				A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */,
 				BC44BB77251A9A0800C12823 /* User.swift in Sources */,
+				A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */,
 				E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
