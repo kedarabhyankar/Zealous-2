@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		24D515571376FD7F0E795614 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02925BA5258E2B960F2A020 /* Pods_Zealous_ZealousUITests.framework */; };
 		A6151C1F965C6BAC16101FCA /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC26D37FBF28C2E3E7C7FD25 /* Pods_ZealousTests.framework */; };
+		A6904D5D25255E5000E49593 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5C25255E5000E49593 /* CreatePost.storyboard */; };
+		A6904D6525255E6000E49593 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5E25255E5F00E49593 /* Profile.storyboard */; };
+		A6904D6625255E6000E49593 /* Following.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5F25255E5F00E49593 /* Following.storyboard */; };
+		A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6025255E5F00E49593 /* FeedViewCell.swift */; };
+		A6904D6825255E6000E49593 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6125255E5F00E49593 /* Search.storyboard */; };
+		A6904D6925255E6000E49593 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6225255E5F00E49593 /* Timeline.storyboard */; };
+		A6904D6A25255E6000E49593 /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6325255E6000E49593 /* Followers.storyboard */; };
+		A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6425255E6000E49593 /* UserPostCell.swift */; };
 		A9D3E87F64E4C2F487FF9A6B /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910FCEAEE5093DA11B206809 /* Pods_Zealous.framework */; };
 		BC44BB71251A99A900C12823 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB70251A99A900C12823 /* Post.swift */; };
 		BC44BB73251A99D300C12823 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB72251A99D300C12823 /* Profile.swift */; };
@@ -17,14 +25,6 @@
 		BC44BB8625253B9000C12823 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB8525253B9000C12823 /* FollowingViewController.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
-		C66B88DF25242A97006BAD5F /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88DE25242A97006BAD5F /* CreatePost.storyboard */; };
-		C66B88E325242AC8006BAD5F /* Following.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E025242AC7006BAD5F /* Following.storyboard */; };
-		C66B88E425242AC8006BAD5F /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88E125242AC7006BAD5F /* FeedViewCell.swift */; };
-		C66B88E525242AC8006BAD5F /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E225242AC8006BAD5F /* Followers.storyboard */; };
-		C66B88E725242AE2006BAD5F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E625242AE2006BAD5F /* Profile.storyboard */; };
-		C66B88E925242AF9006BAD5F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E825242AF8006BAD5F /* Search.storyboard */; };
-		C66B88EB25242B1B006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88EA25242B1B006BAD5F /* Timeline.storyboard */; };
-		C66B88ED25242B55006BAD5F /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EC25242B55006BAD5F /* UserPostCell.swift */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
 		E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0B251B96BD00486E9B /* SignUpViewController.swift */; };
 		E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0D251C010400486E9B /* DOBViewController.swift */; };
@@ -67,6 +67,14 @@
 		5E006D7FDD1DEF1BB35D9B36 /* Pods-ZealousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.debug.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.debug.xcconfig"; sourceTree = "<group>"; };
 		604083D4D2170BA9F8631241 /* Pods-Zealous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.debug.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.debug.xcconfig"; sourceTree = "<group>"; };
 		910FCEAEE5093DA11B206809 /* Pods_Zealous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6904D5C25255E5000E49593 /* CreatePost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
+		A6904D5E25255E5F00E49593 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		A6904D5F25255E5F00E49593 /* Following.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Following.storyboard; sourceTree = "<group>"; };
+		A6904D6025255E5F00E49593 /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
+		A6904D6125255E5F00E49593 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		A6904D6225255E5F00E49593 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		A6904D6325255E6000E49593 /* Followers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
+		A6904D6425255E6000E49593 /* UserPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostCell.swift; sourceTree = "<group>"; };
 		BC26D37FBF28C2E3E7C7FD25 /* Pods_ZealousTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZealousTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC44BB70251A99A900C12823 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BC44BB72251A99D300C12823 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -75,14 +83,6 @@
 		BC44BB8525253B9000C12823 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		C66B88DE25242A97006BAD5F /* CreatePost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CreatePost.storyboard; path = "../../../Documents/Zealous-2/Zealous/CreatePost.storyboard"; sourceTree = "<group>"; };
-		C66B88E025242AC7006BAD5F /* Following.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Following.storyboard; path = "../../../Documents/Zealous-2/Zealous/Following.storyboard"; sourceTree = "<group>"; };
-		C66B88E125242AC7006BAD5F /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewCell.swift; path = "../../../Documents/Zealous-2/Zealous/FeedViewCell.swift"; sourceTree = "<group>"; };
-		C66B88E225242AC8006BAD5F /* Followers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Followers.storyboard; path = "../../../Documents/Zealous-2/Zealous/Followers.storyboard"; sourceTree = "<group>"; };
-		C66B88E625242AE2006BAD5F /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = "../../../Documents/Zealous-2/Zealous/Profile.storyboard"; sourceTree = "<group>"; };
-		C66B88E825242AF8006BAD5F /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Search.storyboard; path = "../../../Documents/Zealous-2/Zealous/Search.storyboard"; sourceTree = "<group>"; };
-		C66B88EA25242B1B006BAD5F /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Timeline.storyboard; path = "../../../Documents/Zealous-2/Zealous/Timeline.storyboard"; sourceTree = "<group>"; };
-		C66B88EC25242B55006BAD5F /* UserPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPostCell.swift; path = "../../../Documents/Zealous-2/Zealous/UserPostCell.swift"; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		E4039C0B251B96BD00486E9B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E4039C0D251C010400486E9B /* DOBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBViewController.swift; sourceTree = "<group>"; };
@@ -197,15 +197,15 @@
 			isa = PBXGroup;
 			children = (
 				BC44BB6F251A999300C12823 /* DataStructures */,
-				C66B88EC25242B55006BAD5F /* UserPostCell.swift */,
-				C66B88EA25242B1B006BAD5F /* Timeline.storyboard */,
-				C66B88E825242AF8006BAD5F /* Search.storyboard */,
-				C66B88E625242AE2006BAD5F /* Profile.storyboard */,
-				C66B88E125242AC7006BAD5F /* FeedViewCell.swift */,
-				C66B88E225242AC8006BAD5F /* Followers.storyboard */,
-				C66B88E025242AC7006BAD5F /* Following.storyboard */,
+				A6904D5C25255E5000E49593 /* CreatePost.storyboard */,
+				A6904D6025255E5F00E49593 /* FeedViewCell.swift */,
+				A6904D6325255E6000E49593 /* Followers.storyboard */,
+				A6904D5F25255E5F00E49593 /* Following.storyboard */,
+				A6904D5E25255E5F00E49593 /* Profile.storyboard */,
+				A6904D6125255E5F00E49593 /* Search.storyboard */,
+				A6904D6225255E5F00E49593 /* Timeline.storyboard */,
+				A6904D6425255E6000E49593 /* UserPostCell.swift */,
 				BC44BB8525253B9000C12823 /* FollowingViewController.swift */,
-				C66B88DE25242A97006BAD5F /* CreatePost.storyboard */,
 				E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */,
 				C66B88C025197F1C006BAD5F /* Login.storyboard */,
 				C66B88BF25197F1C006BAD5F /* SignUp.storyboard */,
@@ -353,17 +353,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C66B88E525242AC8006BAD5F /* Followers.storyboard in Resources */,
-				C66B88E725242AE2006BAD5F /* Profile.storyboard in Resources */,
+				A6904D5D25255E5000E49593 /* CreatePost.storyboard in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
 				C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */,
 				C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */,
-				C66B88DF25242A97006BAD5F /* CreatePost.storyboard in Resources */,
-				C66B88E325242AC8006BAD5F /* Following.storyboard in Resources */,
-				C66B88E925242AF9006BAD5F /* Search.storyboard in Resources */,
-				C66B88EB25242B1B006BAD5F /* Timeline.storyboard in Resources */,
+				A6904D6625255E6000E49593 /* Following.storyboard in Resources */,
+				A6904D6525255E6000E49593 /* Profile.storyboard in Resources */,
+				A6904D6925255E6000E49593 /* Timeline.storyboard in Resources */,
+				A6904D6825255E6000E49593 /* Search.storyboard in Resources */,
+				A6904D6A25255E6000E49593 /* Followers.storyboard in Resources */,
 				E4415AC9251CE629009A5EFA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,8 +494,8 @@
 			files = (
 				E4170BE3251D564000C5C0E7 /* LoginViewController.swift in Sources */,
 				E44D300225196525000FB63B /* ViewController.swift in Sources */,
+				A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */,
 				BC44BB75251A99EF00C12823 /* Topic.swift in Sources */,
-				C66B88ED25242B55006BAD5F /* UserPostCell.swift in Sources */,
 				E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */,
 				E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */,
 				BC44BB73251A99D300C12823 /* Profile.swift in Sources */,
@@ -506,8 +506,8 @@
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
 				E40D117C252229E300D74DE6 /* VerifyEmailViewController.swift in Sources */,
+				A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */,
 				BC44BB77251A9A0800C12823 /* User.swift in Sources */,
-				C66B88E425242AC8006BAD5F /* FeedViewCell.swift in Sources */,
 				E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
