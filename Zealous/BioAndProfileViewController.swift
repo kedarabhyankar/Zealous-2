@@ -38,7 +38,7 @@ class BioAndProfileViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         defaultImage = UIImage(systemName: "person.crop.circle") //sf symbols default image
         // Do any additional setup after loading the view.
-        df.locale = Locale(identifier: "en_US")
+        df.dateStyle = .short
     }
     
     //Calls this function when the tap is recognized.

@@ -27,7 +27,10 @@ struct Post: Codable {
         self.imgURL = nil
         self.creatorId = ""
         self.likes = 0
-        self.timestamp = DateFormatter().string(from: Date.init(timeIntervalSinceNow: 0))
+        let today = Date()
+        let formatter1 = DateFormatter()
+        formatter1.dateStyle = .short
+        self.timestamp = formatter1.string(from: today)
     }
     
     init(topic: String, title: String, caption: String, creatorId: String) {
