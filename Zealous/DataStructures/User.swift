@@ -90,8 +90,7 @@ extension WriteableUser {
         return likedPosts
     }
     
-    static func getCurrentUser() -> WriteableUser? {
-        var currUser: WriteableUser? = nil
+    static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
         let auth = Auth.auth()
         let user = auth.currentUser
         guard let email = user?.email else {
@@ -106,161 +105,136 @@ extension WriteableUser {
             if let document = document {
                 let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
                 print("Model: \(model)")
-                currUser = model
+                completion(model)
             } else {
                 print("Document does not exist")
             }
         }
-        return currUser
     }
     
-    func follow (email: String) {
-        // increase follower count of the user
+    mutating func follow (email: String) {
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(email)
-        let currentUser = db.collection("users").document(self.email)
         
-        db.runTransaction({ (transaction, errorPointer) -> Any? in
-            let sfDocument: DocumentSnapshot
-            let currentUserDocument: DocumentSnapshot
-            do {
-                try sfDocument = transaction.getDocument(userRef)
-                try currentUserDocument = transaction.getDocument(currentUser)
-            } catch let fetchError as NSError {
-                errorPointer?.pointee = fetchError
-                return nil
-            }
-            
-            guard var followedUsers = currentUserDocument.data()?["followedUsers"] as? [String],
-                var followers = sfDocument.data()?["followers"] as? [String]
-                else {
-                    let error = NSError(
-                        domain: "AppErrorDomain",
-                        code: -1,
-                        userInfo: [
-                            NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(sfDocument)"
-                        ]
-                    )
-                    errorPointer?.pointee = error
-                    return nil
-            }
-            
-            //update followedUsers
-            followedUsers.append(email)
-            followers.append(self.email)
-            // update follower and following count
-            transaction.updateData(["numFollowers": followers.count], forDocument: userRef)
-            transaction.updateData(["followers": followers], forDocument: userRef)
-            
-            transaction.updateData(["numFollowing": followedUsers.count], forDocument: currentUser)
-            transaction.updateData(["followedUsers": followedUsers], forDocument: currentUser)
-            return nil
-        }) { (object, error) in
-            if let error = error {
-                print("Transaction failed: \(error)")
+        // append user to followedUsers then write data to firestore
+        
+        if self.followedUsers.contains(email) {
+            print("you already follow this user")
+            return
+        }
+        self.followedUsers.append(email)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
             } else {
-                print("Transaction successfully committed!")
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // get the user that was followed and update the followers array, then write the user
+        // to the db
+        let thisEmail = self.email
+        
+        userRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                print("Model: \(model)")
+                model.followers.append(thisEmail)
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("users").document(email).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
             }
         }
     }
     
-//    func createPost (post: Post) {
-//        let db = Firestore.firestore()
-//
-//        if post.imgURL == "" {
-//            db.collection("posts")
-//                .document(post.postId)
-//                .setData(
-//                    ["caption":post.caption,
-//                     "comments":post.comments,
-//                     "creatorID":self.email,
-//                     "imgURL":"",
-//                     "postId":post.postId,
-//                     "title":post.title,
-//                     "topic":post.topic]
-//            )
-//        }
-//        else {
-//            let img = UIImage(named: post.imgURL ?? "")!.jpegData(compressionQuality: 1.0)
-//
-//            guard let imgData = img else {
-//                print("img was nil")
-//                return
-//            }
-//
-//            let storageRef = Storage.storage().reference()
-//            let imagesRef = storageRef.child("posts")
-//            let fileName = UUID().uuidString
-//            let postRef = imagesRef.child(fileName)
-//
-//            postRef.putData(imgData, metadata: nil) { metadata, err in
-//                if let err = err {
-//                    print(err.localizedDescription)
-//                    return
-//                }
-//
-//                postRef.downloadURL(completion: { url, err in
-//                    if let err = err {
-//                        print(err.localizedDescription)
-//                        return
-//                    }
-//                    guard let url = url else {
-//                        print("An error occurred when posting an image 3 ")
-//                        return
-//                    }
-//
-//                    db.collection("post")
-//                        .document(post.postId)
-//                        .setData(
-//                            ["caption": post.caption,
-//                             "postId": post.postId,
-//                             "img": url.absoluteString,
-//                             "likes": 0,
-//                             "comments":post.comments,
-//                             "creatorID":self.email,
-//                             "title":post.title,
-//                             "topic":post.topic]
-//                    )
-//                })
-//            }
-//
-//            // add the post to the user's createdPosts
-//            let currentUser = db.collection("users").document(Auth.auth().currentUser!.email!)
-//
-//            db.runTransaction({ (transaction, errorPointer) -> Any? in
-//                let currentUserDocument: DocumentSnapshot
-//                do {
-//                    try currentUserDocument = transaction.getDocument(currentUser)
-//                } catch let fetchError as NSError {
-//                    errorPointer?.pointee = fetchError
-//                    return nil
-//                }
-//
-//                guard var posts = currentUserDocument.data()?["createdPosts"] as? [String]                            else {
-//                    let error = NSError(
-//                        domain: "AppErrorDomain",
-//                        code: -1,
-//                        userInfo: [
-//                            NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(currentUserDocument)"
-//                        ]
-//                    )
-//                    errorPointer?.pointee = error
-//                    return nil
-//                }
-//
-//                // update follower and following count
-//                posts.append(post.postId)
-//                transaction.updateData(["createdPosts": posts], forDocument: currentUser)
-//                return nil
-//            }) { (object, error) in
-//                if let error = error {
-//                    print("Transaction failed: \(error)")
-//                } else {
-//                    print("Transaction successfully committed!")
-//                }
-//            }
-//        }
-//    }
+    mutating func unfollow (email: String) {
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        
+        // append user to followedUsers then write data to firestore
+        
+        if !self.followedUsers.contains(email) {
+            print("you are not following this user")
+            return
+        }
+        // delete user from following array
+        for i in 0..<self.followedUsers.count {
+            if self.followedUsers[i] == email {
+                self.followedUsers.remove(at: i)
+                break
+            }
+        }
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // update the followers array, then write the user
+        // to the db
+        let thisEmail = self.email
+        
+        userRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                print("Model: \(model)")
+                for i in 0..<model.followers.count {
+                    if model.followers[i] == thisEmail {
+                        model.followers.remove(at: i)
+                        break
+                    }
+                }
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("users").document(email).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    func createPost (post: Post) {
+        let db = Firestore.firestore()
+        let dataToWrite2 = try! FirestoreEncoder().encode(post)
+        db.collection("posts").document(post.postId).setData(dataToWrite2) { error in
+            
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+    }
     
     func deletePost (post: Post) {
         

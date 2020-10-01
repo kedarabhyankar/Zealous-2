@@ -8,25 +8,28 @@
 import UIKit
 
 class FollowingViewController: UIViewController {
+    
+    var currentUser: WriteableUser? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        WriteableUser.getCurrentUser(completion: getUser)
 
-        let curr = WriteableUser.getCurrentUser()
-        print(curr?.email)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getUser(currentUser: WriteableUser) {
+        self.currentUser = currentUser
+        afterGettingCurrentUser()
     }
-    */
+    
+    func afterGettingCurrentUser() {
+        currentUser?.follow(email: "ramesh32@purdue.edu")
+        print(currentUser?.followedUsers ?? "")
+        let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
+        currentUser?.createPost(post: post)
+        currentUser?.unfollow(email: "ramesh32@purdue.edu")
+        print(currentUser?.followedUsers ?? "")
+    }
 
 }
