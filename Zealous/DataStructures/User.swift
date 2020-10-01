@@ -117,7 +117,10 @@ extension WriteableUser {
         let userRef = db.collection("users").document(email)
         
         // append user to followedUsers then write data to firestore
-        
+        if(self.email == email) {
+            print("trying to follow self")
+            return
+        }
         self.followedUsers.append(email)
         let dataToWrite = try! FirestoreEncoder().encode(self)
         db.collection("users").document(self.email).setData(dataToWrite) { error in
