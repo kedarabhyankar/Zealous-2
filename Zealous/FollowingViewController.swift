@@ -27,6 +27,8 @@ class FollowingViewController: UIViewController {
         currentUser?.follow(email: "ramesh32@purdue.edu")
         print(currentUser?.email ?? "")
         print(currentUser?.followedUsers ?? "")
+        let post = Post(topic: "money", title: "test post", caption: "grants first post")
+        currentUser?.createPost(post: post)
     }
 
 }
