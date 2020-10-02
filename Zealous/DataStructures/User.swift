@@ -117,6 +117,10 @@ extension WriteableUser {
         let userRef = db.collection("users").document(email)
         
         // append user to followedUsers then write data to firestore
+        if (self.email == email) {
+                   print("you can't follow yourself")
+                   return
+        }
         
         if self.followedUsers.contains(email) {
             print("you already follow this user")
@@ -166,7 +170,10 @@ extension WriteableUser {
         let userRef = db.collection("users").document(email)
         
         // append user to followedUsers then write data to firestore
-        
+        if (self.email == email) {
+                          print("you can't unfollow yourself")
+                          return
+               }
         if !self.followedUsers.contains(email) {
             print("you are not following this user")
             return
