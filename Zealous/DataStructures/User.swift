@@ -111,19 +111,30 @@ extension WriteableUser {
             }
         }
     }
-    
+    func showAndFocus(banner : Banner){
+        banner.show(duration: 3)
+    }
     mutating func follow (email: String) {
+        // Error Banners
+        let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        followSelf.dismissesOnTap = true
+        
+        let alreadyFollow = Banner(title: "You are already following this user.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyFollow.dismissesOnTap = true
+        
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(email)
         
         // append user to followedUsers then write data to firestore
         if (self.email == email) {
                    print("you can't follow yourself")
+            self.showAndFocus(banner: followSelf)
                    return
         }
         
         if self.followedUsers.contains(email) {
             print("you already follow this user")
+            self.showAndFocus(banner: alreadyFollow)
             return
         }
         self.followedUsers.append(email)
@@ -166,15 +177,24 @@ extension WriteableUser {
     }
     
     mutating func unfollow (email: String) {
+        // Error Banners
+        let unfollowSelf = Banner(title: "You can't unfollow yourself.", subtitle: "Choose a different user to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowSelf.dismissesOnTap = true
+        
+        let unfollowUser = Banner(title: "You can't unfollow this user.", subtitle: "Choose a different user that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowUser.dismissesOnTap = true
+        
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(email)
         
         // append user to followedUsers then write data to firestore
         if (self.email == email) {
-                          print("you can't unfollow yourself")
-                          return
-               }
+            self.showAndFocus(banner: unfollowSelf)
+            print("you can't unfollow yourself")
+            return
+        }
         if !self.followedUsers.contains(email) {
+            self.showAndFocus(banner: unfollowUser)
             print("you are not following this user")
             return
         }
