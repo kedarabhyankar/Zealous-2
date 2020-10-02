@@ -5,11 +5,20 @@
 //  Created by Grant Yolasan on 9/16/20.
 //
 import Foundation
+import UIKit
+import SwiftUI
+import Foundation
+import FirebaseAnalytics
+import Firebase
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+import CodableFirebase
+
 
 struct Topic: Codable {
     var id: String
     var title: String
-    var description: String
     var posts: [String]
     var followers: [String]
     var numFollowers: Int
@@ -23,10 +32,27 @@ struct Topic: Codable {
         // call firebase delete
     }
     
-    init(title: String, description: String) {
+    
+    static func getTopic(topicName: String , completion: @escaping((Topic) -> ())) {
+        let db = Firestore.firestore()
+        let topicRef = db.collection("topics")
+        
+        topicRef.whereField("title", isEqualTo:topicName).getDocuments() { (querySnapshot, error) in
+            if let error = error {
+                print("error getting document: \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let model = try! FirestoreDecoder().decode(Topic.self, from: document.data())
+                    completion(model)
+                }
+                
+            }
+        }
+    }
+    
+    init(title: String) {
         self.id = UUID().uuidString
         self.title = title
-        self.description = description
         self.numFollowers = 0
         self.followers = []
         self.posts = []
