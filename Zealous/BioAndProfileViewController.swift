@@ -59,10 +59,10 @@ class BioAndProfileViewController: UIViewController {
             } else {
                 photoURL = result
             }
-            let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: df.string(from: self.finalProfile.dateOfBirth), pictureURL: photoURL, createdPosts:[], likedPosts:[], followedUsers:[], followers:[])
+            let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: self.df.string(from: self.finalProfile.dateOfBirth), pictureURL: photoURL, createdPosts:[], likedPosts:[], followedUsers:[], followers:[])
                     
             let dataToWrite = try! FirestoreEncoder().encode(writeableUser)
-            db.collection("users").document(self.finalProfile.email).setData(dataToWrite) { error in
+            self.db.collection("users").document(self.finalProfile.email).setData(dataToWrite) { error in
                 
                 if(error != nil){
                     print("error happened when writing to firestore!")
