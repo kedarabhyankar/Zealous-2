@@ -33,9 +33,9 @@ class LoginViewController: UIViewController {
         let noMatchPassBanner = Banner(title: "Your passwords doesn't match!", subtitle: "Enter your correct password and try again.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         noMatchPassBanner.dismissesOnTap = true
         let noUserBanner = Banner(title: "No User Found", subtitle: "Ensure your username or email and password is correct.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        noMatchPassBanner.dismissesOnTap = true
+        noUserBanner.dismissesOnTap = true
         let noEmailBanner = Banner(title: "Invalid email address", subtitle: "Ensure your email is entered correct.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        noMatchPassBanner.dismissesOnTap = true
+        noEmailBanner.dismissesOnTap = true
         
         let usernameOrEmail = usernameOrEmailField.text ?? ""
         let pass = passwordField.text ?? ""
