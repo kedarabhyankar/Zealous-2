@@ -59,28 +59,22 @@ class BioAndProfileViewController: UIViewController {
             } else {
                 photoURL = result
             }
-        })
-        
-        print("photoURL is \(photoURL)")
-        
-        let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: df.string(from: self.finalProfile.dateOfBirth), pictureURL: photoURL, createdPosts:[], likedPosts:[], followedUsers:[], followers:[])
-        
-        print("raw dob \(self.finalProfile.dateOfBirth)")
-        print("stringified dob  \(df.string(from: self.finalProfile.dateOfBirth))")
-        
-        let dataToWrite = try! FirestoreEncoder().encode(writeableUser)
-        db.collection("users").document(self.finalProfile.email).setData(dataToWrite) { error in
-            
-            if(error != nil){
-                print("error happened when writing to firestore!")
-                print("described error as \(error!.localizedDescription)")
-                self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
-                return
-            } else {
-                print("successfully wrote document to firestore with document id \(self.finalProfile.email)")
-                self.performSegue(withIdentifier: "toTimeline", sender: self)
+            let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: df.string(from: self.finalProfile.dateOfBirth), pictureURL: photoURL, createdPosts:[], likedPosts:[], followedUsers:[], followers:[])
+                    
+            let dataToWrite = try! FirestoreEncoder().encode(writeableUser)
+            db.collection("users").document(self.finalProfile.email).setData(dataToWrite) { error in
+                
+                if(error != nil){
+                    print("error happened when writing to firestore!")
+                    print("described error as \(error!.localizedDescription)")
+                    self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                    return
+                } else {
+                    print("successfully wrote document to firestore with document id \(self.finalProfile.email)")
+                    self.performSegue(withIdentifier: "toTimeline", sender: self)
+                }
             }
-        }
+        })
         
     }
     
