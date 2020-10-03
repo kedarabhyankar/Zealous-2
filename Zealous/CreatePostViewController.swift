@@ -40,15 +40,17 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         storage = Storage.storage()
         userID = Auth.auth().currentUser!.uid
         WriteableUser.getCurrentUser(completion: getUser)
+        Topic.getTopic(topicName: "CS", completion: getTheTopic)
     }
     
     func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
     }
     
-    func getTopicObj(currentTopic: Topic) {
+    func getTheTopic(currentTopic: Topic) {
         self.currentTopic = currentTopic
     }
+    
     
     @IBAction func UploadImage(_ sender: Any) {
     }
@@ -76,7 +78,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             return;
         }
         
-        //create a post object
+        //create a post object, have to add it to user's created post array and topic's post array
         self.currentPost = Post.init(topic: postTopic, title: postTitle, caption: postCaption, creatorId: currentUser!.email, img: defaultImage)
         
         //need to check if a topic exists in the database, if it does not, need to create a new topic
@@ -87,6 +89,10 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 //create a topic object and add current post to its post array
                 self.currentTopic = Topic.init(title: postTopic)
                 self.currentTopic?.addPost(post: self.currentPost!)
+                self.currentUser?.addCreatedPost(post: self.currentPost!)
+                let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
+                self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
+                
                 let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
                 self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1) { error in
                     if (error != nil) {
@@ -120,23 +126,29 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 //topic does exist, so add post to that topic's post array and add it to the database
                 print("Topic does exist")
                 //retrieve topic object and add current post to its post array
-                Topic.getTopic( topicName: postTopic, completion: self.getTopicObj)
+                //Topic.getTopic(topicName: "CS", completion: self.getTheTopic)
+                
+                
+                //Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
+                print("current topic is: \(String(describing: self.currentTopic))")
+                
                 //add post to topic's array
                 self.currentTopic?.addPost(post: self.currentPost!)
                 //encode the updated post array
-                let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic!.posts)
-                //find the topic in the database
-                self.db.collection("topics").whereField("title", isEqualTo: postTopic).getDocuments() {
+                let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
+                //find the topic in the database and update post array???
+                self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1)
+                /*self.db.collection("topics").whereField("title", isEqualTo: postTopic).getDocuments() {
                     (querySnapshot, error) in
                     if let error = error {
                         print("error getting topic")
                     } else {
                         for document in querySnapshot!.documents {
-                            document.setValue(dataToWrite1, forKey: "posts")
+                            document.setData(dataToWrite1)
                         }
                     }
                     
-                }
+                }*/
                 /*(["posts" : dataToWrite1]) {
                  error in
                  if (error != nil) {
