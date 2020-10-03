@@ -88,6 +88,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 print("Topic does not exist")
                 //create a topic object and add current post to its post array
                 self.currentTopic = Topic.init(title: postTopic)
+                //add new post to the user's created post array
                 self.currentTopic?.addPost(post: self.currentPost!)
                 self.currentUser?.addCreatedPost(post: self.currentPost!)
                 let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
@@ -126,7 +127,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 //topic does exist, so add post to that topic's post array and add it to the database
                 print("Topic does exist")
                 //retrieve topic object and add current post to its post array
-                //Topic.getTopic(topicName: "CS", completion: self.getTheTopic)
+                Topic.getTopic(topicName: "CS", completion: self.getTheTopic)
                 
                 
                 //Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
