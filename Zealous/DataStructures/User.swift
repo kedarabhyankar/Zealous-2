@@ -11,88 +11,64 @@ import FirebaseAuth
 import BRYXBanner
 import CodableFirebase
 
-//struct User: Codable {
-//    var id: String = UUID().uuidString
-//    var bio: String
-//    var dob: String
-//    var email: String
-//    var firstName: String
-//    var lastName: String
-//    var username: String
-//    var pictureURL: String
-//    var createdPosts: [String]
-//    var likedPosts: [String]
-//    var followedUsers: [String]
-//    var followedTopics: [String]
-//    var followers: [String]
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case bio
-//        case dob
-//        case email
-//        case firstName
-//        case lastName
-//        case username
-//        case pictureURL
-//        case createdPosts
-//        case likedPosts
-//        case followedUsers
-//        case followedTopics = "interests"
-//        case followers
-//    }
-//}
-
 extension WriteableUser {
-    
-    func getFollowedTopics(topics: [String]) -> [Topic] {
-        return []
+    func getFollowedTopics() {
     }
     
-    mutating func addCreatedPost(post: Post) {
-        self.createdPosts.append(post.postId)
+    func getFollowedUsers(addUser: @escaping((WriteableUser) -> ())) {
+        let db = Firestore.firestore()
+        for id in self.followedUsers {
+            // get the post and convert to Post object
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    print("Model: \(model)")
+                    addUser(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
-    func getFollowedUsers(userIds: [String]) -> [User] {
-        return []
+    func getFollowers(addUser: @escaping((Post) -> ())){
+        
     }
     
-    func getFollowers(userIds: [String]) -> [User] {
-        return []
-    }
-    
-    func getCreatedPosts(email: String) -> [Post] {
+    static func getCreatedPosts(email: String, completion: @escaping(([Post]) -> ())) {
         let db = Firestore.firestore()
         db.collection("posts").whereField("creatorId", isEqualTo: email)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
+                    var createdPosts: [Post] = []
                     for document in querySnapshot!.documents {
+                        let model = try! FirestoreDecoder().decode(Post.self, from: document.data())
+                        createdPosts.append(model)
                         print("\(document.documentID) => \(document.data())")
                     }
+                    completion(createdPosts)
                 }
         }
-        return []
     }
     
-    func getLikedPosts(postIds: [String]) -> [Post] {
-        var likedPosts: [Post] = []
+    func getLikedPosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
-        for id in postIds {
+        for id in self.likedPosts {
             // get the post and convert to Post object
             let ref = db.collection("posts").document(id)
             ref.getDocument { document, error in
                 if let document = document {
                     let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
                     print("Model: \(model)")
-                    likedPosts.append(model)
+                    addPost(model)
                 } else {
                     print("Document does not exist")
                 }
             }
         }
-        return likedPosts
     }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
@@ -116,15 +92,30 @@ extension WriteableUser {
             }
         }
     }
-    
+    func showAndFocus(banner : Banner){
+        banner.show(duration: 3)
+    }
     mutating func follow (email: String) {
+        // Error Banners
+        let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        followSelf.dismissesOnTap = true
+        
+        let alreadyFollow = Banner(title: "You are already following this user.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyFollow.dismissesOnTap = true
+        
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(email)
         
         // append user to followedUsers then write data to firestore
+        if (self.email == email) {
+                   print("you can't follow yourself")
+            self.showAndFocus(banner: followSelf)
+                   return
+        }
         
         if self.followedUsers.contains(email) {
             print("you already follow this user")
+            self.showAndFocus(banner: alreadyFollow)
             return
         }
         self.followedUsers.append(email)
@@ -167,12 +158,24 @@ extension WriteableUser {
     }
     
     mutating func unfollow (email: String) {
+        // Error Banners
+        let unfollowSelf = Banner(title: "You can't unfollow yourself.", subtitle: "Choose a different user to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowSelf.dismissesOnTap = true
+        
+        let unfollowUser = Banner(title: "You can't unfollow this user.", subtitle: "Choose a different user that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowUser.dismissesOnTap = true
+        
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(email)
         
         // append user to followedUsers then write data to firestore
-        
+        if (self.email == email) {
+            self.showAndFocus(banner: unfollowSelf)
+            print("you can't unfollow yourself")
+            return
+        }
         if !self.followedUsers.contains(email) {
+            self.showAndFocus(banner: unfollowUser)
             print("you are not following this user")
             return
         }
