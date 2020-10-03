@@ -11,83 +11,64 @@ import FirebaseAuth
 import BRYXBanner
 import CodableFirebase
 
-//struct User: Codable {
-//    var id: String = UUID().uuidString
-//    var bio: String
-//    var dob: String
-//    var email: String
-//    var firstName: String
-//    var lastName: String
-//    var username: String
-//    var pictureURL: String
-//    var createdPosts: [String]
-//    var likedPosts: [String]
-//    var followedUsers: [String]
-//    var followedTopics: [String]
-//    var followers: [String]
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case bio
-//        case dob
-//        case email
-//        case firstName
-//        case lastName
-//        case username
-//        case pictureURL
-//        case createdPosts
-//        case likedPosts
-//        case followedUsers
-//        case followedTopics = "interests"
-//        case followers
-//    }
-//}
-
 extension WriteableUser {
-    func getFollowedTopics(topics: [String]) -> [Topic] {
-        return []
+    func getFollowedTopics() {
     }
     
-    func getFollowedUsers(userIds: [String]) -> [User] {
-        return []
+    func getFollowedUsers(addUser: @escaping((WriteableUser) -> ())) {
+        let db = Firestore.firestore()
+        for id in self.followedUsers {
+            // get the post and convert to Post object
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    print("Model: \(model)")
+                    addUser(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
-    func getFollowers(userIds: [String]) -> [User] {
-        return []
+    func getFollowers(addUser: @escaping((Post) -> ())){
+        
     }
     
-    func getCreatedPosts(email: String) -> [Post] {
+    static func getCreatedPosts(email: String, completion: @escaping(([Post]) -> ())) {
         let db = Firestore.firestore()
         db.collection("posts").whereField("creatorId", isEqualTo: email)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
+                    var createdPosts: [Post] = []
                     for document in querySnapshot!.documents {
+                        let model = try! FirestoreDecoder().decode(Post.self, from: document.data())
+                        createdPosts.append(model)
                         print("\(document.documentID) => \(document.data())")
                     }
+                    completion(createdPosts)
                 }
         }
-        return []
     }
     
-    func getLikedPosts(postIds: [String]) -> [Post] {
-        var likedPosts: [Post] = []
+    func getLikedPosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
-        for id in postIds {
+        for id in self.likedPosts {
             // get the post and convert to Post object
             let ref = db.collection("posts").document(id)
             ref.getDocument { document, error in
                 if let document = document {
                     let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
                     print("Model: \(model)")
-                    likedPosts.append(model)
+                    addPost(model)
                 } else {
                     print("Document does not exist")
                 }
             }
         }
-        return likedPosts
     }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
