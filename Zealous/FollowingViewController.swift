@@ -10,6 +10,9 @@ import UIKit
 class FollowingViewController: UIViewController {
     
     var currentUser: WriteableUser? = nil
+    var likedPosts: [Post] = []
+    var following: [WriteableUser] = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,10 @@ class FollowingViewController: UIViewController {
     func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
         afterGettingCurrentUser()
+        WriteableUser.getCreatedPosts(email: currentUser.email, completion: printUserPosts)
+        
+        currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
+        currentUser.getFollowedUsers(addUser: addUser) // populates the following array
     }
     
     func afterGettingCurrentUser() {
@@ -28,8 +35,19 @@ class FollowingViewController: UIViewController {
         print(currentUser?.followedUsers ?? "")
         let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
         currentUser?.createPost(post: post)
-        currentUser?.unfollow(email: "ramesh32@purdue.edu")
         print(currentUser?.followedUsers ?? "")
     }
-
+    
+    func printUserPosts(postArray: [Post]) {
+        for post in postArray {
+            print(post)
+        }
+    }
+    
+    func addPost(likedPost: Post) {
+        likedPosts.append(likedPost)
+    }
+    func addUser(user: WriteableUser) {
+        following.append(user)
+    }
 }
