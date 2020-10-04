@@ -64,9 +64,9 @@ extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingUsers", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingUsers", for: indexPath) as? FollowingViewCell
         let user = following[indexPath.item]
-        cell.textLabel?.text = user.username
-        return cell
+        cell?.Name?.text = user.username
+        return cell!
     }
 }

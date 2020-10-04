@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h" customClass="FollowingViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfl-LO-J1h" id="E0k-ea-tzn">
@@ -54,6 +54,9 @@
                                                     <state key="normal" title="Unfollow">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="unfollowClicked:" destination="Lfl-LO-J1h" eventType="touchUpInside" id="SK8-Su-NbM"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -65,6 +68,11 @@
                                                 <constraint firstItem="EuV-7x-Vyn" firstAttribute="centerY" secondItem="vRd-Jx-tyt" secondAttribute="centerY" id="cBa-WM-fdn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Name" destination="DTr-lN-MQh" id="vjJ-jp-i6C"/>
+                                            <outlet property="ProfilePic" destination="vRd-Jx-tyt" id="YWb-hF-1jv"/>
+                                            <outlet property="unfollow" destination="EuV-7x-Vyn" id="M8p-oJ-v3A"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -91,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndk-0y-MVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4124" y="159.60591133004928"/>
+            <point key="canvasLocation" x="4230" y="161"/>
         </scene>
         <!--Profile-->
         <scene sceneID="JL1-YT-TRZ">
