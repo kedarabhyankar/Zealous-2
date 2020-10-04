@@ -40,7 +40,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         storage = Storage.storage()
         userID = Auth.auth().currentUser!.uid
         WriteableUser.getCurrentUser(completion: getUser)
-        Topic.getTopic(topicName: "CS", completion: getTheTopic)
     }
     
     func getUser(currentUser: WriteableUser) {
@@ -48,7 +47,39 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getTheTopic(currentTopic: Topic) {
-        self.currentTopic = currentTopic
+        DispatchQueue.main.async {
+            self.currentTopic = currentTopic
+            print("current topic in getTheTopic: \(String(describing: self.currentTopic)) ")
+            //add post to topic's array
+            self.currentTopic?.addPost(post: self.currentPost!)
+            //encode the updated post array
+            let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
+            //find the topic in the database and update post array???
+            self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1)
+        
+            //send current post to database
+            let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
+            self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
+                error in
+                if (error != nil) {
+                    print("error writing post to firestore: \(String(describing: error))")
+                    return
+                } else {
+                    print("success writing post to firestore")
+                }
+            }
+            
+            self.currentUser?.addCreatedPost(post: self.currentPost!)
+            let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
+            self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
+            
+            self.PostTitle.text = ""
+            self.PostTopic.text = ""
+            self.PostCaption.text = ""
+            return
+        }
+        // self.currentTopic = currentTopic
+        
     }
     
     
@@ -60,10 +91,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         let postTopic = PostTopic.text ?? ""
         let postCaption = PostCaption.text ?? ""
         let postImage = PostImage.image ?? nil
-        // var currentPost: Post = Post.init(topic: postTopic, title: postTitle, caption: postCaption)
         let followerArray = [User]()
-        //let currentUser: User = User.getCurrentUser()
-        //followerArray.append(currentUser)
         let comments = [String]()
         let numLikes: Int = 0
         let defaultImage: String = ""
@@ -75,6 +103,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
+            self.PostTitle.text = ""
+            self.PostTopic.text = ""
+            self.PostCaption.text = ""
             return;
         }
         
@@ -104,7 +135,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
                 
-                // self.db.collection("topics").document(self.currentTopic!.id).setData(["topicName": postTopic, "numFollowers": followerArray.count])
                 
                 let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
                 self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
@@ -127,42 +157,27 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 //topic does exist, so add post to that topic's post array and add it to the database
                 print("Topic does exist")
                 //retrieve topic object and add current post to its post array
-                Topic.getTopic(topicName: "CS", completion: self.getTheTopic)
+                //Topic.getTopic(topicName: "CS", completion: self.getTheTopic)
+                DispatchQueue.main.async() {
+                    print("arg: " + postTopic)
+                    Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
+                    
+                     
+               // }
+               // Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
                 
-                
-                //Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
-                print("current topic is: \(String(describing: self.currentTopic))")
+                print("current topic in submit post: \(String(describing: self.currentTopic))")
                 
                 //add post to topic's array
-                self.currentTopic?.addPost(post: self.currentPost!)
+                //self.currentTopic?.addPost(post: self.currentPost!)
                 //encode the updated post array
-                let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
+                //let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
                 //find the topic in the database and update post array???
-                self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1)
-                /*self.db.collection("topics").whereField("title", isEqualTo: postTopic).getDocuments() {
-                    (querySnapshot, error) in
-                    if let error = error {
-                        print("error getting topic")
-                    } else {
-                        for document in querySnapshot!.documents {
-                            document.setData(dataToWrite1)
-                        }
-                    }
-                    
-                }*/
-                /*(["posts" : dataToWrite1]) {
-                 error in
-                 if (error != nil) {
-                 print("error writing topic to firestore: \(String(describing: error))")
-                 return
-                 } else {
-                 print("success writing topic ot firestore")
-                 }
-                 }*/
+                //self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1)
                 
                 //send current post to database
-                let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
-                self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
+                //let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
+               /* self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
                     error in
                     if (error != nil) {
                         print("error writing post to firestore: \(String(describing: error))")
@@ -170,11 +185,13 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                     } else {
                         print("success writing post to firestore")
                     }
-                }               // self.db.collection("posts").document(self.currentPost!.postId).setData(["topic": postTopic,"postId" : self.currentPost!.postId ,"creatorId" : Auth.auth().currentUser?.email! ?? self.userID, "title" : postTitle, "caption" : postCaption, "img" : postImage ?? "", "likes" : numLikes, "timeStamp" : FieldValue.serverTimestamp()])
+                }
                 self.PostTitle.text = ""
                 self.PostTopic.text = ""
-                self.PostCaption.text = ""
+                self.PostCaption.text = ""*/
+            }
                 return
+                
             }
             
         }

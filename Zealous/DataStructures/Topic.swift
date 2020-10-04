@@ -61,6 +61,7 @@ struct Topic: Codable {
     }*/
     
     static func getTopic(topicName: String, completion: @escaping((Topic) -> ())) {
+        DispatchQueue.main.async {
         let db = Firestore.firestore()
         let topicRef = db.collection("topics")
         //var model: Topic?
@@ -84,6 +85,8 @@ struct Topic: Codable {
                 
             }
         }
-    }
+        }
+    
+}
     
 }

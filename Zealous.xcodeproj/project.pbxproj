@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		24D515571376FD7F0E795614 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02925BA5258E2B960F2A020 /* Pods_Zealous_ZealousUITests.framework */; };
+		A607790525292B0500054A25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6225255E5F00E49593 /* Timeline.storyboard */; };
+		A607790625292B1F00054A25 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5E25255E5F00E49593 /* Profile.storyboard */; };
+		A607790725292B2E00054A25 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6125255E5F00E49593 /* Search.storyboard */; };
+		A607790825292B3B00054A25 /* Following.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5F25255E5F00E49593 /* Following.storyboard */; };
+		A607790925292B3E00054A25 /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6325255E6000E49593 /* Followers.storyboard */; };
+		A607790A25292B4100054A25 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5C25255E5000E49593 /* CreatePost.storyboard */; };
 		A6151C1F965C6BAC16101FCA /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC26D37FBF28C2E3E7C7FD25 /* Pods_ZealousTests.framework */; };
-		A6904D5D25255E5000E49593 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5C25255E5000E49593 /* CreatePost.storyboard */; };
-		A6904D6525255E6000E49593 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5E25255E5F00E49593 /* Profile.storyboard */; };
-		A6904D6625255E6000E49593 /* Following.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5F25255E5F00E49593 /* Following.storyboard */; };
 		A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6025255E5F00E49593 /* FeedViewCell.swift */; };
-		A6904D6825255E6000E49593 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6125255E5F00E49593 /* Search.storyboard */; };
-		A6904D6925255E6000E49593 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6225255E5F00E49593 /* Timeline.storyboard */; };
-		A6904D6A25255E6000E49593 /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6325255E6000E49593 /* Followers.storyboard */; };
 		A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6425255E6000E49593 /* UserPostCell.swift */; };
 		A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6C2525638A00E49593 /* CreatePostViewController.swift */; };
 		A9D3E87F64E4C2F487FF9A6B /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910FCEAEE5093DA11B206809 /* Pods_Zealous.framework */; };
@@ -359,18 +359,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C66B88E525242AC8006BAD5F /* Followers.storyboard in Resources */,
-				C66B88E725242AE2006BAD5F /* Profile.storyboard in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
+				A607790A25292B4100054A25 /* CreatePost.storyboard in Resources */,
+				A607790825292B3B00054A25 /* Following.storyboard in Resources */,
+				A607790525292B0500054A25 /* Timeline.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
+				A607790925292B3E00054A25 /* Followers.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
+				A607790725292B2E00054A25 /* Search.storyboard in Resources */,
 				C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */,
 				C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */,
-				C66B88DF25242A97006BAD5F /* CreatePost.storyboard in Resources */,
+				A607790625292B1F00054A25 /* Profile.storyboard in Resources */,
 				C66B88F225269561006BAD5F /* Topics.storyboard in Resources */,
-				C66B88E325242AC8006BAD5F /* Following.storyboard in Resources */,
-				C66B88E925242AF9006BAD5F /* Search.storyboard in Resources */,
-				C66B88EB25242B1B006BAD5F /* Timeline.storyboard in Resources */,
 				E4415AC9251CE629009A5EFA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
