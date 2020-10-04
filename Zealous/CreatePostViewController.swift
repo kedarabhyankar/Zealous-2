@@ -161,11 +161,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async() {
                     print("arg: " + postTopic)
                     Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
-                    
-                     
-               // }
-               // Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
-                
+                }
                 print("current topic in submit post: \(String(describing: self.currentTopic))")
                 
                 //add post to topic's array
@@ -189,7 +185,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 self.PostTitle.text = ""
                 self.PostTopic.text = ""
                 self.PostCaption.text = ""*/
-            }
+            
                 return
                 
             }
