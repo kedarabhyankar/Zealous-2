@@ -19,6 +19,20 @@ extension WriteableUser {
     }
     
     func getFollowedTopics() {
+        let db = Firestore.firestore()
+        for id in self.getFollowedTopics() {
+            // get the post and convert to Post object
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    print("Model: \(model)")
+                    addUser(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
     func getFollowedUsers(addUser: @escaping((WriteableUser) -> ())) {
@@ -39,7 +53,20 @@ extension WriteableUser {
     }
     
     func getFollowers(addUser: @escaping((Post) -> ())){
-        
+        let db = Firestore.firestore()
+        for id in self.followers{
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let modle = try! FirestoreDecoder().decode(WriteableUser.self,from:
+                                                                document.data()!)
+                    print("Model: \(model)")
+                    addUser(model)
+                }else{
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
     static func getCreatedPosts(email: String, completion: @escaping(([Post]) -> ())) {
@@ -57,7 +84,7 @@ extension WriteableUser {
                     }
                     completion(createdPosts)
                 }
-        }
+            }
     }
     
     func getLikedPosts(addPost: @escaping((Post) -> ())) {
@@ -114,9 +141,9 @@ extension WriteableUser {
         
         // append user to followedUsers then write data to firestore
         if (self.email == email) {
-                   print("you can't follow yourself")
+            print("you can't follow yourself")
             self.showAndFocus(banner: followSelf)
-                   return
+            return
         }
         
         if self.followedUsers.contains(email) {
@@ -262,55 +289,55 @@ extension WriteableUser {
         
     }
     
-//    func updateProfilePic (img: UIImage) {
-//        let db = Firestore.firestore()
-//
-//        guard let imgData = img.jpegData(compressionQuality: 1.0)
-//            else {
-//                return
-//        }
-//
-//        let storageRef = Storage.storage().reference()
-//        let imagesRef = storageRef.child("profilePics")
-//        let fileName = UUID().uuidString
-//        let postRef = imagesRef.child(fileName)
-//
-//        postRef.putData(imgData, metadata: nil) { metadata, err in
-//            if let err = err {
-//                print(err.localizedDescription)
-//                return
-//            }
-//
-//            postRef.downloadURL(completion: { url, err in
-//                if let err = err {
-//                    print(err.localizedDescription)
-//                    return
-//                }
-//                guard let url = url else {
-//                    print("An error occurred when posting an image 3 ")
-//                    return
-//                }
-//
-//                db.collection("users")
-//                    .document(self.email)
-//                    .setData(
-//                        ["profilePic": url.absoluteString]
-//                )
-//            })
-//        }
-//    }
+    //    func updateProfilePic (img: UIImage) {
+    //        let db = Firestore.firestore()
+    //
+    //        guard let imgData = img.jpegData(compressionQuality: 1.0)
+    //            else {
+    //                return
+    //        }
+    //
+    //        let storageRef = Storage.storage().reference()
+    //        let imagesRef = storageRef.child("profilePics")
+    //        let fileName = UUID().uuidString
+    //        let postRef = imagesRef.child(fileName)
+    //
+    //        postRef.putData(imgData, metadata: nil) { metadata, err in
+    //            if let err = err {
+    //                print(err.localizedDescription)
+    //                return
+    //            }
+    //
+    //            postRef.downloadURL(completion: { url, err in
+    //                if let err = err {
+    //                    print(err.localizedDescription)
+    //                    return
+    //                }
+    //                guard let url = url else {
+    //                    print("An error occurred when posting an image 3 ")
+    //                    return
+    //                }
+    //
+    //                db.collection("users")
+    //                    .document(self.email)
+    //                    .setData(
+    //                        ["profilePic": url.absoluteString]
+    //                )
+    //            })
+    //        }
+    //    }
     
-//    func updateBio (bio: String) {
-//        let db = Firestore.firestore()
-//        let userRef = db.collection("users").document(self.email)
-//        userRef.updateData(["bio": bio]) { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        }
-//    }
+    //    func updateBio (bio: String) {
+    //        let db = Firestore.firestore()
+    //        let userRef = db.collection("users").document(self.email)
+    //        userRef.updateData(["bio": bio]) { err in
+    //            if let err = err {
+    //                print("Error updating document: \(err)")
+    //            } else {
+    //                print("Document successfully updated")
+    //            }
+    //        }
+    //    }
 }
 
 extension Timestamp: TimestampType {}
