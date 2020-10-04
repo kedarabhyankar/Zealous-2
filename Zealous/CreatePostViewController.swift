@@ -15,13 +15,15 @@ import FirebaseStorage
 import FirebaseAuth
 import CodableFirebase
 
-class CreatePostViewController: UIViewController, UITextFieldDelegate {
+class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     
     @IBOutlet weak var PostTitle: UITextField!
     @IBOutlet weak var PostTopic: UITextField!
     @IBOutlet weak var PostCaption: UITextField!
     @IBOutlet weak var PostImage: UIImageView!
+    var imageExt: String?
+    var image: UIImage?
     var currentUser: WriteableUser? =  nil
     var currentPost: Post? = nil
     var currentTopic: Topic? = nil
@@ -76,14 +78,36 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             self.PostTitle.text = ""
             self.PostTopic.text = ""
             self.PostCaption.text = ""
+            self.PostImage.image = nil
             return
         }
         // self.currentTopic = currentTopic
         
     }
-    
-    
+
     @IBAction func UploadImage(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerController.SourceType.photoLibrary
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+        PostImage.image = self.image
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var image: UIImage
+        if let possibleImage = info[.editedImage] as? UIImage{
+            image = possibleImage
+        } else if let possibleImage = info[.originalImage] as? UIImage {
+            image = possibleImage
+        } else {
+            return;
+        }
+        self.image = image
+        self.PostImage.image = image
+        self.imageExt = ".png"
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func SubmitPost(_ sender: Any) {
@@ -106,9 +130,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             self.PostTitle.text = ""
             self.PostTopic.text = ""
             self.PostCaption.text = ""
+            self.PostImage.image = nil
             return;
         }
-        
         //create a post object, have to add it to user's created post array and topic's post array
         self.currentPost = Post.init(topic: postTopic, title: postTitle, caption: postCaption, creatorId: currentUser!.email, img: defaultImage)
         
@@ -151,6 +175,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 self.PostTitle.text = ""
                 self.PostTopic.text = ""
                 self.PostCaption.text = ""
+                self.PostImage.image = nil
                 return
             }
             else {
