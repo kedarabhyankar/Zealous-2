@@ -393,4 +393,69 @@ extension WriteableUser {
             }
         }
     }
+    
+    mutating func unfollowTopic (title: String) {
+        // Error Banners
+        let unfollowSelf = Banner(title: "You can't unfollow yourself.", subtitle: "Choose a different user to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowSelf.dismissesOnTap = true
+        
+        let unfollowUser = Banner(title: "You can't unfollow this user.", subtitle: "Choose a different user that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowUser.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let topicRef = db.collection("topics").document(title)
+        
+        if !self.interests.contains(title) {
+            self.showAndFocus(banner: unfollowUser)
+            print("you are not following this topic")
+            return
+        }
+        // delete user from following array
+        for i in 0..<self.interests.count {
+            if self.interests[i] == title {
+                self.interests.remove(at: i)
+                break
+            }
+        }
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("topics").document(title).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // update the followers array
+        let thisEmail = self.email
+        
+        topicRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                print("Model: \(model)")
+                for i in 0..<model.followers.count {
+                    if model.followers[i] == thisEmail {
+                        model.followers.remove(at: i)
+                        break
+                    }
+                }
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("topics").document(title).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
 }
