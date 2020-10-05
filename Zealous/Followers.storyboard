@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Followers View Controller-->
         <scene sceneID="e8d-8m-Wjd">
             <objects>
-                <viewController id="uKf-E9-QYe" sceneMemberID="viewController">
+                <viewController id="uKf-E9-QYe" customClass="FollowersViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PeP-Iw-3LW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowerUsers" rowHeight="81" id="CUA-1y-xn0" customClass="PeopleTableViewCell" customModule="Zealous" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowerUsers" rowHeight="81" id="CUA-1y-xn0" customClass="FollowersTableViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CUA-1y-xn0" id="Ieb-Ua-XfR">
@@ -54,8 +54,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="Profilepic" destination="dZA-Xq-W6G" id="ybL-Ew-WGL"/>
                                             <outlet property="nameLabel" destination="LDT-dB-5GA" id="ayw-7J-hkH"/>
                                             <outlet property="profileImage" destination="dZA-Xq-W6G" id="rYV-sX-ThN"/>
+                                            <outlet property="username" destination="LDT-dB-5GA" id="i5k-Zh-AdY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -77,6 +79,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TPO-iy-sEv"/>
                     </view>
+                    <connections>
+                        <outlet property="followersTableView" destination="7f4-mT-KmO" id="GDZ-d9-rz8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vf9-OR-ZSF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

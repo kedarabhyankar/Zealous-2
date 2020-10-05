@@ -30,7 +30,6 @@ class FollowingViewController: UIViewController {
         
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
-        
     }
     
     func afterGettingCurrentUser() {

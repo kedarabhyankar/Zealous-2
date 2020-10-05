@@ -17,8 +17,20 @@ extension WriteableUser {
     mutating func addCreatedPost(post: Post) {
         self.createdPosts.append(post.postId)
     }
-    
     func getFollowedTopics() {
+        let db = Firestore.firestore()
+        for id in self.interests {
+            // get the post and convert to Post object
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    print("Model: \(model)")
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
     func getFollowedUsers(addUser: @escaping((WriteableUser) -> ())) {
@@ -38,8 +50,21 @@ extension WriteableUser {
         }
     }
     
-    func getFollowers(addUser: @escaping((Post) -> ())){
-        
+    func getFollowers(addUser: @escaping((WriteableUser) -> ())){
+        let db = Firestore.firestore()
+        for id in self.followers {
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self,from:
+                                                                document.data()!)
+                    print("Model: \(model)")
+                    addUser(model)
+                }else{
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
     static func getCreatedPosts(email: String, completion: @escaping(([Post]) -> ())) {
