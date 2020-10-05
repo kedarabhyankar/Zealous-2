@@ -34,10 +34,16 @@ class FollowingViewController: UIViewController {
     
     func afterGettingCurrentUser() {
 //        currentUser?.follow(email: "ramesh32@purdue.edu")
+        //print(currentUser?.followedUsers ?? "")
+        //let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
+        //currentUser?.createPost(post: post)
         print(currentUser?.followedUsers ?? "")
-        let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
-        currentUser?.createPost(post: post)
-        print(currentUser?.followedUsers ?? "")
+        currentUser?.followTopic(title: "String")
+        currentUser?.followTopic(title: "One")
+        print(currentUser?.interests ?? "")
+        currentUser?.unfollowTopic(title: "String")
+        print(currentUser?.interests ?? "")
+        
     }
     
     func printUserPosts(postArray: [Post]) {
@@ -56,6 +62,7 @@ class FollowingViewController: UIViewController {
     }
 }
 
+
 extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,3 +76,4 @@ extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
 }
+
