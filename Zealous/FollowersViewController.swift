@@ -25,12 +25,14 @@ class FollowersViewController: UIViewController {
     }
     
     func getUser(currentUser: WriteableUser) {
+        print("getUser")
         self.currentUser = currentUser
-        afterGettingCurrentUser()
+        
         WriteableUser.getCreatedPosts(email: currentUser.email, completion: printUserPosts)
         
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
-        currentUser.getFollowedUsers(addUser: addUser) // populates the following array
+        currentUser.getFollowers(addUser: addUser) // populates the followers array
+        afterGettingCurrentUser()
     }
     
     func afterGettingCurrentUser() {
@@ -50,8 +52,19 @@ class FollowersViewController: UIViewController {
     func addUser(user: WriteableUser) {
         followers.append(user)
         followersTableView.reloadData()
-
     }
 }
 
-
+extension FollowersViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.followers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowerUsers", for: indexPath) as? FollowersTableViewCell
+        let user = followers[indexPath.item]
+        cell?.username?.text = user.username
+        return cell!
+    }
+}

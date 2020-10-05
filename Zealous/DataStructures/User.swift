@@ -53,14 +53,14 @@ extension WriteableUser {
     func getFollowers(addUser: @escaping((WriteableUser) -> ())){
         let db = Firestore.firestore()
         for id in self.followers {
+            // get the post and convert to Post object
             let ref = db.collection("users").document(id)
             ref.getDocument { document, error in
                 if let document = document {
-                    let model = try! FirestoreDecoder().decode(WriteableUser.self,from:
-                                                                document.data()!)
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
                     print("Model: \(model)")
                     addUser(model)
-                }else{
+                } else {
                     print("Document does not exist")
                 }
             }
