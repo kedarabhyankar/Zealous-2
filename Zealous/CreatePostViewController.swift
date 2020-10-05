@@ -150,7 +150,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
                 
                 let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
-                self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1) { error in
+                self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1) { error in
                     if (error != nil) {
                         print("error writing topic to firestore: \(String(describing: error))")
                         return
