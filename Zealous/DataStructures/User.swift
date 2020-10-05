@@ -20,7 +20,7 @@ extension WriteableUser {
     
     func getFollowedTopics() {
         let db = Firestore.firestore()
-        for id in self.getFollowedTopics() {
+        for id in self.interests {
             // get the post and convert to Post object
             let ref = db.collection("users").document(id)
             ref.getDocument { document, error in
