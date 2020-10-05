@@ -30,15 +30,20 @@ class FollowingViewController: UIViewController {
         
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
-        
     }
     
     func afterGettingCurrentUser() {
 //        currentUser?.follow(email: "ramesh32@purdue.edu")
+        //print(currentUser?.followedUsers ?? "")
+        //let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
+        //currentUser?.createPost(post: post)
         print(currentUser?.followedUsers ?? "")
-        let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
-        currentUser?.createPost(post: post)
-        print(currentUser?.followedUsers ?? "")
+        currentUser?.followTopic(title: "String")
+        currentUser?.followTopic(title: "One")
+        print(currentUser?.interests ?? "")
+        currentUser?.unfollowTopic(title: "String")
+        print(currentUser?.interests ?? "")
+        
     }
     
     func printUserPosts(postArray: [Post]) {
@@ -57,6 +62,7 @@ class FollowingViewController: UIViewController {
     }
 }
 
+
 extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,9 +70,10 @@ extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingUsers", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingUsers", for: indexPath) as? FollowingViewCell
         let user = following[indexPath.item]
-        cell.textLabel?.text = user.username
-        return cell
+        cell?.Name?.text = user.username
+        return cell!
     }
 }
+
