@@ -43,7 +43,6 @@ class FollowingViewController: UIViewController {
         print(currentUser?.interests ?? "")
         currentUser?.unfollowTopic(title: "String")
         print(currentUser?.interests ?? "")
-        
     }
     
     func printUserPosts(postArray: [Post]) {
@@ -58,7 +57,6 @@ class FollowingViewController: UIViewController {
     func addUser(user: WriteableUser) {
         following.append(user)
         followingTableView.reloadData()
-
     }
 }
 
