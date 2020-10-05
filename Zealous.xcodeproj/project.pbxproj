@@ -21,8 +21,6 @@
 		C66B88E325242AC8006BAD5F /* Following.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E025242AC7006BAD5F /* Following.storyboard */; };
 		C66B88E425242AC8006BAD5F /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88E125242AC7006BAD5F /* FeedViewCell.swift */; };
 		C66B88E525242AC8006BAD5F /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E225242AC8006BAD5F /* Followers.storyboard */; };
-		C66B88E725242AE2006BAD5F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E625242AE2006BAD5F /* Profile.storyboard */; };
-		C66B88E925242AF9006BAD5F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88E825242AF8006BAD5F /* Search.storyboard */; };
 		C66B88EB25242B1B006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88EA25242B1B006BAD5F /* Timeline.storyboard */; };
 		C66B88ED25242B55006BAD5F /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EC25242B55006BAD5F /* UserPostCell.swift */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
@@ -42,6 +40,10 @@
 		E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44D300825196527000FB63B /* LaunchScreen.storyboard */; };
 		E44D301525196527000FB63B /* ZealousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301425196527000FB63B /* ZealousTests.swift */; };
 		E44D302025196527000FB63B /* ZealousUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301F25196527000FB63B /* ZealousUITests.swift */; };
+		E4815C1C252B9EE600C3FD7A /* ProfileAndSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C1B252B9EE600C3FD7A /* ProfileAndSettings.storyboard */; };
+		E4815C21252B9F0B00C3FD7A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C20252B9F0B00C3FD7A /* Search.storyboard */; };
+		E4815C26252B9F2300C3FD7A /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C25252B9F2300C3FD7A /* Inbox.storyboard */; };
+		E4815C2B252B9F3E00C3FD7A /* TimelineFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C2A252B9F3E00C3FD7A /* TimelineFeed.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +82,6 @@
 		C66B88E025242AC7006BAD5F /* Following.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Following.storyboard; sourceTree = "<group>"; };
 		C66B88E125242AC7006BAD5F /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		C66B88E225242AC8006BAD5F /* Followers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
-		C66B88E625242AE2006BAD5F /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		C66B88E825242AF8006BAD5F /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		C66B88EA25242B1B006BAD5F /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		C66B88EC25242B55006BAD5F /* UserPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostCell.swift; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +107,10 @@
 		E44D301B25196527000FB63B /* ZealousUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZealousUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D301F25196527000FB63B /* ZealousUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZealousUITests.swift; sourceTree = "<group>"; };
 		E44D302125196527000FB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4815C1B252B9EE600C3FD7A /* ProfileAndSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileAndSettings.storyboard; sourceTree = "<group>"; };
+		E4815C20252B9F0B00C3FD7A /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		E4815C25252B9F2300C3FD7A /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
+		E4815C2A252B9F3E00C3FD7A /* TimelineFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimelineFeed.storyboard; sourceTree = "<group>"; };
 		EB5076BDF2E87EDBE48BB98B /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 		F02925BA5258E2B960F2A020 /* Pods_Zealous_ZealousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous_ZealousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -201,8 +205,10 @@
 				BC44BB6F251A999300C12823 /* DataStructures */,
 				C66B88EC25242B55006BAD5F /* UserPostCell.swift */,
 				C66B88EA25242B1B006BAD5F /* Timeline.storyboard */,
-				C66B88E825242AF8006BAD5F /* Search.storyboard */,
-				C66B88E625242AE2006BAD5F /* Profile.storyboard */,
+				E4815C2A252B9F3E00C3FD7A /* TimelineFeed.storyboard */,
+				E4815C25252B9F2300C3FD7A /* Inbox.storyboard */,
+				E4815C20252B9F0B00C3FD7A /* Search.storyboard */,
+				E4815C1B252B9EE600C3FD7A /* ProfileAndSettings.storyboard */,
 				C66B88E125242AC7006BAD5F /* FeedViewCell.swift */,
 				C66B88E225242AC8006BAD5F /* Followers.storyboard */,
 				C66B88E025242AC7006BAD5F /* Following.storyboard */,
@@ -357,8 +363,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66B88E525242AC8006BAD5F /* Followers.storyboard in Resources */,
-				C66B88E725242AE2006BAD5F /* Profile.storyboard in Resources */,
+				E4815C1C252B9EE600C3FD7A /* ProfileAndSettings.storyboard in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
+				E4815C2B252B9F3E00C3FD7A /* TimelineFeed.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
 				C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */,
@@ -366,9 +373,10 @@
 				C66B88DF25242A97006BAD5F /* CreatePost.storyboard in Resources */,
 				C66B88F225269561006BAD5F /* Topics.storyboard in Resources */,
 				C66B88E325242AC8006BAD5F /* Following.storyboard in Resources */,
-				C66B88E925242AF9006BAD5F /* Search.storyboard in Resources */,
 				C66B88EB25242B1B006BAD5F /* Timeline.storyboard in Resources */,
+				E4815C26252B9F2300C3FD7A /* Inbox.storyboard in Resources */,
 				E4415AC9251CE629009A5EFA /* GoogleService-Info.plist in Resources */,
+				E4815C21252B9F0B00C3FD7A /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
