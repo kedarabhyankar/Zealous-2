@@ -123,9 +123,11 @@ extension WriteableUser {
             }
         }
     }
+    
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)
     }
+    
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -139,9 +141,9 @@ extension WriteableUser {
         
         // append user to followedUsers then write data to firestore
         if (self.email == email) {
-                   print("you can't follow yourself")
+            print("you can't follow yourself")
             self.showAndFocus(banner: followSelf)
-                   return
+            return
         }
         
         if self.followedUsers.contains(email) {
@@ -287,55 +289,175 @@ extension WriteableUser {
         
     }
     
-//    func updateProfilePic (img: UIImage) {
-//        let db = Firestore.firestore()
-//
-//        guard let imgData = img.jpegData(compressionQuality: 1.0)
-//            else {
-//                return
-//        }
-//
-//        let storageRef = Storage.storage().reference()
-//        let imagesRef = storageRef.child("profilePics")
-//        let fileName = UUID().uuidString
-//        let postRef = imagesRef.child(fileName)
-//
-//        postRef.putData(imgData, metadata: nil) { metadata, err in
-//            if let err = err {
-//                print(err.localizedDescription)
-//                return
-//            }
-//
-//            postRef.downloadURL(completion: { url, err in
-//                if let err = err {
-//                    print(err.localizedDescription)
-//                    return
-//                }
-//                guard let url = url else {
-//                    print("An error occurred when posting an image 3 ")
-//                    return
-//                }
-//
-//                db.collection("users")
-//                    .document(self.email)
-//                    .setData(
-//                        ["profilePic": url.absoluteString]
-//                )
-//            })
-//        }
-//    }
+    //    func updateProfilePic (img: UIImage) {
+    //        let db = Firestore.firestore()
+    //
+    //        guard let imgData = img.jpegData(compressionQuality: 1.0)
+    //            else {
+    //                return
+    //        }
+    //
+    //        let storageRef = Storage.storage().reference()
+    //        let imagesRef = storageRef.child("profilePics")
+    //        let fileName = UUID().uuidString
+    //        let postRef = imagesRef.child(fileName)
+    //
+    //        postRef.putData(imgData, metadata: nil) { metadata, err in
+    //            if let err = err {
+    //                print(err.localizedDescription)
+    //                return
+    //            }
+    //
+    //            postRef.downloadURL(completion: { url, err in
+    //                if let err = err {
+    //                    print(err.localizedDescription)
+    //                    return
+    //                }
+    //                guard let url = url else {
+    //                    print("An error occurred when posting an image 3 ")
+    //                    return
+    //                }
+    //
+    //                db.collection("users")
+    //                    .document(self.email)
+    //                    .setData(
+    //                        ["profilePic": url.absoluteString]
+    //                )
+    //            })
+    //        }
+    //    }
     
-//    func updateBio (bio: String) {
-//        let db = Firestore.firestore()
-//        let userRef = db.collection("users").document(self.email)
-//        userRef.updateData(["bio": bio]) { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        }
-//    }
+    //    func updateBio (bio: String) {
+    //        let db = Firestore.firestore()
+    //        let userRef = db.collection("users").document(self.email)
+    //        userRef.updateData(["bio": bio]) { err in
+    //            if let err = err {
+    //                print("Error updating document: \(err)")
+    //            } else {
+    //                print("Document successfully updated")
+    //            }
+    //        }
+    //    }
+    
+    
+    mutating func followTopic (title: String) {
+        // Error Banners
+        let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        followSelf.dismissesOnTap = true
+        
+        let alreadyFollow = Banner(title: "You are already following this user.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyFollow.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let topicRef = db.collection("topics").document(title)
+        
+        // append then write data to firestore
+        
+        if self.interests.contains(title) {
+            print("you already follow this user")
+            self.showAndFocus(banner: alreadyFollow)
+            return
+        }
+        self.interests.append(title)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // get the topic that was followed and update the followers array, then write the topic
+        // to the db
+        let thisEmail = self.email
+        
+        topicRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                print("Model: \(model)")
+                model.followers.append(thisEmail)
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("topics").document(title).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    mutating func unfollowTopic (title: String) {
+        // Error Banners
+        let unfollowSelf = Banner(title: "You can't unfollow yourself.", subtitle: "Choose a different user to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowSelf.dismissesOnTap = true
+        
+        let unfollowUser = Banner(title: "You can't unfollow this user.", subtitle: "Choose a different user that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowUser.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let topicRef = db.collection("topics").document(title)
+        
+        if !self.interests.contains(title) {
+            self.showAndFocus(banner: unfollowUser)
+            print("you are not following this topic")
+            return
+        }
+        // delete user from following array
+        for i in 0..<self.interests.count {
+            if self.interests[i] == title {
+                self.interests.remove(at: i)
+                break
+            }
+        }
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("topics").document(title).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // update the followers array
+        let thisEmail = self.email
+        
+        topicRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                print("Model: \(model)")
+                for i in 0..<model.followers.count {
+                    if model.followers[i] == thisEmail {
+                        model.followers.remove(at: i)
+                        break
+                    }
+                }
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("topics").document(title).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
 }
-
-extension Timestamp: TimestampType {}
