@@ -142,22 +142,28 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         topicRef.getDocument { document, error in
             if let document = document {
-                let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                var model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
                 print("Model: \(model)")
+                model.addPost(post: self.currentPost!)
+                
+                let dataToWrite1 = try! FirestoreEncoder().encode(model)
+                db.collection("topics").document(model.title).setData(dataToWrite1) { error in
+                    if (error != nil) {
+                        print("error writing topic to firestore: \(String(describing: error))")
+                        return
+                    } else {
+                        print("success writing topic to firestore")
+                    }
+                }
+                
             } else {
                 print("Topic does not exist")
                 //create a topic object and add current post to its post array
                 self.currentTopic = Topic.init(title: postTopic)
-                
-                //add new post to the user's created post array
                 self.currentTopic?.addPost(post: self.currentPost!)
-                self.currentUser?.addCreatedPost(post: self.currentPost!)
-                
-                let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
-                db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
                 
                 let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
-                self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1) { error in
+                db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1) { error in
                     if (error != nil) {
                         print("error writing topic to firestore: \(String(describing: error))")
                         return
@@ -167,6 +173,12 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 }
             }
         }
+        
+        //add new post to the user's created post array
+        self.currentUser?.addCreatedPost(post: self.currentPost!)
+        let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
+        db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
+        
         // write post to db
         let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
         db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
