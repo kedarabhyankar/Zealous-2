@@ -27,37 +27,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZA-Xq-W6G" userLabel="Profile Picture">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jan-Jt-ZLZ" userLabel="Profilepic">
                                                     <rect key="frame" x="15" y="10" width="60" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="7uT-9s-9Co"/>
-                                                        <constraint firstAttribute="height" constant="60" id="WxQ-cG-gAS"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="30"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDT-dB-5GA">
-                                                    <rect key="frame" x="90" y="31" width="41" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSv-wp-a17" userLabel="username">
+                                                    <rect key="frame" x="101" y="30" width="167" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="LDT-dB-5GA" firstAttribute="centerY" secondItem="dZA-Xq-W6G" secondAttribute="centerY" id="3gi-Hp-JcJ"/>
-                                                <constraint firstItem="dZA-Xq-W6G" firstAttribute="top" secondItem="Ieb-Ua-XfR" secondAttribute="top" constant="10" id="LH6-jK-Dli"/>
-                                                <constraint firstItem="dZA-Xq-W6G" firstAttribute="leading" secondItem="Ieb-Ua-XfR" secondAttribute="leading" constant="15" id="ayk-dd-TVW"/>
-                                                <constraint firstItem="LDT-dB-5GA" firstAttribute="leading" secondItem="dZA-Xq-W6G" secondAttribute="trailing" constant="15" id="o1d-Yd-FPf"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="Profilepic" destination="dZA-Xq-W6G" id="ybL-Ew-WGL"/>
-                                            <outlet property="nameLabel" destination="LDT-dB-5GA" id="ayw-7J-hkH"/>
-                                            <outlet property="profileImage" destination="dZA-Xq-W6G" id="rYV-sX-ThN"/>
-                                            <outlet property="username" destination="LDT-dB-5GA" id="i5k-Zh-AdY"/>
+                                            <outlet property="Profilepic" destination="Jan-Jt-ZLZ" id="7GQ-RU-Yw5"/>
+                                            <outlet property="username" destination="tSv-wp-a17" id="PtT-qn-XjS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
