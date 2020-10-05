@@ -123,9 +123,11 @@ extension WriteableUser {
             }
         }
     }
+    
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)
     }
+    
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
