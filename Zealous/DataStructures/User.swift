@@ -27,7 +27,6 @@ extension WriteableUser {
                 if let document = document {
                     let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
                     print("Model: \(model)")
-                    addUser(model)
                 } else {
                     print("Document does not exist")
                 }
