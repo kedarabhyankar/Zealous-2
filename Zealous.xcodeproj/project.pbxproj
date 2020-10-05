@@ -26,7 +26,6 @@
 		BC44BB8625253B9000C12823 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB8525253B9000C12823 /* FollowingViewController.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
-		C66B88EB25242B1B006BAD5F /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88EA25242B1B006BAD5F /* Timeline.storyboard */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
 		C66B88F225269561006BAD5F /* Topics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88F125269560006BAD5F /* Topics.storyboard */; };
 		C66B88F4252A11BE006BAD5F /* FollowingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88F3252A11BE006BAD5F /* FollowingViewCell.swift */; };
@@ -47,10 +46,6 @@
 		E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44D300825196527000FB63B /* LaunchScreen.storyboard */; };
 		E44D301525196527000FB63B /* ZealousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301425196527000FB63B /* ZealousTests.swift */; };
 		E44D302025196527000FB63B /* ZealousUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301F25196527000FB63B /* ZealousUITests.swift */; };
-		E4815C1C252B9EE600C3FD7A /* ProfileAndSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C1B252B9EE600C3FD7A /* ProfileAndSettings.storyboard */; };
-		E4815C21252B9F0B00C3FD7A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C20252B9F0B00C3FD7A /* Search.storyboard */; };
-		E4815C26252B9F2300C3FD7A /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C25252B9F2300C3FD7A /* Inbox.storyboard */; };
-		E4815C2B252B9F3E00C3FD7A /* TimelineFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4815C2A252B9F3E00C3FD7A /* TimelineFeed.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +89,6 @@
 		BC44BB8525253B9000C12823 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		C66B88EA25242B1B006BAD5F /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		C66B88F125269560006BAD5F /* Topics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Topics.storyboard; sourceTree = "<group>"; };
 		C66B88F3252A11BE006BAD5F /* FollowingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewCell.swift; sourceTree = "<group>"; };
@@ -121,10 +115,6 @@
 		E44D301B25196527000FB63B /* ZealousUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZealousUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D301F25196527000FB63B /* ZealousUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZealousUITests.swift; sourceTree = "<group>"; };
 		E44D302125196527000FB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4815C1B252B9EE600C3FD7A /* ProfileAndSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileAndSettings.storyboard; sourceTree = "<group>"; };
-		E4815C20252B9F0B00C3FD7A /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		E4815C25252B9F2300C3FD7A /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
-		E4815C2A252B9F3E00C3FD7A /* TimelineFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimelineFeed.storyboard; sourceTree = "<group>"; };
 		EB5076BDF2E87EDBE48BB98B /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 		F02925BA5258E2B960F2A020 /* Pods_Zealous_ZealousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous_ZealousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -218,14 +208,14 @@
 			children = (
 				BC44BB6F251A999300C12823 /* DataStructures */,
 				A6904D5C25255E5000E49593 /* CreatePost.storyboard */,
+				A6904D6025255E5F00E49593 /* FeedViewCell.swift */,
+				A6904D6C2525638A00E49593 /* CreatePostViewController.swift */,
 				A6904D6325255E6000E49593 /* Followers.storyboard */,
 				A6904D5F25255E5F00E49593 /* Following.storyboard */,
- 				E4815C25252B9F2300C3FD7A /* Inbox.storyboard */,
-				E4815C20252B9F0B00C3FD7A /* Search.storyboard */,
-				E4815C1B252B9EE600C3FD7A /* ProfileAndSettings.storyboard */,
-				C66B88EA25242B1B006BAD5F /* Timeline.storyboard */,
-				E4815C2A252B9F3E00C3FD7A /* TimelineFeed.storyboard */,
-				A6904D6C2525638A00E49593 /* CreatePostViewController.swift */,
+				A6904D5E25255E5F00E49593 /* Profile.storyboard */,
+				A6904D6125255E5F00E49593 /* Search.storyboard */,
+				A6904D6225255E5F00E49593 /* Timeline.storyboard */,
+				A6904D6425255E6000E49593 /* UserPostCell.swift */,
 				BC44BB8525253B9000C12823 /* FollowingViewController.swift */,
 				E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */,
 				C66B88C025197F1C006BAD5F /* Login.storyboard */,
@@ -378,10 +368,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C66B88EB25242B1B006BAD5F /* Timeline.storyboard in Resources */,
+				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
 				A607790A25292B4100054A25 /* CreatePost.storyboard in Resources */,
-				E4815C1C252B9EE600C3FD7A /* ProfileAndSettings.storyboard in Resources */,
-				E4815C2B252B9F3E00C3FD7A /* TimelineFeed.storyboard in Resources */,
+				A607790825292B3B00054A25 /* Following.storyboard in Resources */,
+				A607790525292B0500054A25 /* Timeline.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				A607790925292B3E00054A25 /* Followers.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
@@ -390,10 +380,8 @@
 				C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */,
 				A607790625292B1F00054A25 /* Profile.storyboard in Resources */,
 				C66B88F225269561006BAD5F /* Topics.storyboard in Resources */,
-        E4815C21252B9F0B00C3FD7A /* Search.storyboard in Resources */,
-				C66B88E325242AC8006BAD5F /* Following.storyboard in Resources */,
-				E4815C26252B9F2300C3FD7A /* Inbox.storyboard in Resources */,
 				E4415AC9251CE629009A5EFA /* GoogleService-Info.plist in Resources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E44D300E25196527000FB63B /* Resources */ = {
