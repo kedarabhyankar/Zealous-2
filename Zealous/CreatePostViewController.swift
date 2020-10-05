@@ -64,7 +64,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             //encode the updated post array
             let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
             //find the topic in the database and update post array???
-            self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1)
+            self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1)
             
             //send current post to database
             let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
@@ -205,7 +205,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
                 
                 let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
-                self.db.collection("topics").document(self.currentTopic!.id).setData(dataToWrite1) { error in
+                self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1) { error in
                     if (error != nil) {
                         print("error writing topic to firestore: \(String(describing: error))")
                         return
