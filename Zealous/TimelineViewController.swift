@@ -66,8 +66,5 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         cell.username?.text = user.username
         return cell
     }
-    
-    
-    
 }
 
