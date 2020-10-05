@@ -215,6 +215,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
          }
     }
  
+    
         //
         //        db.collection("topics").whereField("title", isEqualTo: postTopic).getDocuments() { (QuerySnapshot, err) in
         //            if QuerySnapshot?.isEmpty == true {
