@@ -142,6 +142,25 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         topicRef.getDocument { document, error in
             if let document = document {
+                if document.data() == nil {
+                    print("Topic does not exist")
+                    print("Topic does not exist")
+                    //create a topic object and add current post to its post array
+                    self.currentTopic = Topic.init(title: postTopic)
+                    self.currentTopic?.addPost(post: self.currentPost!)
+                    
+                    let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
+                    db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1) { error in
+                        if (error != nil) {
+                            print("error writing topic to firestore: \(String(describing: error))")
+                            return
+                        } else {
+                            print("success writing topic to firestore")
+                        }
+                    }
+                    self.afterTopicCreated()
+                    return
+                }
                 var model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
                 print("Model: \(model)")
                 model.addPost(post: self.currentPost!)
@@ -156,6 +175,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                     }
                 }
                 
+                self.afterTopicCreated()
             } else {
                 print("Topic does not exist")
                 //create a topic object and add current post to its post array
@@ -171,25 +191,30 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                         print("success writing topic to firestore")
                     }
                 }
+                self.afterTopicCreated()
             }
         }
-        
+    }
+    
+    func afterTopicCreated() {
         //add new post to the user's created post array
-        self.currentUser?.addCreatedPost(post: self.currentPost!)
-        let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
-        db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
-        
-        // write post to db
-        let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
-        db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
-            error in
-            if (error != nil) {
-                print("error writing post to firestore: \(String(describing: error))")
-                return
-            } else {
-                print("success writing post ot firestore")
-            }
-        }
+         self.currentUser?.addCreatedPost(post: self.currentPost!)
+         let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
+         db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
+         
+         // write post to db
+         let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
+         db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
+             error in
+             if (error != nil) {
+                 print("error writing post to firestore: \(String(describing: error))")
+                 return
+             } else {
+                 print("success writing post ot firestore")
+             }
+         }
+    }
+ 
         //
         //        db.collection("topics").whereField("title", isEqualTo: postTopic).getDocuments() { (QuerySnapshot, err) in
         //            if QuerySnapshot?.isEmpty == true {
@@ -270,5 +295,4 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         //            }
         //
         //        }
-    }
 }
