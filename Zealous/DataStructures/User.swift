@@ -342,9 +342,10 @@ extension WriteableUser {
     
     mutating func followTopic (title: String) {
         // Error Banners
-       
+        let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        followSelf.dismissesOnTap = true
         
-        let alreadyFollow = Banner(title: "You are already following this topic.", subtitle: "Choose a different topic to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        let alreadyFollow = Banner(title: "You are already following this user.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyFollow.dismissesOnTap = true
         
         let db = Firestore.firestore()
@@ -397,15 +398,17 @@ extension WriteableUser {
     
     mutating func unfollowTopic (title: String) {
         // Error Banners
-     
-        let unfollowTopics = Banner(title: "You can't unfollow this topic.", subtitle: "Choose a different topic that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        unfollowTopics.dismissesOnTap = true
+        let unfollowSelf = Banner(title: "You can't unfollow yourself.", subtitle: "Choose a different user to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowSelf.dismissesOnTap = true
+        
+        let unfollowUser = Banner(title: "You can't unfollow this user.", subtitle: "Choose a different user that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowUser.dismissesOnTap = true
         
         let db = Firestore.firestore()
         let topicRef = db.collection("topics").document(title)
         
         if !self.interests.contains(title) {
-            self.showAndFocus(banner: unfollowTopics)
+            self.showAndFocus(banner: unfollowUser)
             print("you are not following this topic")
             return
         }
@@ -416,8 +419,8 @@ extension WriteableUser {
                 break
             }
         }
-      let dataToWrite = try! FirestoreEncoder().encode(self)
-        db.collection("users").document(self.email).setData(dataToWrite) { error in
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("topics").document(title).setData(dataToWrite) { error in
             if(error != nil){
                 print("error happened when writing to firestore!")
                 print("described error as \(error!.localizedDescription)")
