@@ -6,6 +6,14 @@
 //
 import Foundation
 import UIKit
+import SwiftUI
+import Foundation
+import FirebaseAnalytics
+import Firebase
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+import CodableFirebase
 
 struct Post: Codable {
     var postId: String
@@ -28,9 +36,12 @@ struct Post: Codable {
         self.creatorId = ""
         self.likes = 0
         let today = Date()
-        let formatter1 = DateFormatter()
-        formatter1.dateStyle = .short
-        self.timestamp = formatter1.string(from: today)
+        //let formatter1 = DateFormatter()
+        //formatter1.dateStyle = .short
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        //self.timestamp = formatter1.string(from: today)
+        self.timestamp = dateFormatterGet.string(from: today)
     }
     
     init(topic: String, title: String, caption: String, creatorId: String) {

@@ -11,83 +11,95 @@ import FirebaseAuth
 import BRYXBanner
 import CodableFirebase
 
-//struct User: Codable {
-//    var id: String = UUID().uuidString
-//    var bio: String
-//    var dob: String
-//    var email: String
-//    var firstName: String
-//    var lastName: String
-//    var username: String
-//    var pictureURL: String
-//    var createdPosts: [String]
-//    var likedPosts: [String]
-//    var followedUsers: [String]
-//    var followedTopics: [String]
-//    var followers: [String]
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case bio
-//        case dob
-//        case email
-//        case firstName
-//        case lastName
-//        case username
-//        case pictureURL
-//        case createdPosts
-//        case likedPosts
-//        case followedUsers
-//        case followedTopics = "interests"
-//        case followers
-//    }
-//}
-
 extension WriteableUser {
-    func getFollowedTopics(topics: [String]) -> [Topic] {
-        return []
+    
+    
+    mutating func addCreatedPost(post: Post) {
+        self.createdPosts.append(post.postId)
+    }
+    func getFollowedTopics() {
+        let db = Firestore.firestore()
+        for id in self.interests {
+            // get the post and convert to Post object
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    print("Model: \(model)")
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
-    func getFollowedUsers(userIds: [String]) -> [User] {
-        return []
+    func getFollowedUsers(addUser: @escaping((WriteableUser) -> ())) {
+        let db = Firestore.firestore()
+        for id in self.followedUsers {
+            // get the post and convert to Post object
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    print("Model: \(model)")
+                    addUser(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
-    func getFollowers(userIds: [String]) -> [User] {
-        return []
+    func getFollowers(addUser: @escaping((WriteableUser) -> ())){
+        let db = Firestore.firestore()
+        for id in self.followers {
+            // get the post and convert to Post object
+            let ref = db.collection("users").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    print("Model: \(model)")
+                    addUser(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
     
-    func getCreatedPosts(email: String) -> [Post] {
+    static func getCreatedPosts(email: String, completion: @escaping(([Post]) -> ())) {
         let db = Firestore.firestore()
         db.collection("posts").whereField("creatorId", isEqualTo: email)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
+                    var createdPosts: [Post] = []
                     for document in querySnapshot!.documents {
+                        let model = try! FirestoreDecoder().decode(Post.self, from: document.data())
+                        createdPosts.append(model)
                         print("\(document.documentID) => \(document.data())")
                     }
+                    completion(createdPosts)
                 }
         }
-        return []
     }
     
-    func getLikedPosts(postIds: [String]) -> [Post] {
-        var likedPosts: [Post] = []
+    func getLikedPosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
-        for id in postIds {
+        for id in self.likedPosts {
             // get the post and convert to Post object
             let ref = db.collection("posts").document(id)
             ref.getDocument { document, error in
                 if let document = document {
                     let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
                     print("Model: \(model)")
-                    likedPosts.append(model)
+                    addPost(model)
                 } else {
                     print("Document does not exist")
                 }
             }
         }
-        return likedPosts
     }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
@@ -111,9 +123,11 @@ extension WriteableUser {
             }
         }
     }
+    
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)
     }
+    
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -127,9 +141,9 @@ extension WriteableUser {
         
         // append user to followedUsers then write data to firestore
         if (self.email == email) {
-                   print("you can't follow yourself")
+            print("you can't follow yourself")
             self.showAndFocus(banner: followSelf)
-                   return
+            return
         }
         
         if self.followedUsers.contains(email) {
@@ -275,55 +289,172 @@ extension WriteableUser {
         
     }
     
-//    func updateProfilePic (img: UIImage) {
-//        let db = Firestore.firestore()
-//
-//        guard let imgData = img.jpegData(compressionQuality: 1.0)
-//            else {
-//                return
-//        }
-//
-//        let storageRef = Storage.storage().reference()
-//        let imagesRef = storageRef.child("profilePics")
-//        let fileName = UUID().uuidString
-//        let postRef = imagesRef.child(fileName)
-//
-//        postRef.putData(imgData, metadata: nil) { metadata, err in
-//            if let err = err {
-//                print(err.localizedDescription)
-//                return
-//            }
-//
-//            postRef.downloadURL(completion: { url, err in
-//                if let err = err {
-//                    print(err.localizedDescription)
-//                    return
-//                }
-//                guard let url = url else {
-//                    print("An error occurred when posting an image 3 ")
-//                    return
-//                }
-//
-//                db.collection("users")
-//                    .document(self.email)
-//                    .setData(
-//                        ["profilePic": url.absoluteString]
-//                )
-//            })
-//        }
-//    }
+    //    func updateProfilePic (img: UIImage) {
+    //        let db = Firestore.firestore()
+    //
+    //        guard let imgData = img.jpegData(compressionQuality: 1.0)
+    //            else {
+    //                return
+    //        }
+    //
+    //        let storageRef = Storage.storage().reference()
+    //        let imagesRef = storageRef.child("profilePics")
+    //        let fileName = UUID().uuidString
+    //        let postRef = imagesRef.child(fileName)
+    //
+    //        postRef.putData(imgData, metadata: nil) { metadata, err in
+    //            if let err = err {
+    //                print(err.localizedDescription)
+    //                return
+    //            }
+    //
+    //            postRef.downloadURL(completion: { url, err in
+    //                if let err = err {
+    //                    print(err.localizedDescription)
+    //                    return
+    //                }
+    //                guard let url = url else {
+    //                    print("An error occurred when posting an image 3 ")
+    //                    return
+    //                }
+    //
+    //                db.collection("users")
+    //                    .document(self.email)
+    //                    .setData(
+    //                        ["profilePic": url.absoluteString]
+    //                )
+    //            })
+    //        }
+    //    }
     
-//    func updateBio (bio: String) {
-//        let db = Firestore.firestore()
-//        let userRef = db.collection("users").document(self.email)
-//        userRef.updateData(["bio": bio]) { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        }
-//    }
+    //    func updateBio (bio: String) {
+    //        let db = Firestore.firestore()
+    //        let userRef = db.collection("users").document(self.email)
+    //        userRef.updateData(["bio": bio]) { err in
+    //            if let err = err {
+    //                print("Error updating document: \(err)")
+    //            } else {
+    //                print("Document successfully updated")
+    //            }
+    //        }
+    //    }
+    
+    
+    mutating func followTopic (title: String) {
+        // Error Banners
+       
+        
+        let alreadyFollow = Banner(title: "You are already following this topic.", subtitle: "Choose a different topic to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyFollow.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let topicRef = db.collection("topics").document(title)
+        
+        // append then write data to firestore
+        
+        if self.interests.contains(title) {
+            print("you already follow this user")
+            self.showAndFocus(banner: alreadyFollow)
+            return
+        }
+        self.interests.append(title)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // get the topic that was followed and update the followers array, then write the topic
+        // to the db
+        let thisEmail = self.email
+        
+        topicRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                print("Model: \(model)")
+                model.followers.append(thisEmail)
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("topics").document(title).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    mutating func unfollowTopic (title: String) {
+        // Error Banners
+     
+        let unfollowTopics = Banner(title: "You can't unfollow this topic.", subtitle: "Choose a different topic that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowTopics.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let topicRef = db.collection("topics").document(title)
+        
+        if !self.interests.contains(title) {
+            self.showAndFocus(banner: unfollowTopics)
+            print("you are not following this topic")
+            return
+        }
+        // delete user from following array
+        for i in 0..<self.interests.count {
+            if self.interests[i] == title {
+                self.interests.remove(at: i)
+                break
+            }
+        }
+      let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+        
+        // update the followers array
+        let thisEmail = self.email
+        
+        topicRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                print("Model: \(model)")
+                for i in 0..<model.followers.count {
+                    if model.followers[i] == thisEmail {
+                        model.followers.remove(at: i)
+                        break
+                    }
+                }
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                db.collection("topics").document(title).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
 }
-
-extension Timestamp: TimestampType {}
