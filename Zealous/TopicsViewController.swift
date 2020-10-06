@@ -35,7 +35,13 @@ class TopicsViewController: UIViewController {
     
     func afterGettingCurrentUser() {
 //        currentUser?.follow(email: "ramesh32@purdue.edu")
-        print(currentUser?.followers ?? "")
+        currentUser?.followTopic(title: "String")
+        currentUser?.followTopic(title: "One")
+        print(currentUser?.interests ?? "")
+        topicsTableView.reloadData()
+        currentUser?.unfollowTopic(title: "String")
+        print(currentUser?.interests ?? "")
+        topicsTableView.reloadData()
     }
     
     func printUserPosts(postArray: [Post]) {

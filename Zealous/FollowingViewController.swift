@@ -38,11 +38,6 @@ class FollowingViewController: UIViewController {
         //let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
         //currentUser?.createPost(post: post)
         print(currentUser?.followedUsers ?? "")
-        currentUser?.followTopic(title: "String")
-        currentUser?.followTopic(title: "One")
-        print(currentUser?.interests ?? "")
-        currentUser?.unfollowTopic(title: "String")
-        print(currentUser?.interests ?? "")
         currentUser?.getFollowedTopics(addTopic: printTopic)
     }
     
