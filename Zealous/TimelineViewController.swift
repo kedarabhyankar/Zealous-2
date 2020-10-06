@@ -34,6 +34,7 @@ class TimelineViewController: UIViewController {
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
         currentUser.getFollowedTopics(addTopic: addTopic)
+        posts.sort(by: {$0.timestamp > $1.timestamp})
         timelineTableView.reloadData()
     }
     func addTimeline(postArray: [Post]) {
@@ -54,11 +55,6 @@ class TimelineViewController: UIViewController {
             self.posts.append(post)
             self.timelineTableView.reloadData()
         }
-    }
-    
-    func afterGettingCurrentUser() {
-//        currentUser?.follow(email: "ramesh32@purdue.edu")
-       // print(currentUser?.followedUsers ?? "")
     }
     
     func printUserPosts(postArray: [Post]) {
@@ -84,6 +80,10 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Sort the posts by timestamp
+        posts.sort(by: { (first: Post, second: Post) -> Bool in
+                   first.timestamp > second.timestamp
+               })
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
         let post = posts[indexPath.row]
         cell.username?.text = post.creatorId
