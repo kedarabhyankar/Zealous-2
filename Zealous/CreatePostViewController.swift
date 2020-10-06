@@ -252,6 +252,10 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     
+    @IBAction func DeleteTest(_ sender: Any) {
+        let exampleDelete = DeletePostViewController()
+        exampleDelete.DeletePost(self)
+    }
     
     
     

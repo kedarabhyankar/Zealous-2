@@ -53,4 +53,35 @@ struct Post: Codable {
         self.init(topic: topic, title: title, caption: caption, creatorId: creatorId)
         self.imgURL = img
     }
+    
+    static func getPost(postId: String, completion: @escaping((Post) -> ())) {
+        DispatchQueue.main.async {
+            let db = Firestore.firestore()
+            let topicRef = db.collection("posts")
+            //var model: Topic?
+            
+            topicRef.document(postId).getDocument() { querySnapshot, error in
+                if error != nil {
+                    print("error getting document: \(String(describing: error))")
+                    //return nil
+                } else {
+                    let model = try! FirestoreDecoder().decode(Post.self, from: (querySnapshot?.data())!)
+                    print("Model:  \(String(describing: model))")
+                    completion(model)
+                    //completion(model)
+                    //return model
+                    
+                }
+            }
+        }
+        
+    }
+    
+    static func deletePost(postId: String) {
+        let db = Firestore.firestore()
+        db.collection("posts").document(postId).delete()
+    }
+    
+    
+    
 }

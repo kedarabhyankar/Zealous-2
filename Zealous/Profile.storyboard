@@ -190,6 +190,9 @@
                                                     <rect key="frame" x="260" y="16" width="79" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Delete Post"/>
+                                                    <connections>
+                                                        <action selector="DeletePost:" destination="9cf-Fg-nnw" eventType="touchUpInside" id="NdT-d5-Ozv"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -234,7 +237,7 @@
                                             <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="ME8-f1-vog">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="KMK-dV-t0p" kind="presentation" modalPresentationStyle="fullScreen" id="ULn-AJ-IUG"/>
+                                                    <segue destination="KMK-dV-t0p" kind="presentation" identifier="toProfile" modalPresentationStyle="fullScreen" id="ULn-AJ-IUG"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -259,6 +262,7 @@
                     <navigationItem key="navigationItem" id="lCO-Mf-3fI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vv-oc-FHS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="9cf-Fg-nnw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="919.20000000000005" y="-84.236453201970448"/>
         </scene>

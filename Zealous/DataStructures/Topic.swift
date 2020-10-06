@@ -36,8 +36,10 @@ struct Topic: Codable {
         self.posts.append(post.postId)
     }
 
-    func removePost (postId: String) {
+    mutating func removePost (postId: String) {
         // call firebase delete
+        let index: Int = self.posts.firstIndex(of: postId)!
+        self.posts.remove(at: index)
     }
     
     
@@ -89,4 +91,8 @@ struct Topic: Codable {
     
 }
     
+    static func deleteTopic(topicName: String) {
+        let db = Firestore.firestore()
+        db.collection("topics").document(topicName).delete()
+    }
 }

@@ -17,6 +17,12 @@ extension WriteableUser {
     mutating func addCreatedPost(post: Post) {
         self.createdPosts.append(post.postId)
     }
+    
+    mutating func deleteCreatedPost(postId: String) {
+        let index: Int = self.createdPosts.firstIndex(of: postId)!
+        self.createdPosts.remove(at: index)
+    }
+    
     func getFollowedTopics() {
         let db = Firestore.firestore()
         for id in self.interests {
