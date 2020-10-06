@@ -50,6 +50,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
     
     @IBOutlet weak var ConfirmPassword: UITextField!
     
+    @IBOutlet weak var NewProfilePic: UIImageView!
     
     
     var db: Firestore!
@@ -87,6 +88,16 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
      func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
        }
+    
+    
+    @IBAction func UploadProfilePic(_ sender: Any) {
+    }
+    
+    
+    @IBAction func SubmitProfilePic(_ sender: Any) {
+    }
+    
+    
     
     
     

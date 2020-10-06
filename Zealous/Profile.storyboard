@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-9o-aGB">
-                                <rect key="frame" x="0.0" y="113" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="113" width="375" height="602"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="hx8-Iz-FV4">
@@ -190,6 +190,9 @@
                                                     <rect key="frame" x="260" y="16" width="79" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Delete Post"/>
+                                                    <connections>
+                                                        <action selector="DeletePost:" destination="9cf-Fg-nnw" eventType="touchUpInside" id="NdT-d5-Ozv"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -209,8 +212,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yn-Td-UU1">
+                                <rect key="frame" x="302" y="61" width="57" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Post" image="plus" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29" scale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Xhs-8d-Uox" kind="presentation" modalPresentationStyle="fullScreen" id="XKB-MA-Dtd"/>
+                                </connections>
+                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jei-jn-waH">
-                                <rect key="frame" x="0.0" y="675" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="715" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title=" " largeTitleDisplayMode="never" id="BBo-Qk-ymD">
@@ -224,7 +237,7 @@
                                             <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="ME8-f1-vog">
                                                 <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="KMK-dV-t0p" kind="presentation" modalPresentationStyle="fullScreen" id="ULn-AJ-IUG"/>
+                                                    <segue destination="KMK-dV-t0p" kind="presentation" identifier="toProfile" modalPresentationStyle="fullScreen" id="ULn-AJ-IUG"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -242,16 +255,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yn-Td-UU1">
-                                <rect key="frame" x="302" y="61" width="57" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create Post" image="plus" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29" scale="large"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Xhs-8d-Uox" kind="presentation" modalPresentationStyle="fullScreen" id="XKB-MA-Dtd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Kk7-IB-qFa"/>
@@ -259,6 +262,7 @@
                     <navigationItem key="navigationItem" id="lCO-Mf-3fI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vv-oc-FHS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="9cf-Fg-nnw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="919.20000000000005" y="-84.236453201970448"/>
         </scene>
@@ -405,6 +409,9 @@
                                                     <state key="normal" title="Upload">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="UploadProfilePic:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="mNG-Jr-g4X"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfa-pR-PkO">
                                                     <rect key="frame" x="27" y="259" width="320" height="30"/>
@@ -413,6 +420,9 @@
                                                     <state key="normal" title="Submit">
                                                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="SubmitProfilePic:" destination="1Nb-ni-hrF" eventType="touchUpInside" id="Cxa-uo-az3"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P0T-7u-K6d">
                                                     <rect key="frame" x="27" y="37" width="320" height="164"/>
@@ -542,6 +552,7 @@
                         <outlet property="ConfirmPassword" destination="jyj-98-78e" id="vLe-fd-2g2"/>
                         <outlet property="CurrPassword" destination="W4X-bg-oag" id="gsc-gu-LHu"/>
                         <outlet property="NewPassword" destination="dEU-qQ-hM5" id="8PP-WQ-pjG"/>
+                        <outlet property="NewProfilePic" destination="P0T-7u-K6d" id="Atf-U5-SZO"/>
                         <segue destination="Zrn-fx-gJr" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="5Wd-Gl-D1j"/>
                     </connections>
                 </tableViewController>

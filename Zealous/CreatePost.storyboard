@@ -16,39 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNe-ik-IZj">
-                                <rect key="frame" x="0.0" y="645" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title=" " largeTitleDisplayMode="never" id="PuZ-2f-OfQ">
-                                        <leftBarButtonItems>
-                                            <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="QyE-iv-QLD">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                                <connections>
-                                                    <segue destination="KpL-hS-fpz" kind="presentation" modalPresentationStyle="fullScreen" id="9jQ-nC-aPK"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="lMF-EA-kpi">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                                <connections>
-                                                    <segue destination="vJU-Ce-bX7" kind="presentation" modalPresentationStyle="fullScreen" id="z0w-pa-o5W"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </leftBarButtonItems>
-                                        <rightBarButtonItems>
-                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="3ui-nN-6CO">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="ZUr-3C-htc">
-                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                                                <connections>
-                                                    <segue destination="GCz-kC-Vdz" kind="presentation" modalPresentationStyle="fullScreen" id="h4q-cW-pt9"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMj-iI-nLb">
                                 <rect key="frame" x="48" y="173" width="279" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -113,6 +80,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNe-ik-IZj">
+                                <rect key="frame" x="0.0" y="708" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title=" " largeTitleDisplayMode="never" id="PuZ-2f-OfQ">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Home" image="house.fill" catalog="system" width="18" id="QyE-iv-QLD">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="KpL-hS-fpz" kind="presentation" modalPresentationStyle="fullScreen" id="9jQ-nC-aPK"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Profile" image="person.circle" catalog="system" width="18" id="lMF-EA-kpi">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="vJU-Ce-bX7" kind="presentation" modalPresentationStyle="fullScreen" id="z0w-pa-o5W"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Direct Message" image="bubble.left.and.bubble.right.fill" catalog="system" width="18" id="3ui-nN-6CO">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                            </barButtonItem>
+                                            <barButtonItem title="Search" image="magnifyingglass" catalog="system" width="18" id="ZUr-3C-htc">
+                                                <inset key="imageInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
+                                                <connections>
+                                                    <segue destination="GCz-kC-Vdz" kind="presentation" modalPresentationStyle="fullScreen" id="h4q-cW-pt9"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDM-GY-hfR">
+                                <rect key="frame" x="148" y="653" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete Post"/>
+                                <connections>
+                                    <action selector="DeleteTest:" destination="x06-Z7-mjz" eventType="touchUpInside" id="LNL-Rr-m8T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mRW-Je-frG"/>
@@ -122,11 +130,22 @@
                         <outlet property="PostImage" destination="pDu-iK-6aW" id="uwW-Hz-Kop"/>
                         <outlet property="PostTitle" destination="QMj-iI-nLb" id="rXT-oh-Hhp"/>
                         <outlet property="PostTopic" destination="i5E-bO-fbQ" id="Wum-gm-MJE"/>
+                        <segue destination="ILn-JU-Ii6" kind="presentation" identifier="toTimeline" modalPresentationStyle="fullScreen" id="tup-zg-nFE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0R-Mc-ah3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1652" y="609"/>
+        </scene>
+        <!--Timeline-->
+        <scene sceneID="JMx-lR-bFf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Timeline" id="ILn-JU-Ii6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hOx-Ou-kke"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4b-h1-B17" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2368" y="461"/>
         </scene>
         <!--Search-->
         <scene sceneID="Wkh-f8-lXG">

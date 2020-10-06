@@ -216,8 +216,8 @@
                                     <action selector="onBack:" destination="ef3-Cb-PCy" eventType="touchUpInside" id="h2d-uO-i9e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date of Birth:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dML-GY-agw">
-                                <rect key="frame" x="137" y="213" width="106" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dML-GY-agw">
+                                <rect key="frame" x="137" y="213" width="106" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -238,7 +238,7 @@
                             <constraint firstItem="8Mp-qi-eR5" firstAttribute="leading" secondItem="FIx-f4-Nbf" secondAttribute="leading" constant="88" id="c2B-hU-fvS"/>
                             <constraint firstItem="dML-GY-agw" firstAttribute="leading" secondItem="FIx-f4-Nbf" secondAttribute="leading" constant="137" id="d9g-mz-Hzr"/>
                             <constraint firstItem="klO-lZ-bL3" firstAttribute="leading" secondItem="Jdw-jz-h1M" secondAttribute="leading" id="dks-Qw-Ucr"/>
-                            <constraint firstItem="dML-GY-agw" firstAttribute="centerX" secondItem="Jdw-jz-h1M" secondAttribute="centerX" id="ffc-19-hXL"/>
+                            <constraint firstItem="dML-GY-agw" firstAttribute="centerX" secondItem="Jdw-jz-h1M" secondAttribute="centerX" constant="2.5" id="ffc-19-hXL"/>
                             <constraint firstItem="FIx-f4-Nbf" firstAttribute="trailing" secondItem="8Mp-qi-eR5" secondAttribute="trailing" constant="88" id="h0Y-cc-Uwp"/>
                             <constraint firstItem="klO-lZ-bL3" firstAttribute="trailing" secondItem="FIx-f4-Nbf" secondAttribute="trailing" id="okq-Q3-kC3"/>
                             <constraint firstItem="8Mp-qi-eR5" firstAttribute="centerX" secondItem="Jdw-jz-h1M" secondAttribute="centerX" id="qEp-Yx-4pJ"/>
@@ -246,7 +246,7 @@
                             <constraint firstItem="FIx-f4-Nbf" firstAttribute="trailing" secondItem="Xh3-t9-rbl" secondAttribute="trailing" constant="78" id="suM-of-6dJ"/>
                             <constraint firstItem="FIx-f4-Nbf" firstAttribute="trailing" secondItem="jNu-km-tp1" secondAttribute="trailing" constant="76" id="wXv-mk-YN0"/>
                             <constraint firstItem="FIx-f4-Nbf" firstAttribute="trailing" secondItem="VhI-PM-BpX" secondAttribute="trailing" constant="76" id="wcm-eU-ZP6"/>
-                            <constraint firstItem="FIx-f4-Nbf" firstAttribute="trailing" secondItem="dML-GY-agw" secondAttribute="trailing" constant="137" id="zb2-h3-sq1"/>
+                            <constraint firstItem="FIx-f4-Nbf" firstAttribute="trailing" secondItem="dML-GY-agw" secondAttribute="trailing" constant="132" id="zb2-h3-sq1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FIx-f4-Nbf"/>
                     </view>
@@ -373,7 +373,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add a Profile Photo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-Yo-gqb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a Profile Photo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-Yo-gqb">
                                 <rect key="frame" x="82" y="182" width="229" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="jWH-2k-2NA"/>
@@ -443,6 +443,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iIb-aa-GXj" firstAttribute="top" secondItem="UsZ-KF-kgM" secondAttribute="bottom" constant="32" id="0FV-OD-FwO"/>
+                            <constraint firstItem="ugU-Yo-gqb" firstAttribute="leading" secondItem="ZR2-nQ-Q47" secondAttribute="leading" constant="82" id="0u3-aU-BS2"/>
                             <constraint firstItem="ZR2-nQ-Q47" firstAttribute="trailing" secondItem="FtE-c8-Oy1" secondAttribute="trailing" constant="76" id="7iM-W7-qw8"/>
                             <constraint firstItem="FtE-c8-Oy1" firstAttribute="centerX" secondItem="3um-Vp-3oW" secondAttribute="centerX" id="8Cz-iV-q2c"/>
                             <constraint firstItem="hOY-PW-cz7" firstAttribute="leading" secondItem="ZR2-nQ-Q47" secondAttribute="leading" constant="64" id="AyJ-JX-X6D"/>
@@ -457,12 +458,10 @@
                             <constraint firstItem="ZR2-nQ-Q47" firstAttribute="trailing" secondItem="nYK-Fe-67H" secondAttribute="trailing" constant="88" id="PPs-pk-xeG"/>
                             <constraint firstItem="ugU-Yo-gqb" firstAttribute="top" secondItem="nYK-Fe-67H" secondAttribute="bottom" constant="8" id="U93-Qv-8yM"/>
                             <constraint firstItem="hOY-PW-cz7" firstAttribute="centerX" secondItem="3um-Vp-3oW" secondAttribute="centerX" id="Xwz-XB-Faa"/>
-                            <constraint firstItem="ZR2-nQ-Q47" firstAttribute="trailing" secondItem="ugU-Yo-gqb" secondAttribute="trailing" constant="81.670000000000002" id="aGz-G8-Jqu"/>
                             <constraint firstItem="FtE-c8-Oy1" firstAttribute="leading" secondItem="ZR2-nQ-Q47" secondAttribute="leading" constant="76" id="f4G-oj-5DN"/>
                             <constraint firstItem="hOY-PW-cz7" firstAttribute="top" secondItem="ugU-Yo-gqb" secondAttribute="bottom" constant="39" id="mrc-N5-meO"/>
-                            <constraint firstItem="ugU-Yo-gqb" firstAttribute="leading" secondItem="ZR2-nQ-Q47" secondAttribute="leading" constant="81.670000000000002" id="p97-mN-wWf"/>
                             <constraint firstItem="nYK-Fe-67H" firstAttribute="top" secondItem="ZR2-nQ-Q47" secondAttribute="top" constant="48" id="qB6-Rs-Wlq"/>
-                            <constraint firstItem="ugU-Yo-gqb" firstAttribute="centerX" secondItem="3um-Vp-3oW" secondAttribute="centerX" id="rB0-xe-0Ia"/>
+                            <constraint firstItem="ugU-Yo-gqb" firstAttribute="trailing" secondItem="hOY-PW-cz7" secondAttribute="trailing" id="sEH-lv-NAi"/>
                             <constraint firstItem="ZR2-nQ-Q47" firstAttribute="trailing" secondItem="hOY-PW-cz7" secondAttribute="trailing" constant="64" id="yB9-CY-pQO"/>
                             <constraint firstItem="iIb-aa-GXj" firstAttribute="centerX" secondItem="3um-Vp-3oW" secondAttribute="centerX" id="zSG-yx-iGE"/>
                             <constraint firstItem="iIb-aa-GXj" firstAttribute="leading" secondItem="ZR2-nQ-Q47" secondAttribute="leading" constant="76" id="zzV-Hi-bGd"/>
@@ -487,8 +486,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbx-eP-CW0">
-                                <rect key="frame" x="88" y="48" width="199" height="75"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbx-eP-CW0">
+                                <rect key="frame" x="88" y="92" width="199" height="75"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Zealous">
                                         <attributes>
@@ -499,8 +498,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tell us about yourself!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-2G-IHw">
-                                <rect key="frame" x="64" y="131" width="247" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-2G-IHw">
+                                <rect key="frame" x="64" y="175" width="247" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -604,8 +603,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SnW-VY-jdE"/>
-        <segue reference="GWQ-Sl-bfN"/>
+        <segue reference="dAP-n8-6wE"/>
+        <segue reference="wRU-ws-Z2g"/>
         <segue reference="ZDc-yY-dpD"/>
     </inferredMetricsTieBreakers>
     <resources>

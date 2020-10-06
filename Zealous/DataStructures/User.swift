@@ -17,15 +17,27 @@ extension WriteableUser {
     mutating func addCreatedPost(post: Post) {
         self.createdPosts.append(post.postId)
     }
-    func getFollowedTopics() {
+    
+    mutating func deleteCreatedPost(postId: String) {
+        let index: Int = self.createdPosts.firstIndex(of: postId)!
+        self.createdPosts.remove(at: index)
+    }
+    
+    func getFollowedTopics(addTopic: @escaping((Topic) -> ())) {
         let db = Firestore.firestore()
-        for id in self.interests {
+        for topicTitle in self.interests {
             // get the post and convert to Post object
-            let ref = db.collection("users").document(id)
+            let ref = db.collection("topics").document(topicTitle)
             ref.getDocument { document, error in
                 if let document = document {
-                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    if document.data() == nil {
+                        print("Topic does not exist")
+                        return
+                    }
+                    let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
                     print("Model: \(model)")
+                    // call function to add topic to array
+                    addTopic(model)
                 } else {
                     print("Document does not exist")
                 }
@@ -101,6 +113,22 @@ extension WriteableUser {
             }
         }
     }
+    func getTimelinePosts(addPost: @escaping((Post) -> ())) {
+           let db = Firestore.firestore()
+        for id in self.createdPosts {
+               // get the post and convert to Post object
+               let ref = db.collection("posts").document(id)
+               ref.getDocument { document, error in
+                   if let document = document {
+                       let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                       print("Model: \(model)")
+                       addPost(model)
+                   } else {
+                       print("Document does not exist")
+                   }
+               }
+           }
+       }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
         let auth = Auth.auth()
@@ -342,10 +370,9 @@ extension WriteableUser {
     
     mutating func followTopic (title: String) {
         // Error Banners
-        let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        followSelf.dismissesOnTap = true
+       
         
-        let alreadyFollow = Banner(title: "You are already following this user.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        let alreadyFollow = Banner(title: "You are already following this topic.", subtitle: "Choose a different topic to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyFollow.dismissesOnTap = true
         
         let db = Firestore.firestore()
@@ -398,17 +425,15 @@ extension WriteableUser {
     
     mutating func unfollowTopic (title: String) {
         // Error Banners
-        let unfollowSelf = Banner(title: "You can't unfollow yourself.", subtitle: "Choose a different user to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        unfollowSelf.dismissesOnTap = true
-        
-        let unfollowUser = Banner(title: "You can't unfollow this user.", subtitle: "Choose a different user that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
-        unfollowUser.dismissesOnTap = true
+     
+        let unfollowTopics = Banner(title: "You can't unfollow this topic.", subtitle: "Choose a different topic that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        unfollowTopics.dismissesOnTap = true
         
         let db = Firestore.firestore()
         let topicRef = db.collection("topics").document(title)
         
         if !self.interests.contains(title) {
-            self.showAndFocus(banner: unfollowUser)
+            self.showAndFocus(banner: unfollowTopics)
             print("you are not following this topic")
             return
         }
@@ -419,8 +444,8 @@ extension WriteableUser {
                 break
             }
         }
-        let dataToWrite = try! FirestoreEncoder().encode(self)
-        db.collection("topics").document(title).setData(dataToWrite) { error in
+      let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
             if(error != nil){
                 print("error happened when writing to firestore!")
                 print("described error as \(error!.localizedDescription)")
