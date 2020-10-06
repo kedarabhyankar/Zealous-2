@@ -15,6 +15,7 @@ class TimelineViewController: UIViewController {
     var likedPosts: [Post] = []
     var following: [WriteableUser] = []
     var posts: [Post] = []
+     var topics: [Topic] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +33,20 @@ class TimelineViewController: UIViewController {
         
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
-        currentUser.getTimelinePosts(addPost: addTimeline)
-        
+        currentUser.getFollowedTopics(addTopic: addTopic)
         
     }
-    func addTimeline(post: Post) {
-        posts.append(post)
+    func addTimeline(post: [Post]) {
+        for postItem in post {
+        posts.append(postItem)
+            print(postItem)
+        }
         timelineTableView.reloadData()
     }
+    func addTopic(topic: Topic) {
+        topics.append(topic)
+    }
+    
     func afterGettingCurrentUser() {
 //        currentUser?.follow(email: "ramesh32@purdue.edu")
        // print(currentUser?.followedUsers ?? "")
@@ -56,6 +63,7 @@ class TimelineViewController: UIViewController {
     }
     func addUser(user: WriteableUser) {
         following.append(user)
+        WriteableUser.getCreatedPosts(email: user.email, completion: addTimeline)
         timelineTableView.reloadData()
     }
 }
