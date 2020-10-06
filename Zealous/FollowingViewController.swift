@@ -43,6 +43,12 @@ class FollowingViewController: UIViewController {
         print(currentUser?.interests ?? "")
         currentUser?.unfollowTopic(title: "String")
         print(currentUser?.interests ?? "")
+        currentUser?.getFollowedTopics(addTopic: printTopic)
+    }
+    
+    func printTopic(topic: Topic) {
+        print("MY INTERESTS")
+        print(topic)
     }
     
     func printUserPosts(postArray: [Post]) {
