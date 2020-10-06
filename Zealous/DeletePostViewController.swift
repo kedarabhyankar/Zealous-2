@@ -32,8 +32,6 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
            // Do any additional setup after loading the view
            let firestoreSettings = FirestoreSettings()
            Firestore.firestore().settings = firestoreSettings
-           //db = Firestore.firestore()
-           //storage = Storage.storage()
            WriteableUser.getCurrentUser(completion: getUser)
        }
     
@@ -89,27 +87,9 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
             //delete post from user's created posts array and send user object back to databse
             Post.deletePost(postId: thePost.postId)
             //delete post document from database
-            /*self.db.collection("posts").document(thePost.postId).delete() {
-                error in
-                if (error != nil) {
-                    print("error deleting post from firestore: \(String(describing: error))")
-                    return
-                } else {
-                    print("success deleting post from firestore")
-                }
-            } */
         }
         print("the post is: \(thePost)")
-        /* self.db.collection("posts").document(thePost.postId).delete() {
-            error in
-            if (error != nil) {
-                print("error deleting post from firestore: \(String(describing: error))")
-                return
-            } else {
-                print("success deleting post from firestore")
-            }
-        } */
-        
+       
         return
     }
     
