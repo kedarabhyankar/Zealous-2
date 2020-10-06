@@ -63,4 +63,27 @@ struct Topic: Codable {
         let db = Firestore.firestore()
         db.collection("topics").document(topicName).delete()
     }
+    
+    func getPosts(completion: @escaping((Post) -> ())) {
+        let db = Firestore.firestore()
+        let postsref = db.collection("posts")
+        
+        for postId in self.posts {
+            let ref = postsref.document(postId)
+            ref.getDocument { document, error in
+                if let document = document {
+                    if document.data() == nil {
+                        print("Topic does not exist")
+                        return
+                    }
+                    let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                    print("Model: \(model)")
+                    // call function to add topic to array
+                    completion(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
+    }
 }
