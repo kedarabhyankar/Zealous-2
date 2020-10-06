@@ -29,7 +29,6 @@ class TimelineViewController: UIViewController {
         self.currentUser = currentUser
         afterGettingCurrentUser()
         WriteableUser.getCreatedPosts(email: currentUser.email, completion: printUserPosts)
-        
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
     }
