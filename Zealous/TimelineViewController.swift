@@ -34,10 +34,10 @@ class TimelineViewController: UIViewController {
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
         currentUser.getFollowedTopics(addTopic: addTopic)
-        
+        timelineTableView.reloadData()
     }
-    func addTimeline(post: [Post]) {
-        for postItem in post {
+    func addTimeline(postArray: [Post]) {
+        for postItem in postArray {
         posts.append(postItem)
             print(postItem)
         }
@@ -45,6 +45,15 @@ class TimelineViewController: UIViewController {
     }
     func addTopic(topic: Topic) {
         topics.append(topic)
+        topic.getPosts { (post) in
+            for postItem in self.posts {
+                if(postItem.postId == post.postId) {
+                    return
+                }
+            }
+            self.posts.append(post)
+            self.timelineTableView.reloadData()
+        }
     }
     
     func afterGettingCurrentUser() {
@@ -76,7 +85,7 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
-        let user = posts[indexPath.item]
+        let user = posts[indexPath.row]
         cell.username?.text = user.creatorId
         cell.postTitle?.text = user.title
         cell.postCaption?.text = user.caption
