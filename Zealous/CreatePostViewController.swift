@@ -136,7 +136,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     func uploadImg (_ image: UIImage, completion: @escaping (_ hasFinished: Bool,_ url: String) -> Void) {
         let data: Data = image.jpegData(compressionQuality: 1.0)!
         
-        let ref = Storage.storage().reference(withPath: "media/" + (self.currentUser?.email)! + "/" + "profile.jpeg")
+        let ref = Storage.storage().reference(withPath: "media/" + (self.currentUser?.email)! + "/" + "pic.jpeg")
         ref.putData(data, metadata: nil,
                     completion: { (meta, error) in
                         if error == nil {
