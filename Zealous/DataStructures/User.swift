@@ -107,6 +107,22 @@ extension WriteableUser {
             }
         }
     }
+    func getTimelinePosts(addPost: @escaping((Post) -> ())) {
+           let db = Firestore.firestore()
+        for id in self.createdPosts {
+               // get the post and convert to Post object
+               let ref = db.collection("posts").document(id)
+               ref.getDocument { document, error in
+                   if let document = document {
+                       let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                       print("Model: \(model)")
+                       addPost(model)
+                   } else {
+                       print("Document does not exist")
+                   }
+               }
+           }
+       }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
         let auth = Auth.auth()
