@@ -73,6 +73,7 @@ class LoginViewController: UIViewController {
                 } else {
                     print("User signs in successfully")
                     self.performSegue(withIdentifier: "toTimeline", sender: self)
+                    UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
                 }
             }
             
@@ -133,6 +134,7 @@ class LoginViewController: UIViewController {
                             } else {
                                 print("User signs in successfully")
                                 self.performSegue(withIdentifier: "toTimeline", sender: self)
+                                UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
                             }
                         }
                     }
