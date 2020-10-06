@@ -85,11 +85,24 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
-        let user = posts[indexPath.row]
-        cell.username?.text = user.creatorId
-        cell.postTitle?.text = user.title
-        cell.postCaption?.text = user.caption
+        let post = posts[indexPath.row]
+        cell.username?.text = post.creatorId
+        cell.postTitle?.text = post.title
+        cell.postCaption?.text = post.caption
+        cell.postImg?.image = UIImage(url: URL(string: post.imgURL ?? "none.png"))
         return cell
     }
+}
+extension UIImage {
+  convenience init?(url: URL?) {
+    guard let url = url else { return nil }
+            
+    do {
+      self.init(data: try Data(contentsOf: url))
+    } catch {
+      print("Cannot load image from url: \(url) with error: \(error)")
+      return nil
+    }
+  }
 }
 
