@@ -86,6 +86,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.PostTopic.text = ""
             self.PostCaption.text = ""
             self.PostImage.image = nil
+            self.performSegue(withIdentifier: "toTimeline", sender: self)
             return
         }
     }
@@ -230,6 +231,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.PostTopic.text = ""
                 self.PostCaption.text = ""
                 self.PostImage.image = nil
+                self.performSegue(withIdentifier: "toTimeline", sender: self)
                 return
             }
             else {
@@ -240,7 +242,8 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                     Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
                 }
                 print("current topic in submit post: \(String(describing: self.currentTopic))")
-                
+                self.performSegue(withIdentifier: "toTimeline", sender: self)
+
                 return
                 
             }
