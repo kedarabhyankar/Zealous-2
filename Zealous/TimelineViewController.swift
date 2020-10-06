@@ -1,15 +1,15 @@
 //
-//  FollowingViewController.swift
+//  TimelineViewController.swift
 //  Zealous
 //
-//  Created by Grant Yolasan on 9/30/20.
+//  Created by Vanshika Ramesh on 10/5/20.
 //
 
 import UIKit
 
-class FollowingViewController: UIViewController {
-    
-    @IBOutlet weak var followingTableView: UITableView!
+class TimelineViewController: UIViewController {
+
+    @IBOutlet weak var timelineTableView: UITableView!
     
     var currentUser: WriteableUser? = nil
     var likedPosts: [Post] = []
@@ -18,9 +18,11 @@ class FollowingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        followingTableView.delegate = self
-        followingTableView.dataSource = self
+        timelineTableView.delegate = self
+        timelineTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
+        timelineTableView.rowHeight = 508
+        timelineTableView.estimatedRowHeight = 508
     }
     
     func getUser(currentUser: WriteableUser) {
@@ -34,15 +36,7 @@ class FollowingViewController: UIViewController {
     
     func afterGettingCurrentUser() {
 //        currentUser?.follow(email: "ramesh32@purdue.edu")
-        //print(currentUser?.followedUsers ?? "")
-        //let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
-        //currentUser?.createPost(post: post)
         print(currentUser?.followedUsers ?? "")
-        currentUser?.followTopic(title: "String")
-        currentUser?.followTopic(title: "One")
-        print(currentUser?.interests ?? "")
-        currentUser?.unfollowTopic(title: "String")
-        print(currentUser?.interests ?? "")
     }
     
     func printUserPosts(postArray: [Post]) {
@@ -56,22 +50,21 @@ class FollowingViewController: UIViewController {
     }
     func addUser(user: WriteableUser) {
         following.append(user)
-        followingTableView.reloadData()
+        timelineTableView.reloadData()
     }
 }
 
 
-extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
-    
+extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.following.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingUsers", for: indexPath) as? FollowingViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
         let user = following[indexPath.item]
-        cell?.Name?.text = user.username
-        return cell!
+        cell.username?.text = user.username
+        return cell
     }
 }
 
