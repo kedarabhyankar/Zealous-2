@@ -108,7 +108,7 @@ extension WriteableUser {
         }
     }
     func getTimelinePosts(addPost: @escaping((Post) -> ())) {
-           let db = Firestore.firestore()
+        let db = Firestore.firestore()
         for id in self.createdPosts {
                // get the post and convert to Post object
                let ref = db.collection("posts").document(id)

@@ -67,6 +67,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1)
             
             //send current post to database
+            self.currentPost?.imgURL = self.imgURL
             let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
             self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
                 error in
@@ -93,17 +94,17 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     @IBAction func UploadImage(_ sender: Any) {
         //optional, user can attach an image to their post
+        print("IN BUTTON UPLOAD IMAGE")
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerController.SourceType.photoLibrary
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
-        PostImage.image = self.image
+        /*PostImage.image = self.image
         
-        uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
-            print("state \(state)")
-            print("result \(result)")
+        print("self.image is: \(String(describing: self.image))")
+        self.uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
             if (!state) {
                 self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
                 return
@@ -113,11 +114,31 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 return
             }
         })
+        
+        return; */
+    }
+    
+    func afterImagePicker () {
+        PostImage.image = self.image
+        
+        print("self.image is: \(String(describing: self.image))")
+        self.uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
+            if (!state) {
+                self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                return
+            } else {
+                self.imgURL = result
+                self.currentPost?.imgURL = result
+                return
+            }
+        })
+        
         return;
     }
     
       func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-          var image: UIImage
+        print("IN IMAGE PICKER CONTROLLER")
+        var image: UIImage
           if let possibleImage = info[.editedImage] as? UIImage{
               image = possibleImage
           } else if let possibleImage = info[.originalImage] as? UIImage {
@@ -128,14 +149,14 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
           self.image = image
           self.PostImage.image = image
           self.imageExt = ".png"
-          self.dismiss(animated: true, completion: nil)
+          self.dismiss(animated: true, completion: afterImagePicker)
       }
     
     
     func uploadImg (_ image: UIImage, completion: @escaping (_ hasFinished: Bool,_ url: String) -> Void) {
+        print("IN UPLOAD IMG")
         let data: Data = image.jpegData(compressionQuality: 1.0)!
-        
-        let ref = Storage.storage().reference(withPath: "media/" + (self.currentUser?.email)! + "/" + "profile.jpeg")
+        let ref = Storage.storage().reference(withPath: "media/" + (self.currentUser?.email)! + "/" +  (self.PostTitle.text)! + "/" +  "pic.jpeg")
         ref.putData(data, metadata: nil,
                     completion: { (meta, error) in
                         if error == nil {
@@ -214,7 +235,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                     }
                 }
                 
-                
+                self.currentPost?.imgURL = self.imgURL
                 let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
                 self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
                     error in

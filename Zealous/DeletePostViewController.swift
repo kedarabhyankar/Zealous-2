@@ -17,6 +17,7 @@ import FirebaseAuth
 import CodableFirebase
 import BRYXBanner
 
+
 class DeletePostViewController: UIViewController, UITextFieldDelegate {
     
     
@@ -36,10 +37,19 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
        }
     
     func getUser(currentUser: WriteableUser) {
-            self.currentUser = currentUser
-            self.currentUser?.deleteCreatedPost(postId: self.currentPost!.postId)
-            let dataToWrite2 = try! FirestoreEncoder().encode(self.currentUser)
-            self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite2)
+        self.currentUser = currentUser
+        if (self.currentPost == nil) {
+            //cannot delete the same post twice
+            print("trying to delete a post that does not exist in the database")
+            let alertController = UIAlertController(title: "Error", message: "Post does not exist!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        self.currentUser?.deleteCreatedPost(postId: self.currentPost!.postId)
+        let dataToWrite2 = try! FirestoreEncoder().encode(self.currentUser)
+        self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite2)
     }
     
     func getTheTopic (currentTopic: Topic) {
@@ -69,12 +79,29 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
     
     func getThePost (currentPost: Post) {
         self.currentPost = currentPost
+        if (self.currentPost == nil) {
+            //cannot delete the same post twice
+            print("trying to delete a post that does not exist in the database")
+            let alertController = UIAlertController(title: "Error", message: "Post does not exist!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
         DeletePostId(thePost: self.currentPost!)
     }
     
     @IBAction func DeletePost(_ sender: Any) {
         Post.getPost(postId: "E7EEA429-0759-4753-A7C6-657F5CF700B9", completion: getThePost)
-        //call delete post id and then refresh the screen
+         if (self.currentPost == nil) {
+                   //cannot delete the same post twice
+                   print("trying to delete a post that does not exist in the database")
+                   let alertController = UIAlertController(title: "Error", message: "Post does not exist!", preferredStyle: .alert)
+                   let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                   alertController.addAction(defaultAction)
+                   self.present(alertController, animated: true, completion: nil)
+                   return
+               }        //call delete post id and then refresh the screen
         //self.performSegue(withIdentifier: "toProfile", sender: self)
     }
     

@@ -61,9 +61,12 @@ struct Post: Codable {
             //var model: Topic?
             
             topicRef.document(postId).getDocument() { querySnapshot, error in
-                if error != nil {
+                if (error != nil) {
                     print("error getting document: \(String(describing: error))")
-                    //return nil
+                    return 
+                }
+                if (querySnapshot?.data() == nil) {
+                    return
                 } else {
                     let model = try! FirestoreDecoder().decode(Post.self, from: (querySnapshot?.data())!)
                     print("Model:  \(String(describing: model))")

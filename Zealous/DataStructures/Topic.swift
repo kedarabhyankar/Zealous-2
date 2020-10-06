@@ -71,6 +71,7 @@ struct Topic: Codable {
         topicRef.whereField("title", isEqualTo: topicName).getDocuments() { querySnapshot, error in
             if error != nil {
                 print("error getting document: \(String(describing: error))")
+                return
                 //return nil
             } else {
                 var count = 0
