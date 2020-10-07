@@ -126,7 +126,7 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             //delete post from topic's post array and send topic object back to database
             WriteableUser.getCurrentUser(completion: self.getUser)
-            Topic.getTopic(topicName: thePost.topic, completion: self.getTheTopic)
+            Topic.getTopic(topicTitle: thePost.topic, completion: self.getTheTopic)
             //delete post from user's created posts array and send user object back to databse
             Post.deletePost(postId: thePost.postId)
             //delete post document from database

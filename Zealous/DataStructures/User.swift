@@ -23,15 +23,21 @@ extension WriteableUser {
         self.createdPosts.remove(at: index)
     }
     
-    func getFollowedTopics() {
+    func getFollowedTopics(addTopic: @escaping((Topic) -> ())) {
         let db = Firestore.firestore()
-        for id in self.interests {
+        for topicTitle in self.interests {
             // get the post and convert to Post object
-            let ref = db.collection("users").document(id)
+            let ref = db.collection("topics").document(topicTitle)
             ref.getDocument { document, error in
                 if let document = document {
-                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                    if document.data() == nil {
+                        print("Topic does not exist")
+                        return
+                    }
+                    let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
                     print("Model: \(model)")
+                    // call function to add topic to array
+                    addTopic(model)
                 } else {
                     print("Document does not exist")
                 }

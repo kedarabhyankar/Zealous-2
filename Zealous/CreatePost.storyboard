@@ -130,11 +130,22 @@
                         <outlet property="PostImage" destination="pDu-iK-6aW" id="uwW-Hz-Kop"/>
                         <outlet property="PostTitle" destination="QMj-iI-nLb" id="rXT-oh-Hhp"/>
                         <outlet property="PostTopic" destination="i5E-bO-fbQ" id="Wum-gm-MJE"/>
+                        <segue destination="ILn-JU-Ii6" kind="presentation" identifier="toTimeline" modalPresentationStyle="fullScreen" id="tup-zg-nFE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0R-Mc-ah3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1652" y="609"/>
+        </scene>
+        <!--Timeline-->
+        <scene sceneID="JMx-lR-bFf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Timeline" id="ILn-JU-Ii6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hOx-Ou-kke"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4b-h1-B17" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2368" y="461"/>
         </scene>
         <!--Search-->
         <scene sceneID="Wkh-f8-lXG">

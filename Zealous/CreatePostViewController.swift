@@ -86,6 +86,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.PostTopic.text = ""
             self.PostCaption.text = ""
             self.PostImage.image = nil
+            self.performSegue(withIdentifier: "toTimeline", sender: self)
             return
         }
     }
@@ -249,6 +250,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.PostTopic.text = ""
                 self.PostCaption.text = ""
                 self.PostImage.image = nil
+                self.performSegue(withIdentifier: "toTimeline", sender: self)
                 return
                 
             }
@@ -257,10 +259,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 print("Topic does exist")
                 //retrieve topic object and add current post to its post array
                 DispatchQueue.main.async() {
-                    Topic.getTopic(topicName: postTopic, completion: self.getTheTopic)
+                    Topic.getTopic(topicTitle: postTopic, completion: self.getTheTopic)
                 }
                 print("current topic in submit post: \(String(describing: self.currentTopic))")
-                
+                self.performSegue(withIdentifier: "toTimeline", sender: self)
+
                 return
                 
             }

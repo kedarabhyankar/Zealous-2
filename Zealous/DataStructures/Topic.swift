@@ -21,12 +21,10 @@ struct Topic: Codable {
     var title: String
     var posts: [String]
     var followers: [String]
-    var numFollowers: Int
     
     init(title: String) {
         self.id = UUID().uuidString
         self.title = title
-        self.numFollowers = 0
         self.followers = []
         self.posts = []
     }
@@ -42,58 +40,50 @@ struct Topic: Codable {
         self.posts.remove(at: index)
     }
     
-    
-    /* static func getTopic(topicName: String , completion: @escaping((Topic) -> ())) {
+    static func getTopic(topicTitle: String, completion: @escaping((Topic) -> ())) {
         let db = Firestore.firestore()
-        let topicRef = db.collection("topics")
-        
-        topicRef.whereField("title", isEqualTo: topicName).getDocuments() { querySnapshot, error in
-            if error != nil {
-                print("error getting document: \(error)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let model = try! FirestoreDecoder().decode(Topic.self, from: document.data())
-                    print("Model: \(model)")
-                    completion(model)
-                    return 
+        let ref = db.collection("topics").document(topicTitle)
+        ref.getDocument { document, error in
+            if let document = document {
+                if document.data() == nil {
+                    print("Topic does not exist")
+                    return
                 }
-                
+                let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                print("Model: \(model)")
+                // call function to add topic to array
+                completion(model)
+            } else {
+                print("Document does not exist")
             }
         }
-    }*/
-    
-    static func getTopic(topicName: String, completion: @escaping((Topic) -> ())) {
-        DispatchQueue.main.async {
-        let db = Firestore.firestore()
-        let topicRef = db.collection("topics")
-        //var model: Topic?
-        
-        topicRef.whereField("title", isEqualTo: topicName).getDocuments() { querySnapshot, error in
-            if error != nil {
-                print("error getting document: \(String(describing: error))")
-                return
-                //return nil
-            } else {
-                var count = 0
-                for document in querySnapshot!.documents {
-                   // if (count == 1) {
-                        let model = try! FirestoreDecoder().decode(Topic.self, from: document.data())
-                        print("Model:   \(count), \(String(describing: model))")
-                        completion(model)
-                  //  }
-                    count += 1
-                    //completion(model)
-                    //return model
-                }
-                
-            }
-        }
-        }
-    
-}
-    
+    }
+            
     static func deleteTopic(topicName: String) {
         let db = Firestore.firestore()
         db.collection("topics").document(topicName).delete()
+    }
+    
+    func getPosts(completion: @escaping((Post) -> ())) {
+        let db = Firestore.firestore()
+        let postsref = db.collection("posts")
+        
+        for postId in self.posts {
+            let ref = postsref.document(postId)
+            ref.getDocument { document, error in
+                if let document = document {
+                    if document.data() == nil {
+                        print("Topic does not exist")
+                        return
+                    }
+                    let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                    print("Model: \(model)")
+                    // call function to add topic to array
+                    completion(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     }
 }
