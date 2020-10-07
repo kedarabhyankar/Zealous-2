@@ -31,6 +31,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     var defaultImage: UIImage!
     var finalProfile: Profile!
     var imgURL: String = ""
+    var newImgUrl: String = ""
     
     
     var db: Firestore!
@@ -57,8 +58,8 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func getTheTopic(currentTopic: Topic) {
         DispatchQueue.main.async {
+            print("imgURL here2: \(self.imgURL)")
             self.currentTopic = currentTopic
-            print("current topic in getTheTopic: \(String(describing: self.currentTopic)) ")
             //add post to topic's array
             self.currentTopic?.addPost(post: self.currentPost!)
             //encode the updated post array
@@ -67,6 +68,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1)
             
             //send current post to database
+            //self.currentPost?.imgURL = self.imgURL
             let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
             self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
                 error in
@@ -77,7 +79,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                     print("success writing post to firestore")
                 }
             }
-            
+            self.currentPost?.imgURL = self.newImgUrl
             self.currentUser?.addCreatedPost(post: self.currentPost!)
             let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
             self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
@@ -88,23 +90,23 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.PostImage.image = nil
             self.performSegue(withIdentifier: "toTimeline", sender: self)
             return
-        }
+       }
     }
     
     
     @IBAction func UploadImage(_ sender: Any) {
         //optional, user can attach an image to their post
+        print("IN BUTTON UPLOAD IMAGE")
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerController.SourceType.photoLibrary
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
-        PostImage.image = self.image
+        /*PostImage.image = self.image
         
-        uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
-            print("state \(state)")
-            print("result \(result)")
+        print("self.image is: \(String(describing: self.image))")
+        self.uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
             if (!state) {
                 self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
                 return
@@ -114,11 +116,30 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 return
             }
         })
-        return;
+        
+        return; */
+        print("imgURL here1: \(self.imgURL)")
+    }
+    
+    func afterImagePicker () {
+        self.PostImage.image = self.image
+        print("self.image is: \(String(describing: self.image))")
+        self.uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
+            if (!state) {
+                self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
+                return
+            } else {
+                self.imgURL = result
+                //self.currentPost?.imgURL = result
+                return
+            }
+        })
+        print("imgURL here3: \(self.imgURL)")
     }
     
       func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-          var image: UIImage
+        print("IN IMAGE PICKER CONTROLLER")
+        var image: UIImage
           if let possibleImage = info[.editedImage] as? UIImage{
               image = possibleImage
           } else if let possibleImage = info[.originalImage] as? UIImage {
@@ -129,14 +150,15 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
           self.image = image
           self.PostImage.image = image
           self.imageExt = ".png"
-          self.dismiss(animated: true, completion: nil)
+          print("imgURL here4: \(self.imgURL)")
+          self.dismiss(animated: true, completion: afterImagePicker)
       }
     
     
     func uploadImg (_ image: UIImage, completion: @escaping (_ hasFinished: Bool,_ url: String) -> Void) {
+        print("IN UPLOAD IMG")
         let data: Data = image.jpegData(compressionQuality: 1.0)!
-        
-        let ref = Storage.storage().reference(withPath: "media/" + (self.currentUser?.email)! + "/" + "pic.jpeg")
+        let ref = Storage.storage().reference(withPath: "media/" + (self.currentUser?.email)! + "/" +  (self.PostTitle.text)! + "/" +  "pic.jpeg")
         ref.putData(data, metadata: nil,
                     completion: { (meta, error) in
                         if error == nil {
@@ -146,6 +168,10 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                                     print ("some error happened here \(error!.localizedDescription)")
                                     completion(false, "")
                                 } else {
+                                    self.imgURL = url!.absoluteString
+                                    self.currentPost?.imgURL = url!.absoluteString
+                                    print("imgURL here5: \(self.imgURL)")
+                                    self.newImgUrl = url!.absoluteString
                                     completion(true, url!.absoluteString)
                                 }
                             })
@@ -197,6 +223,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             if QuerySnapshot?.isEmpty == true {
                 //topic does not exist, so create a new topic in database and topic object
                 print("Topic does not exist")
+                print("imgURL here6: \(self.imgURL)")
                 //create a topic object and add current post to its post array
                 self.currentTopic = Topic.init(title: postTopic)
                 //add new post to the user's created post array
@@ -214,8 +241,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                         print("success writing topic to firestore")
                     }
                 }
-                
-                
+                self.currentPost?.imgURL = self.newImgUrl
                 let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
                 self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
                     error in
@@ -233,15 +259,16 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.PostImage.image = nil
                 self.performSegue(withIdentifier: "toTimeline", sender: self)
                 return
+                
             }
             else {
                 //topic does exist, so add post to that topic's post array and add it to the database
                 print("Topic does exist")
                 //retrieve topic object and add current post to its post array
                 DispatchQueue.main.async() {
+                    print("imgURL here7: \(self.imgURL)")
                     Topic.getTopic(topicTitle: postTopic, completion: self.getTheTopic)
-                }
-                print("current topic in submit post: \(String(describing: self.currentTopic))")
+               }
                 self.performSegue(withIdentifier: "toTimeline", sender: self)
 
                 return
