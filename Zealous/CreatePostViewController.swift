@@ -67,7 +67,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1)
             
             //send current post to database
-            self.currentPost?.imgURL = self.imgURL
             let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
             self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
                 error in
@@ -120,7 +119,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func afterImagePicker () {
         PostImage.image = self.image
-        
         print("self.image is: \(String(describing: self.image))")
         self.uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
             if (!state) {
@@ -132,8 +130,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 return
             }
         })
-        
-        return;
+        print("imgURL in after image picker: \(self.imgURL)")
     }
     
       func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -166,6 +163,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                                     print ("some error happened here \(error!.localizedDescription)")
                                     completion(false, "")
                                 } else {
+                                    self.imgURL = url!.absoluteString
                                     completion(true, url!.absoluteString)
                                 }
                             })
@@ -217,6 +215,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             if QuerySnapshot?.isEmpty == true {
                 //topic does not exist, so create a new topic in database and topic object
                 print("Topic does not exist")
+                print("imgURL: \(self.imgURL)")
                 //create a topic object and add current post to its post array
                 self.currentTopic = Topic.init(title: postTopic)
                 //add new post to the user's created post array
@@ -235,7 +234,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                     }
                 }
                 
-                self.currentPost?.imgURL = self.imgURL
                 let dataToWrite2 = try! FirestoreEncoder().encode(self.currentPost)
                 self.db.collection("posts").document(self.currentPost!.postId).setData(dataToWrite2) {
                     error in
@@ -252,6 +250,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.PostCaption.text = ""
                 self.PostImage.image = nil
                 return
+                
             }
             else {
                 //topic does exist, so add post to that topic's post array and add it to the database

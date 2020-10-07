@@ -34,11 +34,12 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
            let firestoreSettings = FirestoreSettings()
            Firestore.firestore().settings = firestoreSettings
            WriteableUser.getCurrentUser(completion: getUser)
+           storage = Storage.storage()
        }
     
     func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
-        if (self.currentPost == nil) {
+       /*if (self.currentPost == nil) {
             //cannot delete the same post twice
             print("trying to delete a post that does not exist in the database")
             let alertController = UIAlertController(title: "Error", message: "Post does not exist!", preferredStyle: .alert)
@@ -46,10 +47,23 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
             return
-        }
+        }*/
         self.currentUser?.deleteCreatedPost(postId: self.currentPost!.postId)
         let dataToWrite2 = try! FirestoreEncoder().encode(self.currentUser)
         self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite2)
+        
+         //delete image from storage
+               let ref = Storage.storage().reference()
+               let imageRef = ref.child("media/" + (self.currentUser?.email)! + "/" + (self.currentPost?.title)! + "/" + "pic.jpeg")
+               //let ref = Storage.storage().reference(forURL: "media/" + (self.currentUser?.email)! + "/" +  (self.currentPost?.title)! + "/" + "pic.jpeg" )
+               imageRef.delete { error in
+                   if let error = error {
+                       print("error deleting from storage")
+                   } else {
+                       print("sucess deleting from storage")
+                   }
+               }
+        
     }
     
     func getTheTopic (currentTopic: Topic) {
@@ -89,11 +103,12 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
             return
         }
         DeletePostId(thePost: self.currentPost!)
+        
     }
     
     @IBAction func DeletePost(_ sender: Any) {
-        Post.getPost(postId: "E7EEA429-0759-4753-A7C6-657F5CF700B9", completion: getThePost)
-         if (self.currentPost == nil) {
+        Post.getPost(postId: "AEE14F5E-B961-4868-84E6-15DDE781253D", completion: getThePost)
+         /*if (self.currentPost == nil) {
                    //cannot delete the same post twice
                    print("trying to delete a post that does not exist in the database")
                    let alertController = UIAlertController(title: "Error", message: "Post does not exist!", preferredStyle: .alert)
@@ -101,7 +116,8 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
                    alertController.addAction(defaultAction)
                    self.present(alertController, animated: true, completion: nil)
                    return
-               }        //call delete post id and then refresh the screen
+               } */
+        //call delete post id and then refresh the screen
         //self.performSegue(withIdentifier: "toProfile", sender: self)
     }
     
@@ -115,6 +131,7 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
             Post.deletePost(postId: thePost.postId)
             //delete post document from database
         }
+       
         print("the post is: \(thePost)")
        
         return
