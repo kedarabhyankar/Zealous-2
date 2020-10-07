@@ -107,7 +107,7 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func DeletePost(_ sender: Any) {
-        Post.getPost(postId: "AEE14F5E-B961-4868-84E6-15DDE781253D", completion: getThePost)
+        Post.getPost(postId: "73F2B4FF-98D7-4BFA-99A6-AC6DEAD51071", completion: getThePost)
          /*if (self.currentPost == nil) {
                    //cannot delete the same post twice
                    print("trying to delete a post that does not exist in the database")
