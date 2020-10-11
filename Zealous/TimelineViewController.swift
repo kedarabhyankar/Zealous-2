@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+import CodableFirebase
+import BRYXBanner
 
 class TimelineViewController: UIViewController {
 
@@ -88,7 +94,16 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
-        cell.postImg?.image = UIImage(url: URL(string: post.imgURL ?? "none.png"))
+        let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
+        let ref = Storage.storage().reference(withPath: path)
+        
+        ref.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+            if error != nil {
+                print("Error: Image could not download!")
+            } else {
+                cell.postImg?.image = UIImage(data: data!)
+            }
+        }
         return cell
     }
 }

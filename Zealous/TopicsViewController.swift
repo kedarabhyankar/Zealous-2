@@ -40,6 +40,7 @@ class TopicsViewController: UIViewController {
         print(currentUser?.interests ?? "")
         topicsTableView.reloadData()
         currentUser?.unfollowTopic(title: "String")
+        currentUser?.unfollowTopic(title: "Img")
         print(currentUser?.interests ?? "")
         topicsTableView.reloadData()
     }

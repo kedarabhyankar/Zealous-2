@@ -33,7 +33,8 @@ class FollowingViewController: UIViewController {
     }
     
     func afterGettingCurrentUser() {
-//        currentUser?.follow(email: "ramesh32@purdue.edu")
+        currentUser?.follow(email: "ramesh32@purdue.edu")
+        currentUser?.unfollow(email: "ramesh32@purdue.edu")
         //print(currentUser?.followedUsers ?? "")
         //let post = Post(topic: "money", title: "test post", caption: "another post", creatorId: currentUser!.email)
         //currentUser?.createPost(post: post)
