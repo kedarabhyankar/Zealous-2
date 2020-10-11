@@ -28,9 +28,11 @@ import FirebaseStorage
 
 import FirebaseAuth
 
+import CodableFirebase
 
 
-class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate {
+
+class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     
@@ -75,6 +77,11 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
     
     var theTopic: Topic? = nil
     
+    var image: UIImage?
+    
+    var imageExt: String?
+    
+    
    
     
     override func viewDidLoad() {
@@ -107,14 +114,73 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
     }
     
     
+    
     @IBAction func UploadProfilePic(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerController.SourceType.photoLibrary
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+        NewProfilePic.image = self.image
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var image: UIImage
+        if let possibleImage = info[.editedImage] as? UIImage{
+            image = possibleImage
+        } else if let possibleImage = info[.originalImage] as? UIImage {
+            image = possibleImage
+        } else {
+            return;
+        }
+        self.image = image
+        self.NewProfilePic.image = image
+        self.imageExt = ".png"
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func SubmitProfilePic(_ sender: Any) {
+        var photoURL: String = ""
+        self.NewProfilePic.image = self.image
+        print("self.image is: \(String(describing: self.image))")
+        self.uploadImage((self.image!), completion: { (state, result) in
+            if (!state) {
+                print("error updating profile pic")
+                self.NewProfilePic.image = nil
+                return
+            } else {
+               photoURL = result
+               self.currentUser?.pictureURL = photoURL
+                let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
+                self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
+                self.NewProfilePic.image = nil
+                return
+            }
+        })
     }
     
-    
+    func uploadImage(_ image: UIImage,
+                     completion: @escaping (_ hasFinished: Bool, _ url: String) -> Void) {
+        let data: Data = image.jpegData(compressionQuality: 1.0)!
+        
+        // ref should be like this
+        let ref = Storage.storage().reference(withPath: "media/" + (Auth.auth().currentUser?.email)! + "/" + "profile.jpeg")
+        ref.putData(data, metadata: nil,
+                    completion: { (meta , error) in
+                        if error == nil {
+                            // return url
+                            ref.downloadURL(completion: { (url, error) in
+                                if(error != nil){
+                                    print("some error happened described here \(error!.localizedDescription)")
+                                    completion(false, "")
+                                } else {
+                                    completion(true, url!.absoluteString)
+                                }
+                            })
+                        }
+                    })
+    }
     
     
     
