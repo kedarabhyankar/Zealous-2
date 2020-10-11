@@ -69,7 +69,7 @@ struct Post: Codable {
                     return
                 } else {
                     let model = try! FirestoreDecoder().decode(Post.self, from: (querySnapshot?.data())!)
-                    print("Model:  \(String(describing: model))")
+                    //print("Model:  \(String(describing: model))")
                     completion(model)
                     //completion(model)
                     //return model
@@ -85,6 +85,18 @@ struct Post: Codable {
         db.collection("posts").document(postId).delete()
     }
     
+    static func deleteStoragePost(thePost: Post, theUser: WriteableUser) {
+        let ref = Storage.storage().reference()
+        let imageRef = ref.child("media/" + (theUser.email) + "/" + (thePost.title) + "/" + "pic.jpeg")
+        //let ref = Storage.storage().reference(forURL: "media/" + (self.currentUser?.email)! + "/" +  (self.currentPost?.title)! + "/" + "pic.jpeg" )
+        imageRef.delete { error in
+            if let error = error {
+                print("error deleting from storage")
+            } else {
+                print("sucess deleting from storage")
+            }
+        }
+    }
     
     
 }

@@ -35,7 +35,7 @@ extension WriteableUser {
                         return
                     }
                     let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
-                    print("Model: \(model)")
+                    //print("Model: \(model)")
                     // call function to add topic to array
                     addTopic(model)
                 } else {
@@ -48,12 +48,12 @@ extension WriteableUser {
     func getFollowedUsers(addUser: @escaping((WriteableUser) -> ())) {
         let db = Firestore.firestore()
         for id in self.followedUsers {
-            // get the post and convert to Post object
+            // get the user and convert to Post object
             let ref = db.collection("users").document(id)
             ref.getDocument { document, error in
                 if let document = document {
                     let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
-                    print("Model: \(model)")
+                    //print("Model: \(model)")
                     addUser(model)
                 } else {
                     print("Document does not exist")
@@ -70,7 +70,7 @@ extension WriteableUser {
             ref.getDocument { document, error in
                 if let document = document {
                     let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
-                    print("Model: \(model)")
+                    //print("Model: \(model)")
                     addUser(model)
                 } else {
                     print("Document does not exist")
@@ -105,7 +105,7 @@ extension WriteableUser {
             ref.getDocument { document, error in
                 if let document = document {
                     let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
-                    print("Model: \(model)")
+                    //print("Model: \(model)")
                     addPost(model)
                 } else {
                     print("Document does not exist")
@@ -121,7 +121,7 @@ extension WriteableUser {
                ref.getDocument { document, error in
                    if let document = document {
                        let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
-                       print("Model: \(model)")
+                       //print("Model: \(model)")
                        addPost(model)
                    } else {
                        print("Document does not exist")
@@ -144,13 +144,14 @@ extension WriteableUser {
         userRef.getDocument { document, error in
             if let document = document {
                 let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
-                print("Model: \(model)")
+                //print("Model: \(model)")
                 completion(model)
             } else {
                 print("Document does not exist")
             }
         }
     }
+    
     
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)

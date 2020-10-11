@@ -62,11 +62,20 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
     var userEmail = Auth.auth().currentUser?.email
     
     var currentUser: WriteableUser? = nil
-
     
-   //User.WriteableUser.getCurrentUser(completion: currentUser)
+    var finished = false
     
-    //var userID = UUID().uuidString
+    var createdPosts: [Post] = []
+    
+    var following: [WriteableUser] = []
+    
+    var followers: [WriteableUser] = []
+    
+    var followedTopics: [Topic] = []
+    
+    var theTopic: Topic? = nil
+    
+   
     
     override func viewDidLoad() {
         
@@ -82,12 +91,20 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
         userID = Auth.auth().currentUser!.uid
         userEmail = Auth.auth().currentUser?.email
         WriteableUser.getCurrentUser(completion: getUser)
-       
+        // WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.getPosts)
+        //self.currentUser?.getFollowers(addUser: self.addFollower)
+        //self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
+        //self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
+        
     }
     
      func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
-       }
+        WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.getPosts)
+        self.currentUser?.getFollowers(addUser: self.addFollower)
+        self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
+        self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
+    }
     
     
     @IBAction func UploadProfilePic(_ sender: Any) {
@@ -313,6 +330,46 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
         
     }
     
+    func getPosts(postArray: [Post]) {
+        self.createdPosts = postArray
+    }
+    
+    func addFollower(user: WriteableUser) {
+        self.followers.append(user)
+        var follower: WriteableUser = user
+        follower.unfollow(email: self.currentUser!.email)
+    }
+    
+    func addFollowed(user: WriteableUser) {
+        self.following.append(user)
+        self.currentUser?.unfollow(email: user.email)
+    }
+    
+    func addTopic(topic: Topic) {
+        self.followedTopics.append(topic)
+    }
+    
+    func getTopic(thetopic: Topic) {
+        DispatchQueue.main.async {
+        self.theTopic = thetopic
+        for aPost in self.createdPosts {
+            if (self.theTopic!.posts.contains(aPost.postId)) {
+                self.theTopic!.removePost(postId: aPost.postId)
+                if (self.theTopic!.posts.count == 0) {
+                    Topic.deleteTopic(topicName: self.theTopic!.title)
+                }                //let index: Int? = self.theTopic!.posts.firstIndex(of: aPost.postId)
+                //self.theTopic!.posts.remove(at: index!)
+            }
+        }
+        //if the topic's post array is empty delete the topic
+        print("topic post array count: \(self.theTopic!.posts.count)")
+        if (self.theTopic!.posts.count == 0) {
+            Topic.deleteTopic(topicName: self.theTopic!.title)
+        }
+        }
+        
+    }
+    
     
     
     
@@ -329,11 +386,88 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
             
             //user wants to delete their account
             
+            //delete all of their posts from the topic's post array
+           /* WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.userCreatedPosts)
+            for aPost in self.userPosts {
+                let deleteVc = DeletePostViewController()
+                deleteVc.DeletePostId(thePost: aPost)
+            } */
+             let serialQueue = DispatchQueue(label: "com.queue.serial")
+            
+           /* serialQueue.sync {
+            //fill all the user arrays
+            WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.getPosts)
+            self.currentUser?.getFollowers(addUser: self.addFollower)
+            self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
+            self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
+            } */
+            
+            serialQueue.sync {
+            //for each post in the user's created post array, delete it
+            print("createdPosts: \(self.createdPosts)")
+            for aPost in self.createdPosts {
+                //let deleteVC = DeletePostViewController()
+                //deleteVC.DeletePostId(thePost: aPost)
+                Topic.getTopic(topicTitle: aPost.topic, completion: self.getTopic)
+                Post.deleteStoragePost(thePost: aPost, theUser: self.currentUser!)
+                Post.deletePost(postId: aPost.postId)
+            }
+        }
+          /*  serialQueue.sync {
+            //for each follower the user has, make the follower unfollow current user
+            print("followrs: \(self.followers)")
+            for aFollower in self.followers {
+                var follower: WriteableUser = aFollower
+                follower.unfollow(email: self.currentUser!.email)
+            }
+            } */
+            /* serialQueue.sync {
+            //for each user the current user follows, unfollow them
+            print("following: \(self.following)")
+            for aUser in self.following {
+                self.currentUser?.unfollow(email: aUser.email)
+            }
+            } */
+            serialQueue.sync {
+            //for each topic the user follows, unfollow it
+            print("followedTopics: \(self.followedTopics)")
+            for aTopic in self.followedTopics {
+                self.currentUser?.unfollowTopic(title: aTopic.title)
+            }
+            }
+            
+          /*  WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: { posts in
+                for aPost in posts {
+                    //Post.deletePost(postId: aPost.postId)
+                    let deleteVc = DeletePostViewController()
+                    deleteVc.DeletePostId(thePost: aPost)
+                }
+            }) */
+            
+            print("Above is done")
+            
+            //delete all user photos from storage
+            let ref = Storage.storage().reference()
+            let imageRef = ref.child("media/" + (self.currentUser?.email)! + "/profile.jpeg")
+            imageRef.delete { error in
+                if let error = error {
+                    print("error deleting user from storage \(error)")
+                } else {
+                    print("sucess deleting user from stroage")
+                }
+            }
+            
+            
             let user = Auth.auth().currentUser
             
-            print("current user email: " + (user?.email)!)
-            
-            self.db.collection("users").document((user?.email)!).delete()
+            self.db.collection("users").document((self.currentUser?.email)!).delete() {
+                error in
+                if (error != nil) {
+                    print("error deleting user from firestore \(String(describing: error))")
+                } else {
+                    print("success deleting user from firestore")
+                }
+            }
             
             user?.delete { error in
                 
@@ -346,6 +480,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
                     //let storyboard = UIStoryboard(name:"Main", bundle: nil)
                     
                     //let vc = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
+                    print("success deleting user from auth")
                     
                     self.performSegue(withIdentifier: "toMain", sender: self)
                     
@@ -354,6 +489,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
                 }
                 
             }
+   // }
             
         }))
         

@@ -38,6 +38,7 @@ struct Topic: Codable {
         // call firebase delete
         let index: Int = self.posts.firstIndex(of: postId)!
         self.posts.remove(at: index)
+        
     }
     
     static func getTopic(topicTitle: String, completion: @escaping((Topic) -> ())) {
@@ -50,7 +51,7 @@ struct Topic: Codable {
                     return
                 }
                 let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
-                print("Model: \(model)")
+                //print("Model: \(model)")
                 // call function to add topic to array
                 completion(model)
             } else {
@@ -77,7 +78,7 @@ struct Topic: Codable {
                         return
                     }
                     let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
-                    print("Model: \(model)")
+                    //print("Model: \(model)")
                     // call function to add topic to array
                     completion(model)
                 } else {

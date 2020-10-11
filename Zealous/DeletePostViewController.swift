@@ -107,7 +107,7 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func DeletePost(_ sender: Any) {
-        Post.getPost(postId: "73F2B4FF-98D7-4BFA-99A6-AC6DEAD51071", completion: getThePost)
+        Post.getPost(postId: "C8D66BFA-F1C6-4C9B-BEA9-F8887443698D", completion: getThePost)
          /*if (self.currentPost == nil) {
                    //cannot delete the same post twice
                    print("trying to delete a post that does not exist in the database")
@@ -123,11 +123,15 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
     
     func DeletePostId (thePost: Post) {
         //delete a post given it's post ID
+        if (thePost != nil) {
+            self.currentPost = thePost
+        }
         DispatchQueue.main.async {
             //delete post from topic's post array and send topic object back to database
             WriteableUser.getCurrentUser(completion: self.getUser)
             Topic.getTopic(topicTitle: thePost.topic, completion: self.getTheTopic)
             //delete post from user's created posts array and send user object back to databse
+            Post.deleteStoragePost(thePost: thePost, theUser: self.currentUser!)
             Post.deletePost(postId: thePost.postId)
             //delete post document from database
         }
