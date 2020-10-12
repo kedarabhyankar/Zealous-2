@@ -111,7 +111,7 @@ struct WriteableUser: Codable {
     var bio: String
     var interests: [String] //followed Topics
     let dob: String
-    let pictureURL: String
+    var pictureURL: String
     var createdPosts: [String]
     var likedPosts: [String] // stores postId's
     var followedUsers: [String] // stores creatorId's
