@@ -113,7 +113,7 @@ extension WriteableUser {
             }
         }
     }
-    func getTimelinePosts(addPost: @escaping((Post) -> ())) {
+    func getProfilePosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
         for id in self.createdPosts {
                // get the post and convert to Post object
