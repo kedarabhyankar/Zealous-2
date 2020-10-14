@@ -402,13 +402,11 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate,
     
     func addFollower(user: WriteableUser) {
         self.followers.append(user)
-        var follower: WriteableUser = user
-        follower.unfollow(email: self.currentUser!.email)
+        
     }
     
     func addFollowed(user: WriteableUser) {
         self.following.append(user)
-        self.currentUser?.unfollow(email: user.email)
     }
     
     func addTopic(topic: Topic) {
@@ -467,6 +465,20 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate,
             self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
             self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
             } */
+            DispatchQueue.main.async {
+            print("followers: \(self.followers)")
+            for aUser in self.followers {
+                    var follower: WriteableUser = aUser
+                    follower.unfollow(email: self.currentUser!.email)
+                }
+            }
+            
+            DispatchQueue.main.async {
+            print("following: \(self.following)")
+            for aUser in self.following {
+                  self.currentUser?.unfollow(email: aUser.email)
+                }
+            }
             
             serialQueue.sync {
             //for each post in the user's created post array, delete it
@@ -521,7 +533,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate,
                 } else {
                     
                     //let storyboard = UIStoryboard(name:"Main", bundle: nil)
-                    
+                    self.db.collection("users").document((self.currentUser?.email)!).delete()
                     //let vc = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
                     print("success deleting user from auth")
                     
