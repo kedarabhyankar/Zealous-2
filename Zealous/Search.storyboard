@@ -28,7 +28,7 @@
                                 <rect key="frame" x="22" y="218" width="332" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="User on Zealous"/>
+                                <state key="normal" title="Users on Zealous"/>
                                 <connections>
                                     <segue destination="vei-Ze-4tJ" kind="presentation" modalPresentationStyle="fullScreen" id="rvJ-rs-cBh"/>
                                 </connections>
@@ -335,9 +335,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="I1N-Hc-LyL"/>
-        <segue reference="Tpl-JO-pYC"/>
-        <segue reference="Zwr-B3-mCY"/>
+        <segue reference="8MM-W5-sER"/>
+        <segue reference="fjp-VP-osU"/>
+        <segue reference="xK5-K3-bqP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
