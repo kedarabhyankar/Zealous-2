@@ -13,7 +13,6 @@ import CodableFirebase
 
 extension WriteableUser {
     
-    
     mutating func addCreatedPost(post: Post) {
         self.createdPosts.append(post.postId)
     }

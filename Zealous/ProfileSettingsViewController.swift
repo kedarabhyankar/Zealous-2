@@ -479,21 +479,6 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate,
                 Post.deletePost(postId: aPost.postId)
             }
         }
-          /*  serialQueue.sync {
-            //for each follower the user has, make the follower unfollow current user
-            print("followrs: \(self.followers)")
-            for aFollower in self.followers {
-                var follower: WriteableUser = aFollower
-                follower.unfollow(email: self.currentUser!.email)
-            }
-            } */
-            /* serialQueue.sync {
-            //for each user the current user follows, unfollow them
-            print("following: \(self.following)")
-            for aUser in self.following {
-                self.currentUser?.unfollow(email: aUser.email)
-            }
-            } */
             serialQueue.sync {
             //for each topic the user follows, unfollow it
             print("followedTopics: \(self.followedTopics)")
@@ -501,14 +486,6 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate,
                 self.currentUser?.unfollowTopic(title: aTopic.title)
             }
             }
-            
-          /*  WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: { posts in
-                for aPost in posts {
-                    //Post.deletePost(postId: aPost.postId)
-                    let deleteVc = DeletePostViewController()
-                    deleteVc.DeletePostId(thePost: aPost)
-                }
-            }) */
             
             print("Above is done")
             

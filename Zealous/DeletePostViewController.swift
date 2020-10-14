@@ -33,21 +33,13 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
            // Do any additional setup after loading the view
            let firestoreSettings = FirestoreSettings()
            Firestore.firestore().settings = firestoreSettings
-           WriteableUser.getCurrentUser(completion: getUser)
+           //WriteableUser.getCurrentUser(completion: getUser)
            storage = Storage.storage()
        }
     
     func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
-       /*if (self.currentPost == nil) {
-            //cannot delete the same post twice
-            print("trying to delete a post that does not exist in the database")
-            let alertController = UIAlertController(title: "Error", message: "Post does not exist!", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-            return
-        }*/
+        print("current user in delete post controller is: \(String(describing: self.currentUser))")
         self.currentUser?.deleteCreatedPost(postId: self.currentPost!.postId)
         let dataToWrite2 = try! FirestoreEncoder().encode(self.currentUser)
         self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite2)
@@ -63,12 +55,13 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
                        print("sucess deleting from storage")
                    }
                }
+        Topic.getTopic(topicTitle: self.currentPost!.topic, completion: self.getTheTopic)
         
     }
     
     func getTheTopic (currentTopic: Topic) {
+        self.currentTopic = currentTopic
         DispatchQueue.main.async {
-            self.currentTopic = currentTopic
             //remove the post from the topic's post array and send to firestore
             self.currentTopic?.removePost(postId: self.currentPost!.postId)
             //if topic only had one post, delete the topic
@@ -89,6 +82,10 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+        Post.deleteStoragePost(thePost: self.currentPost!, theUser: self.currentUser!)
+        Post.deletePost(postId: self.currentPost!.postId)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        
     }
     
     func getThePost (currentPost: Post) {
@@ -106,39 +103,31 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func DeletePost(_ sender: Any) {
-        Post.getPost(postId: "C8D66BFA-F1C6-4C9B-BEA9-F8887443698D", completion: getThePost)
-         /*if (self.currentPost == nil) {
-                   //cannot delete the same post twice
-                   print("trying to delete a post that does not exist in the database")
-                   let alertController = UIAlertController(title: "Error", message: "Post does not exist!", preferredStyle: .alert)
-                   let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                   alertController.addAction(defaultAction)
-                   self.present(alertController, animated: true, completion: nil)
-                   return
-               } */
-        //call delete post id and then refresh the screen
-        //self.performSegue(withIdentifier: "toProfile", sender: self)
-    }
     
     func DeletePostId (thePost: Post) {
-        //delete a post given it's post ID
-        if (thePost != nil) {
-            self.currentPost = thePost
-        }
-        DispatchQueue.main.async {
+        //delete a post given it's post I
+        self.currentPost = thePost
+ 
+        let serialQueue = DispatchQueue(label: "com.queue.serial")
+       
             //delete post from topic's post array and send topic object back to database
-            WriteableUser.getCurrentUser(completion: self.getUser)
+        serialQueue.sync {
+        WriteableUser.getCurrentUser(completion: self.getUser)
+        }
+        /*serialQueue.sync {
             Topic.getTopic(topicTitle: thePost.topic, completion: self.getTheTopic)
+        }
+        serialQueue.sync {
             //delete post from user's created posts array and send user object back to databse
             Post.deleteStoragePost(thePost: thePost, theUser: self.currentUser!)
+        }
+        serialQueue.sync {
             Post.deletePost(postId: thePost.postId)
             //delete post document from database
-        }
+        } */
+            // return
        
-        print("the post is: \(thePost)")
-       
-        return
+        
     }
     
     

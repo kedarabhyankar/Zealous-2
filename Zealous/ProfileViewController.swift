@@ -35,7 +35,20 @@ class ProfileViewController: UIViewController {
         profileTableView.rowHeight = 508
         profileTableView.estimatedRowHeight = 508
         profileTableView.reloadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
     }
+    
+    @objc func loadList(notification: NSNotification){
+        //load data here
+        //profileTableView.delegate = self
+        //profileTableView.dataSource = self
+        print("IN LOAD LIST")
+        self.performSegue(withIdentifier: "toProfile", sender: self)
+        //WriteableUser.getCurrentUser(completion: getUser(currentUser:))
+        //profileTableView.reloadData()
+    }
+    
     
     func getUser(currentUser: WriteableUser) {
         print("getUser")
@@ -72,6 +85,8 @@ class ProfileViewController: UIViewController {
             profileTableView.reloadData()
         }
     }
+    
+    
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
