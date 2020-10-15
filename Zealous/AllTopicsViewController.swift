@@ -15,9 +15,8 @@ class AllTopicsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        /* testing print all topics in database */
+        topicsTableView.delegate = self
+        topicsTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
     }
     
@@ -36,4 +35,16 @@ class AllTopicsViewController: UIViewController {
     
     
 
+extension AllTopicsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.topics.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? AllTopicsViewCell
+        let topic = topics[indexPath.item]
+        cell?.topic.text = topic.title
+        return cell!
+    }
 }
