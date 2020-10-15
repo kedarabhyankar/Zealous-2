@@ -10,22 +10,30 @@ import UIKit
 class AllTopicsViewController: UIViewController {
     @IBOutlet weak var topicsTableView: UITableView!
     
+    var allTopicsArray: [Topic] = []
+    var currentUser: WriteableUser? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        /* testing print all topics in database */
+        WriteableUser.getCurrentUser(completion: getUser)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getUser(user: WriteableUser) {
+        self.currentUser = user
+        currentUser!.getAllTopics(allTopics: getTopics)
+        
     }
-    */
+    
+    func getTopics(allTopics: [Topic]) {
+        self.allTopicsArray = allTopics
+        for aTopic in allTopicsArray {
+            print("topic: " + aTopic.id + " " + aTopic.title)
+        }
+    }
+    
+    
 
 }

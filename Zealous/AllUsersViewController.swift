@@ -10,21 +10,28 @@ import UIKit
 class AllUsersViewController: UIViewController {
 
     @IBOutlet weak var usersTableView: UITableView!
+    var currentUser: WriteableUser? = nil
+    var allUsersArray: [WriteableUser] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        WriteableUser.getCurrentUser(completion: getUser)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getUser(user: WriteableUser) {
+        self.currentUser = user
+        currentUser!.getAllUsers(allUsers: getUsers)
     }
-    */
-
+    
+    func getUsers(allUsers: [WriteableUser]) {
+        self.allUsersArray = allUsers
+        for aUser in allUsersArray {
+            print("user: " + aUser.email + " " + aUser.firstName)
+        }
+    }
+    
+    
 }
