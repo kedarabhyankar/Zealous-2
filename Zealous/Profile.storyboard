@@ -43,16 +43,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="540"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pa0-9w-KIa" userLabel="Profile Picture">
-                                                    <rect key="frame" x="6" y="11" width="42" height="42"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pa0-9w-KIa" userLabel="Profile Picture">
+                                                    <rect key="frame" x="6" y="11" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="pa0-9w-KIa" secondAttribute="height" multiplier="1:1" id="5f1-QQ-hmb"/>
-                                                        <constraint firstAttribute="width" constant="42" id="F5L-g0-GgQ"/>
+                                                        <constraint firstAttribute="width" constant="60" id="F5L-g0-GgQ"/>
                                                         <constraint firstAttribute="width" secondItem="pa0-9w-KIa" secondAttribute="height" multiplier="1:1" id="XgF-uv-XAr"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="gX2-CP-aTk"/>
-                                                        <constraint firstAttribute="height" constant="42" id="pAS-hT-lEK"/>
+                                                        <constraint firstAttribute="height" constant="60" id="pAS-hT-lEK"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="tqo-mO-swN"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjO-gq-cko">
                                                     <rect key="frame" x="295" y="495" width="64" height="30"/>
@@ -79,15 +84,15 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i99-4g-HEy">
-                                                    <rect key="frame" x="66" y="16" width="310" height="32"/>
+                                                    <rect key="frame" x="74" y="16" width="302" height="32"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" none="YES"/>
                                                     </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="EKW-pi-5gl"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="310" id="FFf-bt-x9P"/>
-                                                        <constraint firstAttribute="width" secondItem="i99-4g-HEy" secondAttribute="height" multiplier="155:16" id="JuH-yX-gqT"/>
-                                                        <constraint firstAttribute="width" constant="310" id="Rhm-VV-uCO"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="302" id="FFf-bt-x9P"/>
+                                                        <constraint firstAttribute="width" secondItem="i99-4g-HEy" secondAttribute="height" multiplier="155:16" constant="-8" id="JuH-yX-gqT"/>
+                                                        <constraint firstAttribute="width" constant="302" id="Rhm-VV-uCO"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="rPk-Ec-Qco"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -228,7 +233,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pa0-9w-KIa" firstAttribute="centerY" secondItem="i99-4g-HEy" secondAttribute="centerY" id="3N2-6s-Uy9"/>
+                                                <constraint firstItem="pa0-9w-KIa" firstAttribute="centerY" secondItem="i99-4g-HEy" secondAttribute="centerY" constant="9" id="3N2-6s-Uy9"/>
                                                 <constraint firstItem="fss-u8-cwN" firstAttribute="top" secondItem="i99-4g-HEy" secondAttribute="top" id="Ge1-R9-vsY"/>
                                                 <constraint firstItem="jjO-gq-cko" firstAttribute="trailing" secondItem="1em-rA-YTo" secondAttribute="trailing" id="GkW-EE-nJ2"/>
                                                 <constraint firstItem="jjO-gq-cko" firstAttribute="centerX" secondItem="fss-u8-cwN" secondAttribute="centerX" constant="-1.1666666666666856" id="GtY-ao-H6A"/>
@@ -242,15 +247,15 @@
                                                 <constraint firstItem="paU-hh-oXz" firstAttribute="leading" secondItem="fyD-y5-lI5" secondAttribute="leading" id="TDB-me-w6B"/>
                                                 <constraint firstItem="jjO-gq-cko" firstAttribute="leading" secondItem="3k6-lt-iwO" secondAttribute="trailing" constant="8" id="Yj8-6l-7sm"/>
                                                 <constraint firstItem="pa0-9w-KIa" firstAttribute="leading" secondItem="2hk-64-sLq" secondAttribute="leading" id="akh-QO-cPH"/>
-                                                <constraint firstItem="2hk-64-sLq" firstAttribute="top" secondItem="pa0-9w-KIa" secondAttribute="bottom" constant="92" id="alV-fS-OyU"/>
+                                                <constraint firstItem="2hk-64-sLq" firstAttribute="top" secondItem="pa0-9w-KIa" secondAttribute="bottom" constant="74" id="alV-fS-OyU"/>
                                                 <constraint firstItem="paU-hh-oXz" firstAttribute="leading" secondItem="Ddj-s4-5PF" secondAttribute="leading" id="eOt-Y6-G5y"/>
                                                 <constraint firstItem="vSj-1y-7am" firstAttribute="top" secondItem="2hk-64-sLq" secondAttribute="bottom" constant="37" id="fax-QW-Za4"/>
                                                 <constraint firstItem="pa0-9w-KIa" firstAttribute="leading" secondItem="ebd-3v-SdI" secondAttribute="leadingMargin" constant="-10" id="g2S-LZ-ThI"/>
-                                                <constraint firstItem="paU-hh-oXz" firstAttribute="leading" secondItem="i99-4g-HEy" secondAttribute="leading" id="g4S-GJ-z4r"/>
+                                                <constraint firstItem="paU-hh-oXz" firstAttribute="leading" secondItem="i99-4g-HEy" secondAttribute="leading" constant="-8" id="g4S-GJ-z4r"/>
                                                 <constraint firstItem="jjO-gq-cko" firstAttribute="top" secondItem="3k6-lt-iwO" secondAttribute="top" id="gZc-ZA-aiu"/>
                                                 <constraint firstItem="Ddj-s4-5PF" firstAttribute="top" secondItem="paU-hh-oXz" secondAttribute="bottom" constant="15" id="gfp-M9-pLS"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="3k6-lt-iwO" secondAttribute="bottom" id="jGE-vG-j8t"/>
-                                                <constraint firstItem="i99-4g-HEy" firstAttribute="leading" secondItem="pa0-9w-KIa" secondAttribute="trailing" constant="18" id="ldD-Q2-48g"/>
+                                                <constraint firstItem="i99-4g-HEy" firstAttribute="leading" secondItem="pa0-9w-KIa" secondAttribute="trailing" constant="8" id="ldD-Q2-48g"/>
                                                 <constraint firstItem="3k6-lt-iwO" firstAttribute="leading" secondItem="1em-rA-YTo" secondAttribute="leading" id="m1z-LK-5i3"/>
                                                 <constraint firstAttribute="width" constant="375" id="oPu-c2-b2j"/>
                                                 <constraint firstItem="paU-hh-oXz" firstAttribute="top" secondItem="i99-4g-HEy" secondAttribute="bottom" constant="26" id="zrb-eh-3BF"/>
@@ -327,9 +332,14 @@
                                     <segue destination="cFK-Z1-GPT" kind="presentation" modalPresentationStyle="fullScreen" id="qZM-fe-DjO"/>
                                 </connections>
                             </button>
-                            <imageView verifyAmbiguity="off" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="86c-qk-vqW" userLabel="Profile Picture">
+                            <imageView verifyAmbiguity="off" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="86c-qk-vqW" userLabel="Profile Picture">
                                 <rect key="frame" x="136" y="104" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <segmentedControl opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZPT-VD-d2l" userLabel="User Posts">
                                 <rect key="frame" x="16" y="366" width="343" height="32"/>
