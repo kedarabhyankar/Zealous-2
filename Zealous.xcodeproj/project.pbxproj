@@ -29,6 +29,9 @@
 		C600439B25367BED009AC96D /* AllTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600439A25367BED009AC96D /* AllTopicsViewController.swift */; };
 		C60043A025367CA7009AC96D /* AllTopicsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600439F25367CA7009AC96D /* AllTopicsViewCell.swift */; };
 		C60043A525367CBB009AC96D /* AllUsersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043A425367CBB009AC96D /* AllUsersViewCell.swift */; };
+		C60043EA253959B9009AC96D /* PostsUnderTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */; };
+		C60043EF25395A31009AC96D /* PostsUnderTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */; };
+		C60043F425395ABD009AC96D /* PostUnderTopicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
@@ -101,6 +104,9 @@
 		C600439A25367BED009AC96D /* AllTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTopicsViewController.swift; sourceTree = "<group>"; };
 		C600439F25367CA7009AC96D /* AllTopicsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTopicsViewCell.swift; sourceTree = "<group>"; };
 		C60043A425367CBB009AC96D /* AllUsersViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersViewCell.swift; sourceTree = "<group>"; };
+		C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsUnderTopic.storyboard; sourceTree = "<group>"; };
+		C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsUnderTopicViewController.swift; sourceTree = "<group>"; };
+		C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUnderTopicViewCell.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +271,9 @@
 				C600439A25367BED009AC96D /* AllTopicsViewController.swift */,
 				C600439F25367CA7009AC96D /* AllTopicsViewCell.swift */,
 				C60043A425367CBB009AC96D /* AllUsersViewCell.swift */,
+				C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */,
+				C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */,
+				C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -400,6 +409,7 @@
 				A607790825292B3B00054A25 /* Following.storyboard in Resources */,
 				A607790525292B0500054A25 /* Timeline.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
+				C60043EA253959B9009AC96D /* PostsUnderTopic.storyboard in Resources */,
 				A607790925292B3E00054A25 /* Followers.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
 				A607790725292B2E00054A25 /* Search.storyboard in Resources */,
@@ -537,6 +547,7 @@
 			files = (
 				E4170BE3251D564000C5C0E7 /* LoginViewController.swift in Sources */,
 				C60043A525367CBB009AC96D /* AllUsersViewCell.swift in Sources */,
+				C60043EF25395A31009AC96D /* PostsUnderTopicViewController.swift in Sources */,
 				C66B88FA252BC5C8006BAD5F /* TimelineViewController.swift in Sources */,
 				E44D300225196525000FB63B /* ViewController.swift in Sources */,
 				A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */,
@@ -555,6 +566,7 @@
 				C66B88F8252AA6A4006BAD5F /* FollowersTableViewCell.swift in Sources */,
 				E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */,
 				C66B88F6252AA556006BAD5F /* FollowersViewController.swift in Sources */,
+				C60043F425395ABD009AC96D /* PostUnderTopicViewCell.swift in Sources */,
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
 				C67F56B1252CA41B00A4BBD1 /* TopicsViewController.swift in Sources */,
 				C60043A025367CA7009AC96D /* AllTopicsViewCell.swift in Sources */,
