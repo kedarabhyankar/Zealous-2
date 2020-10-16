@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cgS-zF-GJW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cgS-zF-GJW">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,17 +39,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GA8-4B-WhT">
-                                                    <rect key="frame" x="242" y="21.666666666666671" width="67" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="67" id="Ylc-1o-Bf2"/>
-                                                        <constraint firstAttribute="height" constant="30" id="l8U-3F-J2I"/>
-                                                        <constraint firstAttribute="width" secondItem="GA8-4B-WhT" secondAttribute="height" multiplier="67:30" id="udN-2f-4O3"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Unfollow"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjm-h7-tsp" userLabel="name">
-                                                    <rect key="frame" x="47" y="29" width="175" height="20"/>
+                                                    <rect key="frame" x="46" y="29" width="175" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="175" id="Epa-8T-c0G"/>
                                                     </constraints>
@@ -55,10 +48,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GA8-4B-WhT">
+                                                    <rect key="frame" x="241" y="24" width="67" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="67" id="Ylc-1o-Bf2"/>
+                                                        <constraint firstAttribute="height" constant="30" id="l8U-3F-J2I"/>
+                                                        <constraint firstAttribute="width" secondItem="GA8-4B-WhT" secondAttribute="height" multiplier="67:30" id="udN-2f-4O3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Unfollow"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tjm-h7-tsp" firstAttribute="centerY" secondItem="YXi-38-ziG" secondAttribute="centerY" id="0Qi-rI-UWC"/>
-                                                <constraint firstItem="GA8-4B-WhT" firstAttribute="top" secondItem="YXi-38-ziG" secondAttribute="topMargin" constant="10.666666666666671" id="Q9T-Zq-Iyd"/>
+                                                <constraint firstItem="GA8-4B-WhT" firstAttribute="top" secondItem="YXi-38-ziG" secondAttribute="topMargin" constant="13" id="Q9T-Zq-Iyd"/>
                                                 <constraint firstItem="tjm-h7-tsp" firstAttribute="top" secondItem="YXi-38-ziG" secondAttribute="topMargin" constant="18" id="SN9-JR-fBl"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="GA8-4B-WhT" secondAttribute="trailing" constant="51" id="Zhe-My-2Qt"/>
                                                 <constraint firstItem="GA8-4B-WhT" firstAttribute="leading" secondItem="tjm-h7-tsp" secondAttribute="trailing" constant="20" id="bXc-dz-YN1"/>
@@ -85,8 +88,8 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="81W-K8-rrH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="topicsTableView" destination="wZW-U2-RWr" id="15N-3T-pfF"/>
@@ -97,4 +100,9 @@
             <point key="canvasLocation" x="4124" y="159.60591133004928"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
