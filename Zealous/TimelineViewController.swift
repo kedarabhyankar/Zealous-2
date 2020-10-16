@@ -104,6 +104,14 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.postImg?.image = UIImage(data: data!)
             }
         }
+        let ref2 = Storage.storage().reference(withPath: "media/" + post.creatorId + "/" + "profile.jpeg")
+        ref2.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+            if error != nil {
+                print("Error: Image could not download!")
+            } else {
+                cell.profilePic?.image = UIImage(data: data!)
+            }
+        }
         return cell
     }
 }

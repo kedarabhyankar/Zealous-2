@@ -10,6 +10,7 @@ import UIKit
 class FollowersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var username: UILabel!
+   
     @IBOutlet weak var Profilepic: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
