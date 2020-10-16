@@ -22,18 +22,7 @@ class AllUsersViewController: UIViewController {
         WriteableUser.getCurrentUser(completion: getUser)
     }
     
-    func getUser(currentUser: WriteableUser) {
-        self.currentUser = currentUser
-        // Similar function call : currentUser.getFollowers(addUser: addUser)
-        // Add function call to get list of all users
-    }
     
-    func addUser(user: WriteableUser) {
-        users.append(user)
-        usersTableView.reloadData()
-    }
-    
-
     func getUser(user: WriteableUser) {
         self.currentUser = user
         currentUser!.getAllUsers(allUsers: getUsers)
@@ -45,17 +34,18 @@ class AllUsersViewController: UIViewController {
             print("user: " + aUser.email + " " + aUser.firstName)
         }
     }
+}
     
     
 extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        return self.allUsersArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? AllUsersViewCell
-        let user = users[indexPath.item]
+        let user = allUsersArray[indexPath.item]
         cell?.username.text = user.username
         return cell!
     }

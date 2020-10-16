@@ -32,18 +32,18 @@ class AllTopicsViewController: UIViewController {
             print("topic: " + aTopic.id + " " + aTopic.title)
         }
     }
-    
+}
     
 
 extension AllTopicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.topics.count
+        return self.allTopicsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? AllTopicsViewCell
-        let topic = topics[indexPath.item]
+        let topic = allTopicsArray[indexPath.item]
         cell?.topic.text = topic.title
         return cell!
     }
