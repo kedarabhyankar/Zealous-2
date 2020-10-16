@@ -26,6 +26,7 @@ class AllUsersViewController: UIViewController {
     func getUser(user: WriteableUser) {
         self.currentUser = user
         currentUser!.getAllUsers(allUsers: getUsers)
+        usersTableView.reloadData()
     }
     
     func getUsers(allUsers: [WriteableUser]) {
@@ -33,6 +34,7 @@ class AllUsersViewController: UIViewController {
         for aUser in allUsersArray {
             print("user: " + aUser.email + " " + aUser.firstName)
         }
+        usersTableView.reloadData()
     }
 }
     
