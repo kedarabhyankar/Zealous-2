@@ -198,11 +198,22 @@
                     <navigationItem key="navigationItem" id="15r-Wu-kXV"/>
                     <connections>
                         <outlet property="topicsTableView" destination="ux2-PV-NAv" id="J0o-kD-xRj"/>
+                        <segue destination="X2E-rG-t70" kind="presentation" identifier="toPosts" modalPresentationStyle="fullScreen" id="pKk-hJ-67D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wdb-nW-j5J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1709.5999999999999" y="831.2807881773399"/>
+        </scene>
+        <!--PostsUnderTopic-->
+        <scene sceneID="f9s-6G-TKk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PostsUnderTopic" id="X2E-rG-t70" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dxf-ro-hk3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tvW-tO-o7U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2302" y="751"/>
         </scene>
         <!--Profile-->
         <scene sceneID="5OW-wv-2gV">

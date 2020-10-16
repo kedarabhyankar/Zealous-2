@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wPD-GR-mhR">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -307,6 +307,7 @@
                     <navigationItem key="navigationItem" id="HkT-6w-msa"/>
                     <connections>
                         <outlet property="postTableView" destination="Daa-Ts-yyo" id="rst-xS-4O0"/>
+                        <outlet property="topicName" destination="0ES-Vp-jS5" id="BYT-6b-j4P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrK-47-slG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

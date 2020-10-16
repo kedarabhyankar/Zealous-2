@@ -9,10 +9,10 @@ import UIKit
 
 class AllTopicsViewController: UIViewController {
     @IBOutlet weak var topicsTableView: UITableView!
-    
     var allTopicsArray: [Topic] = []
     var currentUser: WriteableUser? = nil
-
+    var name:Topic? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         topicsTableView.delegate = self
@@ -45,8 +45,20 @@ extension AllTopicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? AllTopicsViewCell
-        let topic = allTopicsArray[indexPath.item]
+        let topic = allTopicsArray[indexPath.row]
         cell?.topic.text = topic.title
         return cell!
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row: \(indexPath.row)")
+        print("topic: \(allTopicsArray[indexPath.row].title)")
+        name = allTopicsArray[indexPath.row]
+        self.performSegue(withIdentifier: "toPosts", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPosts" {
+            let viewController = segue.destination as! PostsUnderTopicViewController
+            viewController.topic = name
+        }
     }
 }

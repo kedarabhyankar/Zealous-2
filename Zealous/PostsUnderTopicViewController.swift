@@ -15,69 +15,47 @@ import BRYXBanner
 
 class PostsUnderTopicViewController: UIViewController {
 
+    @IBOutlet weak var topicName: UILabel!
     @IBOutlet weak var postTableView: UITableView!
-    
+    var topic: Topic? = nil
     var currentUser: WriteableUser? = nil
     var likedPosts: [Post] = []
     var following: [WriteableUser] = []
     var posts: [Post] = []
-     var topics: [Topic] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         postTableView.delegate = self
         postTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
+        addPosts()
+        posts.sort(by: {$0.timestamp > $1.timestamp})
         postTableView.rowHeight = 540
         postTableView.estimatedRowHeight = 540
+        self.postTableView.reloadData()
     }
     
     func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
         //afterGettingCurrentUser()
-       // WriteableUser.getCreatedPosts(email: currentUser.email, completion: printUserPosts)
-        currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
-        currentUser.getFollowedUsers(addUser: addUser) // populates the following array
-        currentUser.getFollowedTopics(addTopic: addTopic)
+       //WriteableUser.getCreatedPosts(email: currentUser.email, completion: addPosts)
         posts.sort(by: {$0.timestamp > $1.timestamp})
         postTableView.reloadData()
     }
-    func addTimeline(postArray: [Post]) {
-        for postItem in postArray {
-        posts.append(postItem)
-            print(postItem)
-        }
-        postTableView.reloadData()
+    func setTopic(topicName: Topic) {
+        //print(topicName)
+        self.topic = topicName
     }
-    func addTopic(topic: Topic) {
-        topics.append(topic)
-        topic.getPosts { (post) in
-            for postItem in self.posts {
-                if(postItem.postId == post.postId) {
-                    return
-                }
-            }
+    func addPosts() {
+        topic?.getPosts { (post) in
             self.posts.append(post)
+            //print(post)
             self.postTableView.reloadData()
         }
+        topicName.text = topic?.title
     }
     
-    func printUserPosts(postArray: [Post]) {
-        for post in postArray {
-            print(post)
-        }
-    }
-    
-    func addPost(likedPost: Post) {
-        likedPosts.append(likedPost)
-    }
-    func addUser(user: WriteableUser) {
-        following.append(user)
-        WriteableUser.getCreatedPosts(email: user.email, completion: addTimeline)
-        postTableView.reloadData()
-    }
 }
-
 
 extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,6 +69,7 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
                })
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsTopic", for: indexPath) as! PostUnderTopicViewCell
         let post = posts[indexPath.row]
+        print(post)
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
@@ -99,9 +78,9 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
         
         ref.getData(maxSize: 1024 * 1024 * 1024) { data, error in
             if error != nil {
-                print("Error: Image could not download!")
+                //print("Error: Image could not download!")
             } else {
-                cell.postImg?.image = UIImage(data: data!)
+                cell.postImage?.image = UIImage(data: data!)
             }
         }
         return cell
