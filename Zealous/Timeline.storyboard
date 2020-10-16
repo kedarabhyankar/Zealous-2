@@ -29,16 +29,21 @@
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LGV-q4-ij9" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-Kv-NA3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="540"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HqN-cD-CPl" userLabel="Profile Picture">
-                                                    <rect key="frame" x="6" y="11" width="42" height="42"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HqN-cD-CPl" userLabel="Profile Picture">
+                                                    <rect key="frame" x="6" y="11" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="22M-6g-M2T"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="7G6-gm-zlK"/>
                                                         <constraint firstAttribute="width" secondItem="HqN-cD-CPl" secondAttribute="height" multiplier="1:1" id="9H7-fd-4Mz"/>
-                                                        <constraint firstAttribute="height" constant="42" id="fyF-GJ-fph"/>
+                                                        <constraint firstAttribute="height" constant="60" id="fyF-GJ-fph"/>
                                                         <constraint firstAttribute="width" secondItem="HqN-cD-CPl" secondAttribute="height" multiplier="1:1" id="kFi-ej-yzR"/>
-                                                        <constraint firstAttribute="width" constant="42" id="n83-gO-cCM"/>
+                                                        <constraint firstAttribute="width" constant="60" id="n83-gO-cCM"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wc5-X1-mh0">
                                                     <rect key="frame" x="66" y="74" width="262" height="231"/>
@@ -52,16 +57,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acr-A6-0fd">
-                                                    <rect key="frame" x="66" y="16" width="310" height="32"/>
+                                                    <rect key="frame" x="74" y="16" width="302" height="32"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" none="YES"/>
                                                     </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="MCS-Ln-yNu"/>
-                                                        <constraint firstAttribute="width" secondItem="Acr-A6-0fd" secondAttribute="height" multiplier="155:16" id="TGh-VL-adf"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="310" id="d67-hu-uwp"/>
+                                                        <constraint firstAttribute="width" secondItem="Acr-A6-0fd" secondAttribute="height" multiplier="155:16" constant="-8" id="TGh-VL-adf"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="302" id="d67-hu-uwp"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="i6M-Gn-U73"/>
-                                                        <constraint firstAttribute="width" constant="310" id="sr5-yB-qRe"/>
+                                                        <constraint firstAttribute="width" constant="302" id="sr5-yB-qRe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,11 +213,11 @@
                                                 <constraint firstItem="F69-kZ-aRj" firstAttribute="centerY" secondItem="JwL-V6-lYL" secondAttribute="centerY" constant="2" id="Fcb-JI-a4m"/>
                                                 <constraint firstItem="Wc5-X1-mh0" firstAttribute="top" secondItem="Acr-A6-0fd" secondAttribute="bottom" constant="26" id="GVB-wF-VSW"/>
                                                 <constraint firstItem="N3u-hB-cqd" firstAttribute="top" secondItem="vXv-aY-SBR" secondAttribute="bottom" constant="9" id="Ri9-cg-2Ot"/>
-                                                <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="Acr-A6-0fd" secondAttribute="leading" id="Tjn-11-TZ1"/>
+                                                <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="Acr-A6-0fd" secondAttribute="leading" constant="-8" id="Tjn-11-TZ1"/>
                                                 <constraint firstItem="HqN-cD-CPl" firstAttribute="top" secondItem="pFK-Kv-NA3" secondAttribute="topMargin" id="Y4E-Cr-vd6"/>
                                                 <constraint firstItem="vXv-aY-SBR" firstAttribute="top" secondItem="Wc5-X1-mh0" secondAttribute="bottom" constant="15" id="aWG-fm-IJH"/>
                                                 <constraint firstItem="g1e-M2-BX5" firstAttribute="trailing" secondItem="JwL-V6-lYL" secondAttribute="trailing" id="bLe-jQ-dXx"/>
-                                                <constraint firstItem="HqN-cD-CPl" firstAttribute="centerY" secondItem="Acr-A6-0fd" secondAttribute="centerY" id="gjs-s6-Bf9"/>
+                                                <constraint firstItem="HqN-cD-CPl" firstAttribute="centerY" secondItem="Acr-A6-0fd" secondAttribute="centerY" constant="9" id="gjs-s6-Bf9"/>
                                                 <constraint firstItem="HqN-cD-CPl" firstAttribute="leading" secondItem="vak-5D-Y0m" secondAttribute="leading" id="gpc-nv-nDY"/>
                                                 <constraint firstItem="HqN-cD-CPl" firstAttribute="leading" secondItem="bOH-8k-aTE" secondAttribute="leading" id="hC3-ek-Jz6"/>
                                                 <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="vXv-aY-SBR" secondAttribute="leading" id="iDT-gp-XeK"/>
@@ -220,8 +225,8 @@
                                                 <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="N3u-hB-cqd" secondAttribute="leading" id="jXW-xv-i5C"/>
                                                 <constraint firstItem="F69-kZ-aRj" firstAttribute="leading" secondItem="pFK-Kv-NA3" secondAttribute="leadingMargin" id="mSH-5E-GaG"/>
                                                 <constraint firstItem="F69-kZ-aRj" firstAttribute="top" secondItem="g1e-M2-BX5" secondAttribute="bottom" constant="11" id="n4v-Pp-Wnk"/>
-                                                <constraint firstItem="Acr-A6-0fd" firstAttribute="leading" secondItem="HqN-cD-CPl" secondAttribute="trailing" constant="18" id="ouR-Le-ahE"/>
-                                                <constraint firstItem="bOH-8k-aTE" firstAttribute="top" secondItem="HqN-cD-CPl" secondAttribute="bottom" constant="92" id="v2W-Mp-pHv"/>
+                                                <constraint firstItem="Acr-A6-0fd" firstAttribute="leading" secondItem="HqN-cD-CPl" secondAttribute="trailing" constant="8" id="ouR-Le-ahE"/>
+                                                <constraint firstItem="bOH-8k-aTE" firstAttribute="top" secondItem="HqN-cD-CPl" secondAttribute="bottom" constant="74" id="v2W-Mp-pHv"/>
                                                 <constraint firstItem="JwL-V6-lYL" firstAttribute="leading" secondItem="F69-kZ-aRj" secondAttribute="trailing" constant="8" id="ydO-7F-af1"/>
                                             </constraints>
                                         </tableViewCellContentView>
