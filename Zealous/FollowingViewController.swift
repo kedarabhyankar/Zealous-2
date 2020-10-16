@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+import CodableFirebase
+import BRYXBanner
 
 class FollowingViewController: UIViewController {
     
@@ -68,6 +74,14 @@ extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingUsers", for: indexPath) as? FollowingViewCell
         let user = following[indexPath.item]
         cell?.Name?.text = user.username
+        let ref2 = Storage.storage().reference(withPath: "media/" + user.email + "/" + "profile.jpeg")
+        ref2.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+            if error != nil {
+                print("Error: Image could not download!")
+            } else {
+                cell?.ProfilePic?.image = UIImage(data: data!)
+            }
+        }
         return cell!
     }
 }
