@@ -23,6 +23,7 @@ class AllTopicsViewController: UIViewController {
     func getUser(user: WriteableUser) {
         self.currentUser = user
         currentUser!.getAllTopics(allTopics: getTopics)
+        topicsTableView.reloadData()
         
     }
     
@@ -31,6 +32,7 @@ class AllTopicsViewController: UIViewController {
         for aTopic in allTopicsArray {
             print("topic: " + aTopic.id + " " + aTopic.title)
         }
+        topicsTableView.reloadData()
     }
 }
     

@@ -108,39 +108,39 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopicCell" rowHeight="84" id="Y4s-Ax-iWg" customClass="AllTopicsViewCell" customModule="Zealous" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="84"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopicCell" id="Y4s-Ax-iWg" customClass="AllTopicsViewCell" customModule="Zealous" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y4s-Ax-iWg" id="R5P-wH-wjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-vc-sUh">
-                                                    <rect key="frame" x="231" y="22" width="128" height="42"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="128" id="5ve-hL-FDX"/>
-                                                        <constraint firstAttribute="width" secondItem="eDb-vc-sUh" secondAttribute="height" multiplier="64:21" id="qeI-AL-D61"/>
-                                                        <constraint firstAttribute="height" constant="42" id="upY-vY-n6u"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <state key="normal" title="Follow"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUn-5q-Itg">
-                                                    <rect key="frame" x="16" y="13" width="150" height="60"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="51"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="hUn-5q-Itg" secondAttribute="height" multiplier="5:2" id="5hF-aB-N6q"/>
-                                                        <constraint firstAttribute="height" constant="60" id="LNB-97-VXZ"/>
-                                                        <constraint firstAttribute="width" constant="150" id="dkW-jF-zR9"/>
+                                                        <constraint firstAttribute="width" secondItem="hUn-5q-Itg" secondAttribute="height" multiplier="5:2" constant="96.5" id="5hF-aB-N6q"/>
+                                                        <constraint firstAttribute="height" constant="51" id="LNB-97-VXZ"/>
+                                                        <constraint firstAttribute="width" constant="224" id="dkW-jF-zR9"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-vc-sUh">
+                                                    <rect key="frame" x="231" y="0.0" width="128" height="51"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="128" id="5ve-hL-FDX"/>
+                                                        <constraint firstAttribute="width" secondItem="eDb-vc-sUh" secondAttribute="height" multiplier="64:21" constant="-27.428571428571416" id="qeI-AL-D61"/>
+                                                        <constraint firstAttribute="height" constant="51" id="upY-vY-n6u"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Follow"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="eDb-vc-sUh" firstAttribute="leading" secondItem="hUn-5q-Itg" secondAttribute="trailing" constant="65" id="ND3-UB-Qe9"/>
-                                                <constraint firstItem="hUn-5q-Itg" firstAttribute="bottom" secondItem="R5P-wH-wjG" secondAttribute="bottomMargin" id="P5K-pD-59p"/>
-                                                <constraint firstItem="hUn-5q-Itg" firstAttribute="leading" secondItem="R5P-wH-wjG" secondAttribute="leadingMargin" id="Zn2-On-cA5"/>
+                                                <constraint firstItem="eDb-vc-sUh" firstAttribute="leading" secondItem="hUn-5q-Itg" secondAttribute="trailing" constant="7" id="ND3-UB-Qe9"/>
+                                                <constraint firstItem="hUn-5q-Itg" firstAttribute="bottom" secondItem="R5P-wH-wjG" secondAttribute="bottomMargin" constant="18.333332061767578" id="P5K-pD-59p"/>
+                                                <constraint firstItem="hUn-5q-Itg" firstAttribute="leading" secondItem="R5P-wH-wjG" secondAttribute="leadingMargin" constant="-16" id="Zn2-On-cA5"/>
                                                 <constraint firstItem="hUn-5q-Itg" firstAttribute="centerY" secondItem="eDb-vc-sUh" secondAttribute="centerY" id="cwe-uZ-weG"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -244,30 +244,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiG-A8-MiD">
+                                                    <rect key="frame" x="16" y="20.666666666666671" width="234" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="234" id="34z-W3-GcK"/>
+                                                        <constraint firstAttribute="height" constant="60" id="8GA-Va-bQY"/>
+                                                        <constraint firstAttribute="width" secondItem="BiG-A8-MiD" secondAttribute="height" multiplier="5:2" constant="84" id="rZe-ne-UNu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mik-mt-31n">
-                                                    <rect key="frame" x="231" y="29.666666666666671" width="128" height="42"/>
+                                                    <rect key="frame" x="231" y="29" width="128" height="42"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="42" id="KK1-KN-TcD"/>
                                                         <constraint firstAttribute="width" secondItem="mik-mt-31n" secondAttribute="height" multiplier="64:21" id="fqg-F0-jpP"/>
                                                         <constraint firstAttribute="width" constant="128" id="tUe-m4-t9V"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Follow"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiG-A8-MiD">
-                                                    <rect key="frame" x="16" y="20.666666666666671" width="150" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="34z-W3-GcK"/>
-                                                        <constraint firstAttribute="height" constant="60" id="8GA-Va-bQY"/>
-                                                        <constraint firstAttribute="width" secondItem="BiG-A8-MiD" secondAttribute="height" multiplier="5:2" id="rZe-ne-UNu"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mik-mt-31n" firstAttribute="leading" secondItem="BiG-A8-MiD" secondAttribute="trailing" constant="65" id="WxG-mQ-1Wj"/>
+                                                <constraint firstItem="mik-mt-31n" firstAttribute="leading" secondItem="BiG-A8-MiD" secondAttribute="trailing" constant="-19" id="WxG-mQ-1Wj"/>
                                                 <constraint firstItem="BiG-A8-MiD" firstAttribute="centerY" secondItem="p4U-e5-ow0" secondAttribute="centerY" id="cVO-m2-ysk"/>
                                                 <constraint firstItem="BiG-A8-MiD" firstAttribute="leading" secondItem="p4U-e5-ow0" secondAttribute="leadingMargin" id="sc8-mp-ZoV"/>
                                                 <constraint firstItem="BiG-A8-MiD" firstAttribute="centerY" secondItem="mik-mt-31n" secondAttribute="centerY" id="ulo-ve-Hm1"/>
@@ -331,13 +331,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1i-oh-Wd0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884" y="929"/>
+            <point key="canvasLocation" x="884" y="928.81773399014787"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8MM-W5-sER"/>
-        <segue reference="fjp-VP-osU"/>
-        <segue reference="xK5-K3-bqP"/>
+        <segue reference="ZsO-a0-qn5"/>
+        <segue reference="St7-5y-thk"/>
+        <segue reference="Kai-ou-cpI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
