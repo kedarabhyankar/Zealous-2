@@ -28,8 +28,8 @@ class TimelineViewController: UIViewController {
         timelineTableView.delegate = self
         timelineTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
-        timelineTableView.rowHeight = 508
-        timelineTableView.estimatedRowHeight = 508
+        timelineTableView.rowHeight = 540
+        timelineTableView.estimatedRowHeight = 540
     }
     
     func getUser(currentUser: WriteableUser) {
