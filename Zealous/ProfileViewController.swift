@@ -32,8 +32,8 @@ class ProfileViewController: UIViewController {
         profileTableView.delegate = self
         profileTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
-        profileTableView.rowHeight = 508
-        profileTableView.estimatedRowHeight = 508
+        profileTableView.rowHeight = 540
+        profileTableView.estimatedRowHeight = 540
         profileTableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         

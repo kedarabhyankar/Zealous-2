@@ -21,7 +21,8 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         // Configure the view for the selected state
     }
   
-        @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var savePost: UIButton!
+    @IBOutlet weak var postImage: UIImageView!
         @IBOutlet weak var profilePicture: UIImageView!
         @IBOutlet weak var username: UILabel!
         @IBOutlet weak var postTitle: UILabel!
@@ -29,9 +30,12 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         @IBOutlet weak var deletePost: UIButton!
         @IBOutlet weak var upVote: UIButton!
         @IBOutlet weak var downVote: UIButton!
-        @IBOutlet weak var comments: UIButton!
+    @IBOutlet weak var comments: UITableView!
     
-        var currentUser: WriteableUser? = nil
+    @IBOutlet weak var postComment: UIButton!
+    @IBOutlet weak var commentText: UITextField!
+    
+    var currentUser: WriteableUser? = nil
         var currentPost: Post? = nil
         var userPosts: [Post] = []
         
@@ -45,10 +49,12 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         @IBAction func downVotePressed ( sender: Any) {
             
         }
-        @IBAction func commentPressed ( sender: Any) {
-            
-        }
-        @IBAction func deletePostPressed ( sender: Any) {
+    @IBAction func postCommentPressed(_ sender: Any) {
+    }
+    
+    @IBAction func savePostPressed(_ sender: Any) {
+    }
+    @IBAction func deletePostPressed ( sender: Any) {
             //first get the post from the user
             WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: addPost)
         }
