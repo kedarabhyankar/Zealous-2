@@ -47,8 +47,15 @@ extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? AllUsersViewCell
+        cell?.cellDelegate = self
         let user = allUsersArray[indexPath.item]
         cell?.username.text = user.username
         return cell!
     }
+}
+extension AllUsersViewController: AllUsersCellDelegate {
+    func allusers(cell: AllUsersViewCell, didTappedThe button: UIButton?, emailId: String) {
+        currentUser?.follow(email: emailId)
+    }
+    
 }
