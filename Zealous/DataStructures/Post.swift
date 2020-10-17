@@ -24,6 +24,7 @@ struct Post: Codable {
     var imgURL: String?
     var comments: [String]
     var likes: Int
+    var dislikes: Int
     var timestamp: String
     
     init(topic: String, title: String, caption: String) {
@@ -35,6 +36,7 @@ struct Post: Codable {
         self.imgURL = nil
         self.creatorId = ""
         self.likes = 0
+        self.dislikes = 0
         let today = Date()
         //let formatter1 = DateFormatter()
         //formatter1.dateStyle = .short

@@ -13,6 +13,18 @@ import CodableFirebase
 
 extension WriteableUser {
     
+    mutating func addLikedPost(post: Post) {
+        self.likedPosts.append(post.postId)
+    }
+    
+    mutating func addDislikedPost(post: Post) {
+        self.dislikePosts.append(post.postId)
+    }
+    
+    mutating func addSavedPost(post: Post) {
+        self.savedPosts.append(post.postId)
+    }
+    
     mutating func addCreatedPost(post: Post) {
         self.createdPosts.append(post.postId)
     }
@@ -112,6 +124,28 @@ extension WriteableUser {
             }
         }
     }
+    
+    
+    func getDislikePosts(addPost: @escaping((Post) -> ())) {
+        let db = Firestore.firestore()
+        for id in self.dislikePosts {
+            let ref = db.collection("posts").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                    addPost(model)
+                } else {
+                    print("Document does not exist")
+                }
+                
+            }
+            
+        }
+        
+        
+    }
+    
+    
     func getProfilePosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
         for id in self.createdPosts {
@@ -128,6 +162,24 @@ extension WriteableUser {
                }
            }
        }
+    
+    func getSavedPosts(completion: @escaping(([Post]) -> ())) {
+        let db = Firestore.firestore()
+        var savedPosts: [Post] = []
+        for postId in self.savedPosts {
+            let ref = db.collection("posts").document(postId)
+            ref.getDocument { document, error in
+                if document != nil {
+                    let model = try! FirestoreDecoder().decode(Post.self, from: (document?.data())!)
+                    savedPosts.append(model)
+                } else {
+                    print("Error getting documents")
+                }
+            }
+        }
+        completion(savedPosts)
+       
+    }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
         let auth = Auth.auth()
@@ -411,8 +463,6 @@ extension WriteableUser {
     
     mutating func followTopic (title: String) {
         // Error Banners
-       
-        
         let alreadyFollow = Banner(title: "You are already following this topic.", subtitle: "Choose a different topic to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyFollow.dismissesOnTap = true
         

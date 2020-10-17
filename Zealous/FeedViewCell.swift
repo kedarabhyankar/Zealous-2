@@ -39,6 +39,7 @@ class FeedViewCell: UITableViewCell {
     @IBAction func postCommentPressed(_ sender: Any) {
     }
     @IBAction func downVotePressed(_ sender: Any) {
+        
     }
     @IBAction func upVotePressed(_ sender: Any) {
     }
