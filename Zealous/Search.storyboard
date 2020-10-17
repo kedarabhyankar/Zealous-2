@@ -135,6 +135,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Follow"/>
+                                                    <connections>
+                                                        <action selector="followClicked:" destination="Y4s-Ax-iWg" eventType="touchUpInside" id="oiO-vz-TWr"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -275,6 +278,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Follow"/>
+                                                    <connections>
+                                                        <action selector="followClicked:" destination="FUt-3r-xwc" eventType="touchUpInside" id="qLc-ub-gCb"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -346,9 +352,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZsO-a0-qn5"/>
-        <segue reference="St7-5y-thk"/>
-        <segue reference="Kai-ou-cpI"/>
+        <segue reference="I1N-Hc-LyL"/>
+        <segue reference="Tpl-JO-pYC"/>
+        <segue reference="Zwr-B3-mCY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>

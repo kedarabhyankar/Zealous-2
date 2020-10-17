@@ -45,6 +45,7 @@ extension AllTopicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? AllTopicsViewCell
+        cell?.cellDelegate = self
         let topic = allTopicsArray[indexPath.row]
         cell?.topic.text = topic.title
         return cell!
@@ -60,5 +61,10 @@ extension AllTopicsViewController: UITableViewDelegate, UITableViewDataSource {
             let viewController = segue.destination as! PostsUnderTopicViewController
             viewController.topic = name
         }
+    }
+}
+extension AllTopicsViewController: AllTopicsCellDelegate {
+    func alltopics(cell: AllTopicsViewCell, didTappedThe button: UIButton?, topic:String) {
+        currentUser?.followTopic(title: topic)
     }
 }
