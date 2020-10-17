@@ -63,8 +63,15 @@ extension TopicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Topics", for: indexPath) as? TopicsViewCell
+        cell?.cellDelegate = self
         let top = topics[indexPath.item]
         cell?.name?.text = top.title
         return cell!
+    }
+}
+extension TopicsViewController: TopicCellDelegate {
+    func topiccell(cell: TopicsViewCell, didTappedThe button: UIButton?, topicTitle: String) {
+        currentUser?.unfollowTopic(title: topicTitle)
+        self.performSegue(withIdentifier: "self", sender: self)
     }
 }

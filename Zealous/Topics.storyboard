@@ -19,6 +19,16 @@
             </objects>
             <point key="canvasLocation" x="4857" y="-56"/>
         </scene>
+        <!--Topics-->
+        <scene sceneID="u7R-5y-fZ9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Topics" id="nrE-w1-bHp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LAr-Po-CvE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="az9-re-SqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4904" y="242"/>
+        </scene>
         <!--Topics View Controller-->
         <scene sceneID="GBi-aN-9Zk">
             <objects>
@@ -57,6 +67,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Unfollow"/>
+                                                    <connections>
+                                                        <action selector="unfollowClicked:" destination="rxb-Ps-zbw" eventType="touchUpInside" id="8O6-oJ-UUI"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -93,6 +106,7 @@
                     </view>
                     <connections>
                         <outlet property="topicsTableView" destination="wZW-U2-RWr" id="15N-3T-pfF"/>
+                        <segue destination="nrE-w1-bHp" kind="presentation" identifier="self" modalPresentationStyle="fullScreen" id="sxb-G5-Ugy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jja-m3-Hvu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
