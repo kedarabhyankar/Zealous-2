@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h" customClass="FollowingViewCell" customModule="Zealous" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="81" id="Lfl-LO-J1h" customClass="FollowingViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfl-LO-J1h" id="E0k-ea-tzn">
@@ -47,33 +47,37 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuV-7x-Vyn">
-                                                    <rect key="frame" x="260" y="23.666666666666671" width="100" height="33"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEP-rA-WAy">
+                                                    <rect key="frame" x="272" y="25" width="67" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="0TT-CD-kwx"/>
+                                                        <constraint firstAttribute="width" secondItem="FEP-rA-WAy" secondAttribute="height" multiplier="67:30" id="Apw-Yl-53i"/>
+                                                        <constraint firstAttribute="width" constant="67" id="BXh-uA-xss"/>
+                                                        <constraint firstAttribute="height" constant="30" id="nyN-B5-nDa"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="Unfollow">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Unfollow"/>
                                                     <connections>
-                                                        <action selector="unfollowClicked:" destination="Lfl-LO-J1h" eventType="touchUpInside" id="SK8-Su-NbM"/>
+                                                        <action selector="unfollowClicked:" destination="Lfl-LO-J1h" eventType="touchUpInside" id="dtT-Na-y0u"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="DTr-lN-MQh" firstAttribute="centerY" secondItem="vRd-Jx-tyt" secondAttribute="centerY" id="3iX-YN-Vmh"/>
-                                                <constraint firstAttribute="trailing" secondItem="EuV-7x-Vyn" secondAttribute="trailing" constant="15" id="5BG-pZ-Zne"/>
+                                                <constraint firstItem="FEP-rA-WAy" firstAttribute="centerY" secondItem="DTr-lN-MQh" secondAttribute="centerY" id="5GR-cX-NTK"/>
                                                 <constraint firstItem="DTr-lN-MQh" firstAttribute="leading" secondItem="vRd-Jx-tyt" secondAttribute="trailing" constant="15" id="GZT-iD-Kke"/>
                                                 <constraint firstItem="vRd-Jx-tyt" firstAttribute="top" secondItem="E0k-ea-tzn" secondAttribute="top" constant="10" id="JsT-wT-kMv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="FEP-rA-WAy" secondAttribute="trailing" constant="20" id="Mo9-JQ-Drm"/>
                                                 <constraint firstItem="vRd-Jx-tyt" firstAttribute="leading" secondItem="E0k-ea-tzn" secondAttribute="leading" constant="15" id="Rj7-1V-kWf"/>
-                                                <constraint firstItem="EuV-7x-Vyn" firstAttribute="centerY" secondItem="vRd-Jx-tyt" secondAttribute="centerY" id="cBa-WM-fdn"/>
+                                                <constraint firstItem="FEP-rA-WAy" firstAttribute="width" secondItem="FEP-rA-WAy" secondAttribute="height" multiplier="67:30" id="dmZ-aQ-gKe"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="Name" destination="DTr-lN-MQh" id="vjJ-jp-i6C"/>
                                             <outlet property="ProfilePic" destination="vRd-Jx-tyt" id="YWb-hF-1jv"/>
-                                            <outlet property="unfollow" destination="EuV-7x-Vyn" id="M8p-oJ-v3A"/>
+                                            <outlet property="unfollow" destination="FEP-rA-WAy" id="rm3-Lj-e2l"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -97,11 +101,22 @@
                     </view>
                     <connections>
                         <outlet property="followingTableView" destination="s1r-yu-6Lh" id="mxS-g2-V7H"/>
+                        <segue destination="PMf-K4-lgY" kind="presentation" identifier="self" modalPresentationStyle="fullScreen" id="ZDq-BN-NGn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndk-0y-MVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4229.6000000000004" y="160.34482758620689"/>
+        </scene>
+        <!--Following-->
+        <scene sceneID="pC2-sy-krL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Following" id="PMf-K4-lgY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UfX-bS-VV7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vqP-i2-fnK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4749" y="227"/>
         </scene>
         <!--Profile-->
         <scene sceneID="JL1-YT-TRZ">
