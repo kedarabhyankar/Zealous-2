@@ -15,6 +15,7 @@ import BRYXBanner
 
 class FollowingViewController: UIViewController {
     
+    
     @IBOutlet weak var followingTableView: UITableView!
     
     var currentUser: WriteableUser? = nil
@@ -27,6 +28,10 @@ class FollowingViewController: UIViewController {
         followingTableView.delegate = self
         followingTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
+        followingTableView.reloadData()
+    }
+    func unfollow(emailId: String) {
+        currentUser?.unfollow(email: emailId)
     }
     
     func getUser(currentUser: WriteableUser) {
@@ -69,9 +74,10 @@ extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.following.count
     }
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingUsers", for: indexPath) as? FollowingViewCell
+        cell?.cellDelegate = self
         let user = following[indexPath.item]
         cell?.Name?.text = user.username
         let ref2 = Storage.storage().reference(withPath: "media/" + user.email + "/" + "profile.jpeg")
@@ -82,7 +88,15 @@ extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
                 cell?.ProfilePic?.image = UIImage(data: data!)
             }
         }
+        
         return cell!
+    }
+    
+}
+extension FollowingViewController: CustomCellDelegate {
+    func customcell(cell: FollowingViewCell, didTappedThe button: UIButton?, emailId:String) {
+        currentUser?.unfollow(email: emailId)
+        self.performSegue(withIdentifier: "self", sender: self)
     }
 }
 
