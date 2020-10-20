@@ -24,6 +24,7 @@ struct Post: Codable {
     var imgURL: String?
     var comments: [String]
     var likes: Int
+    var dislikes: Int
     var timestamp: String
     
     init(topic: String, title: String, caption: String) {
@@ -35,6 +36,7 @@ struct Post: Codable {
         self.imgURL = nil
         self.creatorId = ""
         self.likes = 0
+        self.dislikes = 0
         let today = Date()
         //let formatter1 = DateFormatter()
         //formatter1.dateStyle = .short
@@ -53,4 +55,50 @@ struct Post: Codable {
         self.init(topic: topic, title: title, caption: caption, creatorId: creatorId)
         self.imgURL = img
     }
+    
+    static func getPost(postId: String, completion: @escaping((Post) -> ())) {
+        DispatchQueue.main.async {
+            let db = Firestore.firestore()
+            let topicRef = db.collection("posts")
+            //var model: Topic?
+            
+            topicRef.document(postId).getDocument() { querySnapshot, error in
+                if (error != nil) {
+                    print("error getting document: \(String(describing: error))")
+                    return 
+                }
+                if (querySnapshot?.data() == nil) {
+                    return
+                } else {
+                    let model = try! FirestoreDecoder().decode(Post.self, from: (querySnapshot?.data())!)
+                    //print("Model:  \(String(describing: model))")
+                    completion(model)
+                    //completion(model)
+                    //return model
+                    
+                }
+            }
+        }
+        
+    }
+    
+    static func deletePost(postId: String) {
+        let db = Firestore.firestore()
+        db.collection("posts").document(postId).delete()
+    }
+    
+    static func deleteStoragePost(thePost: Post, theUser: WriteableUser) {
+        let ref = Storage.storage().reference()
+        let imageRef = ref.child("media/" + (theUser.email) + "/" + (thePost.title) + "/" + "pic.jpeg")
+        //let ref = Storage.storage().reference(forURL: "media/" + (self.currentUser?.email)! + "/" +  (self.currentPost?.title)! + "/" + "pic.jpeg" )
+        imageRef.delete { error in
+            if let error = error {
+                print("error deleting from storage")
+            } else {
+                print("sucess deleting from storage")
+            }
+        }
+    }
+    
+    
 }

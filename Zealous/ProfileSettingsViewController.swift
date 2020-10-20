@@ -28,9 +28,11 @@ import FirebaseStorage
 
 import FirebaseAuth
 
+import CodableFirebase
 
 
-class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate {
+
+class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     
@@ -50,6 +52,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
     
     @IBOutlet weak var ConfirmPassword: UITextField!
     
+    @IBOutlet weak var NewProfilePic: UIImageView!
     
     
     var db: Firestore!
@@ -61,11 +64,25 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
     var userEmail = Auth.auth().currentUser?.email
     
     var currentUser: WriteableUser? = nil
-
     
-   //User.WriteableUser.getCurrentUser(completion: currentUser)
+    var finished = false
     
-    //var userID = UUID().uuidString
+    var createdPosts: [Post] = []
+    
+    var following: [WriteableUser] = []
+    
+    var followers: [WriteableUser] = []
+    
+    var followedTopics: [Topic] = []
+    
+    var theTopic: Topic? = nil
+    
+    var image: UIImage?
+    
+    var imageExt: String?
+    
+    
+   
     
     override func viewDidLoad() {
         
@@ -81,12 +98,89 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
         userID = Auth.auth().currentUser!.uid
         userEmail = Auth.auth().currentUser?.email
         WriteableUser.getCurrentUser(completion: getUser)
-       
+        // WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.getPosts)
+        //self.currentUser?.getFollowers(addUser: self.addFollower)
+        //self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
+        //self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
+        
     }
     
      func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
-       }
+        WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.getPosts)
+        self.currentUser?.getFollowers(addUser: self.addFollower)
+        self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
+        self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
+    }
+    
+    
+    
+    @IBAction func UploadProfilePic(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerController.SourceType.photoLibrary
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+        NewProfilePic.image = self.image
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var image: UIImage
+        if let possibleImage = info[.editedImage] as? UIImage{
+            image = possibleImage
+        } else if let possibleImage = info[.originalImage] as? UIImage {
+            image = possibleImage
+        } else {
+            return;
+        }
+        self.image = image
+        self.NewProfilePic.image = image
+        self.imageExt = ".png"
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func SubmitProfilePic(_ sender: Any) {
+        var photoURL: String = ""
+        self.NewProfilePic.image = self.image
+        print("self.image is: \(String(describing: self.image))")
+        self.uploadImage((self.image!), completion: { (state, result) in
+            if (!state) {
+                print("error updating profile pic")
+                self.NewProfilePic.image = nil
+                return
+            } else {
+               photoURL = result
+               self.currentUser?.pictureURL = photoURL
+                let dataToWrite = try! FirestoreEncoder().encode(self.currentUser)
+                self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite)
+                self.NewProfilePic.image = nil
+                return
+            }
+        })
+    }
+    
+    func uploadImage(_ image: UIImage,
+                     completion: @escaping (_ hasFinished: Bool, _ url: String) -> Void) {
+        let data: Data = image.jpegData(compressionQuality: 1.0)!
+        
+        // ref should be like this
+        let ref = Storage.storage().reference(withPath: "media/" + (Auth.auth().currentUser?.email)! + "/" + "profile.jpeg")
+        ref.putData(data, metadata: nil,
+                    completion: { (meta , error) in
+                        if error == nil {
+                            // return url
+                            ref.downloadURL(completion: { (url, error) in
+                                if(error != nil){
+                                    print("some error happened described here \(error!.localizedDescription)")
+                                    completion(false, "")
+                                } else {
+                                    completion(true, url!.absoluteString)
+                                }
+                            })
+                        }
+                    })
+    }
     
     
     
@@ -302,6 +396,44 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
         
     }
     
+    func getPosts(postArray: [Post]) {
+        self.createdPosts = postArray
+    }
+    
+    func addFollower(user: WriteableUser) {
+        self.followers.append(user)
+        
+    }
+    
+    func addFollowed(user: WriteableUser) {
+        self.following.append(user)
+    }
+    
+    func addTopic(topic: Topic) {
+        self.followedTopics.append(topic)
+    }
+    
+    func getTopic(thetopic: Topic) {
+        DispatchQueue.main.async {
+        self.theTopic = thetopic
+        for aPost in self.createdPosts {
+            if (self.theTopic!.posts.contains(aPost.postId)) {
+                self.theTopic!.removePost(postId: aPost.postId)
+                if (self.theTopic!.posts.count == 0) {
+                    Topic.deleteTopic(topicName: self.theTopic!.title)
+                }                //let index: Int? = self.theTopic!.posts.firstIndex(of: aPost.postId)
+                //self.theTopic!.posts.remove(at: index!)
+            }
+        }
+        //if the topic's post array is empty delete the topic
+        print("topic post array count: \(self.theTopic!.posts.count)")
+        if (self.theTopic!.posts.count == 0) {
+            Topic.deleteTopic(topicName: self.theTopic!.title)
+        }
+        }
+        
+    }
+    
     
     
     
@@ -318,11 +450,79 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
             
             //user wants to delete their account
             
+            //delete all of their posts from the topic's post array
+           /* WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.userCreatedPosts)
+            for aPost in self.userPosts {
+                let deleteVc = DeletePostViewController()
+                deleteVc.DeletePostId(thePost: aPost)
+            } */
+             let serialQueue = DispatchQueue(label: "com.queue.serial")
+            
+           /* serialQueue.sync {
+            //fill all the user arrays
+            WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.getPosts)
+            self.currentUser?.getFollowers(addUser: self.addFollower)
+            self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
+            self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
+            } */
+            DispatchQueue.main.async {
+            print("followers: \(self.followers)")
+            for aUser in self.followers {
+                    var follower: WriteableUser = aUser
+                    follower.unfollow(email: self.currentUser!.email)
+                }
+            }
+            
+            DispatchQueue.main.async {
+            print("following: \(self.following)")
+            for aUser in self.following {
+                  self.currentUser?.unfollow(email: aUser.email)
+                }
+            }
+            
+            serialQueue.sync {
+            //for each post in the user's created post array, delete it
+            print("createdPosts: \(self.createdPosts)")
+            for aPost in self.createdPosts {
+                //let deleteVC = DeletePostViewController()
+                //deleteVC.DeletePostId(thePost: aPost)
+                Topic.getTopic(topicTitle: aPost.topic, completion: self.getTopic)
+                Post.deleteStoragePost(thePost: aPost, theUser: self.currentUser!)
+                Post.deletePost(postId: aPost.postId)
+            }
+        }
+            serialQueue.sync {
+            //for each topic the user follows, unfollow it
+            print("followedTopics: \(self.followedTopics)")
+            for aTopic in self.followedTopics {
+                self.currentUser?.unfollowTopic(title: aTopic.title)
+            }
+            }
+            
+            print("Above is done")
+            
+            //delete all user photos from storage
+            let ref = Storage.storage().reference()
+            let imageRef = ref.child("media/" + (self.currentUser?.email)! + "/profile.jpeg")
+            imageRef.delete { error in
+                if let error = error {
+                    print("error deleting user from storage \(error)")
+                } else {
+                    print("sucess deleting user from stroage")
+                }
+            }
+            
+            
             let user = Auth.auth().currentUser
             
-            print("current user email: " + (user?.email)!)
-            
-            self.db.collection("users").document((user?.email)!).delete()
+            self.db.collection("users").document((self.currentUser?.email)!).delete() {
+                error in
+                if (error != nil) {
+                    print("error deleting user from firestore \(String(describing: error))")
+                } else {
+                    print("success deleting user from firestore")
+                }
+            }
             
             user?.delete { error in
                 
@@ -333,8 +533,9 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
                 } else {
                     
                     //let storyboard = UIStoryboard(name:"Main", bundle: nil)
-                    
+                    self.db.collection("users").document((self.currentUser?.email)!).delete()
                     //let vc = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
+                    print("success deleting user from auth")
                     
                     self.performSegue(withIdentifier: "toMain", sender: self)
                     
@@ -343,6 +544,7 @@ class ProfileSettingsViewController: UITableViewController, UITextFieldDelegate 
                 }
                 
             }
+   // }
             
         }))
         

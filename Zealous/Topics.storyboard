@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cgS-zF-GJW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cgS-zF-GJW">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,10 +19,20 @@
             </objects>
             <point key="canvasLocation" x="4857" y="-56"/>
         </scene>
-        <!--View Controller-->
+        <!--Topics-->
+        <scene sceneID="u7R-5y-fZ9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Topics" id="nrE-w1-bHp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LAr-Po-CvE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="az9-re-SqN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4904" y="242"/>
+        </scene>
+        <!--Topics View Controller-->
         <scene sceneID="GBi-aN-9Zk">
             <objects>
-                <viewController id="cgS-zF-GJW" sceneMemberID="viewController">
+                <viewController id="cgS-zF-GJW" customClass="TopicsViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AhR-ol-NFL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,44 +42,47 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowingUsers" rowHeight="78" id="rxb-Ps-zbw" customClass="PeopleTableViewCell" customModule="Zealous" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Topics" rowHeight="78" id="rxb-Ps-zbw" customClass="TopicsViewCell" customModule="Zealous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rxb-Ps-zbw" id="YXi-38-ziG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eC-sh-cUk">
-                                                    <rect key="frame" x="239" y="20" width="100" height="33"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjm-h7-tsp" userLabel="name">
+                                                    <rect key="frame" x="46" y="29" width="175" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="LZW-On-Jw4"/>
+                                                        <constraint firstAttribute="width" constant="175" id="Epa-8T-c0G"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="Unfollow">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cH-uk-lcQ">
-                                                    <rect key="frame" x="41" y="20" width="100" height="33"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="G3E-hU-GDr"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GA8-4B-WhT">
+                                                    <rect key="frame" x="241" y="24" width="67" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="67" id="Ylc-1o-Bf2"/>
+                                                        <constraint firstAttribute="height" constant="30" id="l8U-3F-J2I"/>
+                                                        <constraint firstAttribute="width" secondItem="GA8-4B-WhT" secondAttribute="height" multiplier="67:30" id="udN-2f-4O3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Unfollow"/>
+                                                    <connections>
+                                                        <action selector="unfollowClicked:" destination="rxb-Ps-zbw" eventType="touchUpInside" id="8O6-oJ-UUI"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4eC-sh-cUk" firstAttribute="top" secondItem="YXi-38-ziG" secondAttribute="topMargin" constant="9" id="1nB-mp-00v"/>
-                                                <constraint firstItem="4eC-sh-cUk" firstAttribute="top" secondItem="6cH-uk-lcQ" secondAttribute="top" id="5Zj-WV-Phw"/>
-                                                <constraint firstItem="6cH-uk-lcQ" firstAttribute="leading" secondItem="YXi-38-ziG" secondAttribute="leadingMargin" constant="26" id="De8-OU-FOP"/>
-                                                <constraint firstItem="4eC-sh-cUk" firstAttribute="bottom" secondItem="6cH-uk-lcQ" secondAttribute="bottom" id="j0n-jF-Urz"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="4eC-sh-cUk" secondAttribute="trailing" constant="21" id="kUH-nP-zfW"/>
+                                                <constraint firstItem="tjm-h7-tsp" firstAttribute="centerY" secondItem="YXi-38-ziG" secondAttribute="centerY" id="0Qi-rI-UWC"/>
+                                                <constraint firstItem="GA8-4B-WhT" firstAttribute="top" secondItem="YXi-38-ziG" secondAttribute="topMargin" constant="13" id="Q9T-Zq-Iyd"/>
+                                                <constraint firstItem="tjm-h7-tsp" firstAttribute="top" secondItem="YXi-38-ziG" secondAttribute="topMargin" constant="18" id="SN9-JR-fBl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GA8-4B-WhT" secondAttribute="trailing" constant="51" id="Zhe-My-2Qt"/>
+                                                <constraint firstItem="GA8-4B-WhT" firstAttribute="leading" secondItem="tjm-h7-tsp" secondAttribute="trailing" constant="20" id="bXc-dz-YN1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="followButton" destination="4eC-sh-cUk" id="rxl-r3-qdB"/>
-                                            <outlet property="nameLabel" destination="6cH-uk-lcQ" id="RMd-wc-WNL"/>
+                                            <outlet property="follow" destination="GA8-4B-WhT" id="qfJ-Lb-h2c"/>
+                                            <outlet property="name" destination="tjm-h7-tsp" id="1fO-w9-JIT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -86,13 +101,22 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="81W-K8-rrH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="topicsTableView" destination="wZW-U2-RWr" id="15N-3T-pfF"/>
+                        <segue destination="nrE-w1-bHp" kind="presentation" identifier="self" modalPresentationStyle="fullScreen" id="sxb-G5-Ugy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jja-m3-Hvu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4124" y="159.60591133004928"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -7,28 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		24D515571376FD7F0E795614 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02925BA5258E2B960F2A020 /* Pods_Zealous_ZealousUITests.framework */; };
+		3F31438F725BA801EF2D0A2E /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C24C6DFE181FED85D1E9E2 /* Pods_ZealousTests.framework */; };
+		84253528EC341A5D8B5A0BF2 /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03492A7A7A91E1CBF7097E6 /* Pods_Zealous.framework */; };
 		A607790525292B0500054A25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6225255E5F00E49593 /* Timeline.storyboard */; };
 		A607790625292B1F00054A25 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5E25255E5F00E49593 /* Profile.storyboard */; };
 		A607790725292B2E00054A25 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6125255E5F00E49593 /* Search.storyboard */; };
 		A607790825292B3B00054A25 /* Following.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5F25255E5F00E49593 /* Following.storyboard */; };
 		A607790925292B3E00054A25 /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6325255E6000E49593 /* Followers.storyboard */; };
 		A607790A25292B4100054A25 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5C25255E5000E49593 /* CreatePost.storyboard */; };
-		A6151C1F965C6BAC16101FCA /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC26D37FBF28C2E3E7C7FD25 /* Pods_ZealousTests.framework */; };
+		A64C0DCF252BF1B500BCAA90 /* DeletePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C0DCE252BF1B500BCAA90 /* DeletePostViewController.swift */; };
 		A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6025255E5F00E49593 /* FeedViewCell.swift */; };
 		A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6425255E6000E49593 /* UserPostCell.swift */; };
 		A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6C2525638A00E49593 /* CreatePostViewController.swift */; };
-		A9D3E87F64E4C2F487FF9A6B /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910FCEAEE5093DA11B206809 /* Pods_Zealous.framework */; };
 		BC44BB71251A99A900C12823 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB70251A99A900C12823 /* Post.swift */; };
 		BC44BB73251A99D300C12823 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB72251A99D300C12823 /* Profile.swift */; };
 		BC44BB75251A99EF00C12823 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB74251A99EF00C12823 /* Topic.swift */; };
 		BC44BB77251A9A0800C12823 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB76251A9A0800C12823 /* User.swift */; };
 		BC44BB8625253B9000C12823 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC44BB8525253B9000C12823 /* FollowingViewController.swift */; };
+		C60043912535542E009AC96D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043902535542E009AC96D /* ProfileViewController.swift */; };
+		C600439625367BDC009AC96D /* AllUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600439525367BDC009AC96D /* AllUsersViewController.swift */; };
+		C600439B25367BED009AC96D /* AllTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600439A25367BED009AC96D /* AllTopicsViewController.swift */; };
+		C60043A025367CA7009AC96D /* AllTopicsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600439F25367CA7009AC96D /* AllTopicsViewCell.swift */; };
+		C60043A525367CBB009AC96D /* AllUsersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043A425367CBB009AC96D /* AllUsersViewCell.swift */; };
+		C60043EA253959B9009AC96D /* PostsUnderTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */; };
+		C60043EF25395A31009AC96D /* PostsUnderTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */; };
+		C60043F425395ABD009AC96D /* PostUnderTopicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
 		C66B88F225269561006BAD5F /* Topics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88F125269560006BAD5F /* Topics.storyboard */; };
 		C66B88F4252A11BE006BAD5F /* FollowingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88F3252A11BE006BAD5F /* FollowingViewCell.swift */; };
+		C66B88F6252AA556006BAD5F /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88F5252AA556006BAD5F /* FollowersViewController.swift */; };
+		C66B88F8252AA6A4006BAD5F /* FollowersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88F7252AA6A4006BAD5F /* FollowersTableViewCell.swift */; };
+		C66B88FA252BC5C8006BAD5F /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88F9252BC5C7006BAD5F /* TimelineViewController.swift */; };
+		C67F56AF252CA3AE00A4BBD1 /* TopicsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F56AE252CA3AE00A4BBD1 /* TopicsViewCell.swift */; };
+		C67F56B1252CA41B00A4BBD1 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F56B0252CA41B00A4BBD1 /* TopicsViewController.swift */; };
+		E1AA7C38C563B7A5A44DA2B7 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A06BB355272A8DDE0D0E22 /* Pods_Zealous_ZealousUITests.framework */; };
 		E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0B251B96BD00486E9B /* SignUpViewController.swift */; };
 		E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0D251C010400486E9B /* DOBViewController.swift */; };
 		E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0F251C0CA800486E9B /* BioAndProfileViewController.swift */; };
@@ -64,12 +78,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		39AD58778830FA755902416F /* Pods-Zealous-ZealousUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.release.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.release.xcconfig"; sourceTree = "<group>"; };
-		51CCE2B59F4F21FD58D90921 /* Pods-Zealous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.release.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.release.xcconfig"; sourceTree = "<group>"; };
-		557B89D1B92972E934E84ABA /* Pods-Zealous-ZealousUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5E006D7FDD1DEF1BB35D9B36 /* Pods-ZealousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.debug.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.debug.xcconfig"; sourceTree = "<group>"; };
-		604083D4D2170BA9F8631241 /* Pods-Zealous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.debug.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.debug.xcconfig"; sourceTree = "<group>"; };
-		910FCEAEE5093DA11B206809 /* Pods_Zealous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		464DCBAE70C2C00665B21782 /* Pods-Zealous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.debug.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.debug.xcconfig"; sourceTree = "<group>"; };
+		51E4419A207EE73E406C0B6A /* Pods-ZealousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.debug.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.debug.xcconfig"; sourceTree = "<group>"; };
+		60A06BB355272A8DDE0D0E22 /* Pods_Zealous_ZealousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous_ZealousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64C0DCE252BF1B500BCAA90 /* DeletePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostViewController.swift; sourceTree = "<group>"; };
 		A6904D5C25255E5000E49593 /* CreatePost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
 		A6904D5E25255E5F00E49593 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		A6904D5F25255E5F00E49593 /* Following.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Following.storyboard; sourceTree = "<group>"; };
@@ -79,17 +91,33 @@
 		A6904D6325255E6000E49593 /* Followers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
 		A6904D6425255E6000E49593 /* UserPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostCell.swift; sourceTree = "<group>"; };
 		A6904D6C2525638A00E49593 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
-		BC26D37FBF28C2E3E7C7FD25 /* Pods_ZealousTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZealousTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC44BB70251A99A900C12823 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BC44BB72251A99D300C12823 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BC44BB74251A99EF00C12823 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		BC44BB76251A9A0800C12823 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BC44BB8525253B9000C12823 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
+		C2C24C6DFE181FED85D1E9E2 /* Pods_ZealousTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZealousTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C60043902535542E009AC96D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C600439525367BDC009AC96D /* AllUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersViewController.swift; sourceTree = "<group>"; };
+		C600439A25367BED009AC96D /* AllTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTopicsViewController.swift; sourceTree = "<group>"; };
+		C600439F25367CA7009AC96D /* AllTopicsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTopicsViewCell.swift; sourceTree = "<group>"; };
+		C60043A425367CBB009AC96D /* AllUsersViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersViewCell.swift; sourceTree = "<group>"; };
+		C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsUnderTopic.storyboard; sourceTree = "<group>"; };
+		C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsUnderTopicViewController.swift; sourceTree = "<group>"; };
+		C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUnderTopicViewCell.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		C66B88F125269560006BAD5F /* Topics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Topics.storyboard; sourceTree = "<group>"; };
 		C66B88F3252A11BE006BAD5F /* FollowingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewCell.swift; sourceTree = "<group>"; };
+		C66B88F5252AA556006BAD5F /* FollowersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
+		C66B88F7252AA6A4006BAD5F /* FollowersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersTableViewCell.swift; sourceTree = "<group>"; };
+		C66B88F9252BC5C7006BAD5F /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		C67F56AE252CA3AE00A4BBD1 /* TopicsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewCell.swift; sourceTree = "<group>"; };
+		C67F56B0252CA41B00A4BBD1 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
+		C6BA0BCE1D7E86BE514A1DAC /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
+		D23BF5BD5BE726E37153BF66 /* Pods-Zealous-ZealousUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.release.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E03492A7A7A91E1CBF7097E6 /* Pods_Zealous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4039C0B251B96BD00486E9B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E4039C0D251C010400486E9B /* DOBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBViewController.swift; sourceTree = "<group>"; };
 		E4039C0F251C0CA800486E9B /* BioAndProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAndProfileViewController.swift; sourceTree = "<group>"; };
@@ -111,8 +139,8 @@
 		E44D301B25196527000FB63B /* ZealousUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZealousUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D301F25196527000FB63B /* ZealousUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZealousUITests.swift; sourceTree = "<group>"; };
 		E44D302125196527000FB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB5076BDF2E87EDBE48BB98B /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
-		F02925BA5258E2B960F2A020 /* Pods_Zealous_ZealousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous_ZealousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAEF46F7AF2E14033429FF41 /* Pods-Zealous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.release.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.release.xcconfig"; sourceTree = "<group>"; };
+		F01A4397A293D412D52A055C /* Pods-Zealous-ZealousUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9D3E87F64E4C2F487FF9A6B /* Pods_Zealous.framework in Frameworks */,
+				84253528EC341A5D8B5A0BF2 /* Pods_Zealous.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6151C1F965C6BAC16101FCA /* Pods_ZealousTests.framework in Frameworks */,
+				3F31438F725BA801EF2D0A2E /* Pods_ZealousTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,23 +164,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24D515571376FD7F0E795614 /* Pods_Zealous_ZealousUITests.framework in Frameworks */,
+				E1AA7C38C563B7A5A44DA2B7 /* Pods_Zealous_ZealousUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A546623ECF3BF78C9E1022FE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				910FCEAEE5093DA11B206809 /* Pods_Zealous.framework */,
-				F02925BA5258E2B960F2A020 /* Pods_Zealous_ZealousUITests.framework */,
-				BC26D37FBF28C2E3E7C7FD25 /* Pods_ZealousTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BC44BB6F251A999300C12823 /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +185,12 @@
 		C745B63097776C5FAB3076EA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				604083D4D2170BA9F8631241 /* Pods-Zealous.debug.xcconfig */,
-				51CCE2B59F4F21FD58D90921 /* Pods-Zealous.release.xcconfig */,
-				557B89D1B92972E934E84ABA /* Pods-Zealous-ZealousUITests.debug.xcconfig */,
-				39AD58778830FA755902416F /* Pods-Zealous-ZealousUITests.release.xcconfig */,
-				5E006D7FDD1DEF1BB35D9B36 /* Pods-ZealousTests.debug.xcconfig */,
-				EB5076BDF2E87EDBE48BB98B /* Pods-ZealousTests.release.xcconfig */,
+				464DCBAE70C2C00665B21782 /* Pods-Zealous.debug.xcconfig */,
+				EAEF46F7AF2E14033429FF41 /* Pods-Zealous.release.xcconfig */,
+				F01A4397A293D412D52A055C /* Pods-Zealous-ZealousUITests.debug.xcconfig */,
+				D23BF5BD5BE726E37153BF66 /* Pods-Zealous-ZealousUITests.release.xcconfig */,
+				51E4419A207EE73E406C0B6A /* Pods-ZealousTests.debug.xcconfig */,
+				C6BA0BCE1D7E86BE514A1DAC /* Pods-ZealousTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -185,7 +203,7 @@
 				E44D301E25196527000FB63B /* ZealousUITests */,
 				E44D2FFB25196525000FB63B /* Products */,
 				C745B63097776C5FAB3076EA /* Pods */,
-				A546623ECF3BF78C9E1022FE /* Frameworks */,
+				FAE60BCD3A77CB8EF4785C24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +226,7 @@
 				A6904D6C2525638A00E49593 /* CreatePostViewController.swift */,
 				A6904D6325255E6000E49593 /* Followers.storyboard */,
 				A6904D5F25255E5F00E49593 /* Following.storyboard */,
+				A64C0DCE252BF1B500BCAA90 /* DeletePostViewController.swift */,
 				A6904D5E25255E5F00E49593 /* Profile.storyboard */,
 				A6904D6125255E5F00E49593 /* Search.storyboard */,
 				A6904D6225255E5F00E49593 /* Timeline.storyboard */,
@@ -232,6 +251,19 @@
 				C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */,
 				C66B88F125269560006BAD5F /* Topics.storyboard */,
 				C66B88F3252A11BE006BAD5F /* FollowingViewCell.swift */,
+				C66B88F5252AA556006BAD5F /* FollowersViewController.swift */,
+				C66B88F7252AA6A4006BAD5F /* FollowersTableViewCell.swift */,
+				C66B88F9252BC5C7006BAD5F /* TimelineViewController.swift */,
+				C67F56AE252CA3AE00A4BBD1 /* TopicsViewCell.swift */,
+				C67F56B0252CA41B00A4BBD1 /* TopicsViewController.swift */,
+				C60043902535542E009AC96D /* ProfileViewController.swift */,
+				C600439525367BDC009AC96D /* AllUsersViewController.swift */,
+				C600439A25367BED009AC96D /* AllTopicsViewController.swift */,
+				C600439F25367CA7009AC96D /* AllTopicsViewCell.swift */,
+				C60043A425367CBB009AC96D /* AllUsersViewCell.swift */,
+				C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */,
+				C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */,
+				C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -254,6 +286,16 @@
 			path = ZealousUITests;
 			sourceTree = "<group>";
 		};
+		FAE60BCD3A77CB8EF4785C24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E03492A7A7A91E1CBF7097E6 /* Pods_Zealous.framework */,
+				60A06BB355272A8DDE0D0E22 /* Pods_Zealous_ZealousUITests.framework */,
+				C2C24C6DFE181FED85D1E9E2 /* Pods_ZealousTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,11 +303,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44D302425196527000FB63B /* Build configuration list for PBXNativeTarget "Zealous" */;
 			buildPhases = (
-				EE5867045ABF55B0F6E710A8 /* [CP] Check Pods Manifest.lock */,
+				741AF6E75B6020827F2E1AB2 /* [CP] Check Pods Manifest.lock */,
 				E44D2FF625196525000FB63B /* Sources */,
 				E44D2FF725196525000FB63B /* Frameworks */,
 				E44D2FF825196525000FB63B /* Resources */,
-				31BE4B6F5F78EEAD4BA6F58C /* [CP] Embed Pods Frameworks */,
+				BA41BDDE60526C7CA48E84A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -280,7 +322,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44D302725196527000FB63B /* Build configuration list for PBXNativeTarget "ZealousTests" */;
 			buildPhases = (
-				10F295B5828C57DD7BD27EC3 /* [CP] Check Pods Manifest.lock */,
+				54C5B956BEABE54883AA2196 /* [CP] Check Pods Manifest.lock */,
 				E44D300C25196527000FB63B /* Sources */,
 				E44D300D25196527000FB63B /* Frameworks */,
 				E44D300E25196527000FB63B /* Resources */,
@@ -299,11 +341,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44D302A25196527000FB63B /* Build configuration list for PBXNativeTarget "ZealousUITests" */;
 			buildPhases = (
-				A8DCF744616A72DA9AAF5D00 /* [CP] Check Pods Manifest.lock */,
+				ED037AABFD42EED97FC4C61E /* [CP] Check Pods Manifest.lock */,
 				E44D301725196527000FB63B /* Sources */,
 				E44D301825196527000FB63B /* Frameworks */,
 				E44D301925196527000FB63B /* Resources */,
-				89B288F7620CA7C144081C95 /* [CP] Embed Pods Frameworks */,
+				E4A7450F8C78FE493165527C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,6 +409,7 @@
 				A607790825292B3B00054A25 /* Following.storyboard in Resources */,
 				A607790525292B0500054A25 /* Timeline.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
+				C60043EA253959B9009AC96D /* PostsUnderTopic.storyboard in Resources */,
 				A607790925292B3E00054A25 /* Followers.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
 				A607790725292B2E00054A25 /* Search.storyboard in Resources */,
@@ -395,7 +438,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		10F295B5828C57DD7BD27EC3 /* [CP] Check Pods Manifest.lock */ = {
+		54C5B956BEABE54883AA2196 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,63 +460,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		31BE4B6F5F78EEAD4BA6F58C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zealous/Pods-Zealous-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zealous/Pods-Zealous-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zealous/Pods-Zealous-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		89B288F7620CA7C144081C95 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A8DCF744616A72DA9AAF5D00 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Zealous-ZealousUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EE5867045ABF55B0F6E710A8 /* [CP] Check Pods Manifest.lock */ = {
+		741AF6E75B6020827F2E1AB2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -495,6 +482,62 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BA41BDDE60526C7CA48E84A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zealous/Pods-Zealous-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zealous/Pods-Zealous-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zealous/Pods-Zealous-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4A7450F8C78FE493165527C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED037AABFD42EED97FC4C61E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Zealous-ZealousUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -503,20 +546,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4170BE3251D564000C5C0E7 /* LoginViewController.swift in Sources */,
+				C60043A525367CBB009AC96D /* AllUsersViewCell.swift in Sources */,
+				C60043EF25395A31009AC96D /* PostsUnderTopicViewController.swift in Sources */,
+				C66B88FA252BC5C8006BAD5F /* TimelineViewController.swift in Sources */,
 				E44D300225196525000FB63B /* ViewController.swift in Sources */,
 				A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */,
+				C67F56AF252CA3AE00A4BBD1 /* TopicsViewCell.swift in Sources */,
 				BC44BB75251A99EF00C12823 /* Topic.swift in Sources */,
 				E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */,
 				E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */,
 				BC44BB73251A99D300C12823 /* Profile.swift in Sources */,
+				A64C0DCF252BF1B500BCAA90 /* DeletePostViewController.swift in Sources */,
+				C60043912535542E009AC96D /* ProfileViewController.swift in Sources */,
 				C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */,
 				E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */,
 				BC44BB8625253B9000C12823 /* FollowingViewController.swift in Sources */,
+				C600439B25367BED009AC96D /* AllTopicsViewController.swift in Sources */,
 				C66B88F4252A11BE006BAD5F /* FollowingViewCell.swift in Sources */,
+				C66B88F8252AA6A4006BAD5F /* FollowersTableViewCell.swift in Sources */,
 				E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */,
+				C66B88F6252AA556006BAD5F /* FollowersViewController.swift in Sources */,
+				C60043F425395ABD009AC96D /* PostUnderTopicViewCell.swift in Sources */,
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
+				C67F56B1252CA41B00A4BBD1 /* TopicsViewController.swift in Sources */,
+				C60043A025367CA7009AC96D /* AllTopicsViewCell.swift in Sources */,
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
 				E40D117C252229E300D74DE6 /* VerifyEmailViewController.swift in Sources */,
+				C600439625367BDC009AC96D /* AllUsersViewController.swift in Sources */,
 				A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */,
 				BC44BB77251A9A0800C12823 /* User.swift in Sources */,
 				A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */,
@@ -693,7 +749,7 @@
 		};
 		E44D302525196527000FB63B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 604083D4D2170BA9F8631241 /* Pods-Zealous.debug.xcconfig */;
+			baseConfigurationReference = 464DCBAE70C2C00665B21782 /* Pods-Zealous.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -714,7 +770,7 @@
 		};
 		E44D302625196527000FB63B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51CCE2B59F4F21FD58D90921 /* Pods-Zealous.release.xcconfig */;
+			baseConfigurationReference = EAEF46F7AF2E14033429FF41 /* Pods-Zealous.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -735,7 +791,7 @@
 		};
 		E44D302825196527000FB63B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E006D7FDD1DEF1BB35D9B36 /* Pods-ZealousTests.debug.xcconfig */;
+			baseConfigurationReference = 51E4419A207EE73E406C0B6A /* Pods-ZealousTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -758,7 +814,7 @@
 		};
 		E44D302925196527000FB63B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB5076BDF2E87EDBE48BB98B /* Pods-ZealousTests.release.xcconfig */;
+			baseConfigurationReference = C6BA0BCE1D7E86BE514A1DAC /* Pods-ZealousTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -781,7 +837,7 @@
 		};
 		E44D302B25196527000FB63B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 557B89D1B92972E934E84ABA /* Pods-Zealous-ZealousUITests.debug.xcconfig */;
+			baseConfigurationReference = F01A4397A293D412D52A055C /* Pods-Zealous-ZealousUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -803,7 +859,7 @@
 		};
 		E44D302C25196527000FB63B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39AD58778830FA755902416F /* Pods-Zealous-ZealousUITests.release.xcconfig */;
+			baseConfigurationReference = D23BF5BD5BE726E37153BF66 /* Pods-Zealous-ZealousUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
