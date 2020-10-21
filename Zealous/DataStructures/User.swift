@@ -340,6 +340,38 @@ extension WriteableUser {
         }
     }
     
+    mutating func removeSavedPost (postTitle: String) {
+        // Error Banners
+        let alreadyLike = Banner(title: "You already saved this post.", subtitle: "Choose a different post to save.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let userRef = db.collection("posts").document(postTitle)
+        
+        if !self.savedPosts.contains(postTitle) {
+            print("you did not save this post")
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }
+        
+        for i in 0..<self.savedPosts.count {
+            if self.savedPosts[i] == postTitle {
+                self.savedPosts.remove(at: i)
+            }
+        }
+        
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+    }
+    
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
