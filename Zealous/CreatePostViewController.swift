@@ -221,9 +221,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         //need to check if a topic exists in the database, if it does not, need to create a new topic
         db.collection("topics").whereField("title", isEqualTo: postTopic).getDocuments() { (QuerySnapshot, err) in
             if QuerySnapshot?.isEmpty == true {
+                
                 //topic does not exist, so create a new topic in database and topic object
+                
                 print("Topic does not exist")
-                print("imgURL here6: \(self.imgURL)")
+                print("imgURL here: \(self.imgURL)")
                 //create a topic object and add current post to its post array
                 self.currentTopic = Topic.init(title: postTopic)
                 //add new post to the user's created post array

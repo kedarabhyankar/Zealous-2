@@ -48,7 +48,10 @@ class BioAndProfileViewController: UIViewController {
     
     @IBAction func onSubmit(_ sender: Any) {
         let biog = bioField.text ?? "This user does not have a bio."
-        let profile = profileField.text ?? "This user does not have a profile."
+        var profile = profileField.text ?? "This user does not have a profile."
+        if profile.isEmpty {
+            profile = "Dog"
+        }
         var photoURL: String = ""
         uploadImage((self.finalProfile.picture ?? self.defaultImage), completion: { (state, result) in
             if(!state){
