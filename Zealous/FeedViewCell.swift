@@ -13,7 +13,7 @@ import BRYXBanner
 import CodableFirebase
 
 class FeedViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var savePost: UIButton!
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
@@ -23,7 +23,7 @@ class FeedViewCell: UITableViewCell {
     
     @IBOutlet weak var postCaption: UILabel!
     @IBOutlet weak var postTitle: UILabel!
-
+    
     @IBOutlet weak var down: UIButton!
     @IBOutlet weak var up: UIButton!
     @IBOutlet weak var username: UILabel!
@@ -34,7 +34,6 @@ class FeedViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         WriteableUser.getCurrentUser(completion: getUser)
-    
     }
     
     func getUser(currentUser: WriteableUser) {
@@ -43,12 +42,17 @@ class FeedViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
- 
+    
     @IBAction func savePostPressed(_ sender: Any) {
-        currentUser?.addSavedPost(postTitle: id!)
+        if currentUser?.savedPosts.contains(id!) == true {
+            currentUser?.removeSavedPost(postTitle: id!)
+        }
+        else {
+            currentUser?.addSavedPost(postTitle: id!)
+        }
     }
     
     @IBAction func postCommentPressed(_ sender: Any) {
