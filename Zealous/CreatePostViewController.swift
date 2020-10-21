@@ -23,6 +23,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var PostTopic: UITextField!
     @IBOutlet weak var PostCaption: UITextField!
     @IBOutlet weak var PostImage: UIImageView!
+    @IBOutlet weak var makeAnonPost: UISegmentedControl!
     var imageExt: String?
     var image: UIImage?
     var currentUser: WriteableUser? =  nil
@@ -32,6 +33,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
     var finalProfile: Profile!
     var imgURL: String = ""
     var newImgUrl: String = ""
+    var postAnon: Bool = false;
     
     
     var db: Firestore!
@@ -90,7 +92,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.PostImage.image = nil
             self.performSegue(withIdentifier: "toTimeline", sender: self)
             return
-       }
+        }
     }
     
     
@@ -104,20 +106,20 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
         /*PostImage.image = self.image
-        
-        print("self.image is: \(String(describing: self.image))")
-        self.uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
-            if (!state) {
-                self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
-                return
-            } else {
-                self.imgURL = result
-                self.currentPost?.imgURL = result
-                return
-            }
-        })
-        
-        return; */
+         
+         print("self.image is: \(String(describing: self.image))")
+         self.uploadImg((self.image ?? self.defaultImage), completion: { (state, result) in
+         if (!state) {
+         self.unknownErrorBanner.show(duration: self.bannerDisplayTime)
+         return
+         } else {
+         self.imgURL = result
+         self.currentPost?.imgURL = result
+         return
+         }
+         })
+         
+         return; */
         print("imgURL here1: \(self.imgURL)")
     }
     
@@ -137,22 +139,22 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         print("imgURL here3: \(self.imgURL)")
     }
     
-      func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("IN IMAGE PICKER CONTROLLER")
         var image: UIImage
-          if let possibleImage = info[.editedImage] as? UIImage{
-              image = possibleImage
-          } else if let possibleImage = info[.originalImage] as? UIImage {
-              image = possibleImage
-          } else {
-              return;
-          }
-          self.image = image
-          self.PostImage.image = image
-          self.imageExt = ".png"
-          print("imgURL here4: \(self.imgURL)")
-          self.dismiss(animated: true, completion: afterImagePicker)
-      }
+        if let possibleImage = info[.editedImage] as? UIImage{
+            image = possibleImage
+        } else if let possibleImage = info[.originalImage] as? UIImage {
+            image = possibleImage
+        } else {
+            return;
+        }
+        self.image = image
+        self.PostImage.image = image
+        self.imageExt = ".png"
+        print("imgURL here4: \(self.imgURL)")
+        self.dismiss(animated: true, completion: afterImagePicker)
+    }
     
     
     func uploadImg (_ image: UIImage, completion: @escaping (_ hasFinished: Bool,_ url: String) -> Void) {
@@ -176,7 +178,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                                 }
                             })
                         }
-        })
+                    })
     }
     
     @IBAction func SubmitPost(_ sender: Any) {
@@ -187,6 +189,14 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         let followerArray = [User]()
         let comments = [String]()
         let numLikes: Int = 0
+        switch makeAnonPost.selectedSegmentIndex {
+        case 0:
+            self.postAnon = false;
+        case 1:
+            self.postAnon = true;
+        default:
+            self.postAnon = false;
+        }
         //let defaultImage: String = ""
         
         //if a field is left blank
@@ -216,7 +226,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
         }
         
         //create a post object, have to add it to user's created post array and topic's post array
-        self.currentPost = Post.init(topic: postTopic, title: postTitle, caption: postCaption, creatorId: currentUser!.email, img: imgURL)
+        if(self.postAnon){
+            self.currentPost = Post.init(topic: postTopic, title: postTitle, caption: postCaption, creatorId: "ANON_USER", img: imgURL, anon: true)
+        } else {
+            self.currentPost = Post.init(topic: postTopic, title: postTitle, caption: postCaption, creatorId: currentUser!.email, img: imgURL, anon: false)
+        }
         
         //need to check if a topic exists in the database, if it does not, need to create a new topic
         db.collection("topics").whereField("title", isEqualTo: postTopic).getDocuments() { (QuerySnapshot, err) in
@@ -270,9 +284,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 DispatchQueue.main.async() {
                     print("imgURL here7: \(self.imgURL)")
                     Topic.getTopic(topicTitle: postTopic, completion: self.getTheTopic)
-               }
+                }
                 self.performSegue(withIdentifier: "toTimeline", sender: self)
-
+                
                 return
                 
             }
