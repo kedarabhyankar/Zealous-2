@@ -20,9 +20,16 @@ class PostUnderTopicViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var profilePicture: UIImageView!
+    var id:String? = nil
+    var currentUser: WriteableUser? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        WriteableUser.getCurrentUser(completion: getUser)
+    
+    }
+    func getUser(currentUser: WriteableUser) {
+        self.currentUser = currentUser
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,8 +43,10 @@ class PostUnderTopicViewCell: UITableViewCell {
     @IBAction func savePostPressed(_ sender: Any) {
     }
     @IBAction func downVotePressed(_ sender: Any) {
+        currentUser?.addDownVote(postTitle: id!)
     }
     @IBAction func upVotePressed(_ sender: Any) {
+        currentUser?.addUpVote(postTitle: id!)
     }
 }
 

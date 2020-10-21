@@ -73,6 +73,7 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
+        cell.id = post.postId
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
