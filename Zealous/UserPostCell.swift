@@ -34,7 +34,7 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
     
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
-    
+    var id:String? = nil
     var currentUser: WriteableUser? = nil
         var currentPost: Post? = nil
         var userPosts: [Post] = []
@@ -44,10 +44,10 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         }
     
         @IBAction func upVotePressed ( sender: Any) {
-            
+            currentUser?.addUpVote(postTitle: id!)
         }
         @IBAction func downVotePressed ( sender: Any) {
-            
+            currentUser?.addDownVote(postTitle: id!)
         }
     @IBAction func postCommentPressed(_ sender: Any) {
     }
