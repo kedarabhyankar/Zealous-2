@@ -98,7 +98,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         profilePosts.sort(by: { (first: Post, second: Post) -> Bool in
                    first.timestamp > second.timestamp
-               })
+        })
+        profilePosts = profilePosts.filter { post in
+            return !post.madeAnonymously
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Profile", for: indexPath) as! UserPostCell
         let post = profilePosts[indexPath.row]
         cell.username?.text = post.creatorId
