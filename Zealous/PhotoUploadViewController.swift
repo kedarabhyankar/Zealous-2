@@ -46,7 +46,7 @@ class PhotoUploadViewController: UIViewController, UINavigationControllerDelegat
     }
     
     @IBAction func onSubmit(_ sender: Any) {
-        let intermediaryProfileThree = Profile(firstName: self.intermediaryProfileTwo.firstName, lastName: self.intermediaryProfileTwo.lastName, username: self.intermediaryProfileTwo.username, email: self.intermediaryProfileTwo.email, bio: "", interests: [""], dob: self.intermediaryProfileTwo.dateOfBirth, picture: self.image!)
+        let intermediaryProfileThree = Profile(firstName: self.intermediaryProfileTwo.firstName, lastName: self.intermediaryProfileTwo.lastName, username: self.intermediaryProfileTwo.username, email: self.intermediaryProfileTwo.email, bio: "", interests: [""], dob: self.intermediaryProfileTwo.dateOfBirth, picture: self.image ?? UIImage(systemName: "person.crop.circle")!)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "bioAndProfile") as! BioAndProfileViewController
         vc.finalProfile = intermediaryProfileThree
         vc.modalPresentationStyle = .fullScreen        
