@@ -56,6 +56,9 @@ class FeedViewCell: UITableViewCell {
     }
     
     @IBAction func postCommentPressed(_ sender: Any) {
+        print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        currentUser?.comment(comment: commentText.text! as String, postId: id!)
+        commentText.text = ""
     }
     
     @IBAction func downVotePressed(_ sender: Any) {

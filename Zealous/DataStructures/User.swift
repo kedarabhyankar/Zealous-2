@@ -740,4 +740,38 @@ extension WriteableUser {
             }
         }
     }
+    
+    func comment(comment: String, postId: String) {
+        let publishedComment = "\(self.username): \(comment)"
+        let db = Firestore.firestore()
+        let posts = db.collection("posts")
+        let users = db.collection("users")
+        
+        let userRef = users.document(self.username)
+        let postRef = posts.document(postId)
+        
+        postRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                print("Model: \(model)")
+                // add the comment
+                model.comments.append(publishedComment)
+                
+                // push to db
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                postRef.setData(dataToWrite2) { error in
+                    
+                    if error != nil {
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
 }
