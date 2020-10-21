@@ -191,10 +191,7 @@ extension WriteableUser {
             }
             
         }
-        
-        
     }
-    
     
     func getProfilePosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
@@ -263,6 +260,7 @@ extension WriteableUser {
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)
     }
+    
     mutating func addUpVote (postTitle: String) {
         // Error Banners
         let alreadyLike = Banner(title: "You are already up voted this post.", subtitle: "Choose a different post to up vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -288,6 +286,7 @@ extension WriteableUser {
             }
         }
     }
+    
     mutating func addDownVote (postTitle: String) {
         // Error Banners
         let alreadyLike = Banner(title: "You are already down voted this post.", subtitle: "Choose a different post to down vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -313,6 +312,34 @@ extension WriteableUser {
             }
         }
     }
+    
+    mutating func addSavedPost (postTitle: String) {
+        // Error Banners
+        let alreadyLike = Banner(title: "You already saved this post.", subtitle: "Choose a different post to save.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let userRef = db.collection("posts").document(postTitle)
+        
+        if self.savedPosts.contains(postTitle) {
+            print("you already liked this post")
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }
+        
+        self.savedPosts.append(postTitle)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+    }
+    
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
