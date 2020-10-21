@@ -224,7 +224,56 @@ extension WriteableUser {
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)
     }
-    
+    mutating func addUpVote (postTitle: String) {
+        // Error Banners
+        let alreadyLike = Banner(title: "You are already up voted this post.", subtitle: "Choose a different post to up vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let userRef = db.collection("posts").document(postTitle)
+        
+        if self.likedPosts.contains(postTitle) {
+            print("you already liked this post")
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }
+        self.likedPosts.append(postTitle)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+    }
+    mutating func addDownVote (postTitle: String) {
+        // Error Banners
+        let alreadyLike = Banner(title: "You are already down voted this post.", subtitle: "Choose a different post to down vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let userRef = db.collection("posts").document(postTitle)
+        
+        if self.dislikePosts.contains(postTitle) {
+            print("you already liked this post")
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }
+        self.dislikePosts.append(postTitle)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+    }
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)

@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+import BRYXBanner
+import CodableFirebase
 
 class FeedViewCell: UITableViewCell {
 
@@ -22,11 +27,17 @@ class FeedViewCell: UITableViewCell {
     @IBOutlet weak var down: UIButton!
     @IBOutlet weak var up: UIButton!
     @IBOutlet weak var username: UILabel!
+    var id:String? = nil
+    var currentUser: WriteableUser? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        WriteableUser.getCurrentUser(completion: getUser)
+    
     }
-
+    func getUser(currentUser: WriteableUser) {
+        self.currentUser = currentUser
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -39,9 +50,10 @@ class FeedViewCell: UITableViewCell {
     @IBAction func postCommentPressed(_ sender: Any) {
     }
     @IBAction func downVotePressed(_ sender: Any) {
-        
+        currentUser?.addDownVote(postTitle: id!)
     }
     @IBAction func upVotePressed(_ sender: Any) {
+        currentUser?.addUpVote(postTitle: id!)
     }
     
 }
