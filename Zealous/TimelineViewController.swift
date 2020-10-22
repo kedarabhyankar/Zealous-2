@@ -89,7 +89,7 @@ class TimelineViewController: UIViewController, TimelineDelegate {
     }
     
     func savePost(postId: String) {
-        currentUser?.addSavedPost(postTitle: postId)
+        currentUser?.toggleSavedPost(postTitle: postId)
     }
     func downvote(postId: String) {
         currentUser?.addDownVote(postTitle: postId)
