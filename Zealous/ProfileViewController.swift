@@ -87,7 +87,34 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func addPostArray(post: Post){
+        profilePosts.append(post)
+        profileTableView.reloadData()
+    }
     
+    
+    @IBAction func indexChanged() {
+        switch navigationBarPosts.selectedSegmentIndex{
+        case 0:
+            //Primary Posts
+            profilePosts.removeAll()
+            WriteableUser.getCreatedPosts(email: (currentUser?.email)!, completion: addPost)
+        case 1:
+            //All Interactions
+            profilePosts.removeAll()
+            currentUser?.getLikedPosts(addPost: addPostArray)
+            currentUser?.getDislikePosts(addPost: addPostArray)
+        case 2:
+            //Saved Posts
+            print("SAVED POSTS")
+            profilePosts.removeAll()
+            currentUser?.getSavedPosts(completion: addPost)
+        default:
+            print("Default")
+            profilePosts.removeAll()
+            WriteableUser.getCreatedPosts(email: (currentUser?.email)!, completion: addPost)
+        }
+    }
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -105,6 +132,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Profile", for: indexPath) as! UserPostCell
+        print(indexPath.row)
         let post = profilePosts[indexPath.row]
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title

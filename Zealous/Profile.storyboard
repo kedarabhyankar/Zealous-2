@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -350,6 +350,9 @@
                                     <segment title="Saved Posts"/>
                                 </segments>
                                 <color key="tintColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="indexChanged" destination="xyG-1Z-uVu" eventType="valueChanged" id="z5o-WU-fA2"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81h-ph-qgJ" userLabel="Name">
                                 <rect key="frame" x="16" y="212" width="343" height="28"/>
@@ -414,7 +417,7 @@
                     <connections>
                         <outlet property="bio" destination="Xbk-Xm-W53" id="t9G-ZE-UZx"/>
                         <outlet property="name" destination="81h-ph-qgJ" id="u37-aj-zJR"/>
-                        <outlet property="navigationBarPosts" destination="ZPT-VD-d2l" id="WZ0-ZK-8ev"/>
+                        <outlet property="navigationBarPosts" destination="ZPT-VD-d2l" id="eYL-Os-VY7"/>
                         <outlet property="profilePic" destination="86c-qk-vqW" id="bm0-w4-8bM"/>
                         <outlet property="profileTableView" destination="7RJ-9o-aGB" id="EDn-qa-rSh"/>
                         <outlet property="username" destination="aCe-H3-WMg" id="yet-TS-Jac"/>
