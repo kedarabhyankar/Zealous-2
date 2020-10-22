@@ -266,7 +266,6 @@ extension WriteableUser {
         let alreadyLike = Banner(title: "Upvote Removed", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyLike.dismissesOnTap = true
         let db = Firestore.firestore()
-        let userRef = db.collection("posts").document(postTitle)
         
         
         //Already Liked
@@ -390,7 +389,6 @@ extension WriteableUser {
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
-        let userRef = db.collection("posts").document(postTitle)
         
         //Double-Click
         if self.savedPosts.contains(postTitle) {
@@ -434,7 +432,6 @@ extension WriteableUser {
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
-        let userRef = db.collection("posts").document(postTitle)
         
         if !self.savedPosts.contains(postTitle) {
             print("you did not save this post")
