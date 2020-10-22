@@ -38,19 +38,69 @@ extension WriteableUser {
         let db = Firestore.firestore()
         for topicTitle in self.interests {
             // get the post and convert to Post object
-            let ref = db.collection("topics").document(topicTitle)
-            ref.getDocument { document, error in
-                if let document = document {
-                    if document.data() == nil {
-                        print("Topic does not exist")
-                        return
-                    }
-                    let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
-                    //print("Model: \(model)")
-                    // call function to add topic to array
-                    addTopic(model)
-                } else {
-                    print("Document does not exist")
+            let ref = db.collection("topics")
+            
+            ref.getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    return
+                }
+                else {
+                    db.collection("topics")
+                        .whereField("title", isEqualTo: topicTitle)
+                        .getDocuments() { (QuerySnapshot, err) in
+                            
+                            if QuerySnapshot?.isEmpty == true {
+                                
+                                //topic does not exist, so create a new topic in database and topic object
+                                
+                                print("Topic does not exist")
+                                //create a topic object and add current post to its post array
+                                let newTopic = Topic.init(title: topicTitle)
+                                
+                                
+                                let dataToWrite1 = try! FirestoreEncoder().encode(newTopic)
+                                db.collection("topics").document(newTopic.title).setData(dataToWrite1) { error in
+                                    if (error != nil) {
+                                        print("error writing topic to firestore: \(String(describing: error))")
+                                        return
+                                    } else {
+                                        print("success writing topic to firestore")
+                                    }
+                                }
+                                
+                                let docRef = Firestore.firestore().collection("topics").document(topicTitle)
+                                docRef.getDocument { document, error in
+                                    if let document = document {
+                                        if document.data() == nil {
+                                            print("Topic does not exist")
+                                            return
+                                        }
+                                        let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                                        // call function to add topic to array
+                                        addTopic(model)
+                                    } else {
+                                        print("Document does not exist")
+                                    }
+                                }
+                            }
+                            else {
+                                let docRef = Firestore.firestore().collection("topics").document(topicTitle)
+                                docRef.getDocument { document, error in
+                                    if let document = document {
+                                        if document.data() == nil {
+                                            print("Topic does not exist")
+                                            return
+                                        }
+                                        let model = try! FirestoreDecoder().decode(Topic.self, from: document.data()!)
+                                        // call function to add topic to array
+                                        addTopic(model)
+                                    } else {
+                                        print("Document does not exist")
+                                    }
+                                }
+                            }
+                        }
                 }
             }
         }
@@ -158,27 +208,24 @@ extension WriteableUser {
             }
             
         }
-        
-        
     }
-    
     
     func getProfilePosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
         for id in self.createdPosts {
-               // get the post and convert to Post object
-               let ref = db.collection("posts").document(id)
-               ref.getDocument { document, error in
-                   if let document = document {
-                       let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
-                       //print("Model: \(model)")
-                       addPost(model)
-                   } else {
-                       print("Document does not exist")
-                   }
-               }
-           }
-       }
+            // get the post and convert to Post object
+            let ref = db.collection("posts").document(id)
+            ref.getDocument { document, error in
+                if let document = document {
+                    let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                    //print("Model: \(model)")
+                    addPost(model)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
+    }
     
     func getSavedPosts(completion: @escaping(([Post]) -> ())) {
         let db = Firestore.firestore()
@@ -195,7 +242,7 @@ extension WriteableUser {
             }
         }
         completion(savedPosts)
-       
+        
     }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
@@ -211,9 +258,15 @@ extension WriteableUser {
         
         userRef.getDocument { document, error in
             if let document = document {
-                let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                let model = try? FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                
+                guard model != nil else {
+                    print("there is no database object for this user")
+                    fatalError()
+                }
+                
                 //print("Model: \(model)")
-                completion(model)
+                completion(model!)
             } else {
                 print("Document does not exist")
             }
@@ -224,6 +277,7 @@ extension WriteableUser {
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)
     }
+    
     mutating func addUpVote (postTitle: String) {
         // Error Banners
         let alreadyLike = Banner(title: "You are already up voted this post.", subtitle: "Choose a different post to up vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -249,6 +303,7 @@ extension WriteableUser {
             }
         }
     }
+    
     mutating func addDownVote (postTitle: String) {
         // Error Banners
         let alreadyLike = Banner(title: "You are already down voted this post.", subtitle: "Choose a different post to down vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -274,6 +329,66 @@ extension WriteableUser {
             }
         }
     }
+    
+    mutating func addSavedPost (postTitle: String) {
+        // Error Banners
+        let alreadyLike = Banner(title: "You already saved this post.", subtitle: "Choose a different post to save.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let userRef = db.collection("posts").document(postTitle)
+        
+        if self.savedPosts.contains(postTitle) {
+            print("you already liked this post")
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }
+        
+        self.savedPosts.append(postTitle)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+    }
+    
+    mutating func removeSavedPost (postTitle: String) {
+        // Error Banners
+        let alreadyLike = Banner(title: "You already saved this post.", subtitle: "Choose a different post to save.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+        let db = Firestore.firestore()
+        let userRef = db.collection("posts").document(postTitle)
+        
+        if !self.savedPosts.contains(postTitle) {
+            print("you did not save this post")
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }
+        
+        for i in 0..<self.savedPosts.count {
+            if self.savedPosts[i] == postTitle {
+                self.savedPosts.remove(at: i)
+            }
+        }
+        
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                print("error happened when writing to firestore!")
+                print("described error as \(error!.localizedDescription)")
+                return
+            } else {
+                print("successfully wrote document to firestore with document id )")
+            }
+        }
+    }
+    
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -582,7 +697,7 @@ extension WriteableUser {
     
     mutating func unfollowTopic (title: String) {
         // Error Banners
-     
+        
         let unfollowTopics = Banner(title: "You can't unfollow this topic.", subtitle: "Choose a different topic that you already follow to unfollow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         unfollowTopics.dismissesOnTap = true
         
@@ -601,7 +716,7 @@ extension WriteableUser {
                 break
             }
         }
-      let dataToWrite = try! FirestoreEncoder().encode(self)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
         db.collection("users").document(self.email).setData(dataToWrite) { error in
             if(error != nil){
                 print("error happened when writing to firestore!")
@@ -637,6 +752,40 @@ extension WriteableUser {
                     }
                 }
                 
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    func comment(comment: String, postId: String) {
+        let publishedComment = "\(self.username): \(comment)"
+        let db = Firestore.firestore()
+        let posts = db.collection("posts")
+        let users = db.collection("users")
+        
+        let userRef = users.document(self.username)
+        let postRef = posts.document(postId)
+        
+        postRef.getDocument { document, error in
+            if let document = document {
+                var model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                print("Model: \(model)")
+                // add the comment
+                model.comments.append(publishedComment)
+                
+                // push to db
+                let dataToWrite2 = try! FirestoreEncoder().encode(model)
+                postRef.setData(dataToWrite2) { error in
+                    
+                    if error != nil {
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
             } else {
                 print("Document does not exist")
             }

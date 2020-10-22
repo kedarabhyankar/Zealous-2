@@ -53,6 +53,7 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
     }
     
     @IBAction func savePostPressed(_ sender: Any) {
+        currentUser?.addSavedPost(postTitle: id!)
     }
     @IBAction func deletePostPressed ( sender: Any) {
             //first get the post from the user

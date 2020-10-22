@@ -39,7 +39,9 @@ class TimelineViewController: UIViewController {
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
         currentUser.getFollowedTopics(addTopic: addTopic)
-        posts.sort(by: {$0.timestamp > $1.timestamp})
+        if !posts.isEmpty {
+            posts.sort(by: {$0.timestamp > $1.timestamp})
+        }
         timelineTableView.reloadData()
     }
     func addTimeline(postArray: [Post]) {
