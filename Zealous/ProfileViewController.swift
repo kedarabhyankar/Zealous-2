@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
 
     
     
+    @IBOutlet weak var navigationBarPosts: UISegmentedControl!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var name: UILabel!
