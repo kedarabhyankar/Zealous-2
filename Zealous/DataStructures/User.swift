@@ -273,6 +273,7 @@ extension WriteableUser {
             for i in 0..<self.likedPosts.count {
                 if self.likedPosts[i] == postTitle {
                     self.likedPosts.remove(at: i)
+                    break
                 }
             }
             print("you already liked this post")
@@ -283,6 +284,7 @@ extension WriteableUser {
             for i in 0..<self.dislikePosts.count {
                 if self.dislikePosts[i] == postTitle {
                     self.dislikePosts.remove(at: i)
+                    break
                 }
             }
         }
@@ -311,6 +313,7 @@ extension WriteableUser {
             for i in 0..<self.dislikePosts.count {
                 if self.dislikePosts[i] == postTitle {
                     self.dislikePosts.remove(at: i)
+                    break
                 }
             }
             print("you already liked this post")
@@ -321,6 +324,7 @@ extension WriteableUser {
             for i in 0..<self.likedPosts.count {
                 if self.likedPosts[i] == postTitle {
                     self.likedPosts.remove(at: i)
+                    break
                 }
             }
         }
