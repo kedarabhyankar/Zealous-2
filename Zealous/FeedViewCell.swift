@@ -29,6 +29,7 @@ class FeedViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     var id: String? = nil
     var currentUser: WriteableUser? = nil
+    var delegate: TimelineDelegate? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,12 +48,7 @@ class FeedViewCell: UITableViewCell {
     }
     
     @IBAction func savePostPressed(_ sender: Any) {
-        if currentUser?.savedPosts.contains(id!) == true {
-            currentUser?.removeSavedPost(postTitle: id!)
-        }
-        else {
-            currentUser?.addSavedPost(postTitle: id!)
-        }
+        delegate?.savePost(postId: id!)
     }
     
     @IBAction func postCommentPressed(_ sender: Any) {
@@ -62,10 +58,10 @@ class FeedViewCell: UITableViewCell {
     }
     
     @IBAction func downVotePressed(_ sender: Any) {
-        currentUser?.addDownVote(postTitle: id!)
+        delegate?.downvote(postId: id!)
     }
     @IBAction func upVotePressed(_ sender: Any) {
-        currentUser?.addUpVote(postTitle: id!)
+        delegate?.upvote(postId: id!)
     }
     
 }
