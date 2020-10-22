@@ -263,16 +263,28 @@ extension WriteableUser {
     
     mutating func addUpVote (postTitle: String) {
         // Error Banners
-        let alreadyLike = Banner(title: "You are already up voted this post.", subtitle: "Choose a different post to up vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        let alreadyLike = Banner(title: "Upvote Removed", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
         let userRef = db.collection("posts").document(postTitle)
         
         if self.likedPosts.contains(postTitle) {
+            for i in 0..<self.likedPosts.count {
+                if self.likedPosts[i] == postTitle {
+                    self.likedPosts.remove(at: i)
+                }
+            }
             print("you already liked this post")
             self.showAndFocus(banner: alreadyLike)
             return
+        }
+        if self.dislikePosts.contains(postTitle){
+            for i in 0..<self.dislikePosts.count {
+                if self.dislikePosts[i] == postTitle {
+                    self.dislikePosts.remove(at: i)
+                }
+            }
         }
         self.likedPosts.append(postTitle)
         let dataToWrite = try! FirestoreEncoder().encode(self)
@@ -289,16 +301,28 @@ extension WriteableUser {
     
     mutating func addDownVote (postTitle: String) {
         // Error Banners
-        let alreadyLike = Banner(title: "You are already down voted this post.", subtitle: "Choose a different post to down vote.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        let alreadyLike = Banner(title: "Downvote Removed", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
         let userRef = db.collection("posts").document(postTitle)
         
         if self.dislikePosts.contains(postTitle) {
+            for i in 0..<self.dislikePosts.count {
+                if self.dislikePosts[i] == postTitle {
+                    self.dislikePosts.remove(at: i)
+                }
+            }
             print("you already liked this post")
             self.showAndFocus(banner: alreadyLike)
             return
+        }
+        if self.likedPosts.contains(postTitle) {
+            for i in 0..<self.likedPosts.count {
+                if self.likedPosts[i] == postTitle {
+                    self.likedPosts.remove(at: i)
+                }
+            }
         }
         self.dislikePosts.append(postTitle)
         let dataToWrite = try! FirestoreEncoder().encode(self)
