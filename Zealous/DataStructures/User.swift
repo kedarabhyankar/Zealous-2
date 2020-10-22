@@ -343,13 +343,19 @@ extension WriteableUser {
     
     mutating func addSavedPost (postTitle: String) {
         // Error Banners
-        let alreadyLike = Banner(title: "You already saved this post.", subtitle: "Choose a different post to save.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        let alreadyLike = Banner(title: "Saved Post Removed", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
         let userRef = db.collection("posts").document(postTitle)
         
         if self.savedPosts.contains(postTitle) {
+            for i in 0..<self.savedPosts.count {
+                if self.savedPosts[i] == postTitle {
+                    self.savedPosts.remove(at: i)
+                    break
+                }
+            }
             print("you already liked this post")
             self.showAndFocus(banner: alreadyLike)
             return
