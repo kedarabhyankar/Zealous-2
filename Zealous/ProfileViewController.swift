@@ -15,6 +15,11 @@ import BRYXBanner
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var createPostButtom: UIButton!
+    
+    @IBOutlet weak var editProfileButton: UIButton!
+    
+    
     @IBOutlet weak var navigationBarPosts: UISegmentedControl!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var username: UILabel!
@@ -35,6 +40,8 @@ class ProfileViewController: UIViewController {
         }
         else {
             getUser(currentUser: currentUser!)
+            createPostButtom.isHidden = true
+            editProfileButton.isHidden = true
         }
         profileTableView.rowHeight = 540
         profileTableView.estimatedRowHeight = 540
