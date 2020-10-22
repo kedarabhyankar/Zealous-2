@@ -192,6 +192,21 @@ extension WriteableUser {
             
         }
     }
+    func getSavedPosts(addPost: @escaping((Post) -> ())) {
+        let db = Firestore.firestore()
+        for postId in self.savedPosts {
+            let ref = db.collection("posts").document(postId)
+            ref.getDocument { document, error in
+                if document != nil {
+                    let model = try! FirestoreDecoder().decode(Post.self, from: (document?.data())!)
+                    addPost(model)
+                } else {
+                    print("Error getting saved posts")
+                }
+            }
+        }
+    }
+    
     
     func getProfilePosts(addPost: @escaping((Post) -> ())) {
         let db = Firestore.firestore()
@@ -210,23 +225,6 @@ extension WriteableUser {
         }
     }
     
-    func getSavedPosts(completion: @escaping(([Post]) -> ())) {
-        let db = Firestore.firestore()
-        var savedPosts: [Post] = []
-        for postId in self.savedPosts {
-            let ref = db.collection("posts").document(postId)
-            ref.getDocument { document, error in
-                if document != nil {
-                    let model = try! FirestoreDecoder().decode(Post.self, from: (document?.data())!)
-                    savedPosts.append(model)
-                } else {
-                    print("Error getting documents")
-                }
-            }
-        }
-        completion(savedPosts)
-        
-    }
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
         let auth = Auth.auth()
@@ -297,6 +295,7 @@ extension WriteableUser {
                     self.dislikePosts.remove(at: i)
                     break
                 }
+            }
                 let dataToWrite = try! FirestoreEncoder().encode(self)
                 db.collection("users").document(self.email).setData(dataToWrite) { error in
                     if(error != nil){
@@ -307,7 +306,6 @@ extension WriteableUser {
                         print("successfully wrote document to firestore with document id )")
                     }
                 }
-            }
         }
         self.likedPosts.append(postTitle)
         let dataToWrite = try! FirestoreEncoder().encode(self)

@@ -108,7 +108,9 @@ class ProfileViewController: UIViewController {
             //Saved Posts
             print("SAVED POSTS")
             profilePosts.removeAll()
-            currentUser?.getSavedPosts(completion: addPost)
+            currentUser?.getSavedPosts(addPost: addPostArray)
+            print("saved printed")
+            print(profilePosts.count)
         default:
             print("Default")
             profilePosts.removeAll()
@@ -133,6 +135,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Profile", for: indexPath) as! UserPostCell
         print(indexPath.row)
+        for i in 0..<profilePosts.count {
+            print("print")
+            print(profilePosts[i].postId)
+        }
         let post = profilePosts[indexPath.row]
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
