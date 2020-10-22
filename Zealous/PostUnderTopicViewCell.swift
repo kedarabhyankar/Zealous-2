@@ -41,7 +41,7 @@ class PostUnderTopicViewCell: UITableViewCell {
     @IBAction func postCommentPressed(_ sender: Any) {
     }
     @IBAction func savePostPressed(_ sender: Any) {
-        currentUser?.addSavedPost(postTitle: id!)
+        currentUser?.toggleSavedPost(postTitle: id!)
     }
     @IBAction func downVotePressed(_ sender: Any) {
         currentUser?.addDownVote(postTitle: id!)

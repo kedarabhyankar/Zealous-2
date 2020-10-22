@@ -47,12 +47,13 @@ class FeedViewCell: UITableViewCell {
     }
     
     @IBAction func savePostPressed(_ sender: Any) {
-        if currentUser?.savedPosts.contains(id!) == true {
-            currentUser?.removeSavedPost(postTitle: id!)
-        }
-        else {
-            currentUser?.addSavedPost(postTitle: id!)
-        }
+        //if currentUser?.savedPosts.contains(id!) == true {
+          //  currentUser?.removeSavedPost(postTitle: id!)
+        //}
+        //else {
+        currentUser?.toggleSavedPost(postTitle: id!)
+        print(id!)
+        //}
     }
     
     @IBAction func postCommentPressed(_ sender: Any) {

@@ -265,10 +265,11 @@ extension WriteableUser {
         // Error Banners
         let alreadyLike = Banner(title: "Upvote Removed", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyLike.dismissesOnTap = true
-        
         let db = Firestore.firestore()
         let userRef = db.collection("posts").document(postTitle)
         
+        
+        //Already Liked
         if self.likedPosts.contains(postTitle) {
             for i in 0..<self.likedPosts.count {
                 if self.likedPosts[i] == postTitle {
@@ -276,15 +277,36 @@ extension WriteableUser {
                     break
                 }
             }
+                let dataToWrite = try! FirestoreEncoder().encode(self)
+                db.collection("users").document(self.email).setData(dataToWrite) { error in
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("Upvote Removed~~~~~")
+                    }
+                }
             print("you already liked this post")
             self.showAndFocus(banner: alreadyLike)
             return
         }
+        //Already Disliked
         if self.dislikePosts.contains(postTitle){
             for i in 0..<self.dislikePosts.count {
                 if self.dislikePosts[i] == postTitle {
                     self.dislikePosts.remove(at: i)
                     break
+                }
+                let dataToWrite = try! FirestoreEncoder().encode(self)
+                db.collection("users").document(self.email).setData(dataToWrite) { error in
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
                 }
             }
         }
@@ -308,7 +330,7 @@ extension WriteableUser {
         
         let db = Firestore.firestore()
         let userRef = db.collection("posts").document(postTitle)
-        
+        //Already Disliked
         if self.dislikePosts.contains(postTitle) {
             for i in 0..<self.dislikePosts.count {
                 if self.dislikePosts[i] == postTitle {
@@ -316,14 +338,35 @@ extension WriteableUser {
                     break
                 }
             }
+            let dataToWrite = try! FirestoreEncoder().encode(self)
+            db.collection("users").document(self.email).setData(dataToWrite) { error in
+                if(error != nil){
+                    print("error happened when writing to firestore!")
+                    print("described error as \(error!.localizedDescription)")
+                    return
+                } else {
+                    print("successfully wrote document to firestore with document id )")
+                }
+            }
             print("you already liked this post")
             self.showAndFocus(banner: alreadyLike)
             return
         }
+        //Already Liked
         if self.likedPosts.contains(postTitle) {
             for i in 0..<self.likedPosts.count {
                 if self.likedPosts[i] == postTitle {
                     self.likedPosts.remove(at: i)
+                    let dataToWrite = try! FirestoreEncoder().encode(self)
+                    db.collection("users").document(self.email).setData(dataToWrite) { error in
+                        if(error != nil){
+                            print("error happened when writing to firestore!")
+                            print("described error as \(error!.localizedDescription)")
+                            return
+                        } else {
+                            print("successfully wrote document to firestore with document id )")
+                        }
+                    }
                     break
                 }
             }
@@ -341,7 +384,7 @@ extension WriteableUser {
         }
     }
     
-    mutating func addSavedPost (postTitle: String) {
+    mutating func toggleSavedPost (postTitle: String) {
         // Error Banners
         let alreadyLike = Banner(title: "Saved Post Removed", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         alreadyLike.dismissesOnTap = true
@@ -349,14 +392,25 @@ extension WriteableUser {
         let db = Firestore.firestore()
         let userRef = db.collection("posts").document(postTitle)
         
+        //Double-Click
         if self.savedPosts.contains(postTitle) {
-            for i in 0..<self.savedPosts.count {
+           for i in 0..<self.savedPosts.count {
                 if self.savedPosts[i] == postTitle {
                     self.savedPosts.remove(at: i)
                     break
                 }
             }
-            print("you already liked this post")
+            let dataToWrite = try! FirestoreEncoder().encode(self)
+            db.collection("users").document(self.email).setData(dataToWrite) { error in
+                if(error != nil){
+                    print("error happened when writing to firestore!")
+                    print("described error as \(error!.localizedDescription)")
+                    return
+                } else {
+                    print("successfully wrote document to firestore with document id )")
+                }
+            }
+            print("you already saved this post")
             self.showAndFocus(banner: alreadyLike)
             return
         }
@@ -373,7 +427,7 @@ extension WriteableUser {
             }
         }
     }
-    
+    /*
     mutating func removeSavedPost (postTitle: String) {
         // Error Banners
         let alreadyLike = Banner(title: "You already saved this post.", subtitle: "Choose a different post to save.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
@@ -391,6 +445,7 @@ extension WriteableUser {
         for i in 0..<self.savedPosts.count {
             if self.savedPosts[i] == postTitle {
                 self.savedPosts.remove(at: i)
+                break
             }
         }
         
@@ -405,7 +460,7 @@ extension WriteableUser {
             }
         }
     }
-    
+    */
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
