@@ -267,7 +267,6 @@ extension WriteableUser {
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
-        let userRef = db.collection("posts").document(postTitle)
         
         if self.likedPosts.contains(postTitle) {
             print("you already liked this post")
@@ -293,7 +292,6 @@ extension WriteableUser {
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
-        let userRef = db.collection("posts").document(postTitle)
         
         if self.dislikePosts.contains(postTitle) {
             print("you already liked this post")
@@ -319,7 +317,6 @@ extension WriteableUser {
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
-        let userRef = db.collection("posts").document(postTitle)
         
         if self.savedPosts.contains(postTitle) {
             print("you already liked this post")
@@ -346,7 +343,6 @@ extension WriteableUser {
         alreadyLike.dismissesOnTap = true
         
         let db = Firestore.firestore()
-        let userRef = db.collection("posts").document(postTitle)
         
         if !self.savedPosts.contains(postTitle) {
             print("you did not save this post")
@@ -357,6 +353,7 @@ extension WriteableUser {
         for i in 0..<self.savedPosts.count {
             if self.savedPosts[i] == postTitle {
                 self.savedPosts.remove(at: i)
+                break
             }
         }
         

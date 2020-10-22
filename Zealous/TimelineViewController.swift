@@ -13,7 +13,15 @@ import FirebaseAuth
 import CodableFirebase
 import BRYXBanner
 
-class TimelineViewController: UIViewController {
+protocol TimelineDelegate {
+    func savePost(postId: String)
+    func downvote(postId: String)
+    func upvote(postId: String)
+}
+
+class TimelineViewController: UIViewController, TimelineDelegate {
+
+    
 
     @IBOutlet weak var timelineTableView: UITableView!
     
@@ -73,10 +81,22 @@ class TimelineViewController: UIViewController {
     func addPost(likedPost: Post) {
         likedPosts.append(likedPost)
     }
+    
     func addUser(user: WriteableUser) {
         following.append(user)
         WriteableUser.getCreatedPosts(email: user.email, completion: addTimeline)
         timelineTableView.reloadData()
+    }
+    
+    func savePost(postId: String) {
+        currentUser?.addSavedPost(postTitle: postId)
+    }
+    func downvote(postId: String) {
+        currentUser?.addDownVote(postTitle: postId)
+    }
+    
+    func upvote(postId: String) {
+        currentUser?.addUpVote(postTitle: postId)
     }
 }
 
@@ -97,6 +117,8 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        cell.delegate = self
+        
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
