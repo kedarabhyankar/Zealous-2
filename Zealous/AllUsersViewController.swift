@@ -52,6 +52,14 @@ extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.username.text = user.username
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let customViewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        let user = allUsersArray[indexPath.item]
+        customViewController.currentUser = user
+        self.present(customViewController, animated: true, completion: nil)
+    }
 }
 extension AllUsersViewController: AllUsersCellDelegate {
     func allusers(cell: AllUsersViewCell, didTappedThe button: UIButton?, emailId: String) {

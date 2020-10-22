@@ -15,8 +15,6 @@ import BRYXBanner
 
 class ProfileViewController: UIViewController {
 
-    
-    
     @IBOutlet weak var navigationBarPosts: UISegmentedControl!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var username: UILabel!
@@ -32,7 +30,12 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         profileTableView.delegate = self
         profileTableView.dataSource = self
-        WriteableUser.getCurrentUser(completion: getUser)
+        if currentUser == nil {
+            WriteableUser.getCurrentUser(completion: getUser)
+        }
+        else {
+            getUser(currentUser: currentUser!)
+        }
         profileTableView.rowHeight = 540
         profileTableView.estimatedRowHeight = 540
         profileTableView.reloadData()

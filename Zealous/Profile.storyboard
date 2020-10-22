@@ -14,7 +14,7 @@
         <!--Profile View Controller-->
         <scene sceneID="GJ5-QP-g3s">
             <objects>
-                <viewController id="xyG-1Z-uVu" customClass="ProfileViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" id="xyG-1Z-uVu" customClass="ProfileViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="92c-QM-jz7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
