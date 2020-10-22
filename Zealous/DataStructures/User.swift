@@ -139,24 +139,7 @@ extension WriteableUser {
             }
         }
     }
-    
-    func getFollowers(addUser: @escaping((Post) -> ())){
-        let db = Firestore.firestore()
-        for id in self.followers{
-            let ref = db.collection("users").document(id)
-            ref.getDocument { document, error in
-                if let document = document {
-                    let modle = try! FirestoreDecoder().decode(WriteableUser.self,from:
-                                                                document.data()!)
-                    print("Model: \(model)")
-                    addUser(model)
-                }else{
-                    print("Document does not exist")
-                }
-            }
-        }
-    }
-    
+
     static func getCreatedPosts(email: String, completion: @escaping(([Post]) -> ())) {
         let db = Firestore.firestore()
         db.collection("posts").whereField("creatorId", isEqualTo: email)
