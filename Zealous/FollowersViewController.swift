@@ -81,4 +81,12 @@ extension FollowersViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let customViewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        let user = followers[indexPath.item]
+        customViewController.currentUser = user
+        self.present(customViewController, animated: true, completion: nil)
+    }
 }

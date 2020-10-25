@@ -13,6 +13,10 @@ import FirebaseAuth
 import CodableFirebase
 import BRYXBanner
 
+protocol ProfileTable {
+    func remove(postId: String)
+}
+
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var createPostButtom: UIButton!
@@ -154,6 +158,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        cell.tableDelegate = self
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
@@ -173,5 +178,17 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
+    }
+}
+
+extension ProfileViewController: ProfileTable {
+    func remove(postId: String) {
+//        for i in 0..<profilePosts.count {
+//            if profilePosts[i].postId == postId {
+//                profilePosts.remove(at: i)
+//            }
+//        }
+        print(profilePosts)
+        profileTableView.reloadData()
     }
 }

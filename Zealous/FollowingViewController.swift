@@ -92,7 +92,16 @@ extension FollowingViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let customViewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        let user = following[indexPath.row]
+        customViewController.currentUser = user
+        self.present(customViewController, animated: true, completion: nil)
+    }
+    
 }
+
 extension FollowingViewController: CustomCellDelegate {
     func customcell(cell: FollowingViewCell, didTappedThe button: UIButton?, emailId:String) {
         currentUser?.unfollow(email: emailId)
