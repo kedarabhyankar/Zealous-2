@@ -8,6 +8,8 @@
 import UIKit
 
 class UserPostCell: UITableViewCell, UITableViewDelegate {
+    
+    var tableDelegate: ProfileTable? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +56,9 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
     
     @IBAction func savePostPressed(_ sender: Any) {
         currentUser?.toggleSavedPost(postTitle: id!)
+        if tableDelegate != nil {
+            tableDelegate?.remove(postId: id!)
+        }
     }
     @IBAction func deletePostPressed ( sender: Any) {
             //first get the post from the user
