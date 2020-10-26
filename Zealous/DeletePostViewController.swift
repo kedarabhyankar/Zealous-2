@@ -84,6 +84,7 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
         }
         Post.deleteStoragePost(thePost: self.currentPost!, theUser: self.currentUser!)
         Post.deletePost(postId: self.currentPost!.postId)
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         
     }
