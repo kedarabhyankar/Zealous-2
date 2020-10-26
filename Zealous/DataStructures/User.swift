@@ -313,6 +313,34 @@ extension WriteableUser {
             }
         }
     }
+    
+    mutating func removeUpvote(postTitle: String){
+        let db = Firestore.firestore()
+        self.likedPosts.remove(at: self.likedPosts.firstIndex(of: postTitle)!)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                    print("error happened when writing to firestore!")
+                    print("described error as \(error!.localizedDescription)")
+            } else {
+                print("successfully wrote document to firestore with document id ")
+            }
+        }
+    }
+    
+    mutating func removeDownvote(postTitle: String){
+        let db = Firestore.firestore()
+        self.likedPosts.remove(at: self.dislikePosts.firstIndex(of: postTitle)!)
+        let dataToWrite = try! FirestoreEncoder().encode(self)
+        db.collection("users").document(self.email).setData(dataToWrite) { error in
+            if(error != nil){
+                    print("error happened when writing to firestore!")
+                    print("described error as \(error!.localizedDescription)")
+            } else {
+                print("successfully wrote document to firestore with document id ")
+            }
+        }
+    }
     mutating func follow (email: String) {
         // Error Banners
         let followSelf = Banner(title: "You can't follow yourself.", subtitle: "Choose a different user to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)

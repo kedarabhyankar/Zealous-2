@@ -78,6 +78,7 @@ class TimelineViewController: UIViewController {
         WriteableUser.getCreatedPosts(email: user.email, completion: addTimeline)
         timelineTableView.reloadData()
     }
+    
 }
 
 

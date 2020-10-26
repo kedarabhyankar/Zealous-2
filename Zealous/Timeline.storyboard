@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -83,10 +83,12 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="41" id="u6k-s2-sch"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="tintColor" name="Color"/>
                                                     <state key="normal" title=" " image="arrow.up.circle.fill" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="medium"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="onUpvote:" destination="nWt-i4-6xC" eventType="touchUpInside" id="4BX-yF-RZO"/>
                                                         <action selector="upVotePressed:" destination="LGV-q4-ij9" eventType="touchUpInside" id="Nx9-cW-Qhy"/>
                                                     </connections>
                                                 </button>
@@ -101,11 +103,13 @@
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="vNG-Xv-mMV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="tintColor" name="Color"/>
                                                     <state key="normal" title=" " image="arrow.down.circle.fill" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="medium"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="downVotePressed:" destination="LGV-q4-ij9" eventType="touchUpInside" id="fTE-ns-eNv"/>
+                                                        <action selector="onDownvote:" destination="nWt-i4-6xC" eventType="touchUpInside" id="SvD-RR-gGH"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXv-aY-SBR">
@@ -322,7 +326,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Emp-HU-mvT"/>
                     <connections>
+                        <outlet property="downvoteButton" destination="vak-5D-Y0m" id="HZb-mc-g3M"/>
                         <outlet property="timelineTableView" destination="xYS-m7-Hua" id="hgZ-pO-A0G"/>
+                        <outlet property="upvoteButton" destination="bOH-8k-aTE" id="HB2-Dq-Zxt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkn-2C-mgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -381,6 +387,9 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color">
+            <color red="0.68199998140335083" green="0.68199998140335083" blue="0.69800001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
