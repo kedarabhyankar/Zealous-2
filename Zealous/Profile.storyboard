@@ -418,6 +418,9 @@
                         <outlet property="bio" destination="Xbk-Xm-W53" id="t9G-ZE-UZx"/>
                         <outlet property="createPostButtom" destination="9yn-Td-UU1" id="NEf-hd-6j1"/>
                         <outlet property="editProfileButton" destination="FSV-fY-qgv" id="A24-cI-s6W"/>
+                        <outlet property="followersButton" destination="DcY-Qv-6eu" id="bng-5W-NDr"/>
+                        <outlet property="followingButton" destination="903-gA-9h4" id="dHk-CE-pAP"/>
+                        <outlet property="interestsButton" destination="Qiq-ra-PvG" id="NTw-II-6kc"/>
                         <outlet property="name" destination="81h-ph-qgJ" id="u37-aj-zJR"/>
                         <outlet property="navigationBarPosts" destination="ZPT-VD-d2l" id="eYL-Os-VY7"/>
                         <outlet property="profilePic" destination="86c-qk-vqW" id="bm0-w4-8bM"/>
