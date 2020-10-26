@@ -165,9 +165,13 @@ extension WriteableUser {
             let ref = db.collection("posts").document(id)
             ref.getDocument { document, error in
                 if let document = document {
-                    let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
-                    //print("Model: \(model)")
-                    addPost(model)
+                    if document.data() != nil {
+                        let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                        addPost(model)
+                    }
+                    else {
+                        print("Document does not exist or has been deleted")
+                    }
                 } else {
                     print("Document does not exist")
                 }
