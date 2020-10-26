@@ -33,6 +33,7 @@
 		C60043EA253959B9009AC96D /* PostsUnderTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */; };
 		C60043EF25395A31009AC96D /* PostsUnderTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */; };
 		C60043F425395ABD009AC96D /* PostUnderTopicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */; };
+		C60045D925476BA2009AC96D /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
@@ -109,6 +110,7 @@
 		C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsUnderTopic.storyboard; sourceTree = "<group>"; };
 		C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsUnderTopicViewController.swift; sourceTree = "<group>"; };
 		C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUnderTopicViewCell.swift; sourceTree = "<group>"; };
+		C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				C60043E9253959B9009AC96D /* PostsUnderTopic.storyboard */,
 				C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */,
 				C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */,
+				C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				BC44BB75251A99EF00C12823 /* Topic.swift in Sources */,
 				E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */,
 				E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */,
+				C60045D925476BA2009AC96D /* CommentsTableViewCell.swift in Sources */,
 				BC44BB73251A99D300C12823 /* Profile.swift in Sources */,
 				A64C0DCF252BF1B500BCAA90 /* DeletePostViewController.swift in Sources */,
 				C60043912535542E009AC96D /* ProfileViewController.swift in Sources */,
