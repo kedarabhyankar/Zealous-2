@@ -140,7 +140,7 @@
                                                         <constraint firstAttribute="width" constant="343" id="qu6-uw-qRp"/>
                                                     </constraints>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="32" id="Rpp-k0-8gq">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="32" id="Rpp-k0-8gq" customClass="CommentsTableViewCell" customModule="Zealous" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="343" height="32"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rpp-k0-8gq" id="u2a-Fq-qCy">
@@ -172,6 +172,10 @@
                                                                     <constraint firstAttribute="bottom" secondItem="Pfk-mH-vwa" secondAttribute="bottom" constant="8" id="krb-7p-ZXZ"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="comment" destination="7rY-mq-Nl9" id="H2e-tq-mmC"/>
+                                                                <outlet property="username" destination="Pfk-mH-vwa" id="xrC-AP-vUt"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
