@@ -22,7 +22,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var createPostButtom: UIButton!
     
     @IBOutlet weak var editProfileButton: UIButton!
+    @IBOutlet weak var interestsButton: UIButton!
     
+    @IBOutlet weak var followersButton: UIButton!
+    @IBOutlet weak var followingButton: UIButton!
     
     @IBOutlet weak var navigationBarPosts: UISegmentedControl!
     @IBOutlet weak var bio: UILabel!
@@ -33,7 +36,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileTableView: UITableView!
     var currentUser: WriteableUser? = nil
     var profilePosts: [Post] = []
-    
+    var isThisUser: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +44,11 @@ class ProfileViewController: UIViewController {
         profileTableView.dataSource = self
         if currentUser == nil {
             WriteableUser.getCurrentUser(completion: getUser)
+            isThisUser = true
         }
         else {
             getUser(currentUser: currentUser!)
+            isThisUser = false
             createPostButtom.isHidden = true
             editProfileButton.isHidden = true
         }
@@ -149,6 +154,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Profile", for: indexPath) as! UserPostCell
         print(indexPath.row)
+        
         for i in 0..<profilePosts.count {
             print("print")
             print(profilePosts[i].postId)
@@ -158,7 +164,20 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        if post.creatorId != currentUser?.email {
+            cell.deletePost.isHidden = true
+        }
+        else{
+            cell.deletePost.isHidden = false
+        }
         cell.tableDelegate = self
+        if !isThisUser {
+            cell.deletePost.isHidden = true
+            cell.savePost.isHidden = true
+            self.followersButton.isHidden = true
+            self.followingButton.isHidden = true
+            self.interestsButton.isHidden = true
+        }
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
