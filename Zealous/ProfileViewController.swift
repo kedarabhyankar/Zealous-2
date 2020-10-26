@@ -183,11 +183,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ProfileViewController: ProfileTable {
     func remove(postId: String) {
-//        for i in 0..<profilePosts.count {
-//            if profilePosts[i].postId == postId {
-//                profilePosts.remove(at: i)
-//            }
-//        }
+        for i in 0..<profilePosts.count {
+            if profilePosts[i].postId == postId {
+                if i < profilePosts.count {
+                    profilePosts.remove(at: i)
+                }
+            }
+        }
         print(profilePosts)
         profileTableView.reloadData()
     }
