@@ -158,6 +158,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        if post.creatorId != currentUser?.email {
+            cell.deletePost.isHidden = true
+        }
+        else{
+            cell.deletePost.isHidden = false
+        }
         cell.tableDelegate = self
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
