@@ -164,6 +164,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        if post.creatorId != currentUser?.email {
+            cell.deletePost.isHidden = true
+        }
+        else{
+            cell.deletePost.isHidden = false
+        }
         cell.tableDelegate = self
         if !isThisUser {
             cell.deletePost.isHidden = true

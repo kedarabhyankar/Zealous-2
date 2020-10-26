@@ -52,6 +52,7 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
             currentUser?.addDownVote(postTitle: id!)
         }
     @IBAction func postCommentPressed(_ sender: Any) {
+        
     }
     
     @IBAction func savePostPressed(_ sender: Any) {
