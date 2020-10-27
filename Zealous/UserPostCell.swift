@@ -32,7 +32,10 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         @IBOutlet weak var deletePost: UIButton!
         @IBOutlet weak var upVote: UIButton!
         @IBOutlet weak var downVote: UIButton!
-    @IBOutlet weak var comments: UITableView!
+   
+    @IBOutlet weak var DisplayedCommentUserName: UILabel!
+    
+    @IBOutlet weak var DisplayedCommentText: UILabel!
     
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
