@@ -326,9 +326,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Emp-HU-mvT"/>
                     <connections>
-                        <outlet property="downvoteButton" destination="vak-5D-Y0m" id="HZb-mc-g3M"/>
                         <outlet property="timelineTableView" destination="xYS-m7-Hua" id="hgZ-pO-A0G"/>
-                        <outlet property="upvoteButton" destination="bOH-8k-aTE" id="HB2-Dq-Zxt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkn-2C-mgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
