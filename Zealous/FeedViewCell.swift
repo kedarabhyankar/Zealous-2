@@ -56,6 +56,7 @@ class FeedViewCell: UITableViewCell {
         print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
         currentUser?.comment(comment: commentText.text! as String, postId: id!)
         commentText.text = ""
+        //ADD: REFRESH TIMELINE TABLE VIEW
     }
     
     @IBAction func downVotePressed(_ sender: Any) {

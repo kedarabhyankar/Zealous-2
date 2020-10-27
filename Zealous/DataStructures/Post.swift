@@ -154,22 +154,24 @@ struct Post: Codable {
         }
     }
     
-    func getComments(postID: String, addComment: @escaping(([String]) -> ())){
+    func getComments(addComment: @escaping(([String]) -> ())){
         //Get all Comments per Post
         //Refer to liked posts
         let db = Firestore.firestore()
-        let ref = db.collection("comments").document(postID)
-        ref.getDocument { document, error in
-            if let document = document {
-                if document.data() != nil {
-                    let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
-                    addComment(model.comments)
+        for comment in self.comments{
+            let ref = db.collection("posts").document(comment)
+            ref.getDocument { document, error in
+                if let document = document {
+                    if document.data() != nil {
+                        let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                        addComment(model.comments)
+                    }
+                    else {
+                        print("Document does not exist or has been deleted")
+                    }
+                } else {
+                    print("Document does not exist")
                 }
-                else {
-                    print("Document does not exist or has been deleted")
-                }
-            } else {
-                print("Document does not exist")
             }
         }
     }

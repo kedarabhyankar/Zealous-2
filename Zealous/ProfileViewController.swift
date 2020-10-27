@@ -16,8 +16,25 @@ import BRYXBanner
 protocol ProfileTable {
     func remove(postId: String)
 }
+protocol ProfileDelegate {
+    func savePost(postId: String)
+    func downvote(postId: String)
+    func upvote(postId: String)
+}
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, ProfileDelegate {
+    func savePost(postId: String) {
+        currentUser?.toggleSavedPost(postTitle: postId)
+    }
+    
+    func downvote(postId: String) {
+        currentUser?.addDownVote(postTitle: postId)
+    }
+    
+    func upvote(postId: String) {
+        currentUser?.addUpVote(postTitle: postId)
+    }
+    
 
     @IBOutlet weak var createPostButtom: UIButton!
     
@@ -39,6 +56,7 @@ class ProfileViewController: UIViewController {
     var isThisUser: Bool = true
     var firstCommentUN: String = ""
     var firstCommentText: String = ""
+    var commentList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +72,8 @@ class ProfileViewController: UIViewController {
             createPostButtom.isHidden = true
             editProfileButton.isHidden = true
         }
-        profileTableView.rowHeight = 540
-        profileTableView.estimatedRowHeight = 540
+        profileTableView.rowHeight = 620
+        profileTableView.estimatedRowHeight = 620
         profileTableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
@@ -162,6 +180,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             print(profilePosts[i].postId)
         }
         let post = profilePosts[indexPath.row]
+        commentList.removeAll()
+        commentList = post.comments
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
@@ -184,6 +204,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         else{
             cell.deletePost.isHidden = false
         }
+        cell.delegate = self
         cell.tableDelegate = self
         if !isThisUser {
             cell.deletePost.isHidden = true
@@ -211,6 +232,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is CommentsViewController
+        {
+            let vc = segue.destination as? CommentsViewController
+            vc?.comments = commentList
+        }
     }
 }
 

@@ -36,11 +36,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Profile" rowHeight="540" id="gzv-Nj-vGb" customClass="UserPostCell" customModule="Zealous" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="540"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Profile" rowHeight="620" id="gzv-Nj-vGb" customClass="UserPostCell" customModule="Zealous" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="620"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gzv-Nj-vGb" id="ebd-3v-SdI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="540"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="620"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pa0-9w-KIa" userLabel="Profile Picture">
@@ -60,7 +60,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjO-gq-cko">
-                                                    <rect key="frame" x="295" y="495" width="64" height="30"/>
+                                                    <rect key="frame" x="295" y="575" width="64" height="30"/>
                                                     <color key="backgroundColor" name="AccentColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="64" id="EaS-sQ-qb9"/>
@@ -171,7 +171,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3k6-lt-iwO">
-                                                    <rect key="frame" x="16" y="495" width="271" height="34"/>
+                                                    <rect key="frame" x="16" y="575" width="271" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="271" id="31A-Et-MgT"/>
                                                     </constraints>

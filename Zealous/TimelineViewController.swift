@@ -32,14 +32,15 @@ class TimelineViewController: UIViewController, TimelineDelegate {
      var topics: [Topic] = []
     var firstCommentUN: String = ""
     var firstCommentText: String = ""
+    var commentList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         timelineTableView.delegate = self
         timelineTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
-        timelineTableView.rowHeight = 540
-        timelineTableView.estimatedRowHeight = 540
+        timelineTableView.rowHeight = 620
+        timelineTableView.estimatedRowHeight = 620
     }
     
     func getUser(currentUser: WriteableUser) {
@@ -117,6 +118,8 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
                })
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
         let post = posts[indexPath.row]
+        commentList.removeAll()
+        commentList = post.comments
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
@@ -131,6 +134,8 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.DisplayedCommentUserName?.text = firstCommentUN
         cell.DisplayedCommentText?.text = firstCommentText
+        //get comments
+        print(post.comments)
         cell.delegate = self
 
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
@@ -153,6 +158,14 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is CommentsViewController
+        {
+            let vc = segue.destination as? CommentsViewController
+            vc?.comments = commentList
+        }
     }
 }
 

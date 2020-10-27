@@ -26,13 +26,14 @@ class CommentsViewController: UIViewController {
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
+        commentsTableView.reloadData()
     }
     
     func getUser(currentUser: WriteableUser) {
-        print("getUser")
+        print("COMMENTS VIEW CONTROLLER getUser")
         self.currentUser = currentUser
-        
-        comments.append("vanshika: Nice Picture!")
+        //comments.append("vanshika: Nice Picture!")
+        print(comments)
         for comm in comments {
             print(comm)
         }

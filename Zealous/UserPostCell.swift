@@ -41,6 +41,7 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
     @IBOutlet weak var commentText: UITextField!
     var id:String? = nil
     var currentUser: WriteableUser? = nil
+    var delegate: ProfileDelegate? = nil
         var currentPost: Post? = nil
         var userPosts: [Post] = []
         
@@ -49,20 +50,25 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         }
     
         @IBAction func upVotePressed ( sender: Any) {
-            currentUser?.addUpVote(postTitle: id!)
+            delegate?.upvote(postId: id!)
         }
         @IBAction func downVotePressed ( sender: Any) {
-            currentUser?.addDownVote(postTitle: id!)
+            delegate?.downvote(postId: id!)
         }
     @IBAction func postCommentPressed(_ sender: Any) {
-        
+        print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        currentUser?.comment(comment: commentText.text! as String, postId: id!)
+        commentText.text = ""
     }
     
     @IBAction func savePostPressed(_ sender: Any) {
-        currentUser?.toggleSavedPost(postTitle: id!)
+        
+        /*currentUser?.toggleSavedPost(postTitle: id!)
         if tableDelegate != nil {
             tableDelegate?.remove(postId: id!)
-        }
+        }*/
+        print("USER PRESSED SAVE")
+        delegate?.savePost(postId: id!)
     }
     @IBAction func deletePostPressed ( sender: Any) {
             //first get the post from the user
