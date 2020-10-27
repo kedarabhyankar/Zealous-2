@@ -37,6 +37,8 @@ class ProfileViewController: UIViewController {
     var currentUser: WriteableUser? = nil
     var profilePosts: [Post] = []
     var isThisUser: Bool = true
+    var firstCommentUN: String = ""
+    var firstCommentText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,6 +166,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        // COMMENTS
+        if post.comments.isEmpty{
+            firstCommentUN = ""
+            firstCommentText = ""
+        }else{
+        let firstComment: String = post.comments[0]
+            firstCommentUN = firstComment.components(separatedBy: ": ")[0]
+            firstCommentText = firstComment.components(separatedBy: ": ")[1]
+        }
+        cell.DisplayedCommentUserName?.text = firstCommentUN
+        cell.DisplayedCommentText?.text = firstCommentText
+        //END COMMENTS
         if post.creatorId != currentUser?.email {
             cell.deletePost.isHidden = true
         }

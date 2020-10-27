@@ -17,10 +17,11 @@ class FeedViewCell: UITableViewCell {
     @IBOutlet weak var savePost: UIButton!
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
-    @IBOutlet weak var comments: UITableView!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var postImg: UIImageView!
     
+    @IBOutlet weak var DisplayedCommentUserName: UILabel!
+    @IBOutlet weak var DisplayedCommentText: UILabel!
     @IBOutlet weak var postCaption: UILabel!
     @IBOutlet weak var postTitle: UILabel!
     
