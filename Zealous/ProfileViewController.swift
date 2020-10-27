@@ -205,6 +205,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell.deletePost.isHidden = false
         }
         cell.delegate = self
+        cell.cellDelegate = self
         cell.tableDelegate = self
         if !isThisUser {
             cell.deletePost.isHidden = true
@@ -254,5 +255,11 @@ extension ProfileViewController: ProfileTable {
         }
         print(profilePosts)
         profileTableView.reloadData()
+    }
+}
+extension ProfileViewController: ProfileCellDelegate {
+    func profileCell(cell:UserPostCell, didTappedThe button: UIButton?) {
+        self.performSegue(withIdentifier: "toSelfP", sender: self)
+        print("REFRESH!!!!")
     }
 }

@@ -12,6 +12,10 @@ import FirebaseAuth
 import BRYXBanner
 import CodableFirebase
 
+protocol FeedCellDelegate:class {
+    func feedCell(cell:FeedViewCell, didTappedThe button:UIButton?)
+}
+
 class FeedViewCell: UITableViewCell {
     
     @IBOutlet weak var savePost: UIButton!
@@ -31,6 +35,7 @@ class FeedViewCell: UITableViewCell {
     var id: String? = nil
     var currentUser: WriteableUser? = nil
     var delegate: TimelineDelegate? = nil
+    weak var cellDelegate:FeedCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,6 +61,7 @@ class FeedViewCell: UITableViewCell {
         print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
         currentUser?.comment(comment: commentText.text! as String, postId: id!)
         commentText.text = ""
+        cellDelegate?.feedCell(cell: self, didTappedThe: sender as? UIButton)
         //ADD: REFRESH TIMELINE TABLE VIEW
     }
     

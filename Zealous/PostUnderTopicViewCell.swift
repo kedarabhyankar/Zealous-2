@@ -12,7 +12,6 @@ class PostUnderTopicViewCell: UITableViewCell {
     @IBOutlet weak var savePost: UIButton!
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
-    @IBOutlet weak var comments: UITableView!
     @IBOutlet weak var postCaption: UILabel!
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var downVote: UIButton!
@@ -20,8 +19,13 @@ class PostUnderTopicViewCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var profilePicture: UIImageView!
+    
+    @IBOutlet weak var DisaplyedCommentUN: UILabel!
+    
+    @IBOutlet weak var DisplayedCommentText: UILabel!
     var id:String? = nil
     var currentUser: WriteableUser? = nil
+    var delegate: TopicDelegate? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

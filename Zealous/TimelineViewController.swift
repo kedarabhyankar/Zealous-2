@@ -137,7 +137,7 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         //get comments
         print(post.comments)
         cell.delegate = self
-
+        cell.cellDelegate = self
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
@@ -168,5 +168,10 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
+extension TimelineViewController: FeedCellDelegate {
+    func feedCell(cell: FeedViewCell, didTappedThe button: UIButton?) {
+        self.performSegue(withIdentifier: "toSelf", sender: self)
+        print("REFRESH!!!!")
+    }
+}
 
