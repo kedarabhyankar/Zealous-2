@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F8061C07C0AF8369B2D8E7B /* Pods_ZealousTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC350C375FB1A83BE4E0988 /* Pods_ZealousTests.framework */; };
+		3A4AEDA7254774C200B5E097 /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4AEDA6254774C200B5E097 /* Comments.storyboard */; };
 		60BCBE1344F08E53CAC7F3A5 /* Pods_Zealous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3DDC50AE429B5F2AF2475A /* Pods_Zealous.framework */; };
 		A607790525292B0500054A25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6225255E5F00E49593 /* Timeline.storyboard */; };
 		A607790625292B1F00054A25 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5E25255E5F00E49593 /* Profile.storyboard */; };
@@ -83,6 +84,7 @@
 		1346EF0F3C2EBE46BEB8AB99 /* Pods-ZealousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.debug.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.debug.xcconfig"; sourceTree = "<group>"; };
 		24AE2A78F10BCB1E30A07F88 /* Pods-Zealous-ZealousUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.release.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2943681E6F6F9E171140E938 /* Pods-Zealous-ZealousUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous-ZealousUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zealous-ZealousUITests/Pods-Zealous-ZealousUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3A4AEDA6254774C200B5E097 /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
 		494C91A24401667788D5461C /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 		52B4DC71998B800B277CDCAD /* Pods_Zealous_ZealousUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous_ZealousUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3DDC50AE429B5F2AF2475A /* Pods_Zealous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zealous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +279,7 @@
 				C60043EE25395A31009AC96D /* PostsUnderTopicViewController.swift */,
 				C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */,
 				C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */,
+				3A4AEDA6254774C200B5E097 /* Comments.storyboard */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				A607790525292B0500054A25 /* Timeline.storyboard in Resources */,
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				C60043EA253959B9009AC96D /* PostsUnderTopic.storyboard in Resources */,
+				3A4AEDA7254774C200B5E097 /* Comments.storyboard in Resources */,
 				A607790925292B3E00054A25 /* Followers.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
 				A607790725292B2E00054A25 /* Search.storyboard in Resources */,

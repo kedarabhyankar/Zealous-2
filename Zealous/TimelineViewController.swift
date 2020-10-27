@@ -30,6 +30,8 @@ class TimelineViewController: UIViewController, TimelineDelegate {
     var following: [WriteableUser] = []
     var posts: [Post] = []
      var topics: [Topic] = []
+    var firstCommentUN: String = ""
+    var firstCommentText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,8 @@ class TimelineViewController: UIViewController, TimelineDelegate {
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
         currentUser.getFollowedTopics(addTopic: addTopic)
+        //GET FIRST COMMENT FROM DB and set to firstCOMMENTUN/TEXT
+        
         if !posts.isEmpty {
             posts.sort(by: {$0.timestamp > $1.timestamp})
         }
@@ -117,8 +121,18 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        if post.comments.isEmpty{
+            firstCommentUN = ""
+            firstCommentText = ""
+        }else{
+        let firstComment: String = post.comments[0]
+            firstCommentUN = firstComment.components(separatedBy: ": ")[0]
+            firstCommentText = firstComment.components(separatedBy: ": ")[1]
+        }
+        cell.DisplayedCommentUserName?.text = firstCommentUN
+        cell.DisplayedCommentText?.text = firstCommentText
         cell.delegate = self
-        
+
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         

@@ -17,12 +17,26 @@ extension WriteableUser {
         self.likedPosts.append(post.postId)
     }
     
+    mutating func deleteLikedPost(postId: String) {
+        let index: Int = self.likedPosts.firstIndex(of: postId)!
+        self.likedPosts.remove(at: index)
+    }
+    
     mutating func addDislikedPost(post: Post) {
         self.dislikePosts.append(post.postId)
     }
     
+    mutating func deleteDislikedPost(postId: String) {
+        let index: Int = self.dislikePosts.firstIndex(of: postId)!
+        self.dislikePosts.remove(at: index)
+    }
     mutating func addSavedPost(post: Post) {
         self.savedPosts.append(post.postId)
+    }
+    
+    mutating func deleteSavedPost(postId: String) {
+        let index: Int = self.savedPosts.firstIndex(of: postId)!
+        self.savedPosts.remove(at: index)
     }
     
     mutating func addCreatedPost(post: Post) {

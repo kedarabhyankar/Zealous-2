@@ -89,6 +89,56 @@ struct Post: Codable {
     static func deletePost(postId: String) {
         let db = Firestore.firestore()
         db.collection("posts").document(postId).delete()
+        //delete each post from user's saved/liked/disliked array
+        let userRef = db.collection("users")
+        userRef.whereField("savedPosts", arrayContains: postId).getDocuments() { querySnap, error in
+            if (error != nil) {
+                print("error getting doc")
+                return
+            }
+            if (querySnap == nil) {
+                return
+            } else {
+                for doc in querySnap!.documents {
+                    var model = try! FirestoreDecoder().decode(WriteableUser.self, from: doc.data())
+                    model.deleteSavedPost(postId: postId)
+                    doc.reference.updateData(["savedPosts": model.savedPosts])
+                }
+            }
+            
+        }
+        userRef.whereField("likedPosts", arrayContains: postId).getDocuments() { querySnap2, error2 in
+            if (error2 != nil) {
+                print("error getting doc")
+                return
+            }
+            if (querySnap2 == nil) {
+                return
+            } else {
+                for doc2 in querySnap2!.documents {
+                    var model2 = try! FirestoreDecoder().decode(WriteableUser.self, from: doc2.data())
+                    model2.deleteLikedPost(postId: postId)
+                    doc2.reference.updateData(["likedPosts": model2.likedPosts])
+                }
+            }
+            
+        }
+        userRef.whereField("dislikedPosts", arrayContains: postId).getDocuments() { querySnap3, error3 in
+            if (error3 != nil) {
+                print("error getting doc")
+                return
+            }
+            if (querySnap3 == nil) {
+                return
+            } else {
+                for doc3 in querySnap3!.documents {
+                    var model3 = try! FirestoreDecoder().decode(WriteableUser.self, from: doc3.data())
+                    model3.deleteDislikedPost(postId: postId)
+                    doc3.reference.updateData(["likedPosts": model3.dislikePosts])
+                }
+            }
+            
+        }
     }
     
     static func deleteStoragePost(thePost: Post, theUser: WriteableUser) {
@@ -104,5 +154,23 @@ struct Post: Codable {
         }
     }
     
-    
+    func getComments(postID: String, addComment: @escaping(([String]) -> ())){
+        //Get all Comments per Post
+        //Refer to liked posts
+        let db = Firestore.firestore()
+        let ref = db.collection("comments").document(postID)
+        ref.getDocument { document, error in
+            if let document = document {
+                if document.data() != nil {
+                    let model = try! FirestoreDecoder().decode(Post.self, from: document.data()!)
+                    addComment(model.comments)
+                }
+                else {
+                    print("Document does not exist or has been deleted")
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
 }
