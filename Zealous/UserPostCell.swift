@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol ProfileCellDelegate:class {
+    func profileCell(cell:UserPostCell, didTappedThe button:UIButton?)
+}
 class UserPostCell: UITableViewCell, UITableViewDelegate {
     
     var tableDelegate: ProfileTable? = nil
@@ -33,6 +36,7 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         @IBOutlet weak var upVote: UIButton!
         @IBOutlet weak var downVote: UIButton!
    
+    weak var cellDelegate: ProfileCellDelegate?
     @IBOutlet weak var DisplayedCommentUserName: UILabel!
     
     @IBOutlet weak var DisplayedCommentText: UILabel!
@@ -51,14 +55,17 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
     
         @IBAction func upVotePressed ( sender: Any) {
             delegate?.upvote(postId: id!)
+            cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
         }
         @IBAction func downVotePressed ( sender: Any) {
             delegate?.downvote(postId: id!)
+            cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
         }
     @IBAction func postCommentPressed(_ sender: Any) {
         print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
         currentUser?.comment(comment: commentText.text! as String, postId: id!)
         commentText.text = ""
+        cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
     }
     
     @IBAction func savePostPressed(_ sender: Any) {
@@ -69,10 +76,12 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         }*/
         print("USER PRESSED SAVE")
         delegate?.savePost(postId: id!)
+        cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
     }
     @IBAction func deletePostPressed ( sender: Any) {
             //first get the post from the user
             WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: addPost)
+        cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
         }
     
     func addPost(userPosts: [Post]) {
