@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -50,7 +50,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="620"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HqN-cD-CPl" userLabel="Profile Picture">
-                                                    <rect key="frame" x="10" y="11" width="60" height="60"/>
+                                                    <rect key="frame" x="20" y="11" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="22M-6g-M2T"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="7G6-gm-zlK"/>
@@ -93,7 +93,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOH-8k-aTE" userLabel="#Up">
-                                                    <rect key="frame" x="10" y="145" width="41" height="34"/>
+                                                    <rect key="frame" x="20" y="145" width="41" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bOH-8k-aTE" secondAttribute="height" multiplier="41:34" id="6zB-Fe-O4j"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="ewv-UA-oOW"/>
@@ -111,7 +111,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vak-5D-Y0m">
-                                                    <rect key="frame" x="10" y="216" width="41" height="34"/>
+                                                    <rect key="frame" x="20" y="216" width="41" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vak-5D-Y0m" secondAttribute="height" multiplier="41:34" id="048-Kg-8zE"/>
                                                         <constraint firstAttribute="height" constant="34" id="Low-SH-uZO"/>
@@ -209,7 +209,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="HqN-cD-CPl" firstAttribute="leading" secondItem="pFK-Kv-NA3" secondAttribute="leadingMargin" constant="-10" id="6vi-lt-Kxz"/>
+                                                <constraint firstItem="HqN-cD-CPl" firstAttribute="leading" secondItem="pFK-Kv-NA3" secondAttribute="leadingMargin" id="6vi-lt-Kxz"/>
                                                 <constraint firstItem="JwL-V6-lYL" firstAttribute="top" secondItem="0lm-Xd-S5R" secondAttribute="bottom" constant="58" id="7um-X6-hwe"/>
                                                 <constraint firstItem="gcC-pA-ciP" firstAttribute="leading" secondItem="F69-kZ-aRj" secondAttribute="leading" id="9fj-yy-mpA"/>
                                                 <constraint firstItem="vak-5D-Y0m" firstAttribute="top" secondItem="bOH-8k-aTE" secondAttribute="bottom" constant="37" id="BIM-0y-ord"/>
@@ -234,7 +234,7 @@
                                                 <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="N3u-hB-cqd" secondAttribute="leading" id="jXW-xv-i5C"/>
                                                 <constraint firstItem="F69-kZ-aRj" firstAttribute="leading" secondItem="pFK-Kv-NA3" secondAttribute="leadingMargin" id="mSH-5E-GaG"/>
                                                 <constraint firstItem="0lm-Xd-S5R" firstAttribute="trailing" secondItem="N3u-hB-cqd" secondAttribute="trailing" id="nGK-lg-Fa2"/>
-                                                <constraint firstItem="Acr-A6-0fd" firstAttribute="leading" secondItem="HqN-cD-CPl" secondAttribute="trailing" constant="8" id="ouR-Le-ahE"/>
+                                                <constraint firstItem="Acr-A6-0fd" firstAttribute="leading" secondItem="HqN-cD-CPl" secondAttribute="trailing" constant="-2" id="ouR-Le-ahE"/>
                                                 <constraint firstItem="WqJ-V6-jMz" firstAttribute="top" secondItem="Acr-A6-0fd" secondAttribute="top" id="qkM-4A-06u"/>
                                                 <constraint firstItem="chQ-8M-Lun" firstAttribute="top" secondItem="0lm-Xd-S5R" secondAttribute="bottom" constant="8" id="tJw-Si-mdE"/>
                                                 <constraint firstItem="bOH-8k-aTE" firstAttribute="top" secondItem="HqN-cD-CPl" secondAttribute="bottom" constant="74" id="v2W-Mp-pHv"/>
