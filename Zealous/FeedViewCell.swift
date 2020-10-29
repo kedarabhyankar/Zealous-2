@@ -58,13 +58,22 @@ class FeedViewCell: UITableViewCell {
     }
     
     @IBAction func postCommentPressed(_ sender: Any) {
-        print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        let alreadyLike = Banner(title: "Enter Text Into Comment", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+       // print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        if ((commentText.text?.isEmpty) == true){
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }else{
         currentUser?.comment(comment: commentText.text! as String, postId: id!)
         commentText.text = ""
         cellDelegate?.feedCell(cell: self, didTappedThe: sender as? UIButton)
-        //ADD: REFRESH TIMELINE TABLE VIEW
+        }
     }
-    
+    func showAndFocus(banner : Banner){
+        banner.show(duration: 3)
+    }
     @IBAction func downVotePressed(_ sender: Any) {
         delegate?.downvote(postId: id!)
     }
