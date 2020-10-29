@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BRYXBanner
 
 class PostUnderTopicViewCell: UITableViewCell {
 
@@ -43,9 +44,19 @@ class PostUnderTopicViewCell: UITableViewCell {
     }
 
     @IBAction func postCommentPressed(_ sender: Any) {
+        let alreadyLike = Banner(title: "Enter Text Into Comment", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
         //print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        if ((commentText.text?.isEmpty) == true){
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }else{
         currentUser?.comment(comment: commentText.text! as String, postId: id!)
         commentText.text = ""
+        }
+    }
+    func showAndFocus(banner : Banner){
+        banner.show(duration: 3)
     }
     @IBAction func savePostPressed(_ sender: Any) {
         currentUser?.toggleSavedPost(postTitle: id!)
