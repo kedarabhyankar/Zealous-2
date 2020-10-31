@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17503.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="qQG-sh-Kco">
+            <objects>
+                <viewController id="vb6-EQ-Adq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CmO-S2-5IP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udj-RH-TOm">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Create Post" id="tLN-0y-HOV"/>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your post title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yul-Cd-eb7">
+                                <rect key="frame" x="16" y="125" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cn-oY-G1m">
+                                <rect key="frame" x="16" y="96" width="33" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0u8-tC-TTy">
+                                <rect key="frame" x="16" y="167" width="343" height="32"/>
+                                <segments>
+                                    <segment title="Text Post"/>
+                                    <segment title="Image Post"/>
+                                </segments>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1rF-ds-0EE">
+                                <rect key="frame" x="16" y="206" width="343" height="229"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTa-GJ-Lsh">
+                                <rect key="frame" x="112" y="631" width="151" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <state key="normal" title="Submit Post">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds2-XX-ony">
+                                <rect key="frame" x="16" y="451" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tag your post!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0o7-un-b1q">
+                                <rect key="frame" x="16" y="480" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ayb-Oj-EOC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="udj-RH-TOm" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" id="0fj-N5-2MG"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="trailing" secondItem="ds2-XX-ony" secondAttribute="trailing" constant="309" id="4U9-OV-gXs"/>
+                            <constraint firstItem="UTa-GJ-Lsh" firstAttribute="top" secondItem="0o7-un-b1q" secondAttribute="bottom" constant="117" id="4gB-uC-x1W"/>
+                            <constraint firstItem="0u8-tC-TTy" firstAttribute="top" secondItem="yul-Cd-eb7" secondAttribute="bottom" constant="8" symbolic="YES" id="6WO-dT-rSa"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="trailing" secondItem="0u8-tC-TTy" secondAttribute="trailing" constant="16" id="DJj-p3-NJX"/>
+                            <constraint firstItem="yul-Cd-eb7" firstAttribute="top" secondItem="8cn-oY-G1m" secondAttribute="bottom" constant="8" symbolic="YES" id="Fnh-ZF-nFM"/>
+                            <constraint firstItem="1rF-ds-0EE" firstAttribute="top" secondItem="0u8-tC-TTy" secondAttribute="bottom" constant="8" symbolic="YES" id="I6D-Ld-we2"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="trailing" secondItem="1rF-ds-0EE" secondAttribute="trailing" constant="16" id="IHE-Cx-rCR"/>
+                            <constraint firstItem="8cn-oY-G1m" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" constant="16" id="MQf-bM-Byc"/>
+                            <constraint firstItem="ds2-XX-ony" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" constant="16" id="Q0F-l7-b4O"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="bottom" secondItem="1rF-ds-0EE" secondAttribute="bottom" constant="343" id="Qbm-kT-evb"/>
+                            <constraint firstItem="udj-RH-TOm" firstAttribute="trailing" secondItem="Ayb-Oj-EOC" secondAttribute="trailing" id="SKW-Wt-dS1"/>
+                            <constraint firstItem="udj-RH-TOm" firstAttribute="top" secondItem="Ayb-Oj-EOC" secondAttribute="top" id="SMj-tF-lRJ"/>
+                            <constraint firstItem="ds2-XX-ony" firstAttribute="top" secondItem="1rF-ds-0EE" secondAttribute="bottom" constant="16" id="Tut-4a-oXh"/>
+                            <constraint firstItem="0u8-tC-TTy" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" constant="16" id="W0g-BT-JAX"/>
+                            <constraint firstItem="yul-Cd-eb7" firstAttribute="top" secondItem="8cn-oY-G1m" secondAttribute="bottom" constant="8" symbolic="YES" id="WT4-dD-FKT"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="trailing" secondItem="8cn-oY-G1m" secondAttribute="trailing" constant="326" id="YAz-qX-esk"/>
+                            <constraint firstItem="UTa-GJ-Lsh" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" constant="112" id="ZFK-md-95Y"/>
+                            <constraint firstItem="1rF-ds-0EE" firstAttribute="top" secondItem="0u8-tC-TTy" secondAttribute="bottom" constant="8" symbolic="YES" id="coD-DY-nP1"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="trailing" secondItem="yul-Cd-eb7" secondAttribute="trailing" constant="16" id="eTp-pV-f7w"/>
+                            <constraint firstItem="1rF-ds-0EE" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" constant="16" id="gRz-9Z-gNU"/>
+                            <constraint firstItem="8cn-oY-G1m" firstAttribute="top" secondItem="udj-RH-TOm" secondAttribute="bottom" constant="8" id="kXI-EM-Iay"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="trailing" secondItem="0o7-un-b1q" secondAttribute="trailing" constant="16" id="lSK-gV-7bs"/>
+                            <constraint firstItem="0o7-un-b1q" firstAttribute="top" secondItem="ds2-XX-ony" secondAttribute="bottom" constant="8" id="mcG-Vs-pAI"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="trailing" secondItem="UTa-GJ-Lsh" secondAttribute="trailing" constant="112" id="pTd-ST-haE"/>
+                            <constraint firstItem="Ayb-Oj-EOC" firstAttribute="bottom" secondItem="UTa-GJ-Lsh" secondAttribute="bottom" constant="117" id="r15-gg-JPA"/>
+                            <constraint firstItem="0o7-un-b1q" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" constant="16" id="x6b-gZ-zVY"/>
+                            <constraint firstItem="yul-Cd-eb7" firstAttribute="leading" secondItem="Ayb-Oj-EOC" secondAttribute="leading" constant="16" id="yBA-sE-a4m"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ypp-Dn-LS9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144.80000000000001" y="145.56650246305421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

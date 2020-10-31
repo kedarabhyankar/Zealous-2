@@ -132,7 +132,7 @@
 		E4039C11251C0D1A00486E9B /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadViewController.swift; sourceTree = "<group>"; };
 		E40D117B252229E300D74DE6 /* VerifyEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailViewController.swift; sourceTree = "<group>"; };
 		E4170BE2251D564000C5C0E7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E42F4DC7254BA85700A2EB7A /* NewProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = NewProfile.storyboard; path = ../../../../../NewProfile.storyboard; sourceTree = "<group>"; };
+		E42F4DC7254BA85700A2EB7A /* NewProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProfile.storyboard; sourceTree = "<group>"; };
 		E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E44D2FFA25196525000FB63B /* Zealous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zealous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D2FFD25196525000FB63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		E44D301B25196527000FB63B /* ZealousUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZealousUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D301F25196527000FB63B /* ZealousUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZealousUITests.swift; sourceTree = "<group>"; };
 		E44D302125196527000FB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4CE182A254DF31E005325AA /* NewCreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = NewCreatePost.storyboard; path = ../../../../../NewCreatePost.storyboard; sourceTree = "<group>"; };
+		E4CE182A254DF31E005325AA /* NewCreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewCreatePost.storyboard; sourceTree = "<group>"; };
 		F9049C0C143F03741A4106C5 /* Pods-Zealous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.release.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.release.xcconfig"; sourceTree = "<group>"; };
 		FA272A7A62FF5E35C3DF510B /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
