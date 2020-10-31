@@ -61,6 +61,7 @@
 		E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44D300825196527000FB63B /* LaunchScreen.storyboard */; };
 		E44D301525196527000FB63B /* ZealousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301425196527000FB63B /* ZealousTests.swift */; };
 		E44D302025196527000FB63B /* ZealousUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301F25196527000FB63B /* ZealousUITests.swift */; };
+		E4CE182B254DF31E005325AA /* NewCreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4CE182A254DF31E005325AA /* NewCreatePost.storyboard */; };
 		E5BB5C7FB344ED7B3B4CD444 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9774B808EDFCD918603FAF57 /* Pods_Zealous_ZealousUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		E44D301B25196527000FB63B /* ZealousUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZealousUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D301F25196527000FB63B /* ZealousUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZealousUITests.swift; sourceTree = "<group>"; };
 		E44D302125196527000FB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4CE182A254DF31E005325AA /* NewCreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = NewCreatePost.storyboard; path = ../../../../../NewCreatePost.storyboard; sourceTree = "<group>"; };
 		F9049C0C143F03741A4106C5 /* Pods-Zealous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.release.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.release.xcconfig"; sourceTree = "<group>"; };
 		FA272A7A62FF5E35C3DF510B /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,6 +288,7 @@
 				3A4AEDA6254774C200B5E097 /* Comments.storyboard */,
 				C60048A02548C4E9009AC96D /* CommentsViewController.swift */,
 				E42F4DC7254BA85700A2EB7A /* NewProfile.storyboard */,
+				E4CE182A254DF31E005325AA /* NewCreatePost.storyboard */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
 				A607790725292B2E00054A25 /* Search.storyboard in Resources */,
 				C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */,
+				E4CE182B254DF31E005325AA /* NewCreatePost.storyboard in Resources */,
 				C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */,
 				A607790625292B1F00054A25 /* Profile.storyboard in Resources */,
 				C66B88F225269561006BAD5F /* Topics.storyboard in Resources */,
