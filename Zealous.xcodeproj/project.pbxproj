@@ -51,6 +51,7 @@
 		E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C11251C0D1A00486E9B /* PhotoUploadViewController.swift */; };
 		E40D117C252229E300D74DE6 /* VerifyEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D117B252229E300D74DE6 /* VerifyEmailViewController.swift */; };
 		E4170BE3251D564000C5C0E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4170BE2251D564000C5C0E7 /* LoginViewController.swift */; };
+		E42F4DC8254BA85700A2EB7A /* NewProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42F4DC7254BA85700A2EB7A /* NewProfile.storyboard */; };
 		E4415AC9251CE629009A5EFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */; };
 		E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFD25196525000FB63B /* AppDelegate.swift */; };
 		E44D300025196525000FB63B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D2FFF25196525000FB63B /* SceneDelegate.swift */; };
@@ -130,6 +131,7 @@
 		E4039C11251C0D1A00486E9B /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadViewController.swift; sourceTree = "<group>"; };
 		E40D117B252229E300D74DE6 /* VerifyEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailViewController.swift; sourceTree = "<group>"; };
 		E4170BE2251D564000C5C0E7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E42F4DC7254BA85700A2EB7A /* NewProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = NewProfile.storyboard; path = ../../../../../NewProfile.storyboard; sourceTree = "<group>"; };
 		E4415AC8251CE629009A5EFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E44D2FFA25196525000FB63B /* Zealous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zealous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D2FFD25196525000FB63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */,
 				3A4AEDA6254774C200B5E097 /* Comments.storyboard */,
 				C60048A02548C4E9009AC96D /* CommentsViewController.swift */,
+				E42F4DC7254BA85700A2EB7A /* NewProfile.storyboard */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				E44D300725196527000FB63B /* Assets.xcassets in Resources */,
 				C60043EA253959B9009AC96D /* PostsUnderTopic.storyboard in Resources */,
 				3A4AEDA7254774C200B5E097 /* Comments.storyboard in Resources */,
+				E42F4DC8254BA85700A2EB7A /* NewProfile.storyboard in Resources */,
 				A607790925292B3E00054A25 /* Followers.storyboard in Resources */,
 				E44D300525196525000FB63B /* Main.storyboard in Resources */,
 				A607790725292B2E00054A25 /* Search.storyboard in Resources */,
