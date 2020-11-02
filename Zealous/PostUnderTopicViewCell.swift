@@ -10,6 +10,7 @@ import BRYXBanner
 
 class PostUnderTopicViewCell: UITableViewCell {
 
+    @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var savePost: UIButton!
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
@@ -19,7 +20,6 @@ class PostUnderTopicViewCell: UITableViewCell {
     @IBOutlet weak var upVote: UIButton!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var postImage: UIImageView!
-    @IBOutlet weak var profilePicture: UIImageView!
     
     @IBOutlet weak var DisaplyedCommentUN: UILabel!
     
