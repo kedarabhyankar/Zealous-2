@@ -77,7 +77,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acr-A6-0fd">
-                                                    <rect key="frame" x="74" y="16" width="302" height="32"/>
+                                                    <rect key="frame" x="80" y="16" width="302" height="32"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" none="YES"/>
                                                     </accessibility>
@@ -219,7 +219,7 @@
                                                 <constraint firstItem="vak-5D-Y0m" firstAttribute="top" secondItem="bOH-8k-aTE" secondAttribute="bottom" constant="37" id="BIM-0y-ord"/>
                                                 <constraint firstItem="Wc5-X1-mh0" firstAttribute="top" secondItem="Acr-A6-0fd" secondAttribute="bottom" constant="26" id="GVB-wF-VSW"/>
                                                 <constraint firstItem="N3u-hB-cqd" firstAttribute="top" secondItem="vXv-aY-SBR" secondAttribute="bottom" constant="9" id="Ri9-cg-2Ot"/>
-                                                <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="Acr-A6-0fd" secondAttribute="leading" constant="-8" id="Tjn-11-TZ1"/>
+                                                <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="Acr-A6-0fd" secondAttribute="leading" constant="-14" id="Tjn-11-TZ1"/>
                                                 <constraint firstItem="HqN-cD-CPl" firstAttribute="top" secondItem="pFK-Kv-NA3" secondAttribute="topMargin" id="Y4E-Cr-vd6"/>
                                                 <constraint firstItem="vXv-aY-SBR" firstAttribute="top" secondItem="Wc5-X1-mh0" secondAttribute="bottom" constant="15" id="aWG-fm-IJH"/>
                                                 <constraint firstItem="HqN-cD-CPl" firstAttribute="leading" secondItem="WqJ-V6-jMz" secondAttribute="trailing" constant="23" id="gVl-Dw-daY"/>
@@ -228,7 +228,7 @@
                                                 <constraint firstItem="HqN-cD-CPl" firstAttribute="leading" secondItem="bOH-8k-aTE" secondAttribute="leading" id="hC3-ek-Jz6"/>
                                                 <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="vXv-aY-SBR" secondAttribute="leading" id="iDT-gp-XeK"/>
                                                 <constraint firstItem="Wc5-X1-mh0" firstAttribute="leading" secondItem="N3u-hB-cqd" secondAttribute="leading" id="jXW-xv-i5C"/>
-                                                <constraint firstItem="Acr-A6-0fd" firstAttribute="leading" secondItem="HqN-cD-CPl" secondAttribute="trailing" constant="-2" id="ouR-Le-ahE"/>
+                                                <constraint firstItem="Acr-A6-0fd" firstAttribute="leading" secondItem="HqN-cD-CPl" secondAttribute="trailing" constant="4" id="ouR-Le-ahE"/>
                                                 <constraint firstItem="WqJ-V6-jMz" firstAttribute="top" secondItem="Acr-A6-0fd" secondAttribute="top" id="qkM-4A-06u"/>
                                                 <constraint firstItem="bOH-8k-aTE" firstAttribute="top" secondItem="HqN-cD-CPl" secondAttribute="bottom" constant="74" id="v2W-Mp-pHv"/>
                                             </constraints>
