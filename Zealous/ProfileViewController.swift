@@ -71,6 +71,9 @@ class ProfileViewController: UIViewController, ProfileDelegate {
             isThisUser = false
             createPostButtom.isHidden = true
             editProfileButton.isHidden = true
+            self.followersButton.isHidden = true
+            self.followingButton.isHidden = true
+            self.interestsButton.isHidden = true
         }
         profileTableView.rowHeight = 620
         profileTableView.estimatedRowHeight = 620
@@ -210,9 +213,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if !isThisUser {
             cell.deletePost.isHidden = true
             cell.savePost.isHidden = true
-            self.followersButton.isHidden = true
-            self.followingButton.isHidden = true
-            self.interestsButton.isHidden = true
         }
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
