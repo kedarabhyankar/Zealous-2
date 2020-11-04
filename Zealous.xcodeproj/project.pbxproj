@@ -60,6 +60,8 @@
 		E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44D300825196527000FB63B /* LaunchScreen.storyboard */; };
 		E44D301525196527000FB63B /* ZealousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301425196527000FB63B /* ZealousTests.swift */; };
 		E44D302025196527000FB63B /* ZealousUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44D301F25196527000FB63B /* ZealousUITests.swift */; };
+		E4A5DA8B2553661F0044C928 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A5DA8A2553661F0044C928 /* SearchCell.swift */; };
+		E4F1DE5C2553670100EEB007 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F1DE5B2553670100EEB007 /* SearchViewController.swift */; };
 		E5BB5C7FB344ED7B3B4CD444 /* Pods_Zealous_ZealousUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9774B808EDFCD918603FAF57 /* Pods_Zealous_ZealousUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		E44D301B25196527000FB63B /* ZealousUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZealousUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44D301F25196527000FB63B /* ZealousUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZealousUITests.swift; sourceTree = "<group>"; };
 		E44D302125196527000FB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4A5DA8A2553661F0044C928 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		E4F1DE5B2553670100EEB007 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F9049C0C143F03741A4106C5 /* Pods-Zealous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zealous.release.xcconfig"; path = "Target Support Files/Pods-Zealous/Pods-Zealous.release.xcconfig"; sourceTree = "<group>"; };
 		FA272A7A62FF5E35C3DF510B /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,6 +287,8 @@
 				C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */,
 				3A4AEDA6254774C200B5E097 /* Comments.storyboard */,
 				C60048A02548C4E9009AC96D /* CommentsViewController.swift */,
+				E4A5DA8A2553661F0044C928 /* SearchCell.swift */,
+				E4F1DE5B2553670100EEB007 /* SearchViewController.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -585,7 +591,9 @@
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
 				E40D117C252229E300D74DE6 /* VerifyEmailViewController.swift in Sources */,
 				C600439625367BDC009AC96D /* AllUsersViewController.swift in Sources */,
+				E4F1DE5C2553670100EEB007 /* SearchViewController.swift in Sources */,
 				A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */,
+				E4A5DA8B2553661F0044C928 /* SearchCell.swift in Sources */,
 				BC44BB77251A9A0800C12823 /* User.swift in Sources */,
 				A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */,
 				E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */,
