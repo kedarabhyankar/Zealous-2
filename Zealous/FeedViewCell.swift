@@ -12,15 +12,20 @@ import FirebaseAuth
 import BRYXBanner
 import CodableFirebase
 
+protocol FeedCellDelegate:class {
+    func feedCell(cell:FeedViewCell, didTappedThe button:UIButton?)
+}
+
 class FeedViewCell: UITableViewCell {
     
     @IBOutlet weak var savePost: UIButton!
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
-    @IBOutlet weak var comments: UITableView!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var postImg: UIImageView!
     
+    @IBOutlet weak var DisplayedCommentUserName: UILabel!
+    @IBOutlet weak var DisplayedCommentText: UILabel!
     @IBOutlet weak var postCaption: UILabel!
     @IBOutlet weak var postTitle: UILabel!
     
@@ -30,6 +35,7 @@ class FeedViewCell: UITableViewCell {
     var id: String? = nil
     var currentUser: WriteableUser? = nil
     var delegate: TimelineDelegate? = nil
+    weak var cellDelegate:FeedCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,11 +58,22 @@ class FeedViewCell: UITableViewCell {
     }
     
     @IBAction func postCommentPressed(_ sender: Any) {
-        print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        let alreadyLike = Banner(title: "Enter Text Into Comment", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
+        
+       // print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        if ((commentText.text?.isEmpty) == true){
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }else{
         currentUser?.comment(comment: commentText.text! as String, postId: id!)
         commentText.text = ""
+        cellDelegate?.feedCell(cell: self, didTappedThe: sender as? UIButton)
+        }
     }
-    
+    func showAndFocus(banner : Banner){
+        banner.show(duration: 3)
+    }
     @IBAction func downVotePressed(_ sender: Any) {
         delegate?.downvote(postId: id!)
     }

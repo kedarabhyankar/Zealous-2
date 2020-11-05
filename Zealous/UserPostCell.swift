@@ -6,7 +6,11 @@
 //
 
 import UIKit
+import BRYXBanner
 
+protocol ProfileCellDelegate:class {
+    func profileCell(cell:UserPostCell, didTappedThe button:UIButton?)
+}
 class UserPostCell: UITableViewCell, UITableViewDelegate {
     
     var tableDelegate: ProfileTable? = nil
@@ -32,12 +36,17 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         @IBOutlet weak var deletePost: UIButton!
         @IBOutlet weak var upVote: UIButton!
         @IBOutlet weak var downVote: UIButton!
-    @IBOutlet weak var comments: UITableView!
+   
+    weak var cellDelegate: ProfileCellDelegate?
+    @IBOutlet weak var DisplayedCommentUserName: UILabel!
+    
+    @IBOutlet weak var DisplayedCommentText: UILabel!
     
     @IBOutlet weak var postComment: UIButton!
     @IBOutlet weak var commentText: UITextField!
     var id:String? = nil
     var currentUser: WriteableUser? = nil
+    var delegate: ProfileDelegate? = nil
         var currentPost: Post? = nil
         var userPosts: [Post] = []
         
@@ -46,24 +55,56 @@ class UserPostCell: UITableViewCell, UITableViewDelegate {
         }
     
         @IBAction func upVotePressed ( sender: Any) {
-            currentUser?.addUpVote(postTitle: id!)
+            delegate?.upvote(postId: id!)
+            if (currentUser?.username == self.username.text) {
+                cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
+            }
         }
         @IBAction func downVotePressed ( sender: Any) {
-            currentUser?.addDownVote(postTitle: id!)
+            delegate?.downvote(postId: id!)
+            if (currentUser?.username == self.username.text) {
+                cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
+            }
         }
     @IBAction func postCommentPressed(_ sender: Any) {
+        let alreadyLike = Banner(title: "Enter Text Into Comment", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
+        alreadyLike.dismissesOnTap = true
         
+        print("\(currentUser?.username ?? "username"): \(commentText.text! as String)")
+        if ((commentText.text?.isEmpty) == true){
+            self.showAndFocus(banner: alreadyLike)
+            return
+        }else{
+        currentUser?.comment(comment: commentText.text! as String, postId: id!)
+        commentText.text = ""
+        if (currentUser?.username == self.username.text) {
+            cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
+        }
+        }
+    }
+    
+    func showAndFocus(banner : Banner){
+        banner.show(duration: 3)
     }
     
     @IBAction func savePostPressed(_ sender: Any) {
-        currentUser?.toggleSavedPost(postTitle: id!)
+        
+        /*currentUser?.toggleSavedPost(postTitle: id!)
         if tableDelegate != nil {
             tableDelegate?.remove(postId: id!)
+        }*/
+        print("USER PRESSED SAVE")
+        delegate?.savePost(postId: id!)
+        if (currentUser?.username == self.username.text) {
+            cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
         }
     }
     @IBAction func deletePostPressed ( sender: Any) {
             //first get the post from the user
             WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: addPost)
+        if (currentUser?.username == self.username.text) {
+            cellDelegate?.profileCell(cell: self, didTappedThe: sender as? UIButton)
+        }
         }
     
     func addPost(userPosts: [Post]) {

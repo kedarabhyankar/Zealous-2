@@ -30,14 +30,17 @@ class TimelineViewController: UIViewController, TimelineDelegate {
     var following: [WriteableUser] = []
     var posts: [Post] = []
      var topics: [Topic] = []
+    var firstCommentUN: String = ""
+    var firstCommentText: String = ""
+    var commentList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         timelineTableView.delegate = self
         timelineTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
-        timelineTableView.rowHeight = 540
-        timelineTableView.estimatedRowHeight = 540
+        timelineTableView.rowHeight = 620
+        timelineTableView.estimatedRowHeight = 620
     }
     
     func getUser(currentUser: WriteableUser) {
@@ -47,6 +50,8 @@ class TimelineViewController: UIViewController, TimelineDelegate {
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
         currentUser.getFollowedTopics(addTopic: addTopic)
+        //GET FIRST COMMENT FROM DB and set to firstCOMMENTUN/TEXT
+        
         if !posts.isEmpty {
             posts.sort(by: {$0.timestamp > $1.timestamp})
         }
@@ -113,12 +118,26 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
                })
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
         let post = posts[indexPath.row]
+        commentList.removeAll()
+        commentList = post.comments
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        if post.comments.isEmpty{
+            firstCommentUN = ""
+            firstCommentText = ""
+        }else{
+        let firstComment: String = post.comments[0]
+            firstCommentUN = firstComment.components(separatedBy: ": ")[0]
+            firstCommentText = firstComment.components(separatedBy: ": ")[1]
+        }
+        cell.DisplayedCommentUserName?.text = firstCommentUN
+        cell.DisplayedCommentText?.text = firstCommentText
+        //get comments
+        print(post.comments)
         cell.delegate = self
-        
+        cell.cellDelegate = self
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
@@ -140,6 +159,19 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is CommentsViewController
+        {
+            let vc = segue.destination as? CommentsViewController
+            vc?.comments = commentList
+        }
+    }
 }
-
+extension TimelineViewController: FeedCellDelegate {
+    func feedCell(cell: FeedViewCell, didTappedThe button: UIButton?) {
+        self.performSegue(withIdentifier: "toSelf", sender: self)
+        print("REFRESH!!!!")
+    }
+}
 

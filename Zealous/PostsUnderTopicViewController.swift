@@ -13,7 +13,25 @@ import FirebaseAuth
 import CodableFirebase
 import BRYXBanner
 
-class PostsUnderTopicViewController: UIViewController {
+protocol TopicDelegate {
+    func savePost(postId: String)
+    func downvote(postId: String)
+    func upvote(postId: String)
+}
+
+class PostsUnderTopicViewController: UIViewController, TopicDelegate {
+    func savePost(postId: String) {
+        currentUser?.toggleSavedPost(postTitle: postId)
+    }
+    
+    func downvote(postId: String) {
+        currentUser?.addDownVote(postTitle: postId)
+    }
+    
+    func upvote(postId: String) {
+        currentUser?.addUpVote(postTitle: postId)
+    }
+    
 
     @IBOutlet weak var topicName: UILabel!
     @IBOutlet weak var postTableView: UITableView!
@@ -22,7 +40,9 @@ class PostsUnderTopicViewController: UIViewController {
     var likedPosts: [Post] = []
     var following: [WriteableUser] = []
     var posts: [Post] = []
-    
+    var firstCommentUN: String = ""
+    var firstCommentText: String = ""
+    var commentList: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         postTableView.delegate = self
@@ -30,8 +50,8 @@ class PostsUnderTopicViewController: UIViewController {
         WriteableUser.getCurrentUser(completion: getUser)
         addPosts()
         posts.sort(by: {$0.timestamp > $1.timestamp})
-        postTableView.rowHeight = 540
-        postTableView.estimatedRowHeight = 540
+        postTableView.rowHeight = 620
+        postTableView.estimatedRowHeight = 620
         self.postTableView.reloadData()
     }
     
@@ -70,10 +90,23 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsTopic", for: indexPath) as! PostUnderTopicViewCell
         let post = posts[indexPath.row]
         print(post)
+        commentList.removeAll()
+        commentList = post.comments
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        if post.comments.isEmpty{
+            firstCommentUN = ""
+            firstCommentText = ""
+        }else{
+        let firstComment: String = post.comments[0]
+            firstCommentUN = firstComment.components(separatedBy: ": ")[0]
+            firstCommentText = firstComment.components(separatedBy: ": ")[1]
+        }
+        cell.DisaplyedCommentUN?.text = firstCommentUN
+        cell.DisplayedCommentText?.text = firstCommentText
+        cell.delegate = self
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
@@ -83,8 +116,25 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
             } else {
                 cell.postImage?.image = UIImage(data: data!)
             }
+        
+            let ref2 = Storage.storage().reference(withPath: "media/" + post.creatorId + "/" + "profile.jpeg")
+            ref2.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print("Error: Image could not download!")
+                } else {
+                    cell.profilePicture?.image = UIImage(data: data!)
+                }
+            }
         }
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is CommentsViewController
+        {
+            let vc = segue.destination as? CommentsViewController
+            vc?.comments = commentList
+        }
     }
 }
 

@@ -16,8 +16,25 @@ import BRYXBanner
 protocol ProfileTable {
     func remove(postId: String)
 }
+protocol ProfileDelegate {
+    func savePost(postId: String)
+    func downvote(postId: String)
+    func upvote(postId: String)
+}
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, ProfileDelegate {
+    func savePost(postId: String) {
+        currentUser?.toggleSavedPost(postTitle: postId)
+    }
+    
+    func downvote(postId: String) {
+        currentUser?.addDownVote(postTitle: postId)
+    }
+    
+    func upvote(postId: String) {
+        currentUser?.addUpVote(postTitle: postId)
+    }
+    
 
     @IBOutlet weak var createPostButtom: UIButton!
     
@@ -37,6 +54,9 @@ class ProfileViewController: UIViewController {
     var currentUser: WriteableUser? = nil
     var profilePosts: [Post] = []
     var isThisUser: Bool = true
+    var firstCommentUN: String = ""
+    var firstCommentText: String = ""
+    var commentList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +71,12 @@ class ProfileViewController: UIViewController {
             isThisUser = false
             createPostButtom.isHidden = true
             editProfileButton.isHidden = true
+            self.followersButton.isHidden = true
+            self.followingButton.isHidden = true
+            self.interestsButton.isHidden = true
         }
-        profileTableView.rowHeight = 540
-        profileTableView.estimatedRowHeight = 540
+        profileTableView.rowHeight = 620
+        profileTableView.estimatedRowHeight = 620
         profileTableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
@@ -160,23 +183,36 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             print(profilePosts[i].postId)
         }
         let post = profilePosts[indexPath.row]
+        commentList.removeAll()
+        commentList = post.comments
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
         cell.id = post.postId
+        // COMMENTS
+        if post.comments.isEmpty{
+            firstCommentUN = ""
+            firstCommentText = ""
+        }else{
+        let firstComment: String = post.comments[0]
+            firstCommentUN = firstComment.components(separatedBy: ": ")[0]
+            firstCommentText = firstComment.components(separatedBy: ": ")[1]
+        }
+        cell.DisplayedCommentUserName?.text = firstCommentUN
+        cell.DisplayedCommentText?.text = firstCommentText
+        //END COMMENTS
         if post.creatorId != currentUser?.email {
             cell.deletePost.isHidden = true
         }
         else{
             cell.deletePost.isHidden = false
         }
+        cell.delegate = self
+        cell.cellDelegate = self
         cell.tableDelegate = self
         if !isThisUser {
             cell.deletePost.isHidden = true
             cell.savePost.isHidden = true
-            self.followersButton.isHidden = true
-            self.followingButton.isHidden = true
-            self.interestsButton.isHidden = true
         }
         let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
@@ -198,6 +234,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is CommentsViewController
+        {
+            let vc = segue.destination as? CommentsViewController
+            vc?.comments = commentList
+        }
+    }
 }
 
 extension ProfileViewController: ProfileTable {
@@ -211,5 +255,11 @@ extension ProfileViewController: ProfileTable {
         }
         print(profilePosts)
         profileTableView.reloadData()
+    }
+}
+extension ProfileViewController: ProfileCellDelegate {
+    func profileCell(cell:UserPostCell, didTappedThe button: UIButton?) {
+        self.performSegue(withIdentifier: "toSelfP", sender: self)
+        print("REFRESH!!!!")
     }
 }

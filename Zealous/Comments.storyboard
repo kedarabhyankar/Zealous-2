@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JUC-QI-Ov1">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Comments View Controller-->
+        <scene sceneID="JPL-NZ-pBR">
+            <objects>
+                <viewController id="JUC-QI-Ov1" customClass="CommentsViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RhC-36-xbZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="in9-4H-Y4v">
+                                <rect key="frame" x="20" y="134" width="374" height="697"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Comments" rowHeight="32" id="mNm-Ob-2yV" customClass="CommentsTableViewCell" customModule="Zealous" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="32"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mNm-Ob-2yV" id="GR1-ie-Lkx">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkF-DI-RIr">
+                                                    <rect key="frame" x="8" y="4" width="79" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkM-Ov-gee">
+                                                    <rect key="frame" x="130" y="3" width="224" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="224" id="juI-bb-SLR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PkF-DI-RIr" firstAttribute="top" secondItem="GR1-ie-Lkx" secondAttribute="top" constant="4" id="1WH-ar-m4T"/>
+                                                <constraint firstItem="dkM-Ov-gee" firstAttribute="firstBaseline" secondItem="PkF-DI-RIr" secondAttribute="baseline" id="AZj-3j-KTi"/>
+                                                <constraint firstItem="dkM-Ov-gee" firstAttribute="centerY" secondItem="PkF-DI-RIr" secondAttribute="centerY" id="U7t-wz-ZGZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="PkF-DI-RIr" secondAttribute="bottom" constant="8" id="XAb-2B-JhH"/>
+                                                <constraint firstItem="PkF-DI-RIr" firstAttribute="leading" secondItem="GR1-ie-Lkx" secondAttribute="leading" constant="8" id="fY5-SB-Beh"/>
+                                                <constraint firstItem="dkM-Ov-gee" firstAttribute="trailing" secondItem="GR1-ie-Lkx" secondAttribute="trailingMargin" id="lPS-Ab-aMq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="comment" destination="dkM-Ov-gee" id="z71-Rs-ETd"/>
+                                            <outlet property="username" destination="PkF-DI-RIr" id="l3a-Hf-IaE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVU-W2-vcC">
+                                <rect key="frame" x="0.0" y="56" width="414" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LeB-ju-g83"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="in9-4H-Y4v" firstAttribute="leading" secondItem="RhC-36-xbZ" secondAttribute="leadingMargin" id="2A4-bV-pTG"/>
+                            <constraint firstItem="in9-4H-Y4v" firstAttribute="trailing" secondItem="RhC-36-xbZ" secondAttribute="trailingMargin" id="5HO-Q0-PGe"/>
+                            <constraint firstItem="in9-4H-Y4v" firstAttribute="top" secondItem="RhC-36-xbZ" secondAttribute="topMargin" constant="90" id="Irf-Ke-8rm"/>
+                            <constraint firstItem="LeB-ju-g83" firstAttribute="bottom" secondItem="in9-4H-Y4v" secondAttribute="bottom" constant="31" id="VTr-jk-r1r"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentsTableView" destination="in9-4H-Y4v" id="TJF-rC-uSI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5N-3v-Mkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311.59420289855075" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
