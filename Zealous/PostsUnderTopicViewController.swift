@@ -68,9 +68,12 @@ class PostsUnderTopicViewController: UIViewController, TopicDelegate {
     }
     func addPosts() {
         topic?.getPosts { (post) in
-            self.posts.append(post)
-            //print(post)
-            self.postTableView.reloadData()
+            if !self.currentUser!.blockedBy.contains(post.creatorId) {
+                self.posts.append(post)
+                //print(post)
+                self.postTableView.reloadData()
+            }
+
         }
         topicName.text = topic?.title
     }
