@@ -17,6 +17,7 @@
 		A607790925292B3E00054A25 /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D6325255E6000E49593 /* Followers.storyboard */; };
 		A607790A25292B4100054A25 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6904D5C25255E5000E49593 /* CreatePost.storyboard */; };
 		A64C0DCF252BF1B500BCAA90 /* DeletePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64C0DCE252BF1B500BCAA90 /* DeletePostViewController.swift */; };
+		A6669AA1255C9CC700018168 /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6669AA0255C9CC700018168 /* DeleteUser.swift */; };
 		A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6025255E5F00E49593 /* FeedViewCell.swift */; };
 		A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6425255E6000E49593 /* UserPostCell.swift */; };
 		A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6904D6C2525638A00E49593 /* CreatePostViewController.swift */; };
@@ -86,6 +87,7 @@
 		4CE1CA35755615A30A8F0EAA /* Pods-ZealousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.debug.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A09278FC95701D104FC5E8C /* Pods-ZealousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZealousTests.release.xcconfig"; path = "Target Support Files/Pods-ZealousTests/Pods-ZealousTests.release.xcconfig"; sourceTree = "<group>"; };
 		A64C0DCE252BF1B500BCAA90 /* DeletePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostViewController.swift; sourceTree = "<group>"; };
+		A6669AA0255C9CC700018168 /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		A6904D5C25255E5000E49593 /* CreatePost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
 		A6904D5E25255E5F00E49593 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		A6904D5F25255E5F00E49593 /* Following.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Following.storyboard; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				A6904D6025255E5F00E49593 /* FeedViewCell.swift */,
 				A6904D6C2525638A00E49593 /* CreatePostViewController.swift */,
 				A6904D6325255E6000E49593 /* Followers.storyboard */,
+				A6669AA0255C9CC700018168 /* DeleteUser.swift */,
 				A6904D5F25255E5F00E49593 /* Following.storyboard */,
 				A64C0DCE252BF1B500BCAA90 /* DeletePostViewController.swift */,
 				A6904D5E25255E5F00E49593 /* Profile.storyboard */,
@@ -571,6 +574,7 @@
 				C60043912535542E009AC96D /* ProfileViewController.swift in Sources */,
 				C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */,
 				E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */,
+				A6669AA1255C9CC700018168 /* DeleteUser.swift in Sources */,
 				BC44BB8625253B9000C12823 /* FollowingViewController.swift in Sources */,
 				C600439B25367BED009AC96D /* AllTopicsViewController.swift in Sources */,
 				C66B88F4252A11BE006BAD5F /* FollowingViewCell.swift in Sources */,

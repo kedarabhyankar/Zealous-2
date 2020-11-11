@@ -272,8 +272,9 @@ extension WriteableUser {
         }
     }
     
-    static func getAUser(theUser: WriteableUser, completion: @escaping((WriteableUser) -> ())) {
-        let email = theUser.email
+    //returns a user object given the user's email
+    static func getAUser(theEmail: String, completion: @escaping((WriteableUser) -> ())) {
+        let email = theEmail
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(email)
         userRef.getDocument { document, error in
