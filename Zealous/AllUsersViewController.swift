@@ -46,10 +46,14 @@ extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let user = allUsersArray[indexPath.item]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? AllUsersViewCell
         cell?.cellDelegate = self
-        let user = allUsersArray[indexPath.item]
         cell?.username.text = user.username
+        if (self.currentUser!.blockedBy.contains(user.username)) {
+            cell?.username.text = "user has blocked you"
+            cell?.follow.isHidden = true
+        }
         return cell!
     }
     
@@ -57,7 +61,12 @@ extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         let customViewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
         let user = allUsersArray[indexPath.item]
+        if (self.currentUser!.blockedBy.contains(user.username)) {
+            print("unable to display profile because user has blocked you")
+            return
+        }
         customViewController.currentUser = user
+        customViewController.loggedInUser = currentUser!
         self.present(customViewController, animated: true, completion: nil)
     }
 }
