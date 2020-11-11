@@ -48,8 +48,6 @@ class PostsUnderTopicViewController: UIViewController, TopicDelegate {
         postTableView.delegate = self
         postTableView.dataSource = self
         WriteableUser.getCurrentUser(completion: getUser)
-        addPosts()
-        posts.sort(by: {$0.timestamp > $1.timestamp})
         postTableView.rowHeight = 620
         postTableView.estimatedRowHeight = 620
         self.postTableView.reloadData()
@@ -61,6 +59,8 @@ class PostsUnderTopicViewController: UIViewController, TopicDelegate {
        //WriteableUser.getCreatedPosts(email: currentUser.email, completion: addPosts)
         posts.sort(by: {$0.timestamp > $1.timestamp})
         postTableView.reloadData()
+        addPosts()
+        posts.sort(by: {$0.timestamp > $1.timestamp})
     }
     func setTopic(topicName: Topic) {
         //print(topicName)
