@@ -77,6 +77,14 @@ class ProfileViewController: UIViewController, ProfileDelegate {
             self.followersButton.isHidden = true
             self.followingButton.isHidden = true
 //            self.interestsButton.isHidden = true
+            if loggedInUser!.blockedBy.contains(currentUser!.email) {
+                let alertController = UIAlertController(title: "User has blocked you", message: "User has blocked you, you will not be able to view their profile until they unblock you", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+            }
             let button = UIButton(frame: self.interestsButton.frame)
             button.backgroundColor = self.interestsButton.backgroundColor
             if loggedInUser!.blocked.contains(currentUser!.email) {

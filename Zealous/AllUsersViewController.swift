@@ -31,8 +31,12 @@ class AllUsersViewController: UIViewController {
     
     func getUsers(allUsers: [WriteableUser]) {
         self.allUsersArray = allUsers
-        for aUser in allUsersArray {
+        for i in 0..<allUsersArray.count {
+            let aUser = allUsersArray[i]
             print("user: " + aUser.email + " " + aUser.firstName)
+            if currentUser!.blockedBy.contains(aUser.email) {
+                allUsersArray.remove(at: i)
+            }
         }
         usersTableView.reloadData()
     }

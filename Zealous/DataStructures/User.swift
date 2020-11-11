@@ -649,6 +649,7 @@ extension WriteableUser {
                     }
                 }
                 userToBlock.blockedBy.append(thisEmail)
+                userToBlock.unfollow(email: thisEmail)
                 
                 let dataToWrite2 = try! FirestoreEncoder().encode(userToBlock)
                 db.collection("users").document(email).setData(dataToWrite2) { error in
