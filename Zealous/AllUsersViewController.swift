@@ -31,7 +31,7 @@ class AllUsersViewController: UIViewController {
     
     func getUsers(allUsers: [WriteableUser]) {
         self.allUsersArray = allUsers
-        for i in 0..<allUsersArray.count {
+        for i in 0..<allUsers.count-1 {
             let aUser = allUsersArray[i]
             print("user: " + aUser.email + " " + aUser.firstName)
             if currentUser!.blockedBy.contains(aUser.email) {
