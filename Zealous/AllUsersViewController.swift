@@ -66,6 +66,7 @@ extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         customViewController.currentUser = user
+        customViewController.loggedInUser = currentUser!
         self.present(customViewController, animated: true, completion: nil)
     }
 }

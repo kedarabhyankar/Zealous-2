@@ -666,6 +666,34 @@ extension WriteableUser {
                 print("Document does not exist")
             }
         }
+        
+        let userRef2 = db.collection("users").document(thisEmail)
+        userRef2.getDocument { document, error in
+            if let document = document {
+                var blocker = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                print("Model: \(blocker)")
+//                for i in 0..<blocker.followers.count {
+//                    if blocker.followers[i] == thisEmail {
+//                        blocker.followers.remove(at: i)
+//                        break
+//                    }
+//                }
+                blocker.blocked.append(email)
+                
+                let dataToWrite2 = try! FirestoreEncoder().encode(blocker)
+                db.collection("users").document(thisEmail).setData(dataToWrite2) { error in
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
     
     func getAllTopics(allTopics: @escaping(([Topic]) -> ())) {

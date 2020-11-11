@@ -51,6 +51,9 @@ class ProfileViewController: UIViewController, ProfileDelegate {
     @IBOutlet weak var profilePic: UIImageView!
     
     @IBOutlet weak var profileTableView: UITableView!
+    
+    var loggedInUser: WriteableUser? = nil
+    var isBlocked: Bool = false
     var currentUser: WriteableUser? = nil
     var profilePosts: [Post] = []
     var isThisUser: Bool = true
@@ -76,7 +79,14 @@ class ProfileViewController: UIViewController, ProfileDelegate {
 //            self.interestsButton.isHidden = true
             let button = UIButton(frame: self.interestsButton.frame)
             button.backgroundColor = self.interestsButton.backgroundColor
-            button.setTitle("Block", for: .normal)
+            if loggedInUser!.blocked.contains(currentUser!.email) {
+                button.setTitle("Unblock", for: .normal)
+                isBlocked = true
+            }
+            else {
+                button.setTitle("Block", for: .normal)
+                isBlocked = false
+            }
             button.addTarget(self, action: #selector(blockButtonTapped), for: .touchUpInside)
             self.view.addSubview(button)
         }
@@ -88,8 +98,13 @@ class ProfileViewController: UIViewController, ProfileDelegate {
     }
     
     @objc func blockButtonTapped() {
-        print("Block button tapped")
-        
+        if !isBlocked {
+            loggedInUser?.block(email: currentUser!.email)
+            self.dismiss(animated: true, completion: nil)
+        }
+        else {
+            print("unblock user")
+        }
     }
     
     @objc func loadList(notification: NSNotification){
