@@ -73,12 +73,22 @@ class ProfileViewController: UIViewController, ProfileDelegate {
             editProfileButton.isHidden = true
             self.followersButton.isHidden = true
             self.followingButton.isHidden = true
-            self.interestsButton.isHidden = true
+//            self.interestsButton.isHidden = true
+            let button = UIButton(frame: self.interestsButton.frame)
+            button.backgroundColor = self.interestsButton.backgroundColor
+            button.setTitle("Block", for: .normal)
+            button.addTarget(self, action: #selector(blockButtonTapped), for: .touchUpInside)
+            self.view.addSubview(button)
         }
         profileTableView.rowHeight = 620
         profileTableView.estimatedRowHeight = 620
         profileTableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+    }
+    
+    @objc func blockButtonTapped() {
+        print("Block button tapped")
         
     }
     

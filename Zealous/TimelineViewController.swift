@@ -29,10 +29,11 @@ class TimelineViewController: UIViewController, TimelineDelegate {
     var likedPosts: [Post] = []
     var following: [WriteableUser] = []
     var posts: [Post] = []
-     var topics: [Topic] = []
+    var topics: [Topic] = []
     var firstCommentUN: String = ""
     var firstCommentText: String = ""
     var commentList: [String] = []
+    var numBlockedPosts: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +60,9 @@ class TimelineViewController: UIViewController, TimelineDelegate {
     }
     func addTimeline(postArray: [Post]) {
         for postItem in postArray {
-        posts.append(postItem)
+            if !currentUser!.blockedBy.contains(postItem.creatorId) {
+                posts.append(postItem)
+            }
             print(postItem)
         }
         timelineTableView.reloadData()
@@ -68,12 +71,14 @@ class TimelineViewController: UIViewController, TimelineDelegate {
         topics.append(topic)
         topic.getPosts { (post) in
             for postItem in self.posts {
-                if(postItem.postId == post.postId) {
+                if (postItem.postId == post.postId) {
                     return
                 }
             }
-            self.posts.append(post)
-            self.timelineTableView.reloadData()
+            if !self.currentUser!.blockedBy.contains(post.creatorId) {
+                self.posts.append(post)
+                self.timelineTableView.reloadData()
+            }
         }
     }
     

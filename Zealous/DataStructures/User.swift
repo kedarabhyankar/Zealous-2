@@ -631,59 +631,42 @@ extension WriteableUser {
         
     }
     
-    func block (user: User) {
+    func block (email: String) {
+        // add user to current user's blockedusers array
+        // add currentuser to blockedby array
+        let thisEmail = self.email
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
         
+        userRef.getDocument { document, error in
+            if let document = document {
+                var userToBlock = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                print("Model: \(userToBlock)")
+                for i in 0..<userToBlock.followers.count {
+                    if userToBlock.followers[i] == thisEmail {
+                        userToBlock.followers.remove(at: i)
+                        break
+                    }
+                }
+                userToBlock.blockedBy.append(thisEmail)
+                
+                let dataToWrite2 = try! FirestoreEncoder().encode(userToBlock)
+                db.collection("users").document(email).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
-    
-    //    func updateProfilePic (img: UIImage) {
-    //        let db = Firestore.firestore()
-    //
-    //        guard let imgData = img.jpegData(compressionQuality: 1.0)
-    //            else {
-    //                return
-    //        }
-    //
-    //        let storageRef = Storage.storage().reference()
-    //        let imagesRef = storageRef.child("profilePics")
-    //        let fileName = UUID().uuidString
-    //        let postRef = imagesRef.child(fileName)
-    //
-    //        postRef.putData(imgData, metadata: nil) { metadata, err in
-    //            if let err = err {
-    //                print(err.localizedDescription)
-    //                return
-    //            }
-    //
-    //            postRef.downloadURL(completion: { url, err in
-    //                if let err = err {
-    //                    print(err.localizedDescription)
-    //                    return
-    //                }
-    //                guard let url = url else {
-    //                    print("An error occurred when posting an image 3 ")
-    //                    return
-    //                }
-    //
-    //                db.collection("users")
-    //                    .document(self.email)
-    //                    .setData(
-    //                        ["profilePic": url.absoluteString]
-    //                )
-    //            })
-    //        }
-    //    }
-    
-    //    func updateBio (bio: String) {
-    //        let db = Firestore.firestore()
-    //        let userRef = db.collection("users").document(self.email)
-    //        userRef.updateData(["bio": bio]) { err in
-    //            if let err = err {
-    //                print("Error updating document: \(err)")
-    //            } else {
-    //                print("Document successfully updated")
-    //            }
-    //        }
-    //    }
     
     func getAllTopics(allTopics: @escaping(([Topic]) -> ())) {
         //get all the topics in the database
