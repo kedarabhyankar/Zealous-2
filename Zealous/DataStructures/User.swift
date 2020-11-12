@@ -737,8 +737,44 @@ extension WriteableUser {
         }
     }
     
-    
-    
+    static func getAllUsersAdmin(allUsers: @escaping(([WriteableUser]) -> ())) {
+        //get all the topics in the database
+        let db = Firestore.firestore()
+        db.collection("users").getDocuments() {
+            (querySnapshot, error) in
+            if let error = error {
+                print("error getting all users from firestore")
+            }
+            else {
+                var allUsersArray: [WriteableUser] = []
+                for document in querySnapshot!.documents {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data())
+                    //print("user model: \(model)")
+                    allUsersArray.append(model)
+                }
+                allUsers(allUsersArray)
+            }
+        }
+    }
+    static func getAllTopicsAdmin(allTopics: @escaping(([Topic]) -> ())) {
+        //get all the topics in the database
+        let db = Firestore.firestore()
+        db.collection("topics").getDocuments() {
+            (querySnapshot, error) in
+            if let error = error {
+                print("error getting all topics from firestore")
+            }
+            else {
+                var allTopicsArray: [Topic] = []
+                for document in querySnapshot!.documents {
+                    let model = try! FirestoreDecoder().decode(Topic.self, from: document.data())
+                    //print("topic model: \(model)")
+                    allTopicsArray.append(model)
+                }
+                allTopics(allTopicsArray)
+            }
+        }
+    }
     mutating func followTopic (title: String) {
         // Error Banners
         let alreadyFollow = Banner(title: "You are already following this topic.", subtitle: "Choose a different topic to follow.", image: nil, backgroundColor: UIColor.red, didTapBlock: nil)

@@ -25,7 +25,8 @@ class CommentsViewController: UIViewController {
         super.viewDidLoad()
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
-        WriteableUser.getCurrentUser(completion: getUser)
+        //WriteableUser.getCurrentUser(completion: getUser)
+        showCom()
         commentsTableView.reloadData()
     }
     
@@ -34,6 +35,9 @@ class CommentsViewController: UIViewController {
         self.currentUser = currentUser
         //comments.append("vanshika: Nice Picture!")
         print(comments)
+        
+    }
+    func showCom() {
         for comm in comments {
             print(comm)
         }
