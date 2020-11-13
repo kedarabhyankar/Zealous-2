@@ -78,12 +78,37 @@ extension WriteableUser {
         })
         
         //4. unfollow all the followed topics
+        theUser.getFollowedTopics(addTopic: { topic in
+            theUser.unfollowTopic(title: topic.title)
+        })
         
         //5. delete everything from storage
+        let ref = Storage.storage().reference()
+        let imageRef = ref.child("media/" + (theUser.email) + "/profile.jpeg")
+        imageRef.delete { error in
+            if let error = error {
+                print("Error deleting user from storage \(error)")
+            }
+        }
         
         //6. delete user from firestore
+        var db: Firestore!
+        let firestoreSettings = FirestoreSettings()
+        Firestore.firestore().settings = firestoreSettings
+        db = Firestore.firestore()
+        db.collection("users").document(theUser.email).delete() {
+            error in
+            if (error != nil) {
+                print("error deleting user from firestore \(String(describing: error))")
+            }
+        }
         
         //7. delete user form auth
+        FirebaseAuth.getuid()
+        
+        var thisUser: User = User.sign
+        FirebaseAuth.Auth.auth().updateCurrentUser(<#T##user: User##User#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
+        
         
     }
     
