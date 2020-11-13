@@ -60,7 +60,7 @@ class BioAndProfileViewController: UIViewController {
             } else {
                 photoURL = result
                 
-                let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: self.df.string(from: self.finalProfile.dateOfBirth), pictureURL: photoURL, createdPosts:[], likedPosts:[], dislikePosts:[], followedUsers:[], followers:[], savedPosts:[], adminFlag: false)
+                let writeableUser = WriteableUser(firstName: self.finalProfile.firstName, lastName: self.finalProfile.lastName, username: self.finalProfile.username, email: self.finalProfile.email, bio: biog, interests: profile.components(separatedBy: ","), dob: self.df.string(from: self.finalProfile.dateOfBirth), pictureURL: photoURL, createdPosts:[], likedPosts:[], dislikePosts:[], followedUsers:[], followers:[], savedPosts:[], blockedBy: [], blocked: [])
                         
                 let dataToWrite = try! FirestoreEncoder().encode(writeableUser)
                 self.db.collection("users").document(self.finalProfile.email).setData(dataToWrite) { error in
@@ -121,6 +121,7 @@ struct WriteableUser: Codable {
     var followedUsers: [String] // stores creatorId's
     var followers: [String] // stores creatorId's
     var savedPosts: [String]
-    var adminFlag: Optional<Bool>
+    var blockedBy: [String]
+    var blocked: [String]
 }
 

@@ -36,6 +36,13 @@
 		C60043F425395ABD009AC96D /* PostUnderTopicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */; };
 		C60045D925476BA2009AC96D /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */; };
 		C60048A12548C4E9009AC96D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60048A02548C4E9009AC96D /* CommentsViewController.swift */; };
+		C6004A0A255D9DFC009AC96D /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6004A09255D9DFB009AC96D /* Admin.storyboard */; };
+		C6004A0F255DA6FC009AC96D /* AdminUsersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A0E255DA6FC009AC96D /* AdminUsersViewCell.swift */; };
+		C6004A14255DA7E6009AC96D /* AdminTopicsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A13255DA7E6009AC96D /* AdminTopicsViewCell.swift */; };
+		C6004A19255DA87A009AC96D /* AdminUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A18255DA87A009AC96D /* AdminUsersViewController.swift */; };
+		C6004A1E255DAD98009AC96D /* AdminTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A1D255DAD97009AC96D /* AdminTopicsViewController.swift */; };
+		C6004A23255DB326009AC96D /* AdminPostsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A22255DB326009AC96D /* AdminPostsViewCell.swift */; };
+		C6004A2B255DB4D6009AC96D /* AdminPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A2A255DB4D6009AC96D /* AdminPostsViewController.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
@@ -113,6 +120,13 @@
 		C60043F325395ABD009AC96D /* PostUnderTopicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUnderTopicViewCell.swift; sourceTree = "<group>"; };
 		C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		C60048A02548C4E9009AC96D /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		C6004A09255D9DFB009AC96D /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
+		C6004A0E255DA6FC009AC96D /* AdminUsersViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersViewCell.swift; sourceTree = "<group>"; };
+		C6004A13255DA7E6009AC96D /* AdminTopicsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTopicsViewCell.swift; sourceTree = "<group>"; };
+		C6004A18255DA87A009AC96D /* AdminUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersViewController.swift; sourceTree = "<group>"; };
+		C6004A1D255DAD97009AC96D /* AdminTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTopicsViewController.swift; sourceTree = "<group>"; };
+		C6004A22255DB326009AC96D /* AdminPostsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPostsViewCell.swift; sourceTree = "<group>"; };
+		C6004A2A255DB4D6009AC96D /* AdminPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPostsViewController.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +300,13 @@
 				C60045D825476BA2009AC96D /* CommentsTableViewCell.swift */,
 				3A4AEDA6254774C200B5E097 /* Comments.storyboard */,
 				C60048A02548C4E9009AC96D /* CommentsViewController.swift */,
+				C6004A09255D9DFB009AC96D /* Admin.storyboard */,
+				C6004A0E255DA6FC009AC96D /* AdminUsersViewCell.swift */,
+				C6004A13255DA7E6009AC96D /* AdminTopicsViewCell.swift */,
+				C6004A18255DA87A009AC96D /* AdminUsersViewController.swift */,
+				C6004A1D255DAD97009AC96D /* AdminTopicsViewController.swift */,
+				C6004A22255DB326009AC96D /* AdminPostsViewCell.swift */,
+				C6004A2A255DB4D6009AC96D /* AdminPostsViewController.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -416,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6004A0A255D9DFC009AC96D /* Admin.storyboard in Resources */,
 				E44D300A25196527000FB63B /* LaunchScreen.storyboard in Resources */,
 				A607790A25292B4100054A25 /* CreatePost.storyboard in Resources */,
 				A607790825292B3B00054A25 /* Following.storyboard in Resources */,
@@ -568,10 +590,12 @@
 				BC44BB75251A99EF00C12823 /* Topic.swift in Sources */,
 				E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */,
 				E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */,
+				C6004A2B255DB4D6009AC96D /* AdminPostsViewController.swift in Sources */,
 				C60045D925476BA2009AC96D /* CommentsTableViewCell.swift in Sources */,
 				BC44BB73251A99D300C12823 /* Profile.swift in Sources */,
 				A64C0DCF252BF1B500BCAA90 /* DeletePostViewController.swift in Sources */,
 				C60043912535542E009AC96D /* ProfileViewController.swift in Sources */,
+				C6004A0F255DA6FC009AC96D /* AdminUsersViewCell.swift in Sources */,
 				C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */,
 				E44D2FFE25196525000FB63B /* AppDelegate.swift in Sources */,
 				A6669AA1255C9CC700018168 /* DeleteUser.swift in Sources */,
@@ -582,17 +606,21 @@
 				C60048A12548C4E9009AC96D /* CommentsViewController.swift in Sources */,
 				E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */,
 				C66B88F6252AA556006BAD5F /* FollowersViewController.swift in Sources */,
+				C6004A1E255DAD98009AC96D /* AdminTopicsViewController.swift in Sources */,
 				C60043F425395ABD009AC96D /* PostUnderTopicViewCell.swift in Sources */,
 				E44D300025196525000FB63B /* SceneDelegate.swift in Sources */,
+				C6004A14255DA7E6009AC96D /* AdminTopicsViewCell.swift in Sources */,
 				C67F56B1252CA41B00A4BBD1 /* TopicsViewController.swift in Sources */,
 				C60043A025367CA7009AC96D /* AllTopicsViewCell.swift in Sources */,
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
 				E40D117C252229E300D74DE6 /* VerifyEmailViewController.swift in Sources */,
+				C6004A23255DB326009AC96D /* AdminPostsViewCell.swift in Sources */,
 				C600439625367BDC009AC96D /* AllUsersViewController.swift in Sources */,
 				A6904D6725255E6000E49593 /* FeedViewCell.swift in Sources */,
 				BC44BB77251A9A0800C12823 /* User.swift in Sources */,
 				A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */,
 				E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */,
+				C6004A19255DA87A009AC96D /* AdminUsersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

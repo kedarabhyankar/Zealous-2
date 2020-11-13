@@ -72,8 +72,13 @@ class LoginViewController: UIViewController {
                     }
                 } else {
                     print("User signs in successfully")
-                    self.performSegue(withIdentifier: "toTimeline", sender: self)
-                    UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
+                    if (usernameOrEmail == "admin@purdue.edu") {
+                        self.performSegue(withIdentifier: "toAdmin", sender: self)
+                    }
+                    else {
+                        self.performSegue(withIdentifier: "toTimeline", sender: self)
+                        UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
+                    }
                 }
             }
             

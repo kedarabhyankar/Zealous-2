@@ -51,6 +51,9 @@ class ProfileViewController: UIViewController, ProfileDelegate {
     @IBOutlet weak var profilePic: UIImageView!
     
     @IBOutlet weak var profileTableView: UITableView!
+    
+    var loggedInUser: WriteableUser? = nil
+    var isBlocked: Bool = false
     var currentUser: WriteableUser? = nil
     var profilePosts: [Post] = []
     var isThisUser: Bool = true
@@ -73,13 +76,43 @@ class ProfileViewController: UIViewController, ProfileDelegate {
             editProfileButton.isHidden = true
             self.followersButton.isHidden = true
             self.followingButton.isHidden = true
-            self.interestsButton.isHidden = true
+//            self.interestsButton.isHidden = true
+            if loggedInUser!.blockedBy.contains(currentUser!.email) {
+                let alertController = UIAlertController(title: "User has blocked you", message: "User has blocked you, you will not be able to view their profile until they unblock you", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+            }
+            let button = UIButton(frame: self.interestsButton.frame)
+            button.backgroundColor = self.interestsButton.backgroundColor
+            if loggedInUser!.blocked.contains(currentUser!.email) {
+                button.setTitle("Unblock", for: .normal)
+                isBlocked = true
+            }
+            else {
+                button.setTitle("Block", for: .normal)
+                isBlocked = false
+            }
+            button.addTarget(self, action: #selector(blockButtonTapped), for: .touchUpInside)
+            self.view.addSubview(button)
         }
         profileTableView.rowHeight = 620
         profileTableView.estimatedRowHeight = 620
         profileTableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
+    }
+    
+    @objc func blockButtonTapped() {
+        if !isBlocked {
+            loggedInUser?.block(email: currentUser!.email)
+            self.dismiss(animated: true, completion: nil)
+        }
+        else {
+            print("unblock user")
+        }
     }
     
     @objc func loadList(notification: NSNotification){
