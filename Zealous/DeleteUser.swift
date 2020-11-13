@@ -104,10 +104,10 @@ extension WriteableUser {
         }
         
         //7. delete user form auth
-        FirebaseAuth.getuid()
+       // FirebaseAuth.getuid()
         
-        var thisUser: User = User.sign
-        FirebaseAuth.Auth.auth().updateCurrentUser(<#T##user: User##User#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
+        //var thisUser: User = User.sign
+       // FirebaseAuth.Auth.auth().updateCurrentUser(<#T##user: User##User#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
         
         
     }
