@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Admin View Controller-->
         <scene sceneID="zKJ-Nf-VhX">
             <objects>
-                <viewController id="OAf-f6-t7L" sceneMemberID="viewController">
+                <viewController id="OAf-f6-t7L" customClass="AdminViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kB1-xY-sdE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,6 +47,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="LogoutPressed:" destination="OAf-f6-t7L" eventType="touchUpInside" id="CrE-NR-X0a"/>
+                                    <segue destination="wzP-Ic-euG" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="NgV-ri-Ui3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2N0-nV-ZBB"/>
@@ -57,6 +61,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7b-CU-zZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-103" y="929"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="iip-bY-GKk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="wzP-Ic-euG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NEQ-Cj-Zd1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="309" y="1086"/>
         </scene>
         <!--Admin Topics View Controller-->
         <scene sceneID="0kL-Jb-8eb">
@@ -455,7 +467,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="trY-VX-nRZ"/>
+        <segue reference="ZGQ-Ke-2p8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
