@@ -12,7 +12,7 @@ class AdminUsersViewController: UIViewController {
     @IBOutlet weak var usersTableView: UITableView!
     var currentUser: WriteableUser? = nil
     var allUsersArray: [WriteableUser] = []
-    
+    var name:WriteableUser? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,5 +43,17 @@ extension AdminUsersViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? AdminUsersViewCell
         cell?.username.text = user.username
         return cell!
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row: \(indexPath.row)")
+        print("topic: \(allUsersArray[indexPath.row].username)")
+        name = allUsersArray[indexPath.row]
+        self.performSegue(withIdentifier: "toProfile", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfile" {
+            let viewController = segue.destination as! AdminProfileViewController
+            viewController.user = name
+        }
     }
 }

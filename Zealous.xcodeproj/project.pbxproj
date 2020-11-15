@@ -42,6 +42,8 @@
 		C6004A1E255DAD98009AC96D /* AdminTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A1D255DAD97009AC96D /* AdminTopicsViewController.swift */; };
 		C6004A23255DB326009AC96D /* AdminPostsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A22255DB326009AC96D /* AdminPostsViewCell.swift */; };
 		C6004A2B255DB4D6009AC96D /* AdminPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A2A255DB4D6009AC96D /* AdminPostsViewController.swift */; };
+		C6004A3025618272009AC96D /* AdminProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A2F25618272009AC96D /* AdminProfileViewCell.swift */; };
+		C6004A35256185C4009AC96D /* AdminProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6004A34256185C4009AC96D /* AdminProfileViewController.swift */; };
 		C66B88C125197F1C006BAD5F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88BF25197F1C006BAD5F /* SignUp.storyboard */; };
 		C66B88C225197F1C006BAD5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66B88C025197F1C006BAD5F /* Login.storyboard */; };
 		C66B88F025252B16006BAD5F /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */; };
@@ -128,6 +130,8 @@
 		C6004A1D255DAD97009AC96D /* AdminTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTopicsViewController.swift; sourceTree = "<group>"; };
 		C6004A22255DB326009AC96D /* AdminPostsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPostsViewCell.swift; sourceTree = "<group>"; };
 		C6004A2A255DB4D6009AC96D /* AdminPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPostsViewController.swift; sourceTree = "<group>"; };
+		C6004A2F25618272009AC96D /* AdminProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProfileViewCell.swift; sourceTree = "<group>"; };
+		C6004A34256185C4009AC96D /* AdminProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProfileViewController.swift; sourceTree = "<group>"; };
 		C66B88BF25197F1C006BAD5F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66B88C025197F1C006BAD5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C66B88EF25252B15006BAD5F /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 				C6004A1D255DAD97009AC96D /* AdminTopicsViewController.swift */,
 				C6004A22255DB326009AC96D /* AdminPostsViewCell.swift */,
 				C6004A2A255DB4D6009AC96D /* AdminPostsViewController.swift */,
+				C6004A2F25618272009AC96D /* AdminProfileViewCell.swift */,
+				C6004A34256185C4009AC96D /* AdminProfileViewController.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				A6904D6B25255E6000E49593 /* UserPostCell.swift in Sources */,
 				C67F56AF252CA3AE00A4BBD1 /* TopicsViewCell.swift in Sources */,
 				BC44BB75251A99EF00C12823 /* Topic.swift in Sources */,
+				C6004A3025618272009AC96D /* AdminProfileViewCell.swift in Sources */,
 				E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */,
 				E4039C12251C0D1A00486E9B /* PhotoUploadViewController.swift in Sources */,
 				C6004A2B255DB4D6009AC96D /* AdminPostsViewController.swift in Sources */,
@@ -608,6 +615,7 @@
 				C6004A14255DA7E6009AC96D /* AdminTopicsViewCell.swift in Sources */,
 				C67F56B1252CA41B00A4BBD1 /* TopicsViewController.swift in Sources */,
 				C60043A025367CA7009AC96D /* AllTopicsViewCell.swift in Sources */,
+				C6004A35256185C4009AC96D /* AdminProfileViewController.swift in Sources */,
 				BC44BB71251A99A900C12823 /* Post.swift in Sources */,
 				E40D117C252229E300D74DE6 /* VerifyEmailViewController.swift in Sources */,
 				C6004A23255DB326009AC96D /* AdminPostsViewCell.swift in Sources */,
