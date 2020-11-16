@@ -673,13 +673,68 @@ extension WriteableUser {
             if let document = document {
                 var blocker = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
                 print("Model: \(blocker)")
-//                for i in 0..<blocker.followers.count {
-//                    if blocker.followers[i] == thisEmail {
-//                        blocker.followers.remove(at: i)
-//                        break
-//                    }
-//                }
                 blocker.blocked.append(email)
+                
+                let dataToWrite2 = try! FirestoreEncoder().encode(blocker)
+                db.collection("users").document(thisEmail).setData(dataToWrite2) { error in
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    func unblock(email: String) {
+        let thisEmail = self.email
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        
+        userRef.getDocument { document, error in
+            if let document = document {
+                var userToUnblock = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                print("Model: \(userToUnblock)")
+                for i in 0..<userToUnblock.blockedBy.count {
+                    if userToUnblock.blockedBy[i] == thisEmail {
+                        userToUnblock.blockedBy.remove(at: i)
+                        break
+                    }
+                }
+                
+                let dataToWrite2 = try! FirestoreEncoder().encode(userToUnblock)
+                db.collection("users").document(email).setData(dataToWrite2) { error in
+                    
+                    if(error != nil){
+                        print("error happened when writing to firestore!")
+                        print("described error as \(error!.localizedDescription)")
+                        return
+                    } else {
+                        print("successfully wrote document to firestore with document id )")
+                    }
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+        let userRef2 = db.collection("users").document(thisEmail)
+        userRef2.getDocument { document, error in
+            if let document = document {
+                var blocker = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                print("Model: \(blocker)")
+                for i in 0..<blocker.blocked.count {
+                    if blocker.blocked[i] == thisEmail {
+                        blocker.blocked.remove(at: i)
+                        break
+                    }
+                }
                 
                 let dataToWrite2 = try! FirestoreEncoder().encode(blocker)
                 db.collection("users").document(thisEmail).setData(dataToWrite2) { error in

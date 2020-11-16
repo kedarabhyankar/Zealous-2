@@ -111,6 +111,7 @@ class ProfileViewController: UIViewController, ProfileDelegate {
             self.dismiss(animated: true, completion: nil)
         }
         else {
+            loggedInUser?.unblock(email: currentUser!.email)
             print("unblock user")
         }
     }
