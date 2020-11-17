@@ -243,6 +243,28 @@ extension WriteableUser {
         }
     }
     
+    static func getEmail(username: String, completion: @escaping((String) -> ())) {
+        let db = Firestore.firestore()
+        var email: String = ""
+        print("username: " + username)
+        let ref = db.collection("users").getDocuments()
+        { (querySnap, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnap!.documents {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data())
+                    if (model.username == username) {
+                        email = model.email
+                        completion(email)
+                        return 
+                    }
+                }
+            }
+        }
+        completion(email)
+    }
+    
     
     static func getCurrentUser(completion: @escaping((WriteableUser) -> ())) {
         let auth = Auth.auth()
