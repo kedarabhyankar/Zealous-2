@@ -691,7 +691,7 @@ extension WriteableUser {
         }
     }
     
-    func unblock(email: String) {
+    mutating func unblock(email: String) {
         let thisEmail = self.email
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(email)
@@ -730,7 +730,7 @@ extension WriteableUser {
                 var blocker = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
                 print("Model: \(blocker)")
                 for i in 0..<blocker.blocked.count {
-                    if blocker.blocked[i] == thisEmail {
+                    if blocker.blocked[i] == email {
                         blocker.blocked.remove(at: i)
                         break
                     }
