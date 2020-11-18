@@ -66,6 +66,14 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUG-9F-QgO">
+                                <rect key="frame" x="58" y="717" width="259" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Explore Contet on Zealous"/>
+                                <connections>
+                                    <segue destination="TvU-wk-8Ht" kind="presentation" modalPresentationStyle="fullScreen" id="rCh-3O-Mkj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -89,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="322" y="154"/>
+            <point key="canvasLocation" x="320.80000000000001" y="153.69458128078819"/>
         </scene>
         <!--infoScreen-->
         <scene sceneID="0Rx-Tx-4e6">
@@ -108,6 +116,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vcw-wb-oVC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="938" y="262"/>
+        </scene>
+        <!--Admin-->
+        <scene sceneID="bKa-j4-Eld">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Admin" id="TvU-wk-8Ht" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bJF-xG-7TE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bb2-do-0B2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="399"/>
         </scene>
     </scenes>
     <resources>
