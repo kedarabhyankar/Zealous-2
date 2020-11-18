@@ -34,7 +34,9 @@ class TimelineViewController: UIViewController, TimelineDelegate {
     var firstCommentText: String = ""
     var commentList: [String] = []
     var numBlockedPosts: Int = 0
-    
+    var currPost: Post? = nil
+    var path: String = ""
+    var path2: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         timelineTableView.delegate = self
@@ -123,6 +125,8 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
                })
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
         let post = posts[indexPath.row]
+        currPost = post
+        
         commentList.removeAll()
         commentList = post.comments
         cell.username?.text = post.creatorId
@@ -143,7 +147,7 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         print(post.comments)
         cell.delegate = self
         cell.cellDelegate = self
-        let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
+        path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
         ref.getData(maxSize: 1024 * 1024 * 1024) { data, error in
@@ -154,6 +158,7 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         let ref2 = Storage.storage().reference(withPath: "media/" + post.creatorId + "/" + "profile.jpeg")
+        path2 = "media/" + post.creatorId + "/" + "profile.jpeg"
         ref2.getData(maxSize: 1024 * 1024 * 1024) { data, error in
             if error != nil {
                 print("Error: Image could not download!")
@@ -164,12 +169,53 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toSinglePost", sender: self)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is CommentsViewController
         {
             let vc = segue.destination as? CommentsViewController
             vc?.comments = commentList
+        }
+        if segue.identifier == "toSinglePost" {
+            let viewController = segue.destination as! SinglePostViewController
+            if currPost!.comments.isEmpty{
+                firstCommentUN = ""
+                firstCommentText = ""
+            }else{
+            let firstComment: String = (currPost?.comments[0])!
+                firstCommentUN = firstComment.components(separatedBy: ": ")[0]
+                firstCommentText = firstComment.components(separatedBy: ": ")[1]
+            }
+            print("CURR POSTT")
+            print(currPost?.creatorId)
+            viewController.usernameText = currPost!.creatorId
+            viewController.commentsList = commentList
+            viewController.postCaptionText = currPost!.caption
+            viewController.postTitleText = currPost!.title
+            viewController.DisplayedCommentUserNameText = firstCommentUN
+            viewController.DisplayedCommentTextText = firstCommentText
+            viewController.postID = currPost!.postId
+            let ref = Storage.storage().reference(withPath: path)
+            
+            ref.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print("Error: Image could not download!")
+                } else {
+                    viewController.postImage?.image = UIImage(data: data!)
+                }
+            }
+            let ref2 = Storage.storage().reference(withPath: path2)
+            ref2.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print("Error: Image could not download!")
+                } else {
+                    viewController.profilePicture?.image = UIImage(data: data!)
+                }
+            }
+        
         }
     }
 }
@@ -179,4 +225,5 @@ extension TimelineViewController: FeedCellDelegate {
         print("REFRESH!!!!")
     }
 }
+
 

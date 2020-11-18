@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nWt-i4-6xC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nWt-i4-6xC">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,6 +11,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--SinglePost-->
+        <scene sceneID="wp9-Od-dnv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SinglePost" id="lJf-ln-fw1" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="h0l-ZU-jhJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wfX-Fh-Ohh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1135" y="-574"/>
+        </scene>
         <!--Timeline-->
         <scene sceneID="lIS-cS-aBO">
             <objects>
@@ -324,11 +334,12 @@
                     <connections>
                         <outlet property="timelineTableView" destination="xYS-m7-Hua" id="hgZ-pO-A0G"/>
                         <segue destination="XNN-59-Bqy" kind="presentation" identifier="toSelf" modalPresentationStyle="fullScreen" id="Ydq-9q-lkV"/>
+                        <segue destination="lJf-ln-fw1" kind="show" identifier="toSinglePost" id="w20-YK-wyu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkn-2C-mgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-514.39999999999998" y="-67.241379310344826"/>
+            <point key="canvasLocation" x="-606" y="-64"/>
         </scene>
         <!--CreatePost-->
         <scene sceneID="Peu-eZ-dbb">
