@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+import BRYXBanner
+import CodableFirebase
 
 class AdminUsersViewController: UIViewController {
 
@@ -42,6 +47,15 @@ extension AdminUsersViewController: UITableViewDelegate, UITableViewDataSource {
         let user = allUsersArray[indexPath.item]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? AdminUsersViewCell
         cell?.username.text = user.username
+        let auth = Auth.auth()
+        let userLog = auth.currentUser
+        
+        if (userLog?.email) == nil {
+            cell?.delete.isHidden = true
+        }
+        else {
+            cell?.delete.isHidden = false
+        }
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

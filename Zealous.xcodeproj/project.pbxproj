@@ -55,6 +55,7 @@
 		C66B88FA252BC5C8006BAD5F /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66B88F9252BC5C7006BAD5F /* TimelineViewController.swift */; };
 		C67F56AF252CA3AE00A4BBD1 /* TopicsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F56AE252CA3AE00A4BBD1 /* TopicsViewCell.swift */; };
 		C67F56B1252CA41B00A4BBD1 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F56B0252CA41B00A4BBD1 /* TopicsViewController.swift */; };
+		C6A57AC8256584DD00CE1CAC /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A57AC7256584DC00CE1CAC /* AdminViewController.swift */; };
 		E4039C0C251B96BD00486E9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0B251B96BD00486E9B /* SignUpViewController.swift */; };
 		E4039C0E251C010400486E9B /* DOBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0D251C010400486E9B /* DOBViewController.swift */; };
 		E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4039C0F251C0CA800486E9B /* BioAndProfileViewController.swift */; };
@@ -144,6 +145,7 @@
 		C66B88F9252BC5C7006BAD5F /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		C67F56AE252CA3AE00A4BBD1 /* TopicsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewCell.swift; sourceTree = "<group>"; };
 		C67F56B0252CA41B00A4BBD1 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
+		C6A57AC7256584DC00CE1CAC /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		E4039C0B251B96BD00486E9B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E4039C0D251C010400486E9B /* DOBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBViewController.swift; sourceTree = "<group>"; };
 		E4039C0F251C0CA800486E9B /* BioAndProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAndProfileViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				C6004A2A255DB4D6009AC96D /* AdminPostsViewController.swift */,
 				C6004A2F25618272009AC96D /* AdminProfileViewCell.swift */,
 				C6004A34256185C4009AC96D /* AdminProfileViewController.swift */,
+				C6A57AC7256584DC00CE1CAC /* AdminViewController.swift */,
 			);
 			path = Zealous;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				A6904D6D2525638A00E49593 /* CreatePostViewController.swift in Sources */,
 				E4039C10251C0CA800486E9B /* BioAndProfileViewController.swift in Sources */,
 				C6004A19255DA87A009AC96D /* AdminUsersViewController.swift in Sources */,
+				C6A57AC8256584DD00CE1CAC /* AdminViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

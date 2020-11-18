@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+import BRYXBanner
+import CodableFirebase
 
 class AdminTopicsViewController: UIViewController {
     
@@ -44,6 +49,15 @@ extension AdminTopicsViewController: UITableViewDelegate, UITableViewDataSource 
         //cell?.cellDelegate = self
         let topic = allTopicsArray[indexPath.row]
         cell?.topic.text = topic.title
+        let auth = Auth.auth()
+        let userLog = auth.currentUser
+        
+        if (userLog?.email) == nil {
+            cell?.delete.isHidden = true
+        }
+        else {
+            cell?.delete.isHidden = false
+        }
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -77,6 +77,15 @@ extension AdminPostsViewController: UITableViewDelegate, UITableViewDataSource {
         print(post)
         commentList.removeAll()
         commentList = post.comments
+        let auth = Auth.auth()
+        let userLog = auth.currentUser
+        
+        if (userLog?.email) == nil {
+            cell.delete.isHidden = true
+        }
+        else {
+            cell.delete.isHidden = false
+        }
         cell.username?.text = post.creatorId
         cell.postTitle?.text = post.title
         cell.postCaption?.text = post.caption
@@ -110,6 +119,7 @@ extension AdminPostsViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.profilePicture?.image = UIImage(data: data!)
                 }
             }
+            
         }
         return cell
     }

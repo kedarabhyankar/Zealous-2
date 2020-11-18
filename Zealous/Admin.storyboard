@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="-851" y="776"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller-->
         <scene sceneID="zKJ-Nf-VhX">
             <objects>
-                <viewController id="OAf-f6-t7L" sceneMemberID="viewController">
+                <viewController id="OAf-f6-t7L" customClass="AdminViewController" customModule="Zealous" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kB1-xY-sdE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,6 +57,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="LogoutPressed:" destination="OAf-f6-t7L" eventType="touchUpInside" id="UyX-hG-QPe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md0-Qu-LhZ">
                                 <rect key="frame" x="28" y="99" width="34" height="30"/>
@@ -71,10 +74,25 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="rBF-O1-Foi"/>
+                    <connections>
+                        <outlet property="back" destination="Md0-Qu-LhZ" id="nWT-g9-1Fa"/>
+                        <outlet property="logout" destination="Iag-Uq-ukQ" id="XxH-nk-JD6"/>
+                        <segue destination="ElA-gY-rtc" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="Uau-dj-bLZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7b-CU-zZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-103" y="929"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="PMc-Yq-3Kc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="ElA-gY-rtc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="slW-21-sIT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMu-OK-xZH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-65" y="1431"/>
         </scene>
         <!--Admin Topics View Controller-->
         <scene sceneID="0kL-Jb-8eb">
@@ -147,7 +165,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="OAf-f6-t7L" kind="presentation" modalPresentationStyle="fullScreen" id="trY-VX-nRZ"/>
+                                    <segue destination="OAf-f6-t7L" kind="presentation" modalPresentationStyle="fullScreen" id="sNO-J8-tV6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -397,6 +415,9 @@
                                                     <rect key="frame" x="266" y="17" width="93" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Delete Post"/>
+                                                    <connections>
+                                                        <action selector="deletePostClicked:" destination="cj1-5G-poK" eventType="touchUpInside" id="01z-O7-poH"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -430,6 +451,7 @@
                                         <connections>
                                             <outlet property="DisaplyedCommentUN" destination="1PV-Uh-hnw" id="Ufq-lR-iye"/>
                                             <outlet property="DisplayedCommentText" destination="sta-2M-X6b" id="liG-uP-sXa"/>
+                                            <outlet property="delete" destination="iVH-6I-uYL" id="lEk-OJ-dRA"/>
                                             <outlet property="deletePost" destination="iVH-6I-uYL" id="lyS-V2-mvx"/>
                                             <outlet property="postCaption" destination="G4s-4W-rF6" id="Q3J-wF-gL9"/>
                                             <outlet property="postImage" destination="hKp-k3-IyR" id="qqQ-Wq-V3p"/>
@@ -696,7 +718,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZGQ-Ke-2p8"/>
+        <segue reference="sNO-J8-tV6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="darkTextColor">

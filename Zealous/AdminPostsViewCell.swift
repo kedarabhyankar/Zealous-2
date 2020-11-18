@@ -24,6 +24,9 @@ class AdminPostsViewCell: UITableViewCell {
         // Initialization code
     }
 
+    @IBAction func deletePostClicked(_ sender: Any) {
+    }
+    @IBOutlet weak var delete: UIButton!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
