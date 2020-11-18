@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xyG-1Z-uVu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xyG-1Z-uVu">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -411,6 +411,7 @@
                         <outlet property="profileTableView" destination="7RJ-9o-aGB" id="EDn-qa-rSh"/>
                         <outlet property="username" destination="aCe-H3-WMg" id="yet-TS-Jac"/>
                         <segue destination="PDu-Kw-5Ra" kind="presentation" identifier="toSelfP" modalPresentationStyle="fullScreen" id="dKA-Hs-Sng"/>
+                        <segue destination="Lo5-JQ-ylS" kind="show" identifier="toSinglePost" id="ohw-nw-iY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vv-oc-FHS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -760,6 +761,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0z-bQ-cDA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1382" y="245"/>
+        </scene>
+        <!--SinglePost-->
+        <scene sceneID="Z6t-3z-kpQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SinglePost" id="Lo5-JQ-ylS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="C98-f7-ALa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFQ-Gu-oU8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088" y="387"/>
         </scene>
         <!--Profile-->
         <scene sceneID="qb3-jq-HHf">
