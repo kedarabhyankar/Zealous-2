@@ -54,7 +54,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         timelineTableView.estimatedRowHeight = 620
         self.sortBar.delegate = self
         self.sortBar.dataSource = self
-        pickerData = ["Time", "Relevance"]
+        pickerData = ["Time", "Relevance", "Engagement"]
     }
     
     func getUser(currentUser: WriteableUser) {

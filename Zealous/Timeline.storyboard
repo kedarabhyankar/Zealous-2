@@ -321,7 +321,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eE-ic-1VQ">
-                                <rect key="frame" x="93" y="189" width="282" height="48"/>
+                                <rect key="frame" x="93" y="185" width="282" height="52"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                         </subviews>
