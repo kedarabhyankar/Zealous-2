@@ -27,7 +27,6 @@ class AdminUsersViewCell: UITableViewCell {
     
     
     @IBAction func deleteClicked(_ sender: Any) {
-        let group = DispatchGroup()
         let usernameTxt = username.text
         self.associatedEmail = nil
         
@@ -45,23 +44,14 @@ class AdminUsersViewCell: UITableViewCell {
     
     func getUser(currentUser: WriteableUser) {
        self.currentUser = currentUser
-       WriteableUser.deleteUser(theUser: currentUser)
-       after()
+       //WriteableUser.getCreatedPosts(email: self.currentUser!.email, completion: self.getPosts)
+       //self.currentUser?.getFollowers(addUser: self.addFollower)
+       //self.currentUser?.getFollowedUsers(addUser: self.addFollowed)
+      // self.currentUser?.getFollowedTopics(addTopic: self.addTopic)
+        WriteableUser.deleteUser(theUser: currentUser)
     }
     
-    func after() {
-        var db2: Firestore!
-        let firestoreSettings2 = FirestoreSettings()
-        Firestore.firestore().settings = firestoreSettings2
-        db2 = Firestore.firestore()
-        db2.collection("users").document(self.currentUser!.email).getDocument() { (doc, error) in
-            if (doc != nil) {
-                db2.collection("users").document(self.currentUser!.email).delete()
-                print("deleted user again")
-            }
-        }
-        
-    }
+   
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

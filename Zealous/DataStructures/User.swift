@@ -165,7 +165,7 @@ extension WriteableUser {
                     for document in querySnapshot!.documents {
                         let model = try! FirestoreDecoder().decode(Post.self, from: document.data())
                         createdPosts.append(model)
-                        print("\(document.documentID) => \(document.data())")
+                       // print("\(document.documentID) => \(document.data())")
                     }
                     completion(createdPosts)
                 }

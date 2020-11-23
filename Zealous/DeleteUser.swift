@@ -18,6 +18,17 @@ import Firebase
 extension WriteableUser {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
      static func deleteUser(theUser: WriteableUser) {
         var followedTopics: [Topic] = []
         var createdPosts: [Post] = []
@@ -25,23 +36,24 @@ extension WriteableUser {
         let group = DispatchGroup()
         
         group.enter()
-        DispatchQueue.main.async {
-        WriteableUser.getCreatedPosts(email: theUser.email, completion: { (postArray) in
-            if postArray == nil {
+        WriteableUser.getCreatedPosts(email: theUser.email, completion:
+        { (postArray) in
+            if postArray == nil  {
                 print("error getting created posts array")
             } else {
                 createdPosts = postArray
+                group.leave()
             }
         })
-            group.leave()
-        }
-        group.notify(queue: .main) {
-                print("createdPosts done")
-            }
+        group.wait()
+       /* group.notify(queue: .main) {
+                print("createdPosts: \(createdPosts) done")
+            } */
         
         //1. delete the user's created posts
         group.enter()
-        DispatchQueue.main.async {
+       // DispatchQueue.main.async {
+            print("createdPosts count : \(createdPosts.count)")
         for aPost in createdPosts {
             //delete from topic's post array and delete topic if post array count is zero
             Topic.getTopic(topicTitle: aPost.topic, completion: { (theTopic) in
@@ -50,6 +62,7 @@ extension WriteableUser {
                 } else {
                     var topic: Topic = theTopic
                     for post in createdPosts {
+                        print("post: /(post)")
                         if (theTopic.posts.contains(post.postId)) {
                             topic.removePost(postId: post.postId)
                             if (theTopic.posts.count == 0) {
@@ -61,19 +74,23 @@ extension WriteableUser {
                         Topic.deleteTopic(topicName: theTopic.title)
                     }
                 }
+               // group.leave()
             })
+            theUser.deleteCreatedPost(postId: aPost.postId)
             Post.deleteStoragePost(thePost: aPost, theUser: theUser)
             Post.deletePost(postId: aPost.postId)
         }
-            group.leave()
-        }
-        group.notify(queue: .main) {
+        group.leave()
+      
+        group.wait()
+       // }
+        /*group.notify(queue: .main) {
                 print("delete createdPosts done")
-            }
+            }*/
         
         //2. make the user's unfollow the user
         group.enter()
-        DispatchQueue.main.async {
+       // DispatchQueue.main.async {
         theUser.getFollowers(addUser: { follower in
             if (follower == nil) {
                 print("error getting the follower user")
@@ -81,16 +98,18 @@ extension WriteableUser {
             var aFollower: WriteableUser = follower
             aFollower.unfollow(email: theUser.email)
             }
-        })
             group.leave()
-        }
-        group.notify(queue: .main) {
+        })
+            //group.leave()
+       // }
+        group.wait()
+       /* group.notify(queue: .main) {
                 print("unfollow done")
-            }
+            } */
         
         //3. unfollow all the followed users
         group.enter()
-        DispatchQueue.main.async {
+       // DispatchQueue.main.async {
         theUser.getFollowedUsers(addUser: { followed in
             if (followed == nil) {
                 print("error getting followed user")
@@ -99,35 +118,37 @@ extension WriteableUser {
             }
         })
             group.leave()
-        }
+       // }
         group.notify(queue: .main) {
                 print("followed done")
             }
         
         //4. unfollow all the followed topics
         group.enter()
-        DispatchQueue.main.async {
+       // DispatchQueue.main.async {
         theUser.getFollowedTopics(addTopic: { topic in
             theUser.unfollowTopic(title: topic.title)
         })
             group.leave()
-        }
+       // }
         group.notify(queue: .main) {
                 print("unfollow topic done")
             }
         
         //5. delete everything from storage
         group.enter()
-        DispatchQueue.main.async {
+       // DispatchQueue.main.async {
         let ref = Storage.storage().reference()
         let imageRef = ref.child("media/" + (theUser.email) + "/profile.jpeg")
         imageRef.delete { error in
             if let error = error {
                 print("Error deleting user from storage \(error)")
+            } else {
+                group.leave()
             }
         }
-            group.leave()
-        }
+           // group.leave()
+       // }
         group.notify(queue: .main) {
                 print("delete storage done")
             }
@@ -135,7 +156,7 @@ extension WriteableUser {
         
         //6. delete user from firestore
         group.enter()
-        DispatchQueue.main.async  {
+       // DispatchQueue.main.async  {
         var db: Firestore!
             let firestoreSettings = FirestoreSettings()
             Firestore.firestore().settings = firestoreSettings
@@ -146,12 +167,13 @@ extension WriteableUser {
                         print("error deleting user from firestore \(String(describing: error))")
                 } else {
                     print("deleted user from firestore")
+                    group.leave();
                 }
                                                                 
             })
            
-            group.leave()
-        }
+           // group.leave()
+        //}
         group.notify(queue: .main) {
             print("delete firestore done")
             }
@@ -161,7 +183,7 @@ extension WriteableUser {
         //var thisUser: User = User.sign
        // FirebaseAuth.Auth.auth().updateCurrentUser(, completion: )
         
-        var db2: Firestore!
+       /* var db2: Firestore!
         let firestoreSettings2 = FirestoreSettings()
         Firestore.firestore().settings = firestoreSettings2
         db2 = Firestore.firestore()
@@ -170,7 +192,7 @@ extension WriteableUser {
                 db2.collection("users").document(theUser.email).delete()
                 print("deleted user again")
             }
-        }
+        } */
         
         
         
