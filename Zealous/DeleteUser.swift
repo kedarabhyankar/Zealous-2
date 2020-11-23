@@ -119,9 +119,10 @@ extension WriteableUser {
         })
             group.leave()
        // }
-        group.notify(queue: .main) {
+        group.wait()
+       /* group.notify(queue: .main) {
                 print("followed done")
-            }
+            }*/
         
         //4. unfollow all the followed topics
         group.enter()
@@ -131,9 +132,10 @@ extension WriteableUser {
         })
             group.leave()
        // }
-        group.notify(queue: .main) {
+        group.wait()
+      /*  group.notify(queue: .main) {
                 print("unfollow topic done")
-            }
+            }*/
         
         //5. delete everything from storage
         group.enter()
@@ -149,9 +151,10 @@ extension WriteableUser {
         }
            // group.leave()
        // }
-        group.notify(queue: .main) {
+        group.wait()
+        /*group.notify(queue: .main) {
                 print("delete storage done")
-            }
+            }*/
         
         
         //6. delete user from firestore
@@ -174,9 +177,10 @@ extension WriteableUser {
            
            // group.leave()
         //}
-        group.notify(queue: .main) {
+        group.wait()
+       /* group.notify(queue: .main) {
             print("delete firestore done")
-            }
+            } */
         //7. delete user form auth
        // FirebaseAuth.getuid()
         
