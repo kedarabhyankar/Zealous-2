@@ -25,14 +25,25 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        
+        if pickerView == filterBar {
+                return picker1Options.count
+            } else {
+                return picker2Options.count
+            }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row];
+        if pickerView == filterBar {
+                return "\(picker1Options[row])"
+            } else {
+                return "\(picker2Options[row])"
+            }
     }
     @IBOutlet weak var timelineTableView: UITableView!
+    @IBOutlet weak var filterBar: UIPickerView!
     @IBOutlet weak var sortBar: UIPickerView!
-    var pickerData:[String] = [String]()
+    var picker1Options:[String] = [String]()
+    var picker2Options:[String] = [String]()
     var currentUser: WriteableUser? = nil
     var likedPosts: [Post] = []
     var following: [WriteableUser] = []
@@ -45,6 +56,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
     var currPost: Post? = nil
     var path: String = ""
     var path2: String = ""
+    var allTopicsArray: [Topic] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         timelineTableView.delegate = self
@@ -54,8 +66,12 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         timelineTableView.estimatedRowHeight = 620
         self.sortBar.delegate = self
         self.sortBar.dataSource = self
-        pickerData = ["Time", "Relevance", "Engagement"]
+        self.filterBar.delegate = self
+        self.filterBar.dataSource = self
+        picker1Options = ["All","Comments","Dog","Purdue","Test","Test3","Waterfall","anonymous"]
+        picker2Options = ["Time", "Relevance", "Engagement"]
     }
+
     
     func getUser(currentUser: WriteableUser) {
         self.currentUser = currentUser
