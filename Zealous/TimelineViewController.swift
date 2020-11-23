@@ -19,12 +19,20 @@ protocol TimelineDelegate {
     func upvote(postId: String)
 }
 
-class TimelineViewController: UIViewController, TimelineDelegate {
-
+class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row];
+    }
     @IBOutlet weak var timelineTableView: UITableView!
-    
+    @IBOutlet weak var sortBar: UIPickerView!
+    var pickerData:[String] = [String]()
     var currentUser: WriteableUser? = nil
     var likedPosts: [Post] = []
     var following: [WriteableUser] = []
@@ -44,6 +52,9 @@ class TimelineViewController: UIViewController, TimelineDelegate {
         WriteableUser.getCurrentUser(completion: getUser)
         timelineTableView.rowHeight = 620
         timelineTableView.estimatedRowHeight = 620
+        self.sortBar.delegate = self
+        self.sortBar.dataSource = self
+        pickerData = ["Time", "Relevance"]
     }
     
     func getUser(currentUser: WriteableUser) {
