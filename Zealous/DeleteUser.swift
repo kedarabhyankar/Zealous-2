@@ -17,18 +17,7 @@ import Firebase
 
 extension WriteableUser {
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
      static func deleteUser(theUser: WriteableUser) {
         var followedTopics: [Topic] = []
         var createdPosts: [Post] = []
