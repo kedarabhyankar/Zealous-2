@@ -43,7 +43,6 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
             postsFinal.removeAll()
             postsFinal = posts
         }
-        
         timelineTableView.reloadData()
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -93,6 +92,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         self.filterBar.dataSource = self
         picker1Options = ["All","Comments","Dog","Purdue","Test","Test3","Waterfall","anonymous"]
         picker2Options = ["Time", "Relevance", "Engagement"]
+        timelineTableView.reloadData()
     }
 
     
@@ -103,12 +103,6 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         currentUser.getLikedPosts(addPost: addPost) // populates the likedPosts array
         currentUser.getFollowedUsers(addUser: addUser) // populates the following array
         currentUser.getFollowedTopics(addTopic: addTopic)
-        //GET FIRST COMMENT FROM DB and set to firstCOMMENTUN/TEXT
-        
-        if !posts.isEmpty {
-            posts.sort(by: {$0.timestamp > $1.timestamp})
-        }
-       
         timelineTableView.reloadData()
     }
     func addTimeline(postArray: [Post]) {
@@ -118,10 +112,6 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
             }
             print(postItem)
         }
-        
-        posts.sort(by: { (first: Post, second: Post) -> Bool in
-                   first.timestamp > second.timestamp
-               })
         postsFinal = posts
         timelineTableView.reloadData()
     }
@@ -148,6 +138,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
     
     func addPost(likedPost: Post) {
         likedPosts.append(likedPost)
+        timelineTableView.reloadData()
     }
     
     func addUser(user: WriteableUser) {
@@ -176,8 +167,14 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Sort the posts by timestamp
-       
-        //postsFinal = posts
+        if(selectedFilter == "All") {
+            postsFinal = posts
+        }
+        if(selectedSort == "Time") {
+            postsFinal.sort(by: { (first: Post, second: Post) -> Bool in
+                   first.timestamp > second.timestamp
+               })
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
         let post = postsFinal[indexPath.row]
         currPost = post
