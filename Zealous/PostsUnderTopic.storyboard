@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wPD-GR-mhR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wPD-GR-mhR">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -338,21 +338,12 @@
                     <connections>
                         <outlet property="postTableView" destination="Daa-Ts-yyo" id="rst-xS-4O0"/>
                         <outlet property="topicName" destination="0ES-Vp-jS5" id="BYT-6b-j4P"/>
+                        <segue destination="2Gd-NB-4h6" kind="show" identifier="toSinglePost" id="wRj-nl-zPp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrK-47-slG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-616.79999999999995" y="-56.157635467980299"/>
-        </scene>
-        <!--CreatePost-->
-        <scene sceneID="8i4-DS-nj6">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CreatePost" id="Ho8-9X-1A5" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="9Q5-HM-tSr"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EDD-hy-K6v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="529" y="-178"/>
         </scene>
         <!--Search-->
         <scene sceneID="Ta3-Bo-1CC">
@@ -373,6 +364,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BS-iM-QOW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="297" y="294"/>
+        </scene>
+        <!--SinglePost-->
+        <scene sceneID="aP6-Vh-Trd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SinglePost" id="2Gd-NB-4h6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hSW-Dn-0in"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7T-Mw-H5W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649" y="436"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="id4-gv-rYo">

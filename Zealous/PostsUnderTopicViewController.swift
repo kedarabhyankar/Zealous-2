@@ -43,6 +43,9 @@ class PostsUnderTopicViewController: UIViewController, TopicDelegate {
     var firstCommentUN: String = ""
     var firstCommentText: String = ""
     var commentList: [String] = []
+    var currPost: Post? = nil
+    var path: String = ""
+    var path2: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         postTableView.delegate = self
@@ -93,6 +96,7 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostsTopic", for: indexPath) as! PostUnderTopicViewCell
         let post = posts[indexPath.row]
         print(post)
+        currPost = post
         commentList.removeAll()
         commentList = post.comments
         cell.username?.text = post.creatorId
@@ -110,10 +114,10 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
         cell.DisaplyedCommentUN?.text = firstCommentUN
         cell.DisplayedCommentText?.text = firstCommentText
         cell.delegate = self
-        let path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
+        path = "media/" + (post.creatorId) + "/" +  (post.title) + "/" +  "pic.jpeg"
         let ref = Storage.storage().reference(withPath: path)
         
-        ref.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+        ref.getData(maxSize: 1024 * 1024 * 1024) { [self] data, error in
             if error != nil {
                 //print("Error: Image could not download!")
             } else {
@@ -121,6 +125,7 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
             }
         
             let ref2 = Storage.storage().reference(withPath: "media/" + post.creatorId + "/" + "profile.jpeg")
+            path2 = "media/" + post.creatorId + "/" + "profile.jpeg"
             ref2.getData(maxSize: 1024 * 1024 * 1024) { data, error in
                 if error != nil {
                     print("Error: Image could not download!")
@@ -131,6 +136,9 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
         }
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toSinglePost", sender: self)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is CommentsViewController
@@ -138,8 +146,47 @@ extension PostsUnderTopicViewController: UITableViewDelegate, UITableViewDataSou
             let vc = segue.destination as? CommentsViewController
             vc?.comments = commentList
         }
+        if segue.identifier == "toSinglePost" {
+            let viewController = segue.destination as! SinglePostViewController
+            if currPost!.comments.isEmpty{
+                firstCommentUN = ""
+                firstCommentText = ""
+            }else{
+            let firstComment: String = (currPost?.comments[0])!
+                firstCommentUN = firstComment.components(separatedBy: ": ")[0]
+                firstCommentText = firstComment.components(separatedBy: ": ")[1]
+            }
+            print("CURR POSTT")
+            print(currPost?.creatorId)
+            viewController.usernameText = currPost!.creatorId
+            viewController.commentsList = commentList
+            viewController.postCaptionText = currPost!.caption
+            viewController.postTitleText = currPost!.title
+            viewController.DisplayedCommentUserNameText = firstCommentUN
+            viewController.DisplayedCommentTextText = firstCommentText
+            viewController.postID = currPost!.postId
+            let ref = Storage.storage().reference(withPath: path)
+            
+            ref.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print("Error: Image could not download!")
+                } else {
+                    viewController.postImage?.image = UIImage(data: data!)
+                }
+            }
+            let ref2 = Storage.storage().reference(withPath: path2)
+            ref2.getData(maxSize: 1024 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print("Error: Image could not download!")
+                } else {
+                    viewController.profilePicture?.image = UIImage(data: data!)
+                }
+            }
+        
+        }
     }
 }
+
 
 
 

@@ -14,6 +14,25 @@ import EmailValidator
 
 class AdminViewController: UIViewController, UINavigationControllerDelegate {
     
+<<<<<<< HEAD
+=======
+    @IBOutlet weak var back: UIButton!
+    @IBOutlet weak var logout: UIButton!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let auth = Auth.auth()
+        let userLog = auth.currentUser
+        
+        if (userLog?.email) == nil {
+            back.isHidden = false
+            logout.isHidden = true
+        }
+        else {
+            back.isHidden = true
+            logout.isHidden = false
+        }
+    }
+>>>>>>> master
     @IBAction func LogoutPressed(_ sender: Any) {
         do {
             
