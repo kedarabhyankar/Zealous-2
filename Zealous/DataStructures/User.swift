@@ -153,7 +153,45 @@ extension WriteableUser {
             }
         }
     }
-
+    
+    func getFollowerArray(user: WriteableUser, completion: @escaping(([WriteableUser]) -> ())) {
+        let db = Firestore.firestore()
+        var followerArr: [WriteableUser] = []
+        
+        for  id in user.followers {
+        db.collection("users").document(id).getDocument
+        { (document, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document!.data()!)
+                    followerArr.append(model)
+                }
+            }
+        }
+        completion(followerArr)
+    }
+    
+    func getFollowedArray(user: WriteableUser, completion: @escaping(([WriteableUser]) -> ())) {
+        let db = Firestore.firestore()
+        var followedArr: [WriteableUser] = []
+        for id in user.followedUsers {
+            db.collection("users").document(id).getDocument { (document, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+            
+                    let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document!.data()!)
+                    followedArr.append(model)
+                        
+                    
+    
+                }
+            }
+        }
+        completion(followedArr)
+   }
+    
     static func getCreatedPosts(email: String, completion: @escaping(([Post]) -> ())) {
         let db = Firestore.firestore()
         db.collection("posts").whereField("creatorId", isEqualTo: email)
@@ -295,7 +333,7 @@ extension WriteableUser {
             let db = Firestore.firestore()
             var email: String = ""
             print("username: " + username)
-            let ref = db.collection("users").getDocuments()
+        let ref = db.collection("users").getDocuments()
             { (querySnap, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -304,13 +342,14 @@ extension WriteableUser {
                         let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data())
                         if (model.username == username) {
                             email = model.email
+                            print("email: \(email)")
                             completion(email)
-                            return
+                           // return
                         }
                     }
                 }
             }
-            completion(email)
+           // completion(email)
         }
     
     func showAndFocus(banner : Banner){
