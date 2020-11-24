@@ -272,6 +272,46 @@ extension WriteableUser {
         }
     }
     
+    static func getAUser(theEmail: String, completion: @escaping((WriteableUser) -> ())) {
+           let email = theEmail
+           let db = Firestore.firestore()
+           let userRef = db.collection("users").document(email)
+           userRef.getDocument { document, error in
+               if let document = document {
+                   let model = try? FirestoreDecoder().decode(WriteableUser.self, from: document.data()!)
+                   guard model != nil else {
+                       print("Could not find user in database")
+                       fatalError()
+                   }
+                   completion(model!)
+               } else {
+                   print("User does not exist")
+               }
+           }
+       }
+    
+    
+    static func getEmail(username: String, completion: @escaping((String) -> ())) {
+            let db = Firestore.firestore()
+            var email: String = ""
+            print("username: " + username)
+            let ref = db.collection("users").getDocuments()
+            { (querySnap, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnap!.documents {
+                        let model = try! FirestoreDecoder().decode(WriteableUser.self, from: document.data())
+                        if (model.username == username) {
+                            email = model.email
+                            completion(email)
+                            return
+                        }
+                    }
+                }
+            }
+            completion(email)
+        }
     
     func showAndFocus(banner : Banner){
         banner.show(duration: 3)
