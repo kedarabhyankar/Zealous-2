@@ -24,9 +24,23 @@ class AdminUsersViewCell: UITableViewCell {
     
     @IBAction func deleteClicked(_ sender: Any) {
         var username2: String = username.text!
-       
+        WriteableUser.getEmail(username: username2, completion: afterEmail)
         
     }
+    
+    func afterEmail(email: String) {
+        WriteableUser.getAUser(theEmail: email, completion: getUser)
+    }
+    
+    func getUser(theUser: WriteableUser) {
+        
+        
+        
+        
+        
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
