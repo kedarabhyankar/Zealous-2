@@ -20,10 +20,32 @@ protocol TimelineDelegate {
 }
 
 class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+    var selectedFilter:String = "All"
+    var selectedSort:String = "Time"
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == filterBar {
+             selectedFilter = picker1Options[row]
+        } else {
+             selectedSort = picker2Options[row]
+        }
+        if(selectedFilter != "All") {
+            postsFinal.removeAll()
+            for p in posts {
+                if(p.topic == selectedFilter) {
+                    postsFinal.append(p);
+                }
+            }
+        }
+        if(selectedFilter == "All") {
+            postsFinal.removeAll()
+            postsFinal = posts
+        }
+        
+        timelineTableView.reloadData()
+    }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if pickerView == filterBar {
@@ -48,6 +70,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
     var likedPosts: [Post] = []
     var following: [WriteableUser] = []
     var posts: [Post] = []
+    var postsFinal: [Post] = []
     var topics: [Topic] = []
     var firstCommentUN: String = ""
     var firstCommentText: String = ""
@@ -85,6 +108,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         if !posts.isEmpty {
             posts.sort(by: {$0.timestamp > $1.timestamp})
         }
+       
         timelineTableView.reloadData()
     }
     func addTimeline(postArray: [Post]) {
@@ -94,6 +118,11 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
             }
             print(postItem)
         }
+        
+        posts.sort(by: { (first: Post, second: Post) -> Bool in
+                   first.timestamp > second.timestamp
+               })
+        postsFinal = posts
         timelineTableView.reloadData()
     }
     func addTopic(topic: Topic) {
@@ -142,16 +171,15 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
 
 extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.posts.count
+        return self.postsFinal.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Sort the posts by timestamp
-        posts.sort(by: { (first: Post, second: Post) -> Bool in
-                   first.timestamp > second.timestamp
-               })
+       
+        //postsFinal = posts
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
-        let post = posts[indexPath.row]
+        let post = postsFinal[indexPath.row]
         currPost = post
         
         commentList.removeAll()
