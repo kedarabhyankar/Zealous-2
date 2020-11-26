@@ -91,7 +91,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         self.filterBar.delegate = self
         self.filterBar.dataSource = self
         picker1Options = ["All","Comments","Dog","Purdue","Test","Test3","Waterfall","anonymous"]
-        picker2Options = ["Time", "Relevance", "Engagement"]
+        picker2Options = ["Time", "Relevance", "Engagement", "Comments"]
         timelineTableView.reloadData()
     }
 
@@ -173,6 +173,16 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         if(selectedSort == "Time") {
             postsFinal.sort(by: { (first: Post, second: Post) -> Bool in
                    first.timestamp > second.timestamp
+               })
+        }
+        if(selectedSort == "Engagement") {
+            postsFinal.sort(by: { (first: Post, second: Post) -> Bool in
+                first.likes > second.likes
+               })
+        }
+        if(selectedSort == "Comments") {
+            postsFinal.sort(by: { (first: Post, second: Post) -> Bool in
+                first.comments.count > second.comments.count
                })
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedView", for: indexPath) as! FeedViewCell
