@@ -127,7 +127,33 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
             //delete post document from database
         } */
             // return
-       
+    }
+    
+    func DeletePostId(thePost: Post, theUser: WriteableUser) {
+        self.currentPost = thePost
+        self.currentUser = theUser
+        let serialQ = DispatchQueue(label: "com.queue.serial")
+        serialQ.sync {
+            
+            self.currentUser?.deleteCreatedPost(postId: self.currentPost!.postId)
+            let dataToWrite2 = try! FirestoreEncoder().encode(self.currentUser)
+            self.db.collection("users").document(self.currentUser!.email).setData(dataToWrite2)
+            
+             //delete image from storage
+                   let ref = Storage.storage().reference()
+                   let imageRef = ref.child("media/" + (self.currentUser?.email)! + "/" + (self.currentPost?.title)! + "/" + "pic.jpeg")
+                   //let ref = Storage.storage().reference(forURL: "media/" + (self.currentUser?.email)! + "/" +  (self.currentPost?.title)! + "/" + "pic.jpeg" )
+                   imageRef.delete { error in
+                       if let error = error {
+                           print("error deleting from storage")
+                       } else {
+                           print("sucess deleting from storage")
+                       }
+                   }
+            Topic.getTopic(topicTitle: self.currentPost!.topic, completion: self.getTheTopic)
+        }
+        
+        
         
     }
     
