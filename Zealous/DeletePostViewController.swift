@@ -86,7 +86,33 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
         Post.deletePost(postId: self.currentPost!.postId)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-        
+    }
+    
+    func getTheTopic2 (currentTopic: Topic) {
+        self.currentTopic = currentTopic
+        DispatchQueue.main.async {
+            //remove the post from the topic's post array and send to firestore
+            self.currentTopic?.removePost(postId: self.currentPost!.postId)
+            //if topic only had one post, delete the topic
+            if (self.currentTopic?.posts.count == 0) {
+                //topic's post array now has zero posts
+                Topic.deleteTopic(topicName: self.currentTopic!.title)
+                return
+            }
+            //else send the updated topic object to the database
+            let dataToWrite1 = try! FirestoreEncoder().encode(self.currentTopic)
+            self.db.collection("topics").document(self.currentTopic!.title).setData(dataToWrite1) {
+                error in
+                if (error != nil) {
+                    print("error writing topic to firestore: \(String(describing: error))")
+                    return
+                } else {
+                    print("success writing topic to firestore")
+                }
+            }
+        }
+        Post.deleteStoragePost(thePost: self.currentPost!, theUser: self.currentUser!)
+        Post.deletePost(postId: self.currentPost!.postId)
     }
     
     func getThePost (currentPost: Post) {
@@ -150,7 +176,7 @@ class DeletePostViewController: UIViewController, UITextFieldDelegate {
                            print("sucess deleting from storage")
                        }
                    }
-            Topic.getTopic(topicTitle: self.currentPost!.topic, completion: self.getTheTopic)
+            Topic.getTopic(topicTitle: self.currentPost!.topic, completion: self.getTheTopic2)
         }
         
         
