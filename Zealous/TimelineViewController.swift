@@ -119,8 +119,10 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         postsFinal = posts
         timelineTableView.reloadData()
     }
+    
     func addTopic(topic: Topic) {
         topics.append(topic)
+        picker1Options.append(topic.title);
         topic.getPosts { (post) in
             for postItem in self.posts {
                 if (postItem.postId == post.postId) {
