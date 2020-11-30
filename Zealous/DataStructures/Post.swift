@@ -27,6 +27,7 @@ struct Post: Codable {
     var dislikes: Int
     var timestamp: String
     var madeAnonymously: Bool
+    var postRelevance: Int
     
     init(topic: String, title: String, caption: String) {
         self.postId = UUID().uuidString
@@ -46,18 +47,21 @@ struct Post: Codable {
         //self.timestamp = formatter1.string(from: today)
         self.timestamp = dateFormatterGet.string(from: today)
         self.madeAnonymously = false;
+        self.postRelevance = -1;
     }
     
     init(topic: String, title: String, caption: String, creatorId: String, anon: Bool) {
         self.init(topic: topic, title: title, caption: caption)
         self.creatorId = creatorId
         self.madeAnonymously = anon;
+        self.postRelevance = -1;
     }
     
     init(topic: String, title: String, caption: String, creatorId: String, img: String?, anon: Bool) {
         self.init(topic: topic, title: title, caption: caption, creatorId: creatorId, anon: anon)
         self.imgURL = img
         self.madeAnonymously = anon;
+        self.postRelevance = -1;
     }
     
     static func getPost(postId: String, completion: @escaping((Post) -> ())) {
