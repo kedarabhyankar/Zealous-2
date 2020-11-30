@@ -45,6 +45,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
         }
         timelineTableView.reloadData()
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if pickerView == filterBar {
@@ -53,6 +54,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
                 return picker2Options.count
             }
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == filterBar {
                 return "\(picker1Options[row])"
@@ -60,6 +62,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
                 return "\(picker2Options[row])"
             }
     }
+    
     @IBOutlet weak var timelineTableView: UITableView!
     @IBOutlet weak var filterBar: UIPickerView!
     @IBOutlet weak var sortBar: UIPickerView!
@@ -79,6 +82,7 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
     var path: String = ""
     var path2: String = ""
     var allTopicsArray: [Topic] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         timelineTableView.delegate = self
@@ -169,7 +173,10 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         // Sort the posts by timestamp
         if(selectedFilter == "All") {
             postsFinal = posts
+        } else {
+            postsFinal = postsFinal.filter {$0.topic == selectedFilter};
         }
+        
         if(selectedSort == "Time") {
             postsFinal.sort(by: { (first: Post, second: Post) -> Bool in
                    first.timestamp > second.timestamp
@@ -234,6 +241,7 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toSinglePost", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is CommentsViewController
@@ -251,8 +259,8 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
                 firstCommentUN = firstComment.components(separatedBy: ": ")[0]
                 firstCommentText = firstComment.components(separatedBy: ": ")[1]
             }
-            print("CURR POSTT")
-            print(currPost?.creatorId)
+            print("CURR POST")
+            print(currPost?.creatorId ?? "Creator ID Error");
             viewController.usernameText = currPost!.creatorId
             viewController.commentsList = commentList
             viewController.postCaptionText = currPost!.caption
@@ -277,7 +285,6 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
                     viewController.profilePicture?.image = UIImage(data: data!)
                 }
             }
-        
         }
     }
 }
