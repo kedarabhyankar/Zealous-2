@@ -159,7 +159,6 @@ class TimelineViewController: UIViewController, TimelineDelegate,UIPickerViewDel
     func downvote(postId: String) {
         currentUser?.addDownVote(postTitle: postId)
     }
-    
     func upvote(postId: String) {
         currentUser?.addUpVote(postTitle: postId)
     }
@@ -178,7 +177,6 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             postsFinal = postsFinal.filter {$0.topic == selectedFilter};
         }
-        
         if(selectedSort == "Time") {
             postsFinal.sort(by: { (first: Post, second: Post) -> Bool in
                    first.timestamp > second.timestamp
@@ -207,7 +205,7 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
         if post.comments.isEmpty{
             firstCommentUN = ""
             firstCommentText = ""
-        }else{
+        } else {
         let firstComment: String = post.comments[0]
             firstCommentUN = firstComment.components(separatedBy: ": ")[0]
             firstCommentText = firstComment.components(separatedBy: ": ")[1]
